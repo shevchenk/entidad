@@ -7,17 +7,16 @@
 @section('content')
 <section class="content-header">
     <h1>Inicio
-        <small>Demo</small>
+        <small>Bienvenido</small>
     </h1>
     <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Demo</a></li>
-        <li class="active">Inicio</li>
+        <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
+        <li class="active">Bienvenido</li>
     </ol>
 </section>
 
 <section class="content">
     <div class="row">
-        <h3>Hola Prueba :D</h3>
     </div>
 </section>
 @stop

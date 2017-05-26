@@ -4,9 +4,16 @@ namespace App\Http\Controllers\ExpertManage;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\ExpertManage\Cargo;
+use Illuminate\Support\Facades\Auth;
 
 class Cargo extends Controller
 {
+
+    public function __construct()
+    {
+        //$this->middleware('auth');  //Esto debe activarse cuando estemos con sessión
+    }
+
     public function EditStatus(Request $r )
     {
         if ( $r->ajax() ) {

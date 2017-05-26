@@ -196,9 +196,15 @@ var masterG ={
                   eventsucces(r);
                 }
             },
-            error: function(){
+            error: function(result){
                 $(".content .box .overlay").remove();
-                msjG.mensaje('danger','',3000);
+                if( typeof(result.status)!='undefined' && result.status==401 && result.statusText=='Unauthorized' ){
+                    msjG.mensaje('warning','Su sesión a caducado',4000);
+                }
+                else{
+                    msjG.mensaje('danger','',3000);
+                }
+
             }
         });
     },

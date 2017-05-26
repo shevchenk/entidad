@@ -11,12 +11,10 @@
 |
 */
 Route::get('/', function () {
-    return view('welcome');
+    return view('secureaccess.login');
 });
 
-Route::get('/salir', function () {
-    return Redirect::to('/');
-});
+Route::get('/salir','SecureAccess\Persona@logout' );
 
 Route::get(
     '/{ruta}', function ($ruta) {
