@@ -14,6 +14,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/salir', function () {
+    return Redirect::to('/');
+});
+
 Route::get(
     '/{ruta}', function ($ruta) {
         /*if (Session::has('accesos')) {

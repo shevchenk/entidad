@@ -42,7 +42,7 @@ class Cargo extends Controller
         if ( $r->ajax() ) {
             $renturnModel = Cargo::runLoad($r);
             $return['rst'] = 1;
-            $return['data'] = $renturnModel['data'];
+            $return['data'] = $renturnModel;
             $return['msj'] = "No hay registros aún";
             return response()->json($return);
         }

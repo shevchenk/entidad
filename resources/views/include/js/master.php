@@ -185,19 +185,19 @@ var masterG ={
             dataType    : 'json',
             data        : data,
             beforeSend : function() {
-                $(".content.box").append('<div class="overlay"><i class="fa fa-refresh fa-spin"></i></div>');
+                $(".content .box").append('<div class="overlay"><i class="fa fa-refresh fa-spin"></i></div>');
                 if( typeof eventbefore!= 'undefined' ){
                   eventbefore();
                 }
             },
             success : function(r) {
-                $(".content.box.overlay").remove();
+                $(".content .box .overlay").remove();
                 if( typeof eventsucces!= 'undefined' ){
                   eventsucces(r);
                 }
             },
             error: function(){
-                $(".content.box.overlay").remove();
+                $(".content .box .overlay").remove();
                 msjG.mensaje('danger','',3000);
             }
         });
@@ -296,7 +296,7 @@ var msjG = {
                 '<button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>' +
                 '<h4><i class="icon fa fa-'+img+'"> '+texto+'</h4>'+
                 '</div>');
-        $('.'+etiqueta).slideToggle(2000);
+        $('.'+etiqueta).slideToggle(500);
         $('.'+etiqueta).fadeOut(tiempo);
     },
 }

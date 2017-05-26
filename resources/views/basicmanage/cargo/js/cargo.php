@@ -1,8 +1,5 @@
 <script type="text/javascript">
 var AddEdit=0; //0: Editar | 1: Agregar
-var CabeceraG=[]; // Cabecera del Datatable
-var ColumnDefsG=[]; // Columnas de la BD del datatable
-var TargetsG=-1; // Posiciones de las columnas del datatable
 var CargoG={id:0,cargo:"",estado:1}; // Datos Globales
 $(document).ready(function() {
     $("#TableCargo").DataTable({

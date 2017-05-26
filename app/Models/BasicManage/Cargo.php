@@ -53,8 +53,7 @@ class Cargo extends Model
                     }
                 }
             );
-        $result['count']=$sql->count();
-        $result['data']=$sql->orderBy('cargo','asc')->get();
+        $result=$sql->orderBy('cargo','asc')->get();
         return $result;
     }
 }
