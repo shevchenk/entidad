@@ -5,12 +5,30 @@ namespace App\Models\SecureAccess;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use DB;
 
 class Persona extends Authenticatable
 {
     use Notifiable;
     protected   $table = 'personas';
+
+
+    public static function runEditPassword($r)
+    {
+        $persona_id = Auth::user()->id;
+        $persona = Persona::find($persona_id);
+        $bcryptpassword = bcrypt($r->password);
+        if( Hash::check($r->password_actual, $persona->password) ){
+            $persona->password = $bcryptpassword;
+            $persona->persona_id_updated_at = $persona_id;
+            $persona->save();
+            return 1;
+        }
+        else{
+            return 2;
+        }
+    }
 
     public static function Menu()
     {

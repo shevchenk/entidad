@@ -35,5 +35,26 @@ class Persona extends Controller
         return "dni";
     }
 
+    public function EditPassword(Request $r)
+    {
+        if ( $r->ajax() ) {
+            if( $r->password == $r->password_confirm ){
+                $rs=Persona::runEditPassword($r);
+                $return['rst'] = 1;
+                $return['msj'] = 'Registro actualizado';
+                if( $rs==2 ){
+                    $return['rst'] = 2;
+                    $return['msj'] = 'Contraseña Actual no válida';
+                }
+            }
+            else{
+                $return['rst'] = 2;
+                $return['msj'] = 'Contraseña y Contraseña de confirmación no '.
+                'son iguales';
+            }
+            return response()->json($return);
+        }
+    }
+
     
 }
