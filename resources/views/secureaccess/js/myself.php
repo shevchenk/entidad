@@ -17,6 +17,13 @@ ValidaForm=function(){
         r=false;
         msjG.mensaje('warning','Ingrese su Contraseña Actual',4000);
     }
+    else if( $.trim( $("#MyselfForm #txt_password_confirm").val() ) != 
+             $.trim( $("#MyselfForm #txt_password").val() ) 
+    ){
+        r=false;
+        msjG.mensaje('warning','Contraseña y Contraseña de confirmación no son'+
+                     ' iguales',4000);
+    }
     return r;
 }
 
