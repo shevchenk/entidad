@@ -88,4 +88,12 @@ class Sucursal extends Model
         $result = $sql->orderBy('sucursal','asc')->get();
         return $result;
     }
+    
+            public static function ListSucursal($r)
+    {
+        $sql=Sucursal::select('id','sucursal','estado')
+            ->where('estado','=','1');
+        $result = $sql->orderBy('sucursal','asc')->get();
+        return $result;
+    }
 }

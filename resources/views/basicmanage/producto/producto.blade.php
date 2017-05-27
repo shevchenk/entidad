@@ -1,0 +1,132 @@
+@extends('layout.master')  
+
+@section('include')
+    @parent
+    {{ Html::style('lib/datatables/dataTables.bootstrap.css') }}
+    {{ Html::script('lib/datatables/jquery.dataTables.min.js') }}
+    {{ Html::script('lib/datatables/dataTables.bootstrap.min.js') }}
+
+    @include( 'basicmanage.producto.js.producto_ajax' )
+    @include( 'basicmanage.producto.js.producto' )
+    @include( 'basicmanage.producto.js.categoria_ajax' )
+    @include( 'basicmanage.producto.js.categoria' )
+    @include( 'basicmanage.producto.js.articulo_ajax' )
+    @include( 'basicmanage.producto.js.articulo' )
+@stop
+
+@section('content')
+<section class="content-header">
+    <h1>Productos
+        <small>Mantenimiento</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><i class="fa fa-sitemap"></i> Mantenimiento</a></li>
+        <li class="active">Productos</li>
+    </ol>
+</section>
+
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box"> 
+               <div class="box-body  no-padding"> <!-- table-responsive-->
+                <form id="ProductoForm">
+                   
+                        <table id="TableProducto" class="table table-bordered table-hover">
+                        <thead>
+                            <tr class="cabecera">
+                                  <th>Producto</th>
+                                  <th>Precio Venta</th>
+                                  <th>Precio Compra</th>
+                                  <th>Estado</th>
+                                  <th>[-]</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                        <tfoot>
+                            <tr class="cabecera">
+                                  <th>Producto</th>
+                                  <th>Precio Venta</th>
+                                  <th>Precio Compra</th>
+                                  <th>Estado</th>
+                                  <th>[-]</th>
+                            </tr>
+                        </tfoot>
+                        </table>
+                        <div class='btn btn-primary btn-sm' class="btn btn-primary" onClick="AgregarEditar(1)" >
+                            <i class="fa fa-plus fa-lg"></i>&nbsp;Nuevo</a>
+                        </div>&nbsp;
+                        <div class='btn btn-primary btn-sm' class="btn btn-primary" onClick="Cargar(1)" >
+                            <i class="fa fa-plus fa-lg"></i>&nbsp;Mostrar Artículos</a>
+                        </div>&nbsp;
+                        <div class='btn btn-primary btn-sm' class="btn btn-primary" onClick="Cargar(2)" >
+                            <i class="fa fa-plus fa-lg"></i>&nbsp;Mostrar Categorias</a>
+                        </div>
+                   
+                </form><!-- .form -->
+                <hr>
+                <form id="CategoriaForm" style="display: none">
+                    <div class="box-body table-responsive no-padding">
+                        <table id="TableCategoria" class="table table-bordered table-hover">
+                            <thead>
+                                <tr class="cabecera">
+                                  <th>Categoria</th>
+                                  <th>Estado</th>
+                                  <th>[-]</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                            <tfoot>
+                                <tr class="cabecera">
+                                  <th>Categoria</th>
+                                  <th>Estado</th>
+                                  <th>[-]</th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                        <div class='btn btn-primary btn-sm' class="btn btn-primary" onClick="AgregarEditar1(1)" >
+                            <i class="fa fa-plus fa-lg"></i>&nbsp;Nuevo</a>
+                        </div>
+                    </div><!-- .box-body -->
+                </form><!-- .form --> 
+                <form id="ArticuloForm" style="display: none">
+                    <div class="box-body table-responsive no-padding">
+                        <table id="TableArticulo" class="table table-bordered table-hover">
+                            <thead>
+                                <tr class="cabecera">
+                                  <th>Articulo</th>
+                                  <th>Categoria</th>
+                                  <th>Estado</th>
+                                  <th>[-]</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                            <tfoot>
+                                <tr class="cabecera">
+                                  <th>Articulo</th>
+                                  <th>Categoria</th>
+                                  <th>Estado</th>
+                                  <th>[-]</th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                        <div class='btn btn-primary btn-sm' class="btn btn-primary" onClick="AgregarEditar2(1)" >
+                            <i class="fa fa-plus fa-lg"></i>&nbsp;Nuevo</a>
+                        </div>
+                    </div><!-- .box-body -->
+                </form><!-- .form --> 
+               </div><!-- .box-body -->
+            </div><!-- .box -->
+        </div><!-- .col -->
+    </div><!-- .row -->
+</section><!-- .content -->
+@stop
+
+@section('form')
+     @include( 'basicmanage.producto.form.producto' )
+     @include( 'basicmanage.producto.form.categoria' )
+     @include( 'basicmanage.producto.form.articulo' )
+@stop
