@@ -14,7 +14,8 @@ Route::get(
             $valores['menu'] = session('menu');
 
             if( strpos( session('opciones'),$ruta )!==false 
-                || $ruta=='secureaccess.inicio' ){
+                || $ruta=='secureaccess.inicio'
+                || $ruta=='secureaccess.myself' ){
                 return view($ruta)->with($valores);
             }
             else{

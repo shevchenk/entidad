@@ -27,7 +27,7 @@
                 </span>
         </a>
         <ul class="treeview-menu">
-            <li><a href="secureaccess/myselft"><i class="fa fa-circle-o"></i> Datos Personales </a></li>
+            <li><a href="secureaccess.myselft"><i class="fa fa-circle-o"></i> Datos Personales </a></li>
         </ul>
     </li>
 </ul>
