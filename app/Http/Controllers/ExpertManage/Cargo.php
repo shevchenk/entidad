@@ -11,7 +11,7 @@ class Cargo extends Controller
 
     public function __construct()
     {
-        //$this->middleware('auth');  //Esto debe activarse cuando estemos con sessión
+        $this->middleware('auth');  //Esto debe activarse cuando estemos con sessión
     }
 
     public function EditStatus(Request $r )

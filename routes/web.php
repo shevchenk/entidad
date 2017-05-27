@@ -14,19 +14,20 @@ Route::get('/', function () {
     return view('secureaccess.login');
 });
 
-Route::get('/salir','SecureAccess\Persona@logout' );
+Route::get('/salir','SecureAccess\Persona@logout');
 
 Route::get(
     '/{ruta}', function ($ruta) {
-        /*if (Session::has('accesos')) {
-            $accesos = Session::get('accesos');
-            $menus = Session::get('menus');*/
+        if( session()->has('dni') && session()->has('menu') ){
             $valores['valida_ruta_url'] = $ruta;
-            //$valores['menus'] = $menus;
+            $valores['menu'] = session('menu');
             return view($ruta)->with($valores);
-        /*} else {
-            return Redirect::to('/');
-        }*/
+        }
+        else{
+            return redirect('/');
+        }
     }
 );
+
 Route::post('/AjaxDinamic/{ruta}','SecureAccess\Persona@');
+

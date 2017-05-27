@@ -4,6 +4,7 @@ namespace App\Http\Controllers\SecureAccess;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use App\Models\SecureAccess\Persona;
 
 class Persona extends Controller
 {
@@ -14,7 +15,13 @@ class Persona extends Controller
     public function authenticated(Request $r)
     {
         $result['rst']=1;
-        //$r->session()->set('dni',$r->dni);
+        $menu = Persona::Menu();
+        $session= array(
+            'menu'=>$menu,
+            'dni'=>$r->dni
+        );
+
+        session($session);
         return response()->json($result);
     }
 
