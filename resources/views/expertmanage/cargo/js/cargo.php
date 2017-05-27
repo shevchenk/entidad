@@ -79,6 +79,9 @@ HTMLAgregarEditar=function(result){
         $('#ModalCargo').modal('hide');
         AjaxCargo.Cargar(HTMLCargarCargo);
     }
+    else{
+        msjG.mensaje('warning',result.msj,3000);
+    }
 }
 
 HTMLCargarCargo=function(result){

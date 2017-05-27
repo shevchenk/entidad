@@ -3,10 +3,10 @@ namespace App\Http\Controllers\ExpertManage;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\ExpertManage\Cargo;
+use App\Models\ExpertManage\Sucursal;
 use Illuminate\Support\Facades\Validator;
 
-class Cargo extends Controller
+class Sucursal extends Controller
 {
     public function __construct()
     {
@@ -16,7 +16,7 @@ class Cargo extends Controller
     public function EditStatus(Request $r )
     {
         if ( $r->ajax() ) {
-            Cargo::runEditStatus($r);
+            Sucursal::runEditStatus($r);
             $return['rst'] = 1;
             $return['msj'] = 'Registro actualizado';
             return response()->json($return);
@@ -27,19 +27,19 @@ class Cargo extends Controller
     {
         if ( $r->ajax() ) {
             $rules=array(
-                'cargo' => 'required|max:100|unique:cargos'
+                'sucursal' => 'required|max:100|unique:sucursales'
             );
 
             $validator=Validator::make($r->all(), $rules);
 
             if ( !$validator->fails() ) {
-                Cargo::runNew($r);
+                Sucursal::runNew($r);
                 $return['rst'] = 1;
                 $return['msj'] = 'Registro creado';
             }
             else{
                 $return['rst'] = 2;
-                $return['msj'] = '!Cargo existente¡, modifique su cargo';
+                $return['msj'] = '!Sucursal existente¡, modifique su sucursal';
             }
             return response()->json($return);
         }
@@ -49,19 +49,19 @@ class Cargo extends Controller
     {
         if ( $r->ajax() ) {
             $rules=array(
-                'cargo' => 'required|max:100|unique:cargos,cargo,'.$r->id
+                'sucursal' => 'required|max:100|unique:sucursales,sucursal,'.$r->id
             );
 
             $validator=Validator::make($r->all(), $rules);
 
             if ( !$validator->fails() ) {
-                Cargo::runEdit($r);
+                Sucursal::runEdit($r);
                 $return['rst'] = 1;
                 $return['msj'] = 'Registro actualizado';
             }
             else{
                 $return['rst'] = 2;
-                $return['msj'] = '!Cargo existente¡, modifique su cargo';
+                $return['msj'] = '!Sucursal existente¡, modifique su sucursal';
             }
             return response()->json($return);
         }
@@ -70,7 +70,7 @@ class Cargo extends Controller
     public function Load(Request $r )
     {
         if ( $r->ajax() ) {
-            $renturnModel = Cargo::runLoad($r);
+            $renturnModel = Sucursal::runLoad($r);
             $return['rst'] = 1;
             $return['data'] = $renturnModel;
             $return['msj'] = "No hay registros aún";

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\ExpertManage;
+namespace App\Models\BasicManage;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -44,7 +44,6 @@ class Sucursal extends Model
 
     public static function runLoad($r)
     {
-
         $sql=Sucursal::select('id','sucursal','direccion','telefono','celular','email','estado')
             ->where( 
                 function($query) use ($r){
@@ -78,7 +77,6 @@ class Sucursal extends Model
                             $query->where('email','like','%'.$email.'%');
                         }
                     }
-
                     if( $r->has("estado") ){
                         $estado=trim($r->estado);
                         if( $estado !='' ){
@@ -87,18 +85,7 @@ class Sucursal extends Model
                     }
                 }
             );
-        $result = $sql->orderBy('sucursal','asc')->paginate(10);
-        return $result;
-    }
-
-    
-        public static function ListSucursal($r)
-    {
-        $sql=Sucursal::select('id','sucursal','estado')
-            ->where('estado','=','1');
         $result = $sql->orderBy('sucursal','asc')->get();
         return $result;
     }
-    
-
 }
