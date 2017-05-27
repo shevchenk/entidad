@@ -16,11 +16,16 @@ class Persona extends Controller
     {
         $result['rst']=1;
         $menu = Persona::Menu();
+        $opciones=array();
+        foreach ($menu as $key => $value) {
+            array_push($opciones, $value->opciones);
+        }
+        $opciones=implode("||", $opciones);
         $session= array(
             'menu'=>$menu,
+            'opciones'=>$opciones,
             'dni'=>$r->dni
         );
-
         session($session);
         return response()->json($result);
     }
