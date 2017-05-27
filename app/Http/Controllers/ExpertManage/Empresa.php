@@ -3,20 +3,21 @@ namespace App\Http\Controllers\ExpertManage;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\ExpertManage\Sucursal;
+use App\Models\ExpertManage\Empresa;
 use Illuminate\Support\Facades\Validator;
 
-class Sucursal extends Controller
+class Empresa extends Controller
 {
     public function __construct()
     {
         $this->middleware('auth');  //Esto debe activarse cuando estemos con sessión
-    } 
+    }
+
 
     public function EditStatus(Request $r )
     {
         if ( $r->ajax() ) {
-            Sucursal::runEditStatus($r);
+            Empresa::runEditStatus($r);
             $return['rst'] = 1;
             $return['msj'] = 'Registro actualizado';
             return response()->json($return);
@@ -27,19 +28,19 @@ class Sucursal extends Controller
     {
         if ( $r->ajax() ) {
             $rules=array(
-                'sucursal' => 'required|max:100|unique:sucursales'
+                'ruc' => 'required|max:11|unique:empresas'
             );
 
             $validator=Validator::make($r->all(), $rules);
 
             if ( !$validator->fails() ) {
-                Sucursal::runNew($r);
+                Empresa::runNew($r);
                 $return['rst'] = 1;
                 $return['msj'] = 'Registro creado';
             }
             else{
                 $return['rst'] = 2;
-                $return['msj'] = '!Sucursal existente¡, modifique su sucursal';
+                $return['msj'] = '!Empresa existente¡, modifique su empresa';
             }
             return response()->json($return);
         }
@@ -49,19 +50,19 @@ class Sucursal extends Controller
     {
         if ( $r->ajax() ) {
             $rules=array(
-                'sucursal' => 'required|max:100|unique:sucursales,sucursal,'.$r->id
+                'ruc' => 'required|max:11|unique:empresas,empresas,'.$r->id
             );
 
             $validator=Validator::make($r->all(), $rules);
 
             if ( !$validator->fails() ) {
-                Sucursal::runEdit($r);
+                Empresa::runEdit($r);
                 $return['rst'] = 1;
                 $return['msj'] = 'Registro actualizado';
             }
             else{
                 $return['rst'] = 2;
-                $return['msj'] = '!Sucursal existente¡, modifique su sucursal';
+                $return['msj'] = '!Empresa existente¡, modifique su empresas';
             }
             return response()->json($return);
         }
@@ -70,7 +71,7 @@ class Sucursal extends Controller
     public function Load(Request $r )
     {
         if ( $r->ajax() ) {
-            $renturnModel = Sucursal::runLoad($r);
+            $renturnModel = Empresa::runLoad($r);
             $return['rst'] = 1;
             $return['data'] = $renturnModel;
             $return['msj'] = "No hay registros aún";
