@@ -12,6 +12,7 @@
             <div class="form-group">
               <label>Persona</label>
               <input type="text" class="form-control" id="txt_persona_id" name="txt_persona_id" placeholder="Entidad">
+              <input type="button" name="Buscar">
             </div>
 
             <div class="form-group">

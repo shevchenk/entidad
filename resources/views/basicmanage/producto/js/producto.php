@@ -43,9 +43,9 @@ $(document).ready(function() {
     });
 
     $('#ModalProducto').on('hide.bs.modal', function (event) {
-        $("#ModalProductoForm input[type='hidden']").remove();
-        $("#ModalProductoForm input").val('');
-        $("#ModalProductoForm select").val('0');
+        $("ModalProductoForm input[type='hidden']").remove();
+        $("ModalProductoForm input").val('');
+        $("ModalProductoForm select").val('0');
     });
 });
 

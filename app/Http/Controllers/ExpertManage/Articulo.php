@@ -3,14 +3,14 @@ namespace App\Http\Controllers\ExpertManage;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\ExpertManage\Cargo;
+use App\Models\ExpertManage\Articulo;
 
-class Cargo extends Controller
+class Articulo extends Controller
 {
     public function EditStatus(Request $r )
     {
         if ( $r->ajax() ) {
-            Cargo::runEditStatus($r);
+            Articulo::runEditStatus($r);
             $return['rst'] = 1;
             $return['msj'] = 'Registro actualizado';
             return response()->json($return);
@@ -20,7 +20,7 @@ class Cargo extends Controller
     public function New(Request $r )
     {
         if ( $r->ajax() ) {
-            Cargo::runNew($r);
+            Articulo::runNew($r);
             $return['rst'] = 1;
             $return['msj'] = 'Registro creado';
             return response()->json($return);
@@ -30,7 +30,7 @@ class Cargo extends Controller
     public function Edit(Request $r )
     {
         if ( $r->ajax() ) {
-            Cargo::runEdit($r);
+            Articulo::runEdit($r);
             $return['rst'] = 1;
             $return['msj'] = 'Registro actualizado';
             return response()->json($return);
@@ -40,7 +40,7 @@ class Cargo extends Controller
     public function Load(Request $r )
     {
         if ( $r->ajax() ) {
-            $renturnModel = Cargo::runLoad($r);
+            $renturnModel = Articulo::runLoad($r);
             $return['rst'] = 1;
             $return['data'] = $renturnModel;
             $return['msj'] = "No hay registros aún";
