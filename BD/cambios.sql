@@ -1,3 +1,10 @@
+-- 2017-05-27 / Act personas.
+ALTER TABLE `personas`
+MODIFY COLUMN `email`  varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' AFTER `sexo`,
+MODIFY COLUMN `remember_token`  varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' AFTER `password`,
+MODIFY COLUMN `foto`  varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' AFTER `remember_token`,
+MODIFY COLUMN `telefono`  varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' AFTER `foto`,
+MODIFY COLUMN `celular`  varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' AFTER `telefono`;
 -- 2017-05-26 / Eliminación de 2 campos innesesarios.
 ALTER TABLE `menus`
 DROP COLUMN `ruta`;
