@@ -3,14 +3,14 @@ namespace App\Http\Controllers\ExpertManage;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\ExpertManage\Articulo;
+use App\Models\ExpertManage\Categoria;
 
-class Articulo extends Controller
+class CategoriaEM extends Controller
 {
     public function EditStatus(Request $r )
     {
         if ( $r->ajax() ) {
-            Articulo::runEditStatus($r);
+            Categoria::runEditStatus($r);
             $return['rst'] = 1;
             $return['msj'] = 'Registro actualizado';
             return response()->json($return);
@@ -20,7 +20,7 @@ class Articulo extends Controller
     public function New(Request $r )
     {
         if ( $r->ajax() ) {
-            Articulo::runNew($r);
+            Categoria::runNew($r);
             $return['rst'] = 1;
             $return['msj'] = 'Registro creado';
             return response()->json($return);
@@ -30,7 +30,7 @@ class Articulo extends Controller
     public function Edit(Request $r )
     {
         if ( $r->ajax() ) {
-            Articulo::runEdit($r);
+            Categoria::runEdit($r);
             $return['rst'] = 1;
             $return['msj'] = 'Registro actualizado';
             return response()->json($return);
@@ -40,7 +40,7 @@ class Articulo extends Controller
     public function Load(Request $r )
     {
         if ( $r->ajax() ) {
-            $renturnModel = Articulo::runLoad($r);
+            $renturnModel = Categoria::runLoad($r);
             $return['rst'] = 1;
             $return['data'] = $renturnModel;
             $return['msj'] = "No hay registros aún";

@@ -2,9 +2,9 @@
 var AjaxArticulo={
     AgregarEditar:function(evento){
         var data=$("#ModalArticuloForm").serialize().split("txt_").join("").split("slct_").join("");
-        url='AjaxDinamic/ExpertManage.Articulo@New';
+        url='AjaxDinamic/BasicManage.ArticuloBM@New';
         if(AddEdit==0){
-            url='AjaxDinamic/ExpertManage.Articulo@Edit';
+            url='AjaxDinamic/BasicManage.ArticuloBM@Edit';
         }
         masterG.postAjax(url,data,evento);
     },
@@ -14,7 +14,7 @@ var AjaxArticulo={
         }
         data=$("#ArticuloForm").serialize().split("txt_").join("").split("slct_").join("");
         $("#ArticuloForm input[type='hidden']").remove();
-        url='AjaxDinamic/ExpertManage.Articulo@Load';
+        url='AjaxDinamic/BasicManage.ArticuloBM@Load';
         masterG.postAjax(url,data,evento);
     },
     CambiarEstado:function(evento,AI,id){
@@ -22,7 +22,7 @@ var AjaxArticulo={
         $("#ModalArticuloForm").append("<input type='hidden' value='"+id+"' name='id'>");
         var data=$("#ModalArticuloForm").serialize().split("txt_").join("").split("slct_").join("");
         $("#ModalArticuloForm input[type='hidden']").remove();
-        url='AjaxDinamic/ExpertManage.Articulo@EditStatus';
+        url='AjaxDinamic/BasicManage.ArticuloBM@EditStatus';
         masterG.postAjax(url,data,evento);
     }
 };

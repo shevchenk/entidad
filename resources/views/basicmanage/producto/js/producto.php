@@ -109,8 +109,8 @@ HTMLAgregarEditar=function(result){
 HTMLCargarProducto=function(result){
     var html="";
     $('#TableProducto').DataTable().destroy();
-
-    $.each(result.data.data,function(index,r){
+    
+    $.each(result.data,function(index,r){
         estadohtml='<span id="'+r.id+'" onClick="CambiarEstado(1,'+r.id+')" class="btn btn-danger">Inactivo</span>';
         if(r.estado==1){
             estadohtml='<span id="'+r.id+'" onClick="CambiarEstado(0,'+r.id+')" class="btn btn-success">Activo</span>';

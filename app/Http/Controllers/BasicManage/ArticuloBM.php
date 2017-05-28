@@ -3,14 +3,14 @@ namespace App\Http\Controllers\BasicManage;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\BasicManage\Categoria;
+use App\Models\BasicManage\Articulo;
 
-class Categoria extends Controller
+class ArticuloBM extends Controller
 {
     public function EditStatus(Request $r )
     {
         if ( $r->ajax() ) {
-            Categoria::runEditStatus($r);
+            Articulo::runEditStatus($r);
             $return['rst'] = 1;
             $return['msj'] = 'Registro actualizado';
             return response()->json($return);
@@ -20,7 +20,7 @@ class Categoria extends Controller
     public function New(Request $r )
     {
         if ( $r->ajax() ) {
-            Categoria::runNew($r);
+            Articulo::runNew($r);
             $return['rst'] = 1;
             $return['msj'] = 'Registro creado';
             return response()->json($return);
@@ -30,7 +30,7 @@ class Categoria extends Controller
     public function Edit(Request $r )
     {
         if ( $r->ajax() ) {
-            Categoria::runEdit($r);
+            Articulo::runEdit($r);
             $return['rst'] = 1;
             $return['msj'] = 'Registro actualizado';
             return response()->json($return);
@@ -40,7 +40,7 @@ class Categoria extends Controller
     public function Load(Request $r )
     {
         if ( $r->ajax() ) {
-            $renturnModel = Categoria::runLoad($r);
+            $renturnModel = Articulo::runLoad($r);
             $return['rst'] = 1;
             $return['data'] = $renturnModel;
             $return['msj'] = "No hay registros aún";

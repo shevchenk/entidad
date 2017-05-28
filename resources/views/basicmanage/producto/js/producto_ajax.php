@@ -2,9 +2,9 @@
 var AjaxProducto={
     AgregarEditar:function(evento){
         var data=$("#ModalProductoForm").serialize().split("txt_").join("").split("slct_").join("");
-        url='AjaxDinamic/ExpertManage.Producto@New';
+        url='AjaxDinamic/BasicManage.ProductoBM@New';
         if(AddEdit==0){
-            url='AjaxDinamic/ExpertManage.Producto@Edit';
+            url='AjaxDinamic/BasicManage.ProductoBM@Edit';
         }
         masterG.postAjax(url,data,evento);
     },
@@ -14,7 +14,7 @@ var AjaxProducto={
         }
         data=$("#ProductoForm").serialize().split("txt_").join("").split("slct_").join("");
         $("#ProductoForm input[type='hidden']").remove();
-        url='AjaxDinamic/ExpertManage.Producto@Load';
+        url='AjaxDinamic/BasicManage.ProductoBM@Load';
         masterG.postAjax(url,data,evento);
     },
     CambiarEstado:function(evento,AI,id){
@@ -22,21 +22,21 @@ var AjaxProducto={
         $("#ModalProductoForm").append("<input type='hidden' value='"+id+"' name='id'>");
         var data=$("#ModalProductoForm").serialize().split("txt_").join("").split("slct_").join("");
         $("#ModalProductoForm input[type='hidden']").remove();
-        url='AjaxDinamic/ExpertManage.Producto@EditStatus';
+        url='AjaxDinamic/BasicManage.ProductoBM@EditStatus';
         masterG.postAjax(url,data,evento);
     },
     CargarSucursal:function(evento){
-        url='AjaxDinamic/ExpertManage.Producto@ListSucursal';
+        url='AjaxDinamic/BasicManage.ProductoBM@ListSucursal';
         data={};
         masterG.postAjax(url,data,evento);
     },
     CargarCategoria:function(evento){
-        url='AjaxDinamic/ExpertManage.Producto@ListCategoria';
+        url='AjaxDinamic/BasicManage.ProductoBM@ListCategoria';
         data={};
         masterG.postAjax(url,data,evento);
     },
     CargarArticulo:function(evento){
-        url='AjaxDinamic/ExpertManage.Producto@ListArticulo';
+        url='AjaxDinamic/BasicManage.ProductoBM@ListArticulo';
         data={};
         masterG.postAjax(url,data,evento);
     }

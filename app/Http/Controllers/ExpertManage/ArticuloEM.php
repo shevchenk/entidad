@@ -1,11 +1,11 @@
 <?php
-namespace App\Http\Controllers\BasicManage;
+namespace App\Http\Controllers\ExpertManage;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\BasicManage\Articulo;
+use App\Models\ExpertManage\Articulo;
 
-class Articulo extends Controller
+class ArticuloEM extends Controller
 {
     public function EditStatus(Request $r )
     {

@@ -8,7 +8,7 @@ use App\Models\BasicManage\Sucursal;
 use App\Models\BasicManage\Categoria;
 use App\Models\BasicManage\Articulo;
 
-class Producto extends Controller
+class ProductoBM extends Controller
 {
     public function EditStatus(Request $r )
     {

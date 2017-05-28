@@ -1,11 +1,11 @@
 <?php
-namespace App\Http\Controllers\ExpertManage;
+namespace App\Http\Controllers\BasicManage;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\ExpertManage\Categoria;
+use App\Models\BasicManage\Categoria;
 
-class Categoria extends Controller
+class CategoriaBM extends Controller
 {
     public function EditStatus(Request $r )
     {

@@ -8,7 +8,7 @@ use App\Models\ExpertManage\Sucursal;
 use App\Models\ExpertManage\Categoria;
 use App\Models\ExpertManage\Articulo;
 
-class Producto extends Controller
+class ProductoEM extends Controller
 {
     public function EditStatus(Request $r )
     {

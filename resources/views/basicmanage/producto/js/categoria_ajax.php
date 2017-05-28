@@ -2,9 +2,9 @@
 var AjaxCategoria={
     AgregarEditar:function(evento){
         var data=$("#ModalCategoriaForm").serialize().split("txt_").join("").split("slct_").join("");
-        url='AjaxDinamic/ExpertManage.Categoria@New';
+        url='AjaxDinamic/BasicManage.CategoriaBM@New';
         if(AddEdit==0){
-            url='AjaxDinamic/ExpertManage.Categoria@Edit';
+            url='AjaxDinamic/BasicManage.CategoriaBM@Edit';
         }
         masterG.postAjax(url,data,evento);
     },
@@ -14,7 +14,7 @@ var AjaxCategoria={
         }
         data=$("#CategoriaForm").serialize().split("txt_").join("").split("slct_").join("");
         $("#CategoriaForm input[type='hidden']").remove();
-        url='AjaxDinamic/ExpertManage.Categoria@Load';
+        url='AjaxDinamic/BasicManage.CategoriaBM@Load';
         masterG.postAjax(url,data,evento);
     },
     CambiarEstado:function(evento,AI,id){
@@ -22,7 +22,7 @@ var AjaxCategoria={
         $("#ModalCategoriaForm").append("<input type='hidden' value='"+id+"' name='id'>");
         var data=$("#ModalCategoriaForm").serialize().split("txt_").join("").split("slct_").join("");
         $("#ModalCategoriaForm input[type='hidden']").remove();
-        url='AjaxDinamic/ExpertManage.Categoria@EditStatus';
+        url='AjaxDinamic/BasicManage.CategoriaBM@EditStatus';
         masterG.postAjax(url,data,evento);
     }
 };

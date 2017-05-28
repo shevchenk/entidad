@@ -2,7 +2,7 @@
 var AjaxProducto={
     AgregarEditar:function(evento){
         var data=$("#ModalProductoForm").serialize().split("txt_").join("").split("slct_").join("");
-        url='AjaxDinamic/ExpertManage.Producto@New';
+        url='AjaxDinamic/ExpertManage.ProductoEM@New';
         if(AddEdit==0){
             url='AjaxDinamic/ExpertManage.Producto@Edit';
         }
@@ -14,7 +14,7 @@ var AjaxProducto={
         }
         data=$("#ProductoForm").serialize().split("txt_").join("").split("slct_").join("");
         $("#ProductoForm input[type='hidden']").remove();
-        url='AjaxDinamic/ExpertManage.Producto@Load';
+        url='AjaxDinamic/ExpertManage.ProductoEM@Load';
         masterG.postAjax(url,data,evento);
     },
     CambiarEstado:function(evento,AI,id){
@@ -22,21 +22,21 @@ var AjaxProducto={
         $("#ModalProductoForm").append("<input type='hidden' value='"+id+"' name='id'>");
         var data=$("#ModalProductoForm").serialize().split("txt_").join("").split("slct_").join("");
         $("#ModalProductoForm input[type='hidden']").remove();
-        url='AjaxDinamic/ExpertManage.Producto@EditStatus';
+        url='AjaxDinamic/ExpertManage.ProductoEM@EditStatus';
         masterG.postAjax(url,data,evento);
     },
     CargarSucursal:function(evento){
-        url='AjaxDinamic/ExpertManage.Producto@ListSucursal';
+        url='AjaxDinamic/ExpertManage.ProductoEM@ListSucursal';
         data={};
         masterG.postAjax(url,data,evento);
     },
     CargarCategoria:function(evento){
-        url='AjaxDinamic/ExpertManage.Producto@ListCategoria';
+        url='AjaxDinamic/ExpertManage.ProductoEM@ListCategoria';
         data={};
         masterG.postAjax(url,data,evento);
     },
     CargarArticulo:function(evento){
-        url='AjaxDinamic/ExpertManage.Producto@ListArticulo';
+        url='AjaxDinamic/ExpertManage.ProductoEM@ListArticulo';
         data={};
         masterG.postAjax(url,data,evento);
     }

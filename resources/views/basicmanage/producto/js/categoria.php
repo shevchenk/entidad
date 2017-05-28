@@ -85,7 +85,7 @@ HTMLCargarCategoria1=function(result){
     var html="";
     $('#TableCategoria').DataTable().destroy();
 
-    $.each(result.data.data,function(index,r){
+    $.each(result.data,function(index,r){
         estadohtml='<span id="'+r.id+'" onClick="CambiarEstado1(1,'+r.id+')" class="btn btn-danger">Inactivo</span>';
         if(r.estado==1){
             estadohtml='<span id="'+r.id+'" onClick="CambiarEstado1(0,'+r.id+')" class="btn btn-success">Activo</span>';
