@@ -3,7 +3,7 @@ Route::get('/', function () {
     return view('secureaccess.login');
 });
 
-Route::get('/salir','SecureAccess\Persona@logout');
+Route::get('/salir','SecureAccess\PersonaSA@logout');
 
 Route::get(
     '/{ruta}', function ($ruta) {
@@ -28,5 +28,5 @@ Route::get(
     }
 );
 
-Route::post('/AjaxDinamic/{ruta}','SecureAccess\Persona@');
+Route::post('/AjaxDinamic/{ruta}','SecureAccess\PersonaSA@Menu');
 

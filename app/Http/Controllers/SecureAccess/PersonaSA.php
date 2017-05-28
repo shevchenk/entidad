@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use App\Models\SecureAccess\Persona;
 
-class Persona extends Controller
+class PersonaSA extends Controller
 {
     use AuthenticatesUsers;
 

@@ -2,7 +2,7 @@
 var MyselfAjax={
     Editar:function(evento){
         var data=$("#MyselfForm").serialize().split("txt_").join("").split("slct_").join("");
-        url='AjaxDinamic/SecureAccess.Persona@EditPassword';
+        url='AjaxDinamic/SecureAccess.PersonaSA@EditPassword';
         masterG.postAjax(url,data,evento);
     }
 };

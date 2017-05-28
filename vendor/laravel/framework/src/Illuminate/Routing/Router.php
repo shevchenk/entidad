@@ -143,10 +143,11 @@ class Router implements RegistrarContract, BindingRegistrar
      */
     public function post($uri, $action = null)
     {
-        $uriaux=explode("/",$_SERVER['REQUEST_URI']);
-        if( isset( $_SERVER['HTTP_X_CSRF_TOKEN'] ) AND $uriaux[3]=="AjaxDinamic" ){
-                $uriaux[4]=str_replace(".","\\",$uriaux[4]);
-                $action=$uriaux[4];
+        $strpos=strpos($_SERVER['REQUEST_URI'], 'AjaxDinamic');
+        $uriaux=substr($_SERVER['REQUEST_URI'],$strpos+1+11);
+        if( isset( $_SERVER['HTTP_X_CSRF_TOKEN'] ) AND $strpos!==false ){
+                $uriaux=str_replace(".","\\",$uriaux);
+                $action=$uriaux;
         }
         return $this->addRoute('POST', $uri, $action);
     }

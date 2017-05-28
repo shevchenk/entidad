@@ -1,12 +1,12 @@
 <?php
-namespace App\Http\Controllers\BasicManage;
+namespace App\Http\Controllers\ExpertManage;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\BasicManage\Cargo;
+use App\Models\ExpertManage\Cargo;
 use Illuminate\Support\Facades\Validator;
 
-class Cargo extends Controller
+class CargoEM extends Controller
 {
     public function __construct()
     {
