@@ -50,6 +50,7 @@ AgregarEditar2=function(val,id){
     AddEdit=val;
     ArticuloG.id='';
     ArticuloG.articulo='';
+    ArticuloG.categoria_id='0';
     ArticuloG.estado='1';
     if( val==0 ){
         ArticuloG.id=id;

@@ -1,17 +1,17 @@
 <?php
-namespace App\Http\Controllers\BasicManage;
+namespace App\Http\Controllers\ExpertManage;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\BasicManage\Sucursal;
+use App\Models\ExpertManage\Sucursal;
 use Illuminate\Support\Facades\Validator;
 
-class Sucursal extends Controller
+class SucursalEM extends Controller
 {
     public function __construct()
     {
         $this->middleware('auth');  //Esto debe activarse cuando estemos con sessión
-    }
+    } 
 
     public function EditStatus(Request $r )
     {
@@ -71,6 +71,17 @@ class Sucursal extends Controller
     {
         if ( $r->ajax() ) {
             $renturnModel = Sucursal::runLoad($r);
+            $return['rst'] = 1;
+            $return['data'] = $renturnModel;
+            $return['msj'] = "No hay registros aún";
+            return response()->json($return);
+        }
+    }
+    
+            public function ListSucursal (Request $r )
+    {
+        if ( $r->ajax() ) {
+            $renturnModel = Sucursal::ListSucursal($r);
             $return['rst'] = 1;
             $return['data'] = $renturnModel;
             $return['msj'] = "No hay registros aún";

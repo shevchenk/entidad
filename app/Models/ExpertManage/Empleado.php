@@ -19,7 +19,7 @@ class Empleado extends Model
     public static function runNew($r)
     {
         $empleado = new Empleado;
-        $empleado->persona_id = trim( $r->persona );
+        $empleado->persona_id = trim( $r->persona_id );
         $empleado->cargo_id = trim( $r->cargo );
         $empleado->sucursal_id = trim( $r->sucursal );
         $empleado->fecha_inicio = trim( $r->fecha_inicio );
@@ -51,16 +51,22 @@ class Empleado extends Model
             ->join('sucursales','empleados.sucursal_id','=','sucursales.id')
             ->where( 
                 function($query) use ($r){
-                    if( $r->has("empleado") ){
-                        $empleado=trim($r->empleado);
-                        if( $empleado !='' ){
-                            $query->where('empleado','like','%'.$empleado.'%');
+                    if( $r->has("persona") ){
+                        $persona=trim($r->persona);
+                        if( $persona !='' ){
+                            $query->whereRaw('CONCAT_WS(" ",personas.paterno,personas.materno,personas.nombre ) like "%'.$persona.'%"');
                         }
                     }
-                    if( $r->has("categoria") ){
-                        $paterno=trim($r->categoria);
-                        if( $paterno !='' ){
-                            $query->where('personas.p.paterno','like','%'.$paterno.'%');
+                    if( $r->has("sucursal") ){
+                        $sucursal=trim($r->sucursal);
+                        if( $sucursal !='' ){
+                            $query->where('sucursales.sucursal','like','%'.$sucursal.'%');
+                        }
+                    }
+                    if( $r->has("cargo") ){
+                        $cargo=trim($r->cargo);
+                        if( $cargo !='' ){
+                            $query->where('cargos.cargo','like','%'.$cargo.'%');
                         }
                     }
                     if( $r->has("estado") ){

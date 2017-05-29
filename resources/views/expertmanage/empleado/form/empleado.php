@@ -11,8 +11,8 @@
             <div class="form-group">
               <label>Persona</label>
               <input type="hidden" class="form-control" id="txt_persona_id" name="txt_persona_id" >
-              <input type="hidden" class="form-control" id="txt_persona" name="txt_persona" >
-              <a class="btn btn-primary btn-sm" data-toggle="modal" data-target="#Modallistapersona" data-id="'+data.id+'">Buscar</a>
+              <input type="text" class="form-control" id="txt_persona" name="txt_persona" disabled="">
+              <a class="btn btn-primary btn-sm" data-toggle="modal" data-target="#ModalListapersona" onclick="BuscarPersona()">Buscar</a>
             </div>
             <div class="form-group">
               <label>Cargo</label>
@@ -21,7 +21,7 @@
               </select>
             </div>
             <div class="form-group">
-              <label>Suuursal</label>
+              <label>Sucursal</label>
               <select class="form-control" name="slct_sucursal" id="slct_sucursal">
                 <option value='0'>.::Seleccione::.</option>
               </select>

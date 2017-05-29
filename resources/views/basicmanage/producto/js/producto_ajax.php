@@ -26,17 +26,17 @@ var AjaxProducto={
         masterG.postAjax(url,data,evento);
     },
     CargarSucursal:function(evento){
-        url='AjaxDinamic/BasicManage.ProductoBM@ListSucursal';
+        url='AjaxDinamic/BasicManage.SucursalBM@ListSucursal';
         data={};
         masterG.postAjax(url,data,evento);
     },
     CargarCategoria:function(evento){
-        url='AjaxDinamic/BasicManage.ProductoBM@ListCategoria';
+        url='AjaxDinamic/BasicManage.CategoriaBM@ListCategoria';
         data={};
         masterG.postAjax(url,data,evento);
     },
     CargarArticulo:function(evento){
-        url='AjaxDinamic/BasicManage.ProductoBM@ListArticulo';
+        url='AjaxDinamic/BasicManage.ArticuloBM@ListArticulo';
         data={};
         masterG.postAjax(url,data,evento);
     }

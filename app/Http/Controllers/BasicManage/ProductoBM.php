@@ -4,9 +4,6 @@ namespace App\Http\Controllers\BasicManage;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\BasicManage\Producto;
-use App\Models\BasicManage\Sucursal;
-use App\Models\BasicManage\Categoria;
-use App\Models\BasicManage\Articulo;
 
 class ProductoBM extends Controller
 {
@@ -51,38 +48,6 @@ class ProductoBM extends Controller
         }
     }
     
-        public function ListSucursal (Request $r )
-    {
-        if ( $r->ajax() ) {
-            $renturnModel = Sucursal::ListSucursal($r);
-            $return['rst'] = 1;
-            $return['data'] = $renturnModel;
-            $return['msj'] = "No hay registros aún";
-            return response()->json($return);
-        }
-    }
-    
-            public function ListCategoria (Request $r )
-    {
-        if ( $r->ajax() ) {
-            $renturnModel = Categoria::ListCategoria($r);
-            $return['rst'] = 1;
-            $return['data'] = $renturnModel;
-            $return['msj'] = "No hay registros aún";
-            return response()->json($return);
-        }
-    }
-    
-                public function ListArticulo (Request $r )
-    {
-        if ( $r->ajax() ) {
-            $renturnModel = Articulo::ListArticulo($r);
-            $return['rst'] = 1;
-            $return['data'] = $renturnModel;
-            $return['msj'] = "No hay registros aún";
-            return response()->json($return);
-        }
-    }
     
 
 }

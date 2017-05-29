@@ -1,6 +1,4 @@
 <script type="text/javascript">
-var AddEdit=0; //0: Editar | 1: Agregar
-var PersonaG={id:0,paterno:"",materno:"",nombre:"",dni:"",sexo:"",email:"",password:"",telefono:"",celular:"",fecha_nacimiento:"",estado:1}; // Datos Globales
 $(document).ready(function() {
     $("#TablePersona").DataTable({
         "paging": true,
@@ -11,32 +9,39 @@ $(document).ready(function() {
         "autoWidth": false
     });
    
-    $("#PersonaForm #TablePersona select").change(function(){ AjaxPersona.Cargar(HTMLCargarPersona); });
-    $("#PersonaForm #TablePersona input").blur(function(){ AjaxPersona.Cargar(HTMLCargarPersona); });
+    $("#ListapersonaForm #TableListapersona select").change(function(){ AjaxListapersona.Cargar(HTMLCargarPersona); });
+    $("#ListapersonaForm #TableListapersona input").blur(function(){ AjaxListapersona.Cargar(HTMLCargarPersona); });
 
-    $('#Modallistapersona').on('shown.bs.modal', function (event) {
-         AjaxPersona.Cargar(HTMLCargarPersona);
+    $('#ModalListapersona').on('shown.bs.modal', function (event) {
+       
     });
 
-    $('#Modallistapersona').on('hide.bs.modal', function (event) {
+    $('#ModalListapersona').on('hide.bs.modal', function (event) {
         $("ModalPersonaForm input[type='hidden']").remove();
         $("ModalPersonaForm input").val('');
     });
 });
 
-SeleccionarPersona = function(obj){
-    var iduser = obj.getAttribute('id-user');
-    if(iduser){
-        Bandeja.GetPersonabyId({persona_id:iduser});
-        $('#selectPersona').modal('hide');
-    }else{
-        alert('Seleccione persona');
+SeleccionarPersona = function(val,id){
+    if( val==0 ){
+        var paterno=$("#TableListapersona #trid_"+id+" .paterno").text();
+        var materno=$("#TableListapersona #trid_"+id+" .materno").text();
+        var nombre=$("#TableListapersona #trid_"+id+" .nombre").text();
+        
+        $('#ModalEmpleadoForm #txt_persona').val(paterno+" "+materno+" "+nombre);
+        $('#ModalEmpleadoForm #txt_persona_id').val(id);
     }
+    $('#ModalListapersona').modal('hide');
+    
+    }
+    
+BuscarPersona = function(){
+      AjaxListapersona.Cargar(HTMLCargarPersona);
     }
     
 HTMLCargarPersona=function(result){
     var html="";
-    $('#TablePersona').DataTable().destroy();
+    $('#TableListapersona').DataTable().destroy();
 
     $.each(result.data.data,function(index,r){
         estadohtml='<span id="'+r.id+'" onClick="CambiarEstado(1,'+r.id+')" class="btn btn-danger">Inactivo</span>';
@@ -49,13 +54,12 @@ HTMLCargarPersona=function(result){
             "<td class='materno'>"+r.materno+"</td>"+
             "<td class='nombre'>"+r.nombre+"</td>"+
             "<td class='dni'>"+r.dni+"</td>"+
-            "<td class='email'>"+r.email+"</td>"+
-            '<td><span class="btn btn-primary btn-sm" id-user='+r.id+' onClick="SeleccionarPersona(this)">Seleccionar</span></td>';
+            '<td><span class="btn btn-primary btn-sm" onClick="SeleccionarPersona(0,'+r.id+')">Seleccionar</span></td>';
 
         html+="</tr>";
     });
-    $("#TablePersona tbody").html(html); 
-    $("#TablePersona").DataTable({
+    $("#TableListapersona tbody").html(html); 
+    $("#TableListapersona").DataTable({
         "paging": true,
         "lengthChange": false,
         "searching": false,
@@ -68,8 +72,8 @@ HTMLCargarPersona=function(result){
             "infoEmpty": "No éxite registro(s) aún",
         },
         "initComplete": function () {
-            $('#TablePersona_paginate ul').remove();
-            masterG.CargarPaginacion(result.data,'#TablePersona_paginate');
+            $('#TableListapersona_paginate ul').remove();
+            masterG.CargarPaginacion(result.data,'#TableListapersona_paginate');
         } 
     });
 };

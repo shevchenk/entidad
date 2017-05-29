@@ -61,7 +61,17 @@ ValidaForm=function(){
 AgregarEditar=function(val,id){
     AddEdit=val;
     ProductoG.id='';
+    ProductoG.articulo_id='0';
+    ProductoG.sucursal_id='0';
+    ProductoG.moneda='';
+    ProductoG.stock='';
+    ProductoG.stock_minimo='';
+    ProductoG.dias_alerta='';
+    ProductoG.fecha_vencimiento='';
+    ProductoG.dias_vencimiento='';
     ProductoG.producto='';
+    ProductoG.precio_venta='';
+    ProductoG.precio_compra='';
     ProductoG.estado='1';
     if( val==0 ){
         ProductoG.id=id;

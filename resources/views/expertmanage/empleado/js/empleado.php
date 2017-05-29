@@ -1,6 +1,6 @@
 <script type="text/javascript">
 var AddEdit=0; //0: Editar | 1: Agregar
-var EmpleadoG={id:0,cargo:"",estado:1}; // Datos Globales
+var EmpleadoG={id:0,persona_id:0,persona:"",cargo_id:0,sucursal_id:0,fecha_inicio:"",fecha_final:"",estado:1}; // Datos Globales
 $(document).ready(function() {
     $("#TableEmpleado").DataTable({
         "paging": true,
@@ -23,9 +23,14 @@ $(document).ready(function() {
             $("#ModalEmpleadoForm").append("<input type='hidden' value='"+EmpleadoG.id+"' name='id'>");
         }
 
-        $('#ModalEmpleadoForm #slct_persona').val( EmpleadoG.cargo );
+        $('#ModalEmpleadoForm #txt_persona_id').val( EmpleadoG.persona_id );
+        $('#ModalEmpleadoForm #txt_persona').val( EmpleadoG.persona );
+        $('#ModalEmpleadoForm #slct_sucursal').val( EmpleadoG.sucursal_id );
+        $('#ModalEmpleadoForm #slct_cargo').val( EmpleadoG.cargo_id );
+        $('#ModalEmpleadoForm #txt_fecha_inicio').val( EmpleadoG.fecha_inicio );
+        $('#ModalEmpleadoForm #txt_fecha_final').val( EmpleadoG.fecha_final );
         $('#ModalEmpleadoForm #slct_estado').val( EmpleadoG.estado );
-        $('#ModalEmpleadoForm #slct_persona').focus();
+        $('#ModalEmpleadoForm #txt_persona').focus();
     });
 
     $('#ModalEmpleado').on('hide.bs.modal', function (event) {
@@ -36,7 +41,7 @@ $(document).ready(function() {
 
 ValidaForm=function(){
     var r=true;
-    if( $.trim( $("#ModalEmpleadoForm #slct_persona").val() )=='' ){
+    if( $.trim( $("#ModalEmpleadoForm #txt_persona").val() )=='' ){
         r=false;
         msjG.mensaje('warning','Ingrese Empleado',4000);
     }
@@ -44,13 +49,25 @@ ValidaForm=function(){
 }
 
 AgregarEditar=function(val,id){
+    CargarSlct(1);
+    CargarSlct(2);
     AddEdit=val;
     EmpleadoG.id='';
-    EmpleadoG.cargo='';
+    EmpleadoG.persona_id='';
+    EmpleadoG.persona='';
+    EmpleadoG.cargo_id='0';
+    EmpleadoG.sucursal_id='0';
+    EmpleadoG.fecha_inicio='';
+    EmpleadoG.fecha_final='';
     EmpleadoG.estado='1';
     if( val==0 ){
         EmpleadoG.id=id;
-        EmpleadoG.cargo=$("#TableEmpleado #trid_"+id+" .cargo").text();
+        EmpleadoG.persona_id=$("#TableEmpleado #trid_"+id+" .persona_id").val();
+        EmpleadoG.persona=$("#TableEmpleado #trid_"+id+" .persona").text();
+        EmpleadoG.cargo_id=$("#TableEmpleado #trid_"+id+" .cargo_id").val();alert(EmpleadoG.cargo_id);
+        EmpleadoG.sucursal_id=$("#TableEmpleado #trid_"+id+" .sucursal_id").val();
+        EmpleadoG.fecha_inicio=$("#TableEmpleado #trid_"+id+" .fecha_inicio").text();
+        EmpleadoG.fecha_final=$("#TableEmpleado #trid_"+id+" .fecha_final").text();
         EmpleadoG.estado=$("#TableEmpleado #trid_"+id+" .estado").val();
     }
     $('#ModalEmpleado').modal('show');
@@ -84,6 +101,33 @@ HTMLAgregarEditar=function(result){
     }
 }
 
+CargarSlct=function(slct){
+    if(slct==1){
+    AjaxEmpleado.CargarSucursal(SlctCargarSucursal);
+    }
+    if(slct==2){
+    AjaxEmpleado.CargarCargo(SlctCargarCargo);
+    }
+}
+
+SlctCargarSucursal=function(result){
+    var html="<option value='0'>.::Seleccione::.</option>";
+    $.each(result.data,function(index,r){
+        html+="<option value="+r.id+">"+r.sucursal+"</option>";
+    });
+    $("#ModalEmpleado #slct_sucursal").html(html); 
+
+}
+
+SlctCargarCargo=function(result){
+    var html="<option value='0'>.::Seleccione::.</option>";
+    $.each(result.data,function(index,r){
+        html+="<option value="+r.id+">"+r.cargo+"</option>";
+    });
+    $("#ModalEmpleado #slct_cargo").html(html); 
+
+}
+
 HTMLCargarEmpleado=function(result){
     var html="";
     $('#TableEmpleado').DataTable().destroy();
@@ -98,7 +142,13 @@ HTMLCargarEmpleado=function(result){
             "<td class='persona'>"+r.paterno+" "+r.materno+" "+r.nombre+"</td>"+
             "<td class='sucursal'>"+r.sucursal+"</td>"+
             "<td class='cargo'>"+r.cargo+"</td>"+
-            "<td><input type='hidden' class='estado' value='"+r.estado+"'>"+estadohtml+"</td>"+
+            "<td>"+
+            "<input type='hidden' class='persona_id' value='"+r.persona_id+"'>"+
+            "<input type='hidden' class='cargo_id' value='"+r.cargo_id+"'>"+
+            "<input type='hidden' class='sucursal_id' value='"+r.sucursal_id+"'>"+
+            "<input type='hidden' class='fecha_inicio' value='"+r.fecha_inicio+"'>"+
+            "<input type='hidden' class='fecha_final' value='"+r.fecha_final+"'>"+
+            "<input type='hidden' class='estado' value='"+r.estado+"'>"+estadohtml+"</td>"+
             '<td><a class="btn btn-primary btn-sm" onClick="AgregarEditar(0,'+r.id+')"><i class="fa fa-edit fa-lg"></i> </a></td>';
         html+="</tr>";
     });

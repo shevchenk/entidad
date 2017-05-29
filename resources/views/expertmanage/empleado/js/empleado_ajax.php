@@ -2,9 +2,9 @@
 var AjaxEmpleado={
     AgregarEditar:function(evento){
         var data=$("#ModalEmpleadoForm").serialize().split("txt_").join("").split("slct_").join("");
-        url='AjaxDinamic/ExpertManage.Empleado@New';
+        url='AjaxDinamic/ExpertManage.EmpleadoEM@New';
         if(AddEdit==0){
-            url='AjaxDinamic/ExpertManage.Empleado@Edit';
+            url='AjaxDinamic/ExpertManage.EmpleadoEM@Edit';
         }
         masterG.postAjax(url,data,evento);
     },
@@ -14,7 +14,7 @@ var AjaxEmpleado={
         }
         data=$("#EmpleadoForm").serialize().split("txt_").join("").split("slct_").join("");
         $("#EmpleadoForm input[type='hidden']").remove();
-        url='AjaxDinamic/ExpertManage.Empleado@Load';
+        url='AjaxDinamic/ExpertManage.EmpleadoEM@Load';
         masterG.postAjax(url,data,evento);
     },
     CambiarEstado:function(evento,AI,id){
@@ -22,8 +22,18 @@ var AjaxEmpleado={
         $("#ModalEmpleadoForm").append("<input type='hidden' value='"+id+"' name='id'>");
         var data=$("#ModalEmpleadoForm").serialize().split("txt_").join("").split("slct_").join("");
         $("#ModalEmpleadoForm input[type='hidden']").remove();
-        url='AjaxDinamic/ExpertManage.Empleado@EditStatus';
+        url='AjaxDinamic/ExpertManage.EmpleadoEM@EditStatus';
         masterG.postAjax(url,data,evento);
-    }
+    },
+    CargarSucursal:function(evento){
+        url='AjaxDinamic/ExpertManage.SucursalEM@ListSucursal';
+        data={};
+        masterG.postAjax(url,data,evento);
+    },
+    CargarCargo:function(evento){
+        url='AjaxDinamic/ExpertManage.CargoEM@ListCargo';
+        data={};
+        masterG.postAjax(url,data,evento);
+    },
 };
 </script>

@@ -1,5 +1,5 @@
 <!-- /.modal -->
-<div class="modal fade" id="Modallistapersona" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal fade" id="ModalListapersona" tabindex="-1" role="dialog" aria-hidden="true">
 <!-- <div class="modal fade" id="areaModal" tabindex="-1" role="dialog" aria-hidden="true"> -->
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
@@ -9,9 +9,9 @@
           <h4 class="modal-title">Lista Persona</h4>
         </div>
       <div class="modal-body">
-                            <form id="PersonaForm">
+                            <form id="ListapersonaForm">
                     <div class="box-body table-responsive no-padding">
-                        <table id="TablePersona" class="table table-bordered table-hover">
+                        <table id="TableListapersona" class="table table-bordered table-hover">
                             <thead>
                                 <tr class="cabecera">
                                     <th class="col-xs-3">
@@ -49,29 +49,7 @@
                                                 <input type="text" class="form-control" name="txt_dni" id="txt_dni" placeholder="Buscar DNI" onkeypress="return masterG.enterGlobal(event,'.input-group',1);">
                                             </div>
                                         </div>
-                                    </th>
-                                    <th class="col-xs-2">
-                                        <div class="form-group">
-                                            <label><h4>Email:</h4></label>
-                                            <div class="input-group">
-                                                <div class="input-group-addon"><i class="fa fa-search"></i></div>
-                                                <input type="text" class="form-control" name="txt_email" id="txt_email" placeholder="Buscar Email" onkeypress="return masterG.enterGlobal(event,'.input-group',1);">
-                                            </div>
-                                        </div>
-                                    </th>
-                                    
-                                    <th class="col-xs-1">
-                                        <div class="form-group">
-                                            <label><h4>Estado:</h4></label>
-                                            <div class="input-group">
-                                                <select class="form-control" name="slct_estado" id="slct_estado">
-                                                    <option value='' selected>.::Todo::.</option>
-                                                    <option value='0'>Inactivo</option>
-                                                    <option value='1'>Activo</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </th>
+                                    </th>                                    
                                     <th class="col-xs-1">[-]</th>
                                 </tr>
                             </thead>
@@ -83,8 +61,6 @@
                                   <th>Materno</th>
                                   <th>Nombre</th>
                                   <th>DNI</th>
-                                  <th>Email</th>
-                                  <th>Estado</th>
                                   <th>[-]</th>
                                 </tr>
                             </tfoot>

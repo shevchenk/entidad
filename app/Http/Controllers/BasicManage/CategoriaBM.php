@@ -47,5 +47,16 @@ class CategoriaBM extends Controller
             return response()->json($return);
         }
     }
-
+    
+            public function ListCategoria (Request $r )
+    {
+        if ( $r->ajax() ) {
+            $renturnModel = Categoria::ListCategoria($r);
+            $return['rst'] = 1;
+            $return['data'] = $renturnModel;
+            $return['msj'] = "No hay registros aún";
+            return response()->json($return);
+        }
+    }
+    
 }

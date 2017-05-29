@@ -78,7 +78,9 @@
                             </tbody>
                             <tfoot>
                                 <tr class="cabecera">
-                                  <th>Empleado</th>
+                                  <th>Persona</th>
+                                  <th>Sucursal</th>
+                                  <th>Cargo</th>
                                   <th>Estado</th>
                                   <th>[-]</th>
                                 </tr>

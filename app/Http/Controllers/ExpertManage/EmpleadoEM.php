@@ -5,7 +5,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\ExpertManage\Empleado;
 
-class Empleado extends Controller
+class EmpleadoEM extends Controller
 {
     public function EditStatus(Request $r )
     {
