@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\ExpertManage;
+namespace App\Models\BasicManage;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -77,7 +77,7 @@ class Empleado extends Model
                     }
                 }
             );
-        $result = $sql->orderBy('empleados.id','asc')->paginate(10);
+        $result = $sql->orderBy('empleados.id','asc')->get();
         return $result;
     }
     
