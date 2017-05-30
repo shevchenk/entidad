@@ -3,7 +3,7 @@ var textoIdPersona='';
 var textoPersona='';
 
 $(document).ready(function() {
-    $("#TablePersona").DataTable({
+    $("#TableListapersona").DataTable({
         "paging": true,
         "lengthChange": false,
         "searching": false,
