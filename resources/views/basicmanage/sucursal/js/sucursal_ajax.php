@@ -2,14 +2,14 @@
 var AjaxSucursal={
     AgregarEditar:function(evento){
         var data=$("#ModalSucursalForm").serialize().split("txt_").join("").split("slct_").join("");
-        url='AjaxDinamic/BasicManage.Sucursal@New';
+        url='AjaxDinamic/BasicManage.SucursalBM@New';
         if(AddEdit==0){
-            url='AjaxDinamic/BasicManage.Sucursal@Edit';
+            url='AjaxDinamic/BasicManage.SucursalBM@Edit';
         }
         masterG.postAjax(url,data,evento);
-    },
+    }, 
     Cargar:function(evento,pag){
-        url='AjaxDinamic/BasicManage.Sucursal@Load';
+        url='AjaxDinamic/BasicManage.SucursalBM@Load';
         data={};     
         masterG.postAjax(url,data,evento);
     },
@@ -18,8 +18,8 @@ var AjaxSucursal={
         $("#ModalSucursalForm").append("<input type='hidden' value='"+id+"' name='id'>");
         var data=$("#ModalSucursalForm").serialize().split("txt_").join("").split("slct_").join("");
         $("#ModalSucursalForm input[type='hidden']").remove();
-        url='AjaxDinamic/BasicManage.Sucursal@EditStatus';
+        url='AjaxDinamic/BasicManage.SucursalBM@EditStatus';
         masterG.postAjax(url,data,evento);
     }
 };
-</script>
+</script> 

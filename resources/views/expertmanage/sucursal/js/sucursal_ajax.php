@@ -2,9 +2,9 @@
 var AjaxSucursal={
     AgregarEditar:function(evento){
         var data=$("#ModalSucursalForm").serialize().split("txt_").join("").split("slct_").join("");
-        url='AjaxDinamic/ExpertManage.Sucursal@New';
+        url='AjaxDinamic/ExpertManage.SucursalEM@New';
         if(AddEdit==0){
-            url='AjaxDinamic/ExpertManage.Sucursal@Edit';
+            url='AjaxDinamic/ExpertManage.SucursalEM@Edit';
         }
         masterG.postAjax(url,data,evento);
     },
@@ -14,7 +14,7 @@ var AjaxSucursal={
         }
         data=$("#SucursalForm").serialize().split("txt_").join("").split("slct_").join("");
         $("#SucursalForm input[type='hidden']").remove();
-        url='AjaxDinamic/ExpertManage.Sucursal@Load';
+        url='AjaxDinamic/ExpertManage.SucursalEM@Load';
         masterG.postAjax(url,data,evento);
     },
     CambiarEstado:function(evento,AI,id){
@@ -22,7 +22,7 @@ var AjaxSucursal={
         $("#ModalSucursalForm").append("<input type='hidden' value='"+id+"' name='id'>");
         var data=$("#ModalSucursalForm").serialize().split("txt_").join("").split("slct_").join("");
         $("#ModalSucursalForm input[type='hidden']").remove();
-        url='AjaxDinamic/ExpertManage.Sucursal@EditStatus';
+        url='AjaxDinamic/ExpertManage.SucursalEM@EditStatus';
         masterG.postAjax(url,data,evento);
     }
 };
