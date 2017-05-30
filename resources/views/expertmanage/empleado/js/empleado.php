@@ -169,7 +169,7 @@ HTMLCargarEmpleado=function(result){
         },
         "initComplete": function () {
             $('#TableEmpleado_paginate ul').remove();
-            masterG.CargarPaginacion(result.data,'#TableEmpleado_paginate');
+            masterG.CargarPaginacion('HTMLCargarEmpleado','AjaxEmpleado',result.data,'#TableEmpleado_paginate');
         }
     });
 };

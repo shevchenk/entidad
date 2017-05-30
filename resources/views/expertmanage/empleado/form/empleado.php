@@ -12,7 +12,7 @@
               <label>Persona</label>
               <input type="hidden" class="form-control" id="txt_persona_id" name="txt_persona_id" >
               <input type="text" class="form-control" id="txt_persona" name="txt_persona" disabled="">
-              <a class="btn btn-primary btn-sm" data-toggle="modal" data-target="#ModalListapersona" data-personaid="ModalEmpleadoForm #txt_persona_id" data-persona="ModalEmpleadoForm #txt_persona">Buscar</a>
+              <a class="btn btn-primary btn-sm" data-toggle="modal" data-target="#ModalListapersona" data-personaid="ModalEmpleado #txt_persona_id" data-persona="ModalEmpleado #txt_persona">Persona</a>
             </div>
             <div class="form-group">
               <label>Cargo</label>

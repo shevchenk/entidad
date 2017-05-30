@@ -1,6 +1,6 @@
 <script type="text/javascript">
 var AddEdit=0; //0: Editar | 1: Agregar
-var ProveedorG={id:0,persona_id:0,persona:"",cargo_id:0,sucursal_id:0,fecha_inicio:"",fecha_final:"",estado:1}; // Datos Globales
+var ProveedorG={id:0,persona_id:0,persona:"",empresa:"",empresa_id:0,estado:1}; // Datos Globales
 $(document).ready(function() {
     $("#TableProveedor").DataTable({
         "paging": true,
@@ -28,17 +28,15 @@ $(document).ready(function() {
 
         $('#ModalProveedorForm #txt_persona_id').val( ProveedorG.persona_id );
         $('#ModalProveedorForm #txt_persona').val( ProveedorG.persona );
-        $('#ModalProveedorForm #slct_sucursal').val( ProveedorG.sucursal_id );
-        $('#ModalProveedorForm #slct_cargo').val( ProveedorG.cargo_id );
-        $('#ModalProveedorForm #txt_fecha_inicio').val( ProveedorG.fecha_inicio );
-        $('#ModalProveedorForm #txt_fecha_final').val( ProveedorG.fecha_final );
+        $('#ModalProveedorForm #txt_empresa_id').val( ProveedorG.empresa_id );
+        $('#ModalProveedorForm #txt_empresa').val( ProveedorG.empresa );
         $('#ModalProveedorForm #slct_estado').val( ProveedorG.estado );
         $('#ModalProveedorForm #txt_persona').focus();
     });
 
     $('#ModalProveedor').on('hide.bs.modal', function (event) {
 //        $("ModalProveedorForm input[type='hidden']").remove();
-        $("ModalProveedorForm input").val('');
+//        $("ModalProveedorForm input").val('');
     });
 });
 
@@ -55,20 +53,27 @@ AgregarEditar=function(val,id){
 
     AddEdit=val;
     ProveedorG.id='';
-    ProveedorG.persona_id='';
+    ProveedorG.persona_id='0';
     ProveedorG.persona='';
     ProveedorG.empresa='';
     ProveedorG.empresa_id='0';
     ProveedorG.estado='1';
+    $('.persona').css("display","none");
+    $('.empresa').css("display","none");
+    
     if( val==0 ){
         ProveedorG.id=id;
         ProveedorG.persona_id=$("#TableProveedor #trid_"+id+" .persona_id").val();
-        ProveedorG.persona=$("#TableProveedor #trid_"+id+" .persona").text();
-        ProveedorG.cargo_id=$("#TableProveedor #trid_"+id+" .cargo_id").val();
-        ProveedorG.sucursal_id=$("#TableProveedor #trid_"+id+" .sucursal_id").val();
-        ProveedorG.fecha_inicio=$("#TableProveedor #trid_"+id+" .fecha_inicio").val();
-        ProveedorG.fecha_final=$("#TableProveedor #trid_"+id+" .fecha_final").val();
+        ProveedorG.persona=$("#TableProveedor #trid_"+id+" .nombrecompleto").text();
+        ProveedorG.empresa=$("#TableProveedor #trid_"+id+" .razon_social").text();
+        ProveedorG.empresa_id=$("#TableProveedor #trid_"+id+" .empresa_id").val();
         ProveedorG.estado=$("#TableProveedor #trid_"+id+" .estado").val();
+        if(ProveedorG.empresa_id!==''){
+                $('.empresa').css("display","");
+        }
+        if(ProveedorG.persona_id!==''){
+                $('.persona').css("display","");
+        }
     }
     $('#ModalProveedor').modal('show');
 }
@@ -139,14 +144,11 @@ HTMLCargarProveedor=function(result){
         }
 
         html+="<tr id='trid_"+r.id+"'>"+
-            "<td class='persona'>"+r.paterno+" "+r.materno+" "+r.nombre+"</td>"+
-            "<td class='sucursal'>"+r.razon_social+"</td>"+
+            "<td class='nombrecompleto'>"+r.paterno+" "+r.materno+" "+r.nombre+"</td>"+
+            "<td class='razon_social'>"+r.razon_social+"</td>"+
             "<td>"+
             "<input type='hidden' class='persona_id' value='"+r.persona_id+"'>"+
-            "<input type='hidden' class='cargo_id' value='"+r.cargo_id+"'>"+
-            "<input type='hidden' class='sucursal_id' value='"+r.sucursal_id+"'>"+
-            "<input type='hidden' class='fecha_inicio' value='"+r.fecha_inicio+"'>"+
-            "<input type='hidden' class='fecha_final' value='"+r.fecha_final+"'>"+
+            "<input type='hidden' class='empresa_id' value='"+r.emresa_id+"'>"+
             "<input type='hidden' class='estado' value='"+r.estado+"'>"+estadohtml+"</td>"+
             '<td><a class="btn btn-primary btn-sm" onClick="AgregarEditar(0,'+r.id+')"><i class="fa fa-edit fa-lg"></i> </a></td>';
         html+="</tr>";
@@ -166,7 +168,7 @@ HTMLCargarProveedor=function(result){
         },
         "initComplete": function () {
             $('#TableProveedor_paginate ul').remove();
-            masterG.CargarPaginacion(result.data,'#TableProveedor_paginate');
+            masterG.CargarPaginacion('HTMLCargarProveedor','AjaxProveedor',result.data,'#TableProveedor_paginate');
         }
     });
 };

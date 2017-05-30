@@ -118,7 +118,7 @@ HTMLCargarArticulo2=function(result){
         },
         "initComplete": function () {
             $('#TableArticulo_paginate ul').remove();
-            masterG.CargarPaginacion(result.data,'#TableArticulo_paginate');
+            masterG.CargarPaginacion('HTMLCargarArticulo2','AjaxArticulo',result.data,'#TableArticulo_paginate');
         }
     });
 };

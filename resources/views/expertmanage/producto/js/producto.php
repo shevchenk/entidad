@@ -158,7 +158,7 @@ HTMLCargarProducto=function(result){
         },
         "initComplete": function () {
             $('#TableProducto_paginate ul').remove();
-            masterG.CargarPaginacion(result.data,'#TableProducto_paginate');
+            masterG.CargarPaginacion('HTMLCargarProducto','AjaxProducto',result.data,'#TableProducto_paginate');
         }
     });
 };

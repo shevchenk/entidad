@@ -3,6 +3,7 @@
 namespace App\Models\ExpertManage;
 
 use Illuminate\Database\Eloquent\Model;
+use DB;
 
 class Proveedor extends Model
 {
@@ -31,8 +32,10 @@ class Proveedor extends Model
     {
         $proveedor = Proveedor::find($r->id);
         $proveedor->persona_id = trim( $r->persona_id );
-        if(trim( $r->empresa_id )!='' AND $proveedor->emresa_id!=''){
+        if(trim( $r->empresa_id )!=''){
         $proveedor->emresa_id = trim( $r->empresa_id );}
+        else {
+        $proveedor->emresa_id = null;}    
         $proveedor->estado = trim( $r->estado );
         $proveedor->persona_id_updated_at=1;
         $proveedor->save();
@@ -40,8 +43,8 @@ class Proveedor extends Model
 
     public static function runLoad($r)
     {
-        $sql=Proveedor::select('proveedores.id','proveedores.persona_id','personas.paterno','personas.materno','personas.nombre',
-                               'proveedores.emresa_id','empresas.razon_social','proveedores.estado')
+        $sql=Proveedor::select(DB::raw('IFNULL(empresas.razon_social,"") as razon_social'),'proveedores.id','proveedores.persona_id','personas.paterno','personas.materno','personas.nombre',
+                               DB::raw('IFNULL(proveedores.emresa_id,"") as emresa_id'),'proveedores.estado')
             ->join('personas','proveedores.persona_id','=','personas.id')
             ->leftjoin('empresas','proveedores.emresa_id','=','empresas.id')
             ->where( 

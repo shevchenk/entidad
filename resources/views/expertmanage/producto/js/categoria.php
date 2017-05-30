@@ -112,7 +112,7 @@ HTMLCargarCategoria1=function(result){
         },
         "initComplete": function () {
             $('#TableCategoria_paginate ul').remove();
-            masterG.CargarPaginacion(result.data,'#TableCategoria_paginate');
+            masterG.CargarPaginacion('HTMLCargarCategoria1','AjaxCategoria',result.data,'#TableCategoria_paginate');
         }
     });
 };

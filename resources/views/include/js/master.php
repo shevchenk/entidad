@@ -208,7 +208,7 @@ var masterG ={
             }
         });
     },
-    CargarPaginacion:function(result,id){
+    CargarPaginacion:function(HTML,ajax,result,id){
         var html='<ul class="pagination">';
         if( result.current_page==1 ){
             html+=  '<li class="paginate_button previous disabled">'+
@@ -216,7 +216,7 @@ var masterG ={
                     '</li>';
         }
         else{
-            html+=  '<li class="paginate_button previous" onClick="AjaxCargo.Cargar(HTMLCargarCargo,'+(result.current_page-1)+');">'+
+            html+=  '<li class="paginate_button previous" onClick="'+ajax+'.Cargar('+HTML+','+(result.current_page-1)+');">'+
                         '<a>Atras</a>'+
                     '</li>';
         }
@@ -235,7 +235,7 @@ var masterG ={
         }
 
         if( (ini>1 && result.current_page>4) || (result.last_page-3<=result.current_page && result.current_page<=4 && ini>1) ){
-            html+=  '<li class="paginate_button" onClick="AjaxCargo.Cargar(HTMLCargarCargo,1);">'+
+            html+=  '<li class="paginate_button" onClick="'+ajax+'.Cargar('+HTML+',1);">'+
                         '<a>1</a>'+
                     '</li>';
             html+=  '<li class="paginate_button disabled"><a>…</a></li>';
@@ -247,14 +247,14 @@ var masterG ={
                         '</li>';
             }
             else{
-                html+=  '<li class="paginate_button" onClick="AjaxCargo.Cargar(HTMLCargarCargo,'+i+');">'+
+                html+=  '<li class="paginate_button" onClick="'+ajax+'.Cargar('+HTML+','+i+');">'+
                             '<a>'+i+'</a>'+
                         '</li>';
             }
         }
         if( fin>=5 && result.last_page>5 && result.last_page-3>result.current_page){
             html+=  '<li class="paginate_button disabled"><a>…</a></li>';
-            html+=  '<li class="paginate_button" onClick="AjaxCargo.Cargar(HTMLCargarCargo,'+result.last_page+');">'+
+            html+=  '<li class="paginate_button" onClick="'+ajax+'.Cargar('+HTML+','+result.last_page+');">'+
                         '<a>'+result.last_page+'</a>'+
                     '</li>';
         }
@@ -265,7 +265,7 @@ var masterG ={
                     '</li>';
         }
         else{
-            html+=  '<li class="paginate_button next" onClick="AjaxCargo.Cargar(HTMLCargarCargo,'+(result.current_page*1+1)+');">'+
+            html+=  '<li class="paginate_button next" onClick="'+ajax+'.Cargar('+HTML+','+(result.current_page*1+1)+');">'+
                         '<a>Siguiente</a>'+
                     '</li>';
         }

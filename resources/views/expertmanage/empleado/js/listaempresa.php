@@ -28,7 +28,7 @@ $(document).ready(function() {
 
     $('#ModalListaempresa').on('hide.bs.modal', function (event) {
 //        $("ModalEmpresaForm input[type='hidden']").remove();
-        $("ModalEmpresaForm input").val('');
+//        $("ModalEmpresaForm input").val('');
     });
 });
 
