@@ -14,12 +14,12 @@
             </div>
               <div class="form-group persona"  style="display: none">
               <label>Persona</label>
-              <input type="hidden" class="form-control" id="txt_persona_id" name="txt_persona_id" readOnly="">
+              <input type="hidden" class="form-control mant" id="txt_persona_id" name="txt_persona_id" readOnly="">
               <input type="text" class="form-control" id="txt_persona" name="txt_persona" disabled="">
             </div>
               <div class="form-group empresa" style="display: none"  >
               <label>Empresa</label>
-              <input type="hidden" class="form-control" id="txt_empresa_id" name="txt_empresa_id" readOnly="">
+              <input type="hidden" class="form-control mant" id="txt_empresa_id" name="txt_empresa_id" readOnly="">
               <input type="text" class="form-control" id="txt_empresa" name="txt_empresa" disabled="">
             </div>
             <div class="form-group">

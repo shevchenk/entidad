@@ -84,7 +84,7 @@ HTMLCargarPersona=function(result){
         },
         "initComplete": function () {
             $('#TableListapersona_paginate ul').remove();
-            masterG.CargarPaginacion(result.data,'#TableListapersona_paginate');
+            masterG.CargarPaginacion('HTMLCargarPersona','AjaxPersona',result.data,'#TableListapersona_paginate');
         } 
     });
 };

@@ -35,7 +35,7 @@ $(document).ready(function() {
     });
 
     $('#ModalProveedor').on('hide.bs.modal', function (event) {
-//        $("ModalProveedorForm input[type='hidden']").remove();
+        $("#ModalProveedorForm input[type='hidden']").not('.mant').remove();
 //        $("ModalProveedorForm input").val('');
     });
 });
