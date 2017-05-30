@@ -1,4 +1,8 @@
 <script type="text/javascript">
+var LTtextoIdPersona='';
+var LTtextoPersona='';
+var LTtextoIdEmpresa='';
+var LTtextoEmpresa='';
 $(document).ready(function() {
     $("#TablePersona").DataTable({
         "paging": true,
@@ -12,32 +16,39 @@ $(document).ready(function() {
     $("#ListapersonaForm #TableListapersona select").change(function(){ AjaxListapersona.Cargar(HTMLCargarPersona); });
     $("#ListapersonaForm #TableListapersona input").blur(function(){ AjaxListapersona.Cargar(HTMLCargarPersona); });
 
-    $('#ModalListapersona').on('shown.bs.modal', function (event) {
-       
+    $('#ModalListapersona').on('shown.bs.modal', function (event) { 
+      AjaxListapersona.Cargar(HTMLCargarPersona);
+      var button = $(event.relatedTarget); // captura al boton
+      LTtextoIdPersona= button.data('personaid');
+      LTtextoPersona= button.data('persona');
+      LTtextoIdEmpresa= button.data('empresaid');
+      LTtextoEmpresa= button.data('empresa');
+
     });
 
     $('#ModalListapersona').on('hide.bs.modal', function (event) {
-        $("ModalPersonaForm input[type='hidden']").remove();
+//        $("ModalPersonaForm input[type='hidden']").remove();
         $("ModalPersonaForm input").val('');
     });
 });
 
 SeleccionarPersona = function(val,id){
+    $("#"+LTtextoEmpresa).val('');
+    $("#"+LTtextoIdEmpresa).val('');
+    $("#"+LTtextoPersona).val('');
+    $("#"+LTtextoIdPersona).val('');
     if( val==0 ){
         var paterno=$("#TableListapersona #trid_"+id+" .paterno").text();
         var materno=$("#TableListapersona #trid_"+id+" .materno").text();
         var nombre=$("#TableListapersona #trid_"+id+" .nombre").text();
-        
-        $('#ModalEmpleadoForm #txt_persona').val(paterno+" "+materno+" "+nombre);
-        $('#ModalEmpleadoForm #txt_persona_id').val(id);
+        $("#"+LTtextoPersona).val(paterno+" "+materno+" "+nombre);
+        $("#"+LTtextoIdPersona).val(id);
+        $('.persona').css("display","");
+        $('.empresa').css("display","none");
+        $('#ModalListapersona').modal('hide');
     }
-    $('#ModalListapersona').modal('hide');
+    }
     
-    }
-    
-BuscarPersona = function(){
-      AjaxListapersona.Cargar(HTMLCargarPersona);
-    }
     
 HTMLCargarPersona=function(result){
     var html="";

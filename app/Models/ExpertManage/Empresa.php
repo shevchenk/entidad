@@ -50,8 +50,11 @@ class Empresa extends Model
 
     public static function runLoad($r)
     {
-        $sql=Empresa::select('id','persona_id','entidad','ruc','nombre_comercial','direccion_fiscal','telefono','celular','email','estado')
-            ->where( 
+        $sql=Empresa::select('empresas.id','empresas.persona_id','empresas.ruc','empresas.razon_social','empresas.nombre_comercial',
+                             'empresas.direccion_fiscal','empresas.telefono','empresas.celular','empresas.email',
+                            'empresas.estado','personas.paterno','personas.materno','personas.nombre')
+             ->join('personas','empresas.persona_id','=','personas.id')
+             ->where( 
                 function($query) use ($r){
                     if( $r->has("empresa") ){
                         $empresa=trim($r->empresa);

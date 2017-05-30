@@ -1,4 +1,7 @@
 <script type="text/javascript">
+var textoIdPersona='';
+var textoPersona='';
+
 $(document).ready(function() {
     $("#TablePersona").DataTable({
         "paging": true,
@@ -12,8 +15,12 @@ $(document).ready(function() {
     $("#ListapersonaForm #TableListapersona select").change(function(){ AjaxListapersona.Cargar(HTMLCargarPersona); });
     $("#ListapersonaForm #TableListapersona input").blur(function(){ AjaxListapersona.Cargar(HTMLCargarPersona); });
 
-    $('#ModalListapersona').on('shown.bs.modal', function (event) {
-       
+    $('#ModalListapersona').on('shown.bs.modal', function (event) { 
+      AjaxListapersona.Cargar(HTMLCargarPersona);
+      var button = $(event.relatedTarget); // captura al boton
+      textoIdPersona= button.data('personaid');
+      textoPersona= button.data('persona');
+
     });
 
     $('#ModalListapersona').on('hide.bs.modal', function (event) {
@@ -23,21 +30,19 @@ $(document).ready(function() {
 });
 
 SeleccionarPersona = function(val,id){
-    if( val==0 ){
+    if( val==0 ){alert("1");
         var paterno=$("#TableListapersona #trid_"+id+" .paterno").text();
         var materno=$("#TableListapersona #trid_"+id+" .materno").text();
         var nombre=$("#TableListapersona #trid_"+id+" .nombre").text();
-        
-        $('#ModalEmpleadoForm #txt_persona').val(paterno+" "+materno+" "+nombre);
-        $('#ModalEmpleadoForm #txt_persona_id').val(id);
+        $("#"+textoPersona).val(paterno+" "+materno+" "+nombre);
+        $("#"+textoIdPersona).val(id);
+//        $('#ModalEmpleadoForm #txt_persona').val(paterno+" "+materno+" "+nombre);
+//        $('#ModalEmpleadoForm #txt_persona_id').val(id);
     }
     $('#ModalListapersona').modal('hide');
     
     }
     
-BuscarPersona = function(){
-      AjaxListapersona.Cargar(HTMLCargarPersona);
-    }
     
 HTMLCargarPersona=function(result){
     var html="";
