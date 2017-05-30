@@ -67,7 +67,7 @@ HTMLCargarEmpresa=function(result){
             "<td class='razon_social'>"+r.razon_social+"</td>"+
             "<td class='ruc'>"+r.ruc+"</td>"+
             "<td class='ruc'>"+r.nombre_comercial+"</td>"+
-            '<td><input type="hidden" class="persona_id" value='+r.persona_id+'><span class="btn btn-primary btn-sm" onClick="SeleccionarEmpresa(0,'+r.id+')">Seleccionar</span></td>';
+            '<td><input type="hidden" class="persona_id" value='+r.persona_id+'><span class="btn btn-primary btn-sm" onClick="SeleccionarEmpresa(0,'+r.id+')"><i class="glyphicon glyphicon-ok"></i></span></td>';
 
         html+="</tr>";
     });

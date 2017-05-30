@@ -23,7 +23,7 @@
                                             </div>
                                         </div>
                                     </th>
-                                    <th class="col-xs-2">
+                                    <th class="col-xs-3">
                                         <div class="form-group">
                                             <label><h4>Apellido Materno:</h4></label>
                                             <div class="input-group">
@@ -32,7 +32,7 @@
                                             </div>
                                         </div>
                                     </th>
-                                    <th class="col-xs-2">
+                                    <th class="col-xs-3">
                                         <div class="form-group">
                                             <label><h4>Nombre:</h4></label>
                                             <div class="input-group">

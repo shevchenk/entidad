@@ -65,7 +65,7 @@ HTMLCargarPersona=function(result){
             "<td class='materno'>"+r.materno+"</td>"+
             "<td class='nombre'>"+r.nombre+"</td>"+
             "<td class='dni'>"+r.dni+"</td>"+
-            '<td><span class="btn btn-primary btn-sm" onClick="SeleccionarPersona(0,'+r.id+')">Seleccionar</span></td>';
+            '<td><span class="btn btn-primary btn-sm" onClick="SeleccionarPersona(0,'+r.id+')"><i class="glyphicon glyphicon-ok"></i></span></td>';
 
         html+="</tr>";
     });

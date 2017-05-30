@@ -19,16 +19,16 @@
                                             <label><h4>Persona:</h4></label>
                                             <div class="input-group">
                                                 <div class="input-group-addon"><i class="fa fa-search"></i></div>
-                                                <input type="text" class="form-control" name="txt_paterno" id="txt_paterno" placeholder="Buscar Apellido Paterno" onkeypress="return masterG.enterGlobal(event,'.input-group',1);">
+                                                <input type="text" class="form-control" name="txt_persona" id="txt_persona" placeholder="Buscar Persona" onkeypress="return masterG.enterGlobal(event,'.input-group',1);">
                                             </div>
                                         </div>
                                     </th>
-                                    <th class="col-xs-2">
+                                    <th class="col-xs-3">
                                         <div class="form-group">
                                             <label><h4>Razón Social:</h4></label>
                                             <div class="input-group">
                                                 <div class="input-group-addon"><i class="fa fa-search"></i></div>
-                                                <input type="text" class="form-control" name="txt_materno" id="txt_materno" placeholder="Buscar Apellido Materno" onkeypress="return masterG.enterGlobal(event,'.input-group',1);">
+                                                <input type="text" class="form-control" name="txt_razon_social" id="txt_razon_social" placeholder="Buscar Razón Social" onkeypress="return masterG.enterGlobal(event,'.input-group',1);">
                                             </div>
                                         </div>
                                     </th>
@@ -37,16 +37,16 @@
                                             <label><h4>RUC:</h4></label>
                                             <div class="input-group">
                                                 <div class="input-group-addon"><i class="fa fa-search"></i></div>
-                                                <input type="text" class="form-control" name="txt_nombre" id="txt_nombre" placeholder="Buscar Nombre" onkeypress="return masterG.enterGlobal(event,'.input-group',1);">
+                                                <input type="text" class="form-control" name="txt_ruc" id="txt_ruc" placeholder="Buscar RUC" onkeypress="return masterG.enterGlobal(event,'.input-group',1);">
                                             </div>
                                         </div>
                                     </th>
-                                     <th class="col-xs-2">
+                                     <th class="col-xs-3">
                                         <div class="form-group">
                                             <label><h4>Nombre Comercial:</h4></label>
                                             <div class="input-group">
                                                 <div class="input-group-addon"><i class="fa fa-search"></i></div>
-                                                <input type="text" class="form-control" name="txt_dni" id="txt_dni" placeholder="Buscar DNI" onkeypress="return masterG.enterGlobal(event,'.input-group',1);">
+                                                <input type="text" class="form-control" name="txt_nombre_comercial" id="txt_nombre_comercial" placeholder="Buscar Nombre Comercial" onkeypress="return masterG.enterGlobal(event,'.input-group',1);">
                                             </div>
                                         </div>
                                     </th>                                    

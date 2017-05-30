@@ -31,7 +31,7 @@ class Proveedor extends Model
     {
         $proveedor = Proveedor::find($r->id);
         $proveedor->persona_id = trim( $r->persona_id );
-        if(trim( $r->empresa_id )!=''){
+        if(trim( $r->empresa_id )!='' AND $proveedor->emresa_id!=''){
         $proveedor->emresa_id = trim( $r->empresa_id );}
         $proveedor->estado = trim( $r->estado );
         $proveedor->persona_id_updated_at=1;
