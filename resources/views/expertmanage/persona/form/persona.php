@@ -38,7 +38,7 @@
                 </div>
                 <div class="col-sm-4">
                   <label>Password</label>
-                  <input type="text" class="form-control" id="txt_password" name="txt_password" placeholder="Password">
+                  <input type="password" class="form-control" id="txt_password" name="txt_password" placeholder="Password">
                 </div>
               </div><!--FIN DE COL SM 12-->
 
