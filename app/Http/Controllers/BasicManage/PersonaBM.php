@@ -1,23 +1,22 @@
 <?php
-namespace App\Http\Controllers\ExpertManage;
+namespace App\Http\Controllers\BasicManage;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\ExpertManage\Empresa;
+use App\Models\BasicManage\Persona;
 use Illuminate\Support\Facades\Validator;
 
-class Empresa extends Controller
+class PersonaBM extends Controller
 {
     public function __construct()
     {
         $this->middleware('auth');  //Esto debe activarse cuando estemos con sessión
     }
 
-
     public function EditStatus(Request $r )
     {
         if ( $r->ajax() ) {
-            Empresa::runEditStatus($r);
+            Persona::runEditStatus($r);
             $return['rst'] = 1;
             $return['msj'] = 'Registro actualizado';
             return response()->json($return);
@@ -27,20 +26,34 @@ class Empresa extends Controller
     public function New(Request $r )
     {
         if ( $r->ajax() ) {
+           
             $rules=array(
-                'ruc' => 'required|max:11|unique:empresas'
+                'dni' => 'required|max:8|unique:personas'
+
             );
+                
+                /*p $regex='regex:/^([a-zA-Z .,ñÑÁÉÍÓÚáéíóú]{2,60})$/i';
+            $required='required';
+
+            nombre' => $required.'|'.$regex,
+                'paterno' => $required.'|'.$regex,
+                'materno' => $required.'|'.$regex,
+                'email' => 'required|email|unique:personas,email',
+                'password'      => 'required|min:6',
+                'dni'      => 'required|numeric|min:8|unique:personas,dni',
+                */
+           
 
             $validator=Validator::make($r->all(), $rules);
 
             if ( !$validator->fails() ) {
-                Empresa::runNew($r);
+                Persona::runNew($r);
                 $return['rst'] = 1;
                 $return['msj'] = 'Registro creado';
             }
             else{
                 $return['rst'] = 2;
-                $return['msj'] = '!Empresa existente¡, modifique su empresa';
+                $return['msj'] = '!Persona existente¡, modifique su persona';
             }
             return response()->json($return);
         }
@@ -49,20 +62,31 @@ class Empresa extends Controller
     public function Edit(Request $r )
     {
         if ( $r->ajax() ) {
+            
             $rules=array(
-                'ruc' => 'required|max:11|unique:empresas,empresas,'.$r->id
+                'dni' => 'required|max:8|unique:personas,persona,'.$r->id
+                
+               /*
+                $regex='regex:/^([a-zA-Z .,ñÑÁÉÍÓÚáéíóú]{2,60})$/i';
+            $required='required';
+
+                'nombre' => $required.'|'.$regex,
+                'paterno' => $required.'|'.$regex,
+                'materno' => $required.'|'.$regex,
+                'email' => 'required|email|unique:personas,email,'.Input::get('id'),
+                'dni'      => 'required|numeric|min:8|unique:personas,dni,'.Input::get('id'),*/
             );
 
             $validator=Validator::make($r->all(), $rules);
 
             if ( !$validator->fails() ) {
-                Empresa::runEdit($r);
+                Persona::runEdit($r);
                 $return['rst'] = 1;
                 $return['msj'] = 'Registro actualizado';
             }
             else{
                 $return['rst'] = 2;
-                $return['msj'] = '!Empresa existente¡, modifique su empresas';
+                $return['msj'] = '!Persona existente¡, modifique su persona';
             }
             return response()->json($return);
         }
@@ -71,7 +95,7 @@ class Empresa extends Controller
     public function Load(Request $r )
     {
         if ( $r->ajax() ) {
-            $renturnModel = Empresa::runLoad($r);
+            $renturnModel = Persona::runLoad($r);
             $return['rst'] = 1;
             $return['data'] = $renturnModel;
             $return['msj'] = "No hay registros aún";

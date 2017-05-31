@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\ExpertManage\Persona;
 use Illuminate\Support\Facades\Validator;
 
-class Persona extends Controller
+class PersonaEM extends Controller
 {
     public function __construct()
     {

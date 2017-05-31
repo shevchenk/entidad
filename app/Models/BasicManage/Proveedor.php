@@ -3,6 +3,7 @@
 namespace App\Models\BasicManage;
 
 use Illuminate\Database\Eloquent\Model;
+use DB;
 
 class Proveedor extends Model
 {
@@ -10,38 +11,42 @@ class Proveedor extends Model
 
     public static function runEditStatus($r)
     {
-        $empleado = Proveedor::find($r->id);
-        $empleado->estado = trim( $r->estadof );
-        $empleado->persona_id_updated_at=1;
-        $empleado->save();
+        $proveedor = Proveedor::find($r->id);
+        $proveedor->estado = trim( $r->estadof );
+        $proveedor->persona_id_updated_at=1;
+        $proveedor->save();
     }
 
     public static function runNew($r)
     {
-        $empleado = new Proveedor;
-        $empleado->persona_id = trim( $r->persona_id );
-        $empleado->emresa_id = trim( $r->empresa_id );
-        $empleado->estado = trim( $r->estado );
-        $empleado->persona_id_created_at=1;
-        $empleado->save();
+        $proveedor = new Proveedor;
+        $proveedor->persona_id = trim( $r->persona_id );
+        if(trim( $r->empresa_id )!=''){
+        $proveedor->emresa_id = trim( $r->empresa_id );}
+        $proveedor->estado = trim( $r->estado );
+        $proveedor->persona_id_created_at=1;
+        $proveedor->save();
     }
 
     public static function runEdit($r)
     {
-        $empleado = Proveedor::find($r->id);
-        $empleado->persona_id = trim( $r->persona_id );
-        $empleado->emresa_id = trim( $r->empresa_id );
-        $empleado->estado = trim( $r->estado );
-        $empleado->persona_id_updated_at=1;
-        $empleado->save();
+        $proveedor = Proveedor::find($r->id);
+        $proveedor->persona_id = trim( $r->persona_id );
+        if(trim( $r->empresa_id )!=''){
+        $proveedor->emresa_id = trim( $r->empresa_id );}
+        else {
+        $proveedor->emresa_id = null;}    
+        $proveedor->estado = trim( $r->estado );
+        $proveedor->persona_id_updated_at=1;
+        $proveedor->save();
     }
 
     public static function runLoad($r)
     {
-        $sql=Proveedor::select('proveedores.id','´proveedores.persona_id','proveedores.emresa_id',
-                               selectRaw('CONCAT_WS(" ",personas.paterno,personas.materno,personas.nombre '))
+        $sql=Proveedor::select(DB::raw('IFNULL(empresas.razon_social,"") as razon_social'),'proveedores.id','proveedores.persona_id','personas.paterno','personas.materno','personas.nombre',
+                               DB::raw('IFNULL(proveedores.emresa_id,"") as emresa_id'),'proveedores.estado')
             ->join('personas','proveedores.persona_id','=','personas.id')
-            ->join('empresas','proveedores.emresa_id','=','empresas.id')
+            ->leftjoin('empresas','proveedores.emresa_id','=','empresas.id')
             ->where( 
                 function($query) use ($r){
                     if( $r->has("persona") ){
@@ -50,31 +55,23 @@ class Proveedor extends Model
                             $query->whereRaw('CONCAT_WS(" ",personas.paterno,personas.materno,personas.nombre ) like "%'.$persona.'%"');
                         }
                     }
-                    if( $r->has("sucursal") ){
-                        $sucursal=trim($r->sucursal);
-                        if( $sucursal !='' ){
-                            $query->where('sucursales.sucursal','like','%'.$sucursal.'%');
+                    if( $r->has("empresa") ){
+                        $empresa=trim($r->empresa);
+                        if( $empresa !='' ){
+                            $query->where('empresas.razon_social','like','%'.$empresa.'%');
                         }
-
+                    }
                     if( $r->has("estado") ){
                         $estado=trim($r->estado);
                         if( $estado !='' ){
-                            $query->where('empleados.estado','like','%'.$estado.'%');
+                            $query->where('proveedores.estado','like','%'.$estado.'%');
                         }
                     }
                 }
             );
-        $result = $sql->orderBy('empleados.id','asc')->get();
+        $result = $sql->orderBy('proveedores.id','asc')->get();
         return $result;
     }
-    
-        public static function ListProveedor($r)
-    {
-        $sql=Proveedor::select('id','empleado','estado')
-            ->where('estado','=','1');
-        $result = $sql->orderBy('empleado','asc')->get();
-        return $result;
-    }
-    
+  
 
 }

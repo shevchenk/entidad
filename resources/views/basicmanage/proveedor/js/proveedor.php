@@ -13,9 +13,6 @@ $(document).ready(function() {
 
 
     AjaxProveedor.Cargar(HTMLCargarProveedor);
-    $("#ProveedorForm #TableProveedor select").change(function(){ AjaxProveedor.Cargar(HTMLCargarProveedor); });
-    $("#ProveedorForm #TableProveedor input").blur(function(){ AjaxProveedor.Cargar(HTMLCargarProveedor); });
-    
     $('#ModalProveedor').on('shown.bs.modal', function (event) {
         
         if( AddEdit==1 ){
@@ -106,12 +103,11 @@ HTMLAgregarEditar=function(result){
     }
 }
 
-
 HTMLCargarProveedor=function(result){
     var html="";
     $('#TableProveedor').DataTable().destroy();
 
-    $.each(result.data.data,function(index,r){
+    $.each(result.data,function(index,r){
         estadohtml='<span id="'+r.id+'" onClick="CambiarEstado(1,'+r.id+')" class="btn btn-danger">Inactivo</span>';
         if(r.estado==1){
             estadohtml='<span id="'+r.id+'" onClick="CambiarEstado(0,'+r.id+')" class="btn btn-success">Activo</span>';
@@ -131,19 +127,10 @@ HTMLCargarProveedor=function(result){
     $("#TableProveedor").DataTable({
         "paging": true,
         "lengthChange": false,
-        "searching": false,
-        "ordering": false,
+        "searching": true,
+        "ordering": true,
         "info": true,
-        "autoWidth": false,
-        "lengthMenu": [10],
-        "language": {
-            "info": "Mostrando página "+result.data.current_page+" / "+result.data.last_page+" de "+result.data.total,
-            "infoEmpty": "No éxite registro(s) aún",
-        },
-        "initComplete": function () {
-            $('#TableProveedor_paginate ul').remove();
-            masterG.CargarPaginacion('HTMLCargarProveedor','AjaxProveedor',result.data,'#TableProveedor_paginate');
-        }
+        "autoWidth": false
     });
 };
 </script>

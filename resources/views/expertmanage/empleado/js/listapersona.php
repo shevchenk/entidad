@@ -4,7 +4,7 @@ var LTtextoPersona='';
 var LTtextoIdEmpresa='';
 var LTtextoEmpresa='';
 $(document).ready(function() {
-    $("#TablePersona").DataTable({
+    $("#TableListapersona").DataTable({
         "paging": true,
         "lengthChange": false,
         "searching": false,

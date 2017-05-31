@@ -10,7 +10,7 @@ class ProveedorBM extends Controller
     public function EditStatus(Request $r )
     {
         if ( $r->ajax() ) {
-            Empleado::runEditStatus($r);
+            Proveedor::runEditStatus($r);
             $return['rst'] = 1;
             $return['msj'] = 'Registro actualizado';
             return response()->json($return);
@@ -20,7 +20,7 @@ class ProveedorBM extends Controller
     public function New(Request $r )
     {
         if ( $r->ajax() ) {
-            Empleado::runNew($r);
+            Proveedor::runNew($r);
             $return['rst'] = 1;
             $return['msj'] = 'Registro creado';
             return response()->json($return);
@@ -30,7 +30,7 @@ class ProveedorBM extends Controller
     public function Edit(Request $r )
     {
         if ( $r->ajax() ) {
-            Empleado::runEdit($r);
+            Proveedor::runEdit($r);
             $return['rst'] = 1;
             $return['msj'] = 'Registro actualizado';
             return response()->json($return);
@@ -40,23 +40,13 @@ class ProveedorBM extends Controller
     public function Load(Request $r )
     {
         if ( $r->ajax() ) {
-            $renturnModel = Empleado::runLoad($r);
+            $renturnModel = Proveedor::runLoad($r);
             $return['rst'] = 1;
             $return['data'] = $renturnModel;
             $return['msj'] = "No hay registros aún";
             return response()->json($return);
         }
     }
-    
-        public function ListSucursal (Request $r )
-    {
-        if ( $r->ajax() ) {
-            $renturnModel = Sucursal::ListSucursal($r);
-            $return['rst'] = 1;
-            $return['data'] = $renturnModel;
-            $return['msj'] = "No hay registros aún";
-            return response()->json($return);
-        }
-    }
+
 
 }

@@ -12,9 +12,6 @@ $(document).ready(function() {
         "info": true,
         "autoWidth": false
     });
-   
-    $("#ListaempresaForm #TableListaempresa select").change(function(){ AjaxListaempresa.Cargar(HTMLCargarEmpresa); });
-    $("#ListaempresaForm #TableListaempresa input").blur(function(){ AjaxListaempresa.Cargar(HTMLCargarEmpresa); });
 
     $('#ModalListaempresa').on('shown.bs.modal', function (event) { 
       AjaxListaempresa.Cargar(HTMLCargarEmpresa);
@@ -56,7 +53,7 @@ HTMLCargarEmpresa=function(result){
     var html="";
     $('#TableListaempresa').DataTable().destroy();
 
-    $.each(result.data.data,function(index,r){
+    $.each(result.data,function(index,r){
         estadohtml='<span id="'+r.id+'" onClick="CambiarEstado(1,'+r.id+')" class="btn btn-danger">Inactivo</span>';
         if(r.estado==1){
             estadohtml='<span id="'+r.id+'" onClick="CambiarEstado(0,'+r.id+')" class="btn btn-success">Activo</span>';
@@ -75,19 +72,10 @@ HTMLCargarEmpresa=function(result){
     $("#TableListaempresa").DataTable({
         "paging": true,
         "lengthChange": false,
-        "searching": false,
-        "ordering": false,
+        "searching": true,
+        "ordering": true,
         "info": true,
-        "autoWidth": false,
-        "lengthMenu": [10],
-        "language": {
-            "info": "Mostrando página "+result.data.current_page+" / "+result.data.last_page+" de "+result.data.total,
-            "infoEmpty": "No éxite registro(s) aún",
-        },
-        "initComplete": function () {
-            $('#TableListaempresa_paginate ul').remove();
-            masterG.CargarPaginacion('HTMLCargarEmpresa','AjaxEmpresa',result.data,'#TableListaempresa_paginate');
-        } 
+        "autoWidth": false
     });
 };
 </script>
