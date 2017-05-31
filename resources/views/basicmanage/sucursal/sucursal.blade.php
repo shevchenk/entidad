@@ -9,7 +9,7 @@
     @include( 'basicmanage.sucursal.js.sucursal_ajax' )
     @include( 'basicmanage.sucursal.js.sucursal' )
 @stop
-
+ 
 @section('content')
 <section class="content-header">
     <h1>Sucursales
@@ -19,7 +19,7 @@
         <li><i class="fa fa-sitemap"></i> Mantenimiento</a></li>
         <li class="active">Sucursales</li>
     </ol>
-</section>
+</section> 
 
 <section class="content">
     <div class="row">

@@ -12,7 +12,7 @@ $(document).ready(function() {
     });
     AjaxSucursal.Cargar(HTMLCargarSucursal);
 
-    $('#ModalSucursal').on('shown.bs.modal', function (event) {
+    $('#ModalSucursal').on('shown.bs.modal', function (event) { 
         if( AddEdit==1 ){
             $(this).find('.modal-footer .btn-primary').text('Guardar').attr('onClick','AgregarEditarAjax();');
         }
