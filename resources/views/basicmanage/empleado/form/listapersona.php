@@ -8,6 +8,7 @@
                     <span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title">Lista Persona</h4>
             </div>
+            
             <div class="modal-body">
                 <section class="content">
                     <div class="box">

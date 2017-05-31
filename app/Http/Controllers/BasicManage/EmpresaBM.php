@@ -13,7 +13,6 @@ class EmpresaBM extends Controller
         $this->middleware('auth');  //Esto debe activarse cuando estemos con sessión
     }
 
-
     public function EditStatus(Request $r )
     {
         if ( $r->ajax() ) {
@@ -28,7 +27,7 @@ class EmpresaBM extends Controller
     {
         if ( $r->ajax() ) {
             $rules=array(
-                'ruc' => 'required|max:11|unique:empresas'
+                'ruc' => 'required|max:11|unique:empresas,ruc,'
             );
 
             $validator=Validator::make($r->all(), $rules);
@@ -50,7 +49,7 @@ class EmpresaBM extends Controller
     {
         if ( $r->ajax() ) {
             $rules=array(
-                'ruc' => 'required|max:11|unique:empresas,empresas,'.$r->id
+                'ruc' => 'required|max:11|unique:empresas,ruc,'.$r->id
             );
 
             $validator=Validator::make($r->all(), $rules);
