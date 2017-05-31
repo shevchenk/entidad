@@ -6,7 +6,7 @@ var AjaxListaempresa={
         }
         data=$("#ListaempresaForm").serialize().split("txt_").join("").split("slct_").join("");
         $("#ListaempresaForm input[type='hidden']").remove();
-        url='AjaxDinamic/ExpertManage.Empresa@Load';
+        url='AjaxDinamic/ExpertManage.EmpresaEM@Load';
         masterG.postAjax(url,data,evento);
     }
 };

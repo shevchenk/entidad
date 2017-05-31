@@ -6,7 +6,7 @@ var AjaxListapersona={
         }
         data=$("#ListapersonaForm").serialize().split("txt_").join("").split("slct_").join("");
         $("#ListapersonaForm input[type='hidden']").remove();
-        url='AjaxDinamic/ExpertManage.Persona@Load';
+        url='AjaxDinamic/ExpertManage.PersonaEM@Load';
         masterG.postAjax(url,data,evento);
     }
 };
