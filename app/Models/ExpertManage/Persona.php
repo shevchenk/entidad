@@ -3,13 +3,9 @@
 namespace App\Models\ExpertManage;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Input;
-
-
-
 
 class Persona extends Model
 {
@@ -35,7 +31,8 @@ class Persona extends Model
         $persona->dni = trim( $r->dni );
         $persona->sexo = trim( $r->sexo );
         $persona->email = trim( $r->email );
-        $persona->password = trim( $r->password );
+        $bcryptpassword = bcrypt($r->password);
+        $persona->password=$bcryptpassword;
         $persona->telefono = trim( $r->telefono );
         $persona->celular = trim( $r->celular );
         $persona->fecha_nacimiento = trim( $r->fecha_nacimiento );
@@ -43,21 +40,6 @@ class Persona extends Model
         $persona->persona_id_created_at=$persona_id;
         $persona->save();
     }
-    /*public static function runEditPassword($r)
-    {
-        $persona_id = Auth::user()->id;
-        $persona = Persona::find($persona_id);
-        $bcryptpassword = bcrypt($r->password);
-        if( Hash::check($r->password_actual, $persona->password) ){
-            $persona->password = $bcryptpassword;
-            $persona->persona_id_updated_at = $persona_id;
-            $persona->save();
-            return 1;
-        }
-        else{
-            return 2;
-        }
-    }*/
 
     public static function runEdit($r)
     {
@@ -69,10 +51,8 @@ class Persona extends Model
         $persona->dni = trim( $r->dni );
         $persona->sexo = trim( $r->sexo );
         $persona->email = trim( $r->email );    
-        /* $persona->password = trim( $r->password );*/
-        if (Input::has('password'))
-                $persona->password = trim( $r->password );
-        
+        $bcryptpassword = bcrypt($r->password);
+        $persona->password=$bcryptpassword;
         $persona->telefono = trim( $r->telefono );
         $persona->celular = trim( $r->celular );
         $persona->fecha_nacimiento = trim( $r->fecha_nacimiento );

@@ -30,9 +30,9 @@ class PersonaEM extends Controller
         if ( $r->ajax() ) {
            
             $rules=array(
-                'dni' => 'required|numeric|min:8|unique:personas,dni',
-                'password'      => 'required|min:6',
-                'email' => 'required|email|unique:personas,email',
+//                'dni' => 'required|numeric|min:8|unique:personas,dni',
+//                'password'      => 'required|min:6',
+//                'email' => 'required|email|unique:personas,email',
 
             );
                 
@@ -58,8 +58,8 @@ class PersonaEM extends Controller
         if ( $r->ajax() ) {
             
             $rules=array(
-                'dni' => 'required|numeric|min:8|unique:personas,dni,'.$r->id,
-                'email' => 'required|email|unique:personas,email,'.$r->id,
+//                'dni' => 'required|numeric|min:8|unique:personas,dni,'.$r->id,
+//                'email' => 'required|email|unique:personas,email,'.$r->id,
            
             );
 
@@ -74,8 +74,6 @@ class PersonaEM extends Controller
                 $return['rst'] = 2;
                 $return['msj'] = '!Persona existente¡, modifique su persona';
             }
-
-            
 
             return response()->json($return);
         }

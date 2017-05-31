@@ -36,7 +36,6 @@ $(document).ready(function() {
         $('#ModalPersonaForm #txt_dni').val( PersonaG.dni );
         $('#ModalPersonaForm #slct_sexo').val( PersonaG.sexo );
         $('#ModalPersonaForm #txt_email').val( PersonaG.email );
-        $('#ModalPersonaForm #txt_password').val( PersonaG.password );
         $('#ModalPersonaForm #txt_telefono').val( PersonaG.telefono );
         $('#ModalPersonaForm #txt_celular').val( PersonaG.celular );
         $('#ModalPersonaForm #txt_fecha_nacimiento').val( PersonaG.fecha_nacimiento );
@@ -116,7 +115,6 @@ AgregarEditar=function(val,id){
         PersonaG.dni=$("#TablePersona #trid_"+id+" .dni").text();
         PersonaG.sexo=$("#TablePersona #trid_"+id+" .sexo").val();
         PersonaG.email=$("#TablePersona #trid_"+id+" .email").text();
-        PersonaG.password=$("#TablePersona #trid_"+id+" .password").val( '' );
         PersonaG.telefono=$("#TablePersona #trid_"+id+" .telefono").val();
         PersonaG.celular=$("#TablePersona #trid_"+id+" .celular").val();
         PersonaG.fecha_nacimiento=$("#TablePersona #trid_"+id+" .fecha_nacimiento").val();
@@ -173,7 +171,6 @@ HTMLCargarPersona=function(result){
             "<td class='email'>"+r.email+"</td>"+
             "<td>"+
             "<input type='hidden' class='fecha_nacimiento' value='"+r.fecha_nacimiento+"'>"+
-            "<input type='hidden' class='password' value='"+r.password+"'>"+
             "<input type='hidden' class='sexo' value='"+r.sexo+"'>"+
             "<input type='hidden' class='telefono' value='"+r.telefono+"'>"+
             "<input type='hidden' class='celular' value='"+r.celular+"'>"+
