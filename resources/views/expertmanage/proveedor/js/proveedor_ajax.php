@@ -21,19 +21,10 @@ var AjaxProveedor={
         $("#ModalProveedorForm").append("<input type='hidden' value='"+AI+"' name='estadof'>");
         $("#ModalProveedorForm").append("<input type='hidden' value='"+id+"' name='id'>");
         var data=$("#ModalProveedorForm").serialize().split("txt_").join("").split("slct_").join("");
-        $("#ModalProveedorForm input[type='hidden']").remove();
+        $("#ModalProveedorForm input[type='hidden']").not('.mant').remove();
         url='AjaxDinamic/ExpertManage.ProveedorEM@EditStatus';
         masterG.postAjax(url,data,evento);
     },
-    CargarSucursal:function(evento){
-        url='AjaxDinamic/ExpertManage.SucursalEM@ListSucursal';
-        data={};
-        masterG.postAjax(url,data,evento);
-    },
-    CargarCargo:function(evento){
-        url='AjaxDinamic/ExpertManage.CargoEM@ListCargo';
-        data={};
-        masterG.postAjax(url,data,evento);
-    },
+
 };
 </script>

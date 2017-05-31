@@ -21,7 +21,7 @@ var AjaxEmpleado={
         $("#ModalEmpleadoForm").append("<input type='hidden' value='"+AI+"' name='estadof'>");
         $("#ModalEmpleadoForm").append("<input type='hidden' value='"+id+"' name='id'>");
         var data=$("#ModalEmpleadoForm").serialize().split("txt_").join("").split("slct_").join("");
-        $("#ModalEmpleadoForm input[type='hidden']").remove();
+        $("#ModalEmpleadoForm input[type='hidden']").not('.mant').remove();
         url='AjaxDinamic/ExpertManage.EmpleadoEM@EditStatus';
         masterG.postAjax(url,data,evento);
     },
