@@ -1,15 +1,15 @@
-<div class="modal fade" id="ModalPersona" tabindex="-1" role="dialog">
+<div class="modal" id="ModalPersona" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
-        <div class="modal-header btn logo">
+        <div class="modal-header btn-info">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title">Persona</h4>
+          <h4 class="modal-title">Datos Personales</h4>
         </div>
         <div class="modal-body">
           <form id="ModalPersonaForm" name="ModalPersonaForm">
           <fieldset>
-          <legend>Datos personales</legend>
+          
             <div class="row form-group">
               <div class="col-sm-12"> <!--INICIO DE COL SM 12-->
                 <div class="col-sm-4">
@@ -30,7 +30,7 @@
               <div class="col-sm-12"><!--INICIO DE COL SM 12-->
                 <div class="col-sm-4">
                     <label>Fecha Nacimiento</label>
-                    <input type="text" class="form-control" id="txt_fecha_nacimiento" name="txt_fecha_nacimiento" placeholder="AAAA-MM-DD" onfocus="blur()"/>
+                    <input type="date" class="form-control" id="txt_fecha_nacimiento" name="txt_fecha_nacimiento" placeholder="AAAA-MM-DD" > <!-- onfocus="blur()"/-->
                 </div>
                 <div class="col-sm-4">
                   <label>DNI</label>
@@ -38,7 +38,7 @@
                 </div>
                 <div class="col-sm-4">
                   <label>Password</label>
-                  <input type="password" class="form-control" id="txt_password" name="txt_password" placeholder="Password">
+                  <input type="text" class="form-control" id="txt_password" name="txt_password" placeholder="Password">
                 </div>
               </div><!--FIN DE COL SM 12-->
 

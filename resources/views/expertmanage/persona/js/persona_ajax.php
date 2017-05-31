@@ -2,9 +2,9 @@
 var AjaxPersona={
     AgregarEditar:function(evento){
         var data=$("#ModalPersonaForm").serialize().split("txt_").join("").split("slct_").join("");
-        url='AjaxDinamic/ExpertManage.Persona@New';
+        url='AjaxDinamic/ExpertManage.PersonaEM@New';
         if(AddEdit==0){
-            url='AjaxDinamic/ExpertManage.Persona@Edit';
+            url='AjaxDinamic/ExpertManage.PersonaEM@Edit';
         }
         masterG.postAjax(url,data,evento);
     },
@@ -14,7 +14,7 @@ var AjaxPersona={
         }
         data=$("#PersonaForm").serialize().split("txt_").join("").split("slct_").join("");
         $("#PersonaForm input[type='hidden']").remove();
-        url='AjaxDinamic/ExpertManage.Persona@Load';
+        url='AjaxDinamic/ExpertManage.PersonaEM@Load';
         masterG.postAjax(url,data,evento);
     },
     CambiarEstado:function(evento,AI,id){
@@ -22,7 +22,7 @@ var AjaxPersona={
         $("#ModalPersonaForm").append("<input type='hidden' value='"+id+"' name='id'>");
         var data=$("#ModalPersonaForm").serialize().split("txt_").join("").split("slct_").join("");
         $("#ModalPersonaForm input[type='hidden']").remove();
-        url='AjaxDinamic/ExpertManage.Persona@EditStatus';
+        url='AjaxDinamic/ExpertManage.PersonaEM@EditStatus';
         masterG.postAjax(url,data,evento);
     }
 };

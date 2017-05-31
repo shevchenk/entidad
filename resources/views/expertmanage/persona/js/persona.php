@@ -52,30 +52,41 @@ $(document).ready(function() {
 
 ValidaForm=function(){
     var r=true;
-    if( $.trim( $("#ModalPersonaForm #txt_paterno").val() )=='' ){
-        r=false;
-        msjG.mensaje('warning','Ingrese Apellido Paterno',4000);
-    }
-    if( $.trim( $("#ModalPersonaForm #txt_materno").val() )=='' ){
-        r=false;
-        msjG.mensaje('warning','Ingrese Apellido Materno',4000);
-    }
     if( $.trim( $("#ModalPersonaForm #txt_nombre").val() )=='' ){
         r=false;
         msjG.mensaje('warning','Ingrese Nombre',4000);
     }
-    if( $.trim( $("#ModalPersonaForm #txt_dni").val() )=='' ){
+    else if( $.trim( $("#ModalPersonaForm #txt_paterno").val() )=='' ){
+        r=false;
+        msjG.mensaje('warning','Ingrese Apellido Paterno',4000);
+    }
+    else if( $.trim( $("#ModalPersonaForm #txt_materno").val() )=='' ){
+        r=false;
+        msjG.mensaje('warning','Ingrese Apellido Materno',4000);
+    }
+    else if( $.trim( $("#ModalPersonaForm #txt_fecha_nacimiento").val() )=='' ){
+        r=false;
+        msjG.mensaje('warning','Ingrese Fecha Nacimiento',4000);
+    }
+    
+    else if( $.trim( $("#ModalPersonaForm #txt_dni").val() )=='' ){
         r=false;
         msjG.mensaje('warning','Ingrese DNI',4000);
     }
-    if( $.trim( $("#ModalPersonaForm #slct_sexo").val() )=='' ){
-        r=false;
-        msjG.mensaje('warning','Sleccione Sexo',4000);
-    }
-    if( $.trim( $("#ModalPersonaForm #txt_password").val() )=='' ){
+    else if( $.trim( $("#ModalPersonaForm #txt_password").val() )=='' ){
         r=false;
         msjG.mensaje('warning','Ingrese Password',4000);
     }
+    else if( $.trim( $("#ModalPersonaForm #txt_email").val() )=='' ){
+        r=false;
+        msjG.mensaje('warning','Ingrese Email',4000);
+    }
+    else if( $.trim( $("#ModalPersonaForm #slct_sexo").val() )=='' ){
+        r=false;
+        msjG.mensaje('warning','Sleccione Sexo',4000);
+    }
+   
+    
     
 
     return r;
@@ -90,24 +101,27 @@ AgregarEditar=function(val,id){
     PersonaG.dni='';
     PersonaG.sexo='';
     PersonaG.email='';
-    PersonaG.passowrd='';
+    PersonaG.password='';
     PersonaG.telefono='';
     PersonaG.celular='';
     PersonaG.fecha_nacimiento='';
     PersonaG.estado='1';
     if( val==0 ){
+
         PersonaG.id=id;
         PersonaG.paterno=$("#TablePersona #trid_"+id+" .paterno").text();
+
         PersonaG.materno=$("#TablePersona #trid_"+id+" .materno").text();
         PersonaG.nombre=$("#TablePersona #trid_"+id+" .nombre").text();
         PersonaG.dni=$("#TablePersona #trid_"+id+" .dni").text();
         PersonaG.sexo=$("#TablePersona #trid_"+id+" .sexo").val();
         PersonaG.email=$("#TablePersona #trid_"+id+" .email").text();
-        PersonaG.passowrd=$("#TablePersona #trid_"+id+" .passowrd").val( '' );
-        PersonaG.telefono=$("#TablePersona #trid_"+id+" .telefono").text();
-        PersonaG.celular=$("#TablePersona #trid_"+id+" .celular").text();
-        PersonaG.fecha_nacimiento=$("#TablePersona #trid_"+id+" .fecha_nacimiento").text();
+        PersonaG.password=$("#TablePersona #trid_"+id+" .password").val( '' );
+        PersonaG.telefono=$("#TablePersona #trid_"+id+" .telefono").val();
+        PersonaG.celular=$("#TablePersona #trid_"+id+" .celular").val();
+        PersonaG.fecha_nacimiento=$("#TablePersona #trid_"+id+" .fecha_nacimiento").val();
         PersonaG.estado=$("#TablePersona #trid_"+id+" .estado").val();
+      
     }
     $('#ModalPersona').modal('show');
 }
@@ -145,18 +159,26 @@ HTMLCargarPersona=function(result){
     $('#TablePersona').DataTable().destroy();
 
     $.each(result.data.data,function(index,r){
+        
         estadohtml='<span id="'+r.id+'" onClick="CambiarEstado(1,'+r.id+')" class="btn btn-danger">Inactivo</span>';
         if(r.estado==1){
             estadohtml='<span id="'+r.id+'" onClick="CambiarEstado(0,'+r.id+')" class="btn btn-success">Activo</span>';
         }
-
+       
         html+="<tr id='trid_"+r.id+"'>"+
             "<td class='paterno'>"+r.paterno+"</td>"+
             "<td class='materno'>"+r.materno+"</td>"+
             "<td class='nombre'>"+r.nombre+"</td>"+
             "<td class='dni'>"+r.dni+"</td>"+
             "<td class='email'>"+r.email+"</td>"+
-            "<td><input type='hidden' class='estado' value='"+r.estado+"'>"+estadohtml+"</td>"+
+            "<td>"+
+            "<input type='hidden' class='fecha_nacimiento' value='"+r.fecha_nacimiento+"'>"+
+            "<input type='hidden' class='password' value='"+r.password+"'>"+
+            "<input type='hidden' class='sexo' value='"+r.sexo+"'>"+
+            "<input type='hidden' class='telefono' value='"+r.telefono+"'>"+
+            "<input type='hidden' class='celular' value='"+r.celular+"'>"+
+            "<input type='hidden' class='estado' value='"+r.estado+"'>"+estadohtml+
+            "</td>"+
             '<td><a class="btn btn-primary btn-sm" onClick="AgregarEditar(0,'+r.id+')"><i class="fa fa-edit fa-lg"></i> </a></td>';
         html+="</tr>";
     });
@@ -175,7 +197,7 @@ HTMLCargarPersona=function(result){
         },
         "initComplete": function () {
             $('#TablePersona_paginate ul').remove();
-            masterG.CargarPaginacion(result.data,'#TablePersona_paginate');
+            masterG.CargarPaginacion('HTMLCargarPersona','AjaxPersona',result.data,'#TablePersona_paginate');
         } 
     });
 };
