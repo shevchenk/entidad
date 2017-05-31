@@ -18,9 +18,7 @@
               
               <a class="btn btn-primary btn-sm" data-toggle="modal" data-target="#ModalListapersona" data-empresaid="ModalEmpresa #txt_empresa_id" data-empresa="ModalEmpresa #txt_empresa" data-personaid="ModalEmpresa #txt_persona_id" data-persona="ModalEmpresa #txt_persona">Persona</a>
             </div> <!--FIN DE COL SM 12-->
-
-            
-
+          
 
               <div class="col-sm-12"> <!--INICIO DE COL SM 12-->
               <div class="col-sm-4">

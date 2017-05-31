@@ -26,4 +26,5 @@ var AjaxEmpresa={
         masterG.postAjax(url,data,evento);
     }
 };
+
 </script>

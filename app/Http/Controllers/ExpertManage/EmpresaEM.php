@@ -13,7 +13,6 @@ class EmpresaEM extends Controller
         $this->middleware('auth');  //Esto debe activarse cuando estemos con sessión
     }
 
-
     public function EditStatus(Request $r )
     {
         if ( $r->ajax() ) {

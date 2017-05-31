@@ -91,6 +91,5 @@ class Empresa extends Model
         $result = $sql->orderBy('persona_id','asc')->paginate(10);
         return $result;
     }
-
  
 }
