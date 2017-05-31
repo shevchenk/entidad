@@ -20,7 +20,7 @@ class Empresa extends Model
     {
         $empresa = new Empresa;
         $empresa->persona_id = trim( $r->persona_id );
-        $empresa->entidad = trim( $r->entidad );
+        $empresa->razon_social = trim( $r->razon_social );
         $empresa->ruc = trim( $r->ruc );
         $empresa->nombre_comercial = trim( $r->nombre_comercial );
         $empresa->direccion_fiscal = trim( $r->direccion_fiscal );
@@ -36,7 +36,7 @@ class Empresa extends Model
     {
         $empresa = Empresa::find($r->id);
         $empresa->persona_id = trim( $r->persona_id );
-        $empresa->entidad = trim( $r->entidad );
+        $empresa->razon_social = trim( $r->razon_social );
         $empresa->ruc = trim( $r->ruc );
         $empresa->nombre_comercial = trim( $r->nombre_comercial );
         $empresa->direccion_fiscal = trim( $r->direccion_fiscal );
@@ -56,16 +56,34 @@ class Empresa extends Model
              ->join('personas','empresas.persona_id','=','personas.id')
              ->where( 
                 function($query) use ($r){
-                    if( $r->has("empresa") ){
-                        $empresa=trim($r->empresa);
-                        if( $empresa !='' ){
-                            $query->where('empresa','like','%'.$empresa.'%');
+                      if( $r->has("persona") ){
+                        $persona=trim($r->persona);
+                        if( $persona !='' ){
+                            $query->whereRaw('CONCAT_WS(" ",personas.paterno,personas.materno,personas.nombre ) like "%'.$persona.'%"');
+                        }
+                    }
+                    if( $r->has("razon_social") ){
+                        $razon_social=trim($r->razon_social);
+                        if( $razon_social !='' ){
+                            $query->where('empresas.razon_social','like','%'.$razon_social.'%');
+                        }
+                    }
+                    if( $r->has("ruc") ){
+                        $ruc=trim($r->ruc);
+                        if( $ruc !='' ){
+                            $query->where('empresas.ruc','like','%'.$ruc.'%');
+                        }
+                    }
+                    if( $r->has("nombre_comercial") ){
+                        $nombre_comercial=trim($r->nombre_comercial);
+                        if( $nombre_comercial !='' ){
+                            $query->where('empresas.nombre_comercial','like','%'.$nombre_comercial.'%');
                         }
                     }
                     if( $r->has("estado") ){
                         $estado=trim($r->estado);
                         if( $estado !='' ){
-                            $query->where('estado','like','%'.$estado.'%');
+                            $query->where('empresas.estado','like','%'.$estado.'%');
                         }
                     }
                 }

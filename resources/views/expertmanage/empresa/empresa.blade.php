@@ -8,6 +8,8 @@
 
     @include( 'expertmanage.empresa.js.empresa_ajax' )
     @include( 'expertmanage.empresa.js.empresa' )
+    @include( 'expertmanage.empleado.js.listapersona_ajax' )
+    @include( 'expertmanage.empleado.js.listapersona' )
 @stop
 
 @section('content')
@@ -30,7 +32,7 @@
                         <table id="TableEmpresa" class="table table-bordered table-hover">
                             <thead>
                                 <tr class="cabecera">
-                                    <th class="col-xs-3">
+                                    <th class="col-xs-2">
                                         <div class="form-group">
                                             <label><h4>Persona:</h4></label>
                                             <div class="input-group">
@@ -39,25 +41,27 @@
                                             </div>
                                         </div>
                                     </th>
-                                    <th class="col-xs-3">
+                                    <th class="col-xs-2">
                                         <div class="form-group">
                                             <label><h4>Razon Social:</h4></label>
                                             <div class="input-group">
                                                 <div class="input-group-addon"><i class="fa fa-search"></i></div>
-                                                <input type="text" class="form-control" name="txt_razon_social" id="txt_razon_social" placeholder="Buscar Razon Social" onkeypress="return masterG.enterGlobal(event,'.input-group',1);">
+                                                <input type="text" class="form-control" name="txt_razon_social" id="
+                                                txt_razon_social" placeholder="Buscar Razon Social" onkeypress="return masterG.enterGlobal(event,'.input-group',1);">
                                             </div>
                                         </div>
                                     </th>
-                                    <th class="col-xs-1">
+                                    
+                                    <th class="col-xs-2">
                                         <div class="form-group">
                                             <label><h4>RUC:</h4></label>
                                             <div class="input-group">
                                                 <div class="input-group-addon"><i class="fa fa-search"></i></div>
-                                                <input type="text" class="form-control" name="txt_ruc" id="txt_ruc" placeholder="Buscar RUC" onkeypress="return masterG.enterGlobal(event,'.input-group',1);">
+                                                <input type="text" class="form-control" name="txt_ruc" id="txt_ruc" placeholder="RUC" onkeypress="return masterG.enterGlobal(event,'.input-group',1);">
                                             </div>
                                         </div>
                                     </th>
-                                    <th class="col-xs-3">
+                                    <th class="col-xs-2">
                                         <div class="form-group">
                                             <label><h4>Nombre Comercial:</h4></label>
                                             <div class="input-group">
@@ -66,6 +70,7 @@
                                             </div>
                                         </div>
                                     </th>
+                                    
                                     <th class="col-xs-1">
                                         <div class="form-group">
                                             <label><h4>Estado:</h4></label>
@@ -107,4 +112,5 @@
 
 @section('form')
      @include( 'expertmanage.empresa.form.empresa' )
+     @include( 'expertmanage.empleado.form.listapersona' )
 @stop

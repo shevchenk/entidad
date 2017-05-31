@@ -28,7 +28,7 @@ class EmpresaEM extends Controller
     {
         if ( $r->ajax() ) {
             $rules=array(
-                'ruc' => 'required|max:11|unique:empresas'
+                'ruc' => 'required|max:11|unique:empresas,ruc,'
             );
 
             $validator=Validator::make($r->all(), $rules);
@@ -50,7 +50,7 @@ class EmpresaEM extends Controller
     {
         if ( $r->ajax() ) {
             $rules=array(
-                'ruc' => 'required|max:11|unique:empresas,empresas,'.$r->id
+                'ruc' => 'required|max:11|unique:empresas,ruc,'.$r->id
             );
 
             $validator=Validator::make($r->all(), $rules);
