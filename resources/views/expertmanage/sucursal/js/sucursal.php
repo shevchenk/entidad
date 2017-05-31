@@ -152,7 +152,7 @@ HTMLCargarSucursal=function(result){
         },
         "initComplete": function () {
             $('#TableSucursal_paginate ul').remove();
-            masterG.CargarPaginacion(result.data,'#TableSucursal_paginate');
+            masterG.CargarPaginacion('HTMLCargarSucursal','AjaxSucursal',result.data,'#TableSucursal_paginate');
         }
     });
 };
