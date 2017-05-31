@@ -115,7 +115,7 @@ HTMLCargarCargo=function(result){
         },
         "initComplete": function () {
             $('#TableCargo_paginate ul').remove();
-            masterG.CargarPaginacion(result.data,'#TableCargo_paginate');
+            masterG.CargarPaginacion('HTMLCargarCargo','AjaxCargo',result.data,'#TableCargo_paginate');
         }
     });
 };
