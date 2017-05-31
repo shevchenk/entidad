@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\BasicManage\Persona;
 use Illuminate\Support\Facades\Validator;
 
+
+
 class PersonaBM extends Controller
 {
     public function __construct()
@@ -28,22 +30,12 @@ class PersonaBM extends Controller
         if ( $r->ajax() ) {
            
             $rules=array(
-                'dni' => 'required|max:8|unique:personas'
+                'dni' => 'required|numeric|min:8|unique:personas,dni',
+             //   'password'      => 'required|min:6',
+            //    'email' => 'required|email|unique:personas,email',
 
             );
                 
-                /*p $regex='regex:/^([a-zA-Z .,ñÑÁÉÍÓÚáéíóú]{2,60})$/i';
-            $required='required';
-
-            nombre' => $required.'|'.$regex,
-                'paterno' => $required.'|'.$regex,
-                'materno' => $required.'|'.$regex,
-                'email' => 'required|email|unique:personas,email',
-                'password'      => 'required|min:6',
-                'dni'      => 'required|numeric|min:8|unique:personas,dni',
-                */
-           
-
             $validator=Validator::make($r->all(), $rules);
 
             if ( !$validator->fails() ) {
@@ -55,6 +47,8 @@ class PersonaBM extends Controller
                 $return['rst'] = 2;
                 $return['msj'] = '!Persona existente¡, modifique su persona';
             }
+
+            
             return response()->json($return);
         }
     }
@@ -64,17 +58,9 @@ class PersonaBM extends Controller
         if ( $r->ajax() ) {
             
             $rules=array(
-                'dni' => 'required|max:8|unique:personas,persona,'.$r->id
-                
-               /*
-                $regex='regex:/^([a-zA-Z .,ñÑÁÉÍÓÚáéíóú]{2,60})$/i';
-            $required='required';
-
-                'nombre' => $required.'|'.$regex,
-                'paterno' => $required.'|'.$regex,
-                'materno' => $required.'|'.$regex,
-                'email' => 'required|email|unique:personas,email,'.Input::get('id'),
-                'dni'      => 'required|numeric|min:8|unique:personas,dni,'.Input::get('id'),*/
+                'dni' => 'required|numeric|min:8|unique:personas,dni,'.$r->id,
+          //      'email' => 'required|email|unique:personas,email,'.$r->id,
+           
             );
 
             $validator=Validator::make($r->all(), $rules);
@@ -88,6 +74,7 @@ class PersonaBM extends Controller
                 $return['rst'] = 2;
                 $return['msj'] = '!Persona existente¡, modifique su persona';
             }
+
             return response()->json($return);
         }
     }
