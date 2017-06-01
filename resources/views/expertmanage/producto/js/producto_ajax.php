@@ -4,7 +4,7 @@ var AjaxProducto={
         var data=$("#ModalProductoForm").serialize().split("txt_").join("").split("slct_").join("");
         url='AjaxDinamic/ExpertManage.ProductoEM@New';
         if(AddEdit==0){
-            url='AjaxDinamic/ExpertManage.Producto@Edit';
+            url='AjaxDinamic/ExpertManage.ProductoEM@Edit';
         }
         masterG.postAjax(url,data,evento);
     },

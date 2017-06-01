@@ -31,7 +31,7 @@ $(document).ready(function() {
         $('#ModalProductoForm #slct_sucursal').val( ProductoG.sucursal_id );
         $('#ModalProductoForm #txt_precio_venta').val( ProductoG.precio_venta );
         $('#ModalProductoForm #txt_precio_compra').val( ProductoG.precio_compra );
-        $('#ModalProductoForm #txt_moneda').val( ProductoG.moneda );
+        $('#ModalProductoForm #slct_moneda').val( ProductoG.moneda );
         $('#ModalProductoForm #txt_stock').val( ProductoG.stock );
         $('#ModalProductoForm #txt_stock_minimo').val( ProductoG.stock_minimo );
         $('#ModalProductoForm #txt_dias_alerta').val( ProductoG.dias_alerta );
@@ -55,6 +55,39 @@ ValidaForm=function(){
         r=false;
         msjG.mensaje('warning','Ingrese Producto',4000);
     }
+    if( $.trim( $("#ModalProductoForm #slct_sucursal").val() )=='0' ){
+        r=false;
+        msjG.mensaje('warning','Seleccione Sucursal',4000);
+    }
+    if( $.trim( $("#ModalProductoForm #slct_articulo").val() )=='0' ){
+        r=false;
+        msjG.mensaje('warning','Seleccione Artículo',4000);
+    }
+    if( $.trim( $("#ModalProductoForm #txt_precio_venta").val() )=='' ){
+        r=false;
+        msjG.mensaje('warning','Ingrese Precio de Venta',4000);
+    }
+    if( $.trim( $("#ModalProductoForm #slct_moneda").val() )=='0' ){
+        r=false;
+        msjG.mensaje('warning','Seleccione Moneda',4000);
+    }
+    if( $.trim( $("#ModalProductoForm #txt_stock").val() )=='' ){
+        r=false;
+        msjG.mensaje('warning','Ingrese Stock',4000);
+    }
+    if( $.trim( $("#ModalProductoForm #txt_stock_minimo").val() )=='' ){
+        r=false;
+        msjG.mensaje('warning','Ingrese Stock Mínimo',4000);
+    }
+    if( $.trim( $("#ModalProductoForm #txt_dias_alerta").val() )=='' ){
+        r=false;
+        msjG.mensaje('warning','Ingrese días de alerta',4000);
+    }
+    if( $.trim( $("#ModalProductoForm #txt_fecha_vencimiento").val() )=='' && 
+            $.trim( $("#ModalProductoForm #txt_dias_vencimiento").val() )==''){
+        r=false;
+        msjG.mensaje('warning','Ingrese Fecha o días de vencimiento',4000);
+    }
     return r;
 }
 
@@ -63,7 +96,7 @@ AgregarEditar=function(val,id){
     ProductoG.id='';
     ProductoG.articulo_id='0';
     ProductoG.sucursal_id='0';
-    ProductoG.moneda='';
+    ProductoG.moneda='0';
     ProductoG.stock='';
     ProductoG.stock_minimo='';
     ProductoG.dias_alerta='';

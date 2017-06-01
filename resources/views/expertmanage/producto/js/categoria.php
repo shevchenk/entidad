@@ -78,6 +78,7 @@ HTMLAgregarEditar1=function(result){
         msjG.mensaje('success',result.msj,4000);
         $('#ModalCategoria').modal('hide');
         AjaxCategoria.Cargar(HTMLCargarCategoria1);
+        CargarSlct(2);
     }
 }
 

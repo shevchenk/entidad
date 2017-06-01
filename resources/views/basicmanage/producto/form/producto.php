@@ -34,7 +34,11 @@
             </div>
             <div class="form-group">
               <label>Moneda</label>
-              <input type="text" class="form-control" id="txt_moneda" name="txt_moneda" placeholder="Moneda">
+              <select  class="form-control" id="slct_moneda" name="slct_moneda">
+                  <option value="0">.::Seleccione::.</option>
+                  <option value="1">Soles</option>
+                  <option value="2">Dolares</option>
+              </select>
             </div>
             <div class="form-group">
               <label>Stock</label>

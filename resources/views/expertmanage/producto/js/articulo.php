@@ -83,6 +83,7 @@ HTMLAgregarEditar2=function(result){
         msjG.mensaje('success',result.msj,4000);
         $('#ModalArticulo').modal('hide');
         AjaxArticulo.Cargar(HTMLCargarArticulo2);
+        CargarSlct(3);
     }
 }
 
