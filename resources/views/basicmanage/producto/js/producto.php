@@ -55,35 +55,35 @@ ValidaForm=function(){
         r=false;
         msjG.mensaje('warning','Ingrese Producto',4000);
     }
-    if( $.trim( $("#ModalProductoForm #slct_sucursal").val() )=='0' ){
+    else if( $.trim( $("#ModalProductoForm #slct_sucursal").val() )=='0' ){
         r=false;
         msjG.mensaje('warning','Seleccione Sucursal',4000);
     }
-    if( $.trim( $("#ModalProductoForm #slct_articulo").val() )=='0' ){
+    else if( $.trim( $("#ModalProductoForm #slct_articulo").val() )=='0' ){
         r=false;
         msjG.mensaje('warning','Seleccione Artículo',4000);
     }
-    if( $.trim( $("#ModalProductoForm #txt_precio_venta").val() )=='' ){
+    else if( $.trim( $("#ModalProductoForm #txt_precio_venta").val() )=='' ){
         r=false;
         msjG.mensaje('warning','Ingrese Precio de Venta',4000);
     }
-    if( $.trim( $("#ModalProductoForm #slct_moneda").val() )=='0' ){
+    else if( $.trim( $("#ModalProductoForm #slct_moneda").val() )=='0' ){
         r=false;
         msjG.mensaje('warning','Seleccione Moneda',4000);
     }
-    if( $.trim( $("#ModalProductoForm #txt_stock").val() )=='' ){
+    else if( $.trim( $("#ModalProductoForm #txt_stock").val() )=='' ){
         r=false;
         msjG.mensaje('warning','Ingrese Stock',4000);
     }
-    if( $.trim( $("#ModalProductoForm #txt_stock_minimo").val() )=='' ){
+    else if( $.trim( $("#ModalProductoForm #txt_stock_minimo").val() )=='' ){
         r=false;
         msjG.mensaje('warning','Ingrese Stock Mínimo',4000);
     }
-    if( $.trim( $("#ModalProductoForm #txt_dias_alerta").val() )=='' ){
+    else if( $.trim( $("#ModalProductoForm #txt_dias_alerta").val() )=='' ){
         r=false;
         msjG.mensaje('warning','Ingrese días de alerta',4000);
     }
-    if( $.trim( $("#ModalProductoForm #txt_fecha_vencimiento").val() )=='' && 
+    else if( $.trim( $("#ModalProductoForm #txt_fecha_vencimiento").val() )=='' && 
             $.trim( $("#ModalProductoForm #txt_dias_vencimiento").val() )==''){
         r=false;
         msjG.mensaje('warning','Ingrese Fecha o días de vencimiento',4000);

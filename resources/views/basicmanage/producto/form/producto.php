@@ -68,7 +68,7 @@
               </select>
             </div>
             <div class="form-group">
-              <label>ImAGEN</label>
+              <label>Imagen</label>
                 <input type="text"  readOnly class="form-control input-sm" id="pago_nombre"  name="pago_nombre" value="">
                 <input type="text" style="display: none;" id="pago_archivo" name="pago_archivo">
                 <label class="btn btn-default btn-flat margin btn-xs">

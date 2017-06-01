@@ -43,6 +43,10 @@ ValidaForm2=function(){
         r=false;
         msjG.mensaje('warning','Ingrese Articulo',4000);
     }
+    else if( $.trim( $("#ModalArticuloForm #slct_categoria").val() )=='0' ){
+        r=false;
+        msjG.mensaje('warning','Seleccione Categoria',4000);
+    }
     return r;
 }
 
