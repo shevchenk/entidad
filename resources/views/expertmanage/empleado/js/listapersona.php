@@ -55,18 +55,12 @@ HTMLCargarPersona=function(result){
     $('#TableListapersona').DataTable().destroy();
 
     $.each(result.data.data,function(index,r){
-        estadohtml='<span id="'+r.id+'" onClick="CambiarEstado(1,'+r.id+')" class="btn btn-danger">Inactivo</span>';
-        if(r.estado==1){
-            estadohtml='<span id="'+r.id+'" onClick="CambiarEstado(0,'+r.id+')" class="btn btn-success">Activo</span>';
-        }
 
         html+="<tr id='trid_"+r.id+"'>"+
             "<td class='paterno'>"+r.paterno+"</td>"+
             "<td class='materno'>"+r.materno+"</td>"+
             "<td class='nombre'>"+r.nombre+"</td>"+
             "<td class='dni'>"+r.dni+"</td>"+
-            
-
            '<td><span class="btn btn-primary btn-sm" onClick="SeleccionarPersona(0,'+r.id+')"+><i class="glyphicon glyphicon-ok"></i></span>'+
                         "<input type='hidden' class='email' value='"+r.email+"'>"+
             "<input type='hidden' class='fecha_nacimiento' value='"+r.fecha_nacimiento+"'>"+
@@ -75,10 +69,7 @@ HTMLCargarPersona=function(result){
             "<input type='hidden' class='celular' value='"+r.celular+"'>"+
              "<input type='hidden' class='estado' value='"+r.estado+"'>"+
             "</td>"+
-     
             '<td><a class="btn btn-primary btn-sm" onClick="AgregarEditar1(0,'+r.id+')"><i class="fa fa-edit fa-lg"></i> </a></td>';
-            
-           
 
         html+="</tr>";
     });

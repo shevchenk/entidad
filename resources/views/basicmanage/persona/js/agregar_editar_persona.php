@@ -73,7 +73,11 @@ ValidaForm1=function(){
     }
     else if( $.trim( $("#ModalPersonaForm #slct_sexo").val() )=='' ){
         r=false;
-        msjG.mensaje('warning','Sleccione Sexo',4000);
+        msjG.mensaje('warning','Seleccione Sexo',4000);
+    }
+    else if( $.trim( $("#ModalPersonaForm #txt_password").val() )=='' ){
+        r=false;
+        msjG.mensaje('warning','Ingrese Password',4000);
     }
    
     return r;

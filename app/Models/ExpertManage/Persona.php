@@ -5,7 +5,6 @@ namespace App\Models\ExpertManage;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-//use Illuminate\Support\Facades\Input;
 use Symfony\Component\Console\Input;
 
 class Persona extends Model
@@ -36,7 +35,8 @@ class Persona extends Model
         $persona->password=$bcryptpassword;
         $persona->telefono = trim( $r->telefono );
         $persona->celular = trim( $r->celular );
-        $persona->fecha_nacimiento = trim( $r->fecha_nacimiento );
+        if(trim( $r->fecha_nacimiento )!=''){
+        $persona->fecha_nacimiento = trim( $r->fecha_nacimiento );}
         $persona->estado = trim( $r->estado );
         $persona->persona_id_created_at=$persona_id;
         $persona->save();
@@ -51,15 +51,14 @@ class Persona extends Model
         $persona->nombre = trim( $r->nombre );
         $persona->dni = trim( $r->dni );
         $persona->sexo = trim( $r->sexo );
-        $persona->email = trim( $r->email );    
-        $bcryptpassword = bcrypt($r->password);
+        $persona->email = trim( $r->email );
+        if(trim( $r->password )!=''){
+        $bcryptpassword = bcrypt($r->password);}
         $persona->password=$bcryptpassword;
         $persona->telefono = trim( $r->telefono );
         $persona->celular = trim( $r->celular );
-       // if (Input::get('fecha_nacimiento')<>'') {
-        $persona->fecha_nacimiento = trim( $r->fecha_nacimiento );
-
-        
+        if(trim( $r->fecha_nacimiento )!=''){
+        $persona->fecha_nacimiento = trim( $r->fecha_nacimiento );}
         $persona->estado = trim( $r->estado );
         $persona->persona_id_updated_at=$persona_id;
         $persona->save();
