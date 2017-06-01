@@ -53,6 +53,7 @@
                                                 </div>
                                             </th>                                    
                                             <th class="col-xs-1">[-]</th>
+                                             <th class="col-xs-1">[-]</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -64,6 +65,7 @@
                                             <th>Nombre</th>
                                             <th>DNI</th>
                                             <th>[-]</th>
+                                            <th>[-]</th>
                                         </tr>
                                     </tfoot>
                                 </table>
@@ -74,7 +76,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default active pull-left" data-dismiss="modal">Close</button>
-                <!--          <button type="button" class="btn btn-primary">Save</button>-->
+                 <button type="button" class="btn btn-primary active pull-right" data-toggle="modal" data-target="#ModalPersona">Nuevo</button>
             </div>
         </div>
     </div>

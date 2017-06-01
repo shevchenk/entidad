@@ -7,7 +7,7 @@
           <h4 class="modal-title">Empresa</h4>
         </div>
         <div class="modal-body">
-          <form id="ModalEmpresaForm" name="ModalPersonaForm">
+          <form id="ModalEmpresaForm" name="ModalEntidadForm">
           <fieldset>
 
             <div class="form-group">
