@@ -1,14 +1,12 @@
 <?php
-namespace App\Http\Controllers\BasicManage;
+namespace App\Http\Controllers\ExpertManage;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\BasicManage\Persona;
+use App\Models\ExpertManage\Entidad;
 use Illuminate\Support\Facades\Validator;
 
-
-
-class PersonaBM extends Controller
+class EntidadEM extends Controller
 {
     public function __construct()
     {
@@ -18,7 +16,7 @@ class PersonaBM extends Controller
     public function EditStatus(Request $r )
     {
         if ( $r->ajax() ) {
-            Persona::runEditStatus($r);
+            Entidad::runEditStatus($r);
             $return['rst'] = 1;
             $return['msj'] = 'Registro actualizado';
             return response()->json($return);
@@ -28,27 +26,21 @@ class PersonaBM extends Controller
     public function New(Request $r )
     {
         if ( $r->ajax() ) {
-           
             $rules=array(
-                'dni' => 'required|numeric|min:8|unique:personas,dni',
-             //   'password'      => 'required|min:6',
-            //    'email' => 'required|email|unique:personas,email',
-
+                'ruc' => 'required|max:11|unique:entidad,ruc'
             );
-                
+
             $validator=Validator::make($r->all(), $rules);
 
             if ( !$validator->fails() ) {
-                Persona::runNew($r);
+                Entidad::runNew($r);
                 $return['rst'] = 1;
                 $return['msj'] = 'Registro creado';
             }
             else{
                 $return['rst'] = 2;
-                $return['msj'] = '!Persona existente¡, modifique su persona';
+                $return['msj'] = '!Entidad existente¡, modifique su Entidad';
             }
-
-            
             return response()->json($return);
         }
     }
@@ -56,25 +48,21 @@ class PersonaBM extends Controller
     public function Edit(Request $r )
     {
         if ( $r->ajax() ) {
-            
             $rules=array(
-                'dni' => 'required|numeric|min:8|unique:personas,dni,'.$r->id,
-          //      'email' => 'required|email|unique:personas,email,'.$r->id,
-           
+                'ruc' => 'required|max:11|unique:entidad,ruc,'.$r->id
             );
 
             $validator=Validator::make($r->all(), $rules);
 
             if ( !$validator->fails() ) {
-                Persona::runEdit($r);
+                Entidad::runEdit($r);
                 $return['rst'] = 1;
                 $return['msj'] = 'Registro actualizado';
             }
             else{
                 $return['rst'] = 2;
-                $return['msj'] = '!Persona existente¡, modifique su persona';
+                $return['msj'] = '!Entidad existente¡, modifique su Entidad';
             }
-
             return response()->json($return);
         }
     }
@@ -82,7 +70,7 @@ class PersonaBM extends Controller
     public function Load(Request $r )
     {
         if ( $r->ajax() ) {
-            $renturnModel = Persona::runLoad($r);
+            $renturnModel = Entidad::runLoad($r);
             $return['rst'] = 1;
             $return['data'] = $renturnModel;
             $return['msj'] = "No hay registros aún";
