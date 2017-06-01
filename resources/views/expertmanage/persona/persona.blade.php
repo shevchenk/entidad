@@ -8,6 +8,8 @@
 
     @include( 'expertmanage.persona.js.persona_ajax' )
     @include( 'expertmanage.persona.js.persona' )
+    
+
 @stop
 
 @section('content')
@@ -118,4 +120,5 @@
 
 @section('form')
      @include( 'expertmanage.persona.form.persona' )
+     
 @stop

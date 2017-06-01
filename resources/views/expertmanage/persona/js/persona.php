@@ -38,6 +38,7 @@ $(document).ready(function() {
         $('#ModalPersonaForm #txt_email').val( PersonaG.email );
         $('#ModalPersonaForm #txt_telefono').val( PersonaG.telefono );
         $('#ModalPersonaForm #txt_celular').val( PersonaG.celular );
+        
         $('#ModalPersonaForm #txt_fecha_nacimiento').val( PersonaG.fecha_nacimiento );
         $('#ModalPersonaForm #slct_estado').val( PersonaG.estado );
         $('#ModalPersonaForm #txt_nombre').focus();
@@ -63,31 +64,17 @@ ValidaForm=function(){
         r=false;
         msjG.mensaje('warning','Ingrese Apellido Materno',4000);
     }
-    else if( $.trim( $("#ModalPersonaForm #txt_fecha_nacimiento").val() )=='' ){
-        r=false;
-        msjG.mensaje('warning','Ingrese Fecha Nacimiento',4000);
-    }
     
     else if( $.trim( $("#ModalPersonaForm #txt_dni").val() )=='' ){
         r=false;
         msjG.mensaje('warning','Ingrese DNI',4000);
-    }
-    else if( $.trim( $("#ModalPersonaForm #txt_password").val() )=='' ){
-        r=false;
-        msjG.mensaje('warning','Ingrese Password',4000);
-    }
-    else if( $.trim( $("#ModalPersonaForm #txt_email").val() )=='' ){
-        r=false;
-        msjG.mensaje('warning','Ingrese Email',4000);
     }
     else if( $.trim( $("#ModalPersonaForm #slct_sexo").val() )=='' ){
         r=false;
         msjG.mensaje('warning','Sleccione Sexo',4000);
     }
    
-    
-    
-
+   
     return r;
 }
 
