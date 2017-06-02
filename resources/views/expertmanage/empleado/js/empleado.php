@@ -44,9 +44,17 @@ $(document).ready(function() {
 
 ValidaForm=function(){
     var r=true;
-    if( $.trim( $("#ModalEmpleadoForm #txt_persona").val() )=='' ){
+    if( $.trim( $("#ModalEmpleadoForm #txt_persona_id").val() )=='' ){
         r=false;
-        msjG.mensaje('warning','Ingrese Empleado',4000);
+        msjG.mensaje('warning','Seleccione Persona',4000);
+    }
+    else if( $.trim( $("#ModalEmpleadoForm #slct_cargo").val() )=='0' ){
+        r=false;
+        msjG.mensaje('warning','Seleccione Cargo',4000);
+    }
+    else if( $.trim( $("#ModalEmpleadoForm #slct_sucursal").val() )=='0' ){
+        r=false;
+        msjG.mensaje('warning','Seleccione Sucursal',4000);
     }
     return r;
 }

@@ -22,8 +22,14 @@ class Empleado extends Model
         $empleado->persona_id = trim( $r->persona_id );
         $empleado->cargo_id = trim( $r->cargo );
         $empleado->sucursal_id = trim( $r->sucursal );
-        $empleado->fecha_inicio = trim( $r->fecha_inicio );
-        $empleado->fecha_final = trim( $r->fecha_final );
+        if(trim( $r->fecha_inicio )!=''){
+        $empleado->fecha_inicio = trim( $r->fecha_inicio );}
+        else {
+        $empleado->fecha_inicio = null;}    
+        if(trim( $r->fecha_final)!=''){
+        $empleado->fecha_final = trim( $r->fecha_final );}
+        else {
+        $empleado->fecha_final = null;}    
         $empleado->estado = trim( $r->estado );
         $empleado->persona_id_created_at=1;
         $empleado->save();
@@ -35,8 +41,14 @@ class Empleado extends Model
         $empleado->persona_id = trim( $r->persona_id );
         $empleado->cargo_id = trim( $r->cargo );
         $empleado->sucursal_id = trim( $r->sucursal );
-        $empleado->fecha_inicio = trim( $r->fecha_inicio );
-        $empleado->fecha_final = trim( $r->fecha_final );
+        if(trim( $r->fecha_inicio )!=''){
+        $empleado->fecha_inicio = trim( $r->fecha_inicio );}
+        else {
+        $empleado->fecha_inicio = null;}    
+        if(trim( $r->fecha_final)!=''){
+        $empleado->fecha_final = trim( $r->fecha_final );}
+        else {
+        $empleado->fecha_final = null;}   
         $empleado->estado = trim( $r->estado );
         $empleado->persona_id_updated_at=1;
         $empleado->save();

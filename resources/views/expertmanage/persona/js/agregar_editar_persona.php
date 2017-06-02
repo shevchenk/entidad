@@ -114,11 +114,11 @@ AgregarEditar1=function(val,id){
 
 AgregarEditarAjax1=function(){
     if( ValidaForm1() ){
-        AjaxAgregar_Editar_Persona.AgregarEditar1(HTMLAgregarEditar);
+        AjaxAgregar_Editar_Persona.AgregarEditar1(HTMLAgregarEditar1);
     }
 }
 
-HTMLAgregarEditar=function(result){
+HTMLAgregarEditar1=function(result){
     if( result.rst==1 ){
         msjG.mensaje('success',result.msj,4000);
         $('#ModalPersona').modal('hide');

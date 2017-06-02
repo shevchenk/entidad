@@ -42,9 +42,9 @@ $(document).ready(function() {
 
 ValidaForm=function(){
     var r=true;
-    if( $.trim( $("#ModalProveedorForm #txt_persona").val() )=='' ){
+    if( $.trim( $("#ModalProveedorForm #txt_persona_id").val() )=='' ){
         r=false;
-        msjG.mensaje('warning','Ingrese Proveedor',4000);
+        msjG.mensaje('warning','Seleccione Persona o Empresa',4000);
     }
     return r;
 }

@@ -40,9 +40,9 @@ $(document).ready(function() {
 
 ValidaForm=function(){
     var r=true;
-    if( $.trim( $("#ModalClienteForm #txt_persona").val() )=='' ){
+    if( $.trim( $("#ModalClienteForm #txt_persona_id").val() )=='' ){
         r=false;
-        msjG.mensaje('warning','Ingrese Cliente',4000);
+        msjG.mensaje('warning','Seleccione Persona o Empresa',4000);
     }
     return r;
 }
