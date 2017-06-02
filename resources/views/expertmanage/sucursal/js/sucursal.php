@@ -45,26 +45,7 @@ ValidaForm=function(){
         r=false;
         msjG.mensaje('warning','Ingrese Sucursal',4000);
     }
-    /*if( $.trim( $("#ModalSucursalForm #txt_direccion").val() )=='' ){
-        r=false;
-        msjG.mensaje('warning','Ingrese Direccion',4000);
-    }
-    if( $.trim( $("#ModalSucursalForm #txt_telefono").val() )=='' ){
-        r=false;
-        msjG.mensaje('warning','Ingrese Telefono',4000);
-    }
-    if( $.trim( $("#ModalSucursalForm #txt_celular").val() )=='' ){
-        r=false;
-        msjG.mensaje('warning','Ingrese Celular',4000);
-    }
-    if( $.trim( $("#ModalSucursalForm #txt_email").val() )=='' ){
-        r=false;
-        msjG.mensaje('warning','Ingrese Email',4000);
-    }
-    if( $.trim( $("#ModalSucursalForm #txt_foto").val() )=='' ){
-        r=false;
-        msjG.mensaje('warning','Ingrese Foto',4000);
-    }*/
+
     return r;
 }
 
