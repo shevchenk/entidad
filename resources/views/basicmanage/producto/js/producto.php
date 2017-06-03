@@ -3,6 +3,10 @@ var AddEdit=0; //0: Editar | 1: Agregar
 var ProductoG={id:0,articulo_id:0,sucursal_id:0,producto:"",precio_venta:"",precio_compra:"",moneda:"",stock:"",
                stock_minimo:"",dias_alerta:"",fecha_vencimiento:"",dias_vencimiento:"",estado:1}; // Datos Globales
 $(document).ready(function() {
+    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ) {
+      $('.selectpicker').selectpicker('mobile');
+    }
+
     $("#TableProducto").DataTable({
         "paging": true,
         "lengthChange": false,

@@ -27,9 +27,7 @@
 <body  bgcolor="#FFF" onkeyup="return masterG.enterGlobal(event,'btnIniciar');">
 <div id="mainWrap">
     <div class="content">
-    <div class="box">
     <div id="loggit">
-        <div class="msjG" style="display: none;"> </div>
         <h1><i class="fa fa-2x fa-lock"></i></h1>
             <h3 id="mensaje_msj"  class="label-success">
             </h3>
@@ -41,6 +39,8 @@
         
 
         <form id="logForm" method="post" class="form-horizontal">
+    <div class="box">
+            <div class="msjG" style="display: none;"> </div>
             <div class="row">
             <div class="col-md-12">
                 <div class="form-group">

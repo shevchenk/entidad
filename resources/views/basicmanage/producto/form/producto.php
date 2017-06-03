@@ -14,7 +14,7 @@
             </div>
             <div class="form-group">
               <label>Sucursal</label>
-              <select  class="form-control" id="slct_sucursal" name="slct_sucursal">
+              <select  class="form-control selectpicker show-menu-arrow" data-live-search="true" id="slct_sucursal" name="slct_sucursal">
                   <option value="0">.::Seleccione::.</option>
               </select>
             </div>
@@ -26,31 +26,33 @@
             </div>
             <div class="form-group">
               <label>Precio Venta</label>
-              <input type="text" class="form-control" id="txt_precio_venta" name="txt_precio_venta" placeholder="Precio Venta">
+              <input type="number" onkeypress="return masterG.validaDecimal(event,this);" class="form-control" id="txt_precio_venta" name="txt_precio_venta" placeholder="Precio Venta">
             </div>
             <div class="form-group">
               <label>Precio Compra</label>
-              <input type="text" class="form-control" id="txt_precio_compra" name="txt_precio_compra" placeholder="Precio Compra">
+              <input type="number" onkeypress="return masterG.validaDecimal(event,this);" class="form-control" id="txt_precio_compra" name="txt_precio_compra" placeholder="Precio Compra">
             </div>
             <div class="form-group">
               <label>Moneda</label>
-              <select  class="form-control" id="slct_moneda" name="slct_moneda">
+              <select  class="form-control selectpicker show-menu-arrow" id="slct_moneda" name="slct_moneda">
                   <option value="0">.::Seleccione::.</option>
-                  <option value="1">Soles</option>
-                  <option value="2">Dolares</option>
+                  <option data-icon="fa fa-strikethrough" 
+                          value="1">Soles</option>
+                  <option data-icon="fa fa-dollar" 
+                          value="2">Dolares</option>
               </select>
             </div>
             <div class="form-group">
               <label>Stock</label>
-              <input type="text" class="form-control" id="txt_stock" name="txt_stock" placeholder="Stock">
+              <input type="number" onkeypress="return masterG.validaNumeros(event);" class="form-control" id="txt_stock" name="txt_stock" placeholder="Stock">
             </div>
             <div class="form-group">
               <label>Stock Minimo</label>
-              <input type="text" class="form-control" id="txt_stock_minimo" name="txt_stock_minimo" placeholder="Stock Minimo">
+              <input type="number" onkeypress="return masterG.validaNumeros(event);" class="form-control" id="txt_stock_minimo" name="txt_stock_minimo" placeholder="Stock Minimo">
             </div>
             <div class="form-group">
               <label>Días Alerta</label>
-              <input type="text" class="form-control" id="txt_dias_alerta" name="txt_dias_alerta" placeholder="Días Alerta">
+              <input type="number" onkeypress="return masterG.validaNumeros(event);" class="form-control" id="txt_dias_alerta" name="txt_dias_alerta" placeholder="Días Alerta">
             </div>
             <div class="form-group">
               <label>Fecha Vencimiento</label>
@@ -58,13 +60,16 @@
             </div>
             <div class="form-group">
               <label>Días Vencimiento</label>
-              <input type="text" class="form-control" id="txt_dias_vencimiento" name="txt_dias_vencimiento" placeholder="Dias Vencimiento">
+              <input type="number" onkeypress="return masterG.validaNumeros(event);" class="form-control" id="txt_dias_vencimiento" name="txt_dias_vencimiento" placeholder="Dias Vencimiento">
             </div>
             <div class="form-group">
               <label>Estado</label>
-              <select class="form-control" name="slct_estado" id="slct_estado">
-                <option value='0'>Inactivo</option>
-                <option value='1' selected>Activo</option>
+              <select class="form-control selectpicker show-menu-arrow" name="slct_estado" id="slct_estado">
+                <option data-content="<span class='label label-danger'>Inactivo</span>" 
+                        value='0'>Inactivo</option>
+                <option data-content="<span class='label label-success'>Activo</span>" 
+                        value='1'
+                        selected>Activo</option>
               </select>
             </div>
             <div class="form-group">
