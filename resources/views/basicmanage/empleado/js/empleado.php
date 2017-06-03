@@ -35,14 +35,13 @@ $(document).ready(function() {
     });
 
     $('#ModalEmpleado').on('hide.bs.modal', function (event) {
-        $("ModalEmpleadoForm input[type='hidden']").remove();
-        $("ModalEmpleadoForm input").val('');
+        $("#ModalEmpleadoForm input[type='hidden']").not('.mant').remove();
     });
 });
 
 ValidaForm=function(){
     var r=true;
-    if( $.trim( $("#ModalEmpleadoForm #txt_persona_id").val() )=='' ){
+    if( $.trim( $("#ModalEmpleadoForm #txt_persona_id").val() )=='0' ){
         r=false;
         msjG.mensaje('warning','Seleccione Persona',4000);
     }
@@ -61,7 +60,7 @@ AgregarEditar=function(val,id){
 
     AddEdit=val;
     EmpleadoG.id='';
-    EmpleadoG.persona_id='';
+    EmpleadoG.persona_id='0';
     EmpleadoG.persona='';
     EmpleadoG.cargo_id='0';
     EmpleadoG.sucursal_id='0';

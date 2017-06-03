@@ -9,11 +9,7 @@ var AjaxEmpleado={
         masterG.postAjax(url,data,evento);
     },
     Cargar:function(evento,pag){
-        if( typeof(pag)!='undefined' ){
-            $("#EmpleadoForm").append("<input type='hidden' value='"+pag+"' name='page'>");
-        }
-        data=$("#EmpleadoForm").serialize().split("txt_").join("").split("slct_").join("");
-        $("#EmpleadoForm input[type='hidden']").remove();
+        data={};
         url='AjaxDinamic/BasicManage.EmpleadoBM@Load';
         masterG.postAjax(url,data,evento);
     },
@@ -21,7 +17,7 @@ var AjaxEmpleado={
         $("#ModalEmpleadoForm").append("<input type='hidden' value='"+AI+"' name='estadof'>");
         $("#ModalEmpleadoForm").append("<input type='hidden' value='"+id+"' name='id'>");
         var data=$("#ModalEmpleadoForm").serialize().split("txt_").join("").split("slct_").join("");
-        $("#ModalEmpleadoForm input[type='hidden']").remove();
+        $("#ModalEmpleadoForm input[type='hidden']").not('.mant').remove();
         url='AjaxDinamic/BasicManage.EmpleadoBM@EditStatus';
         masterG.postAjax(url,data,evento);
     },

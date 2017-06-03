@@ -17,7 +17,7 @@ var AjaxCargo={
         $("#ModalCargoForm").append("<input type='hidden' value='"+AI+"' name='estadof'>");
         $("#ModalCargoForm").append("<input type='hidden' value='"+id+"' name='id'>");
         var data=$("#ModalCargoForm").serialize().split("txt_").join("").split("slct_").join("");
-        $("#ModalCargoForm input[type='hidden']").remove();
+        $("#ModalCargoForm input[type='hidden']").not('.mant').remove();
         url='AjaxDinamic/BasicManage.CargoBM@EditStatus';
         masterG.postAjax(url,data,evento);
     }

@@ -36,13 +36,12 @@ $(document).ready(function() {
 
     $('#ModalCliente').on('hide.bs.modal', function (event) {
         $("#ModalClienteForm input[type='hidden']").not('.mant').remove();
-//        $("ModalClienteForm input").val('');
     });
 });
 
 ValidaForm=function(){
     var r=true;
-    if( $.trim( $("#ModalClienteForm #txt_persona_id").val() )=='' ){
+    if( $.trim( $("#ModalClienteForm #txt_persona_id").val() )=='0' ){
         r=false;
         msjG.mensaje('warning','Seleccione Persona o Empresa',4000);
     }
@@ -122,7 +121,7 @@ HTMLCargarCliente=function(result){
             "<td class='razon_social'>"+r.razon_social+"</td>"+
             "<td>"+
             "<input type='hidden' class='persona_id' value='"+r.persona_id+"'>"+
-            "<input type='hidden' class='empresa_id' value='"+r.emresa_id+"'>"+
+            "<input type='hidden' class='empresa_id' value='"+r.empresa_id+"'>"+
             "<input type='hidden' class='estado' value='"+r.estado+"'>"+estadohtml+"</td>"+
             '<td><a class="btn btn-primary btn-sm" onClick="AgregarEditar(0,'+r.id+')"><i class="fa fa-edit fa-lg"></i> </a></td>';
         html+="</tr>";

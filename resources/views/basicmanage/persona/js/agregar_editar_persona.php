@@ -1,17 +1,6 @@
 <script type="text/javascript">
 var AddEdit=0; //0: Editar | 1: Agregar
-var PersonaG={id:0,
-paterno:"",
-materno:"",
-nombre:"",
-dni:"",
-sexo:"",
-email:"",
-password:"",
-telefono:"",
-celular:"",
-fecha_nacimiento:"",
-estado:1}; // 
+var PersonaG={id:0,paterno:"",materno:"",nombre:"",dni:"",sexo:"",email:"",password:"",telefono:"",celular:"",fecha_nacimiento:"",estado:1}; // 
 
 $(document).ready(function() {
     $("#TablePersona").DataTable({
@@ -47,8 +36,7 @@ $(document).ready(function() {
     });
 
     $('#ModalPersona').on('hide.bs.modal', function (event) {
-        $("ModalPersonaForm input[type='hidden']").remove();
-        $("#ModalPersonaForm input").val('');
+        $("#ModalPersonaForm input[type='hidden']").not('.mant').remove();
     });
 });
 
@@ -66,18 +54,13 @@ ValidaForm1=function(){
         r=false;
         msjG.mensaje('warning','Ingrese Apellido Materno',4000);
     }
-    
     else if( $.trim( $("#ModalPersonaForm #txt_dni").val() )=='' ){
         r=false;
         msjG.mensaje('warning','Ingrese DNI',4000);
     }
     else if( $.trim( $("#ModalPersonaForm #slct_sexo").val() )=='' ){
         r=false;
-        msjG.mensaje('warning','Seleccione Sexo',4000);
-    }
-    else if( $.trim( $("#ModalPersonaForm #txt_password").val() )=='' ){
-        r=false;
-        msjG.mensaje('warning','Ingrese Password',4000);
+        msjG.mensaje('warning','Sleccione Sexo',4000);
     }
    
     return r;

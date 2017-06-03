@@ -5,8 +5,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\BasicManage\Persona;
 use Illuminate\Support\Facades\Validator;
-
-
+use Illuminate\Validation\Rule;
 
 class PersonaBM extends Controller
 {
@@ -29,26 +28,32 @@ class PersonaBM extends Controller
     {
         if ( $r->ajax() ) {
            
-            $rules=array(
-                'dni' => 'required|numeric|min:8|unique:personas,dni',
-             //   'password'      => 'required|min:6',
-            //    'email' => 'required|email|unique:personas,email',
-
+            $mensaje= array(
+                'required'    => ':attribute es requerido',
+                'unique'        => ':attribute solo debe ser único',
             );
-                
-            $validator=Validator::make($r->all(), $rules);
 
-            if ( !$validator->fails() ) {
+            $rules = array(
+                'dni' => 
+                       ['required',
+                        Rule::unique('personas','dni'),
+                        ],
+                'password' => 
+                       ['required',
+                       ],
+            );
+
+            $validator=Validator::make($r->all(), $rules,$mensaje);
+            
+            if (!$validator->fails()) {
                 Persona::runNew($r);
                 $return['rst'] = 1;
                 $return['msj'] = 'Registro creado';
-            }
-            else{
+            }else{
                 $return['rst'] = 2;
-                $return['msj'] = '!Persona existente¡, modifique su persona';
+                $return['msj'] = $validator->errors()->all()[0];
             }
 
-            
             return response()->json($return);
         }
     }
@@ -57,22 +62,27 @@ class PersonaBM extends Controller
     {
         if ( $r->ajax() ) {
             
-            $rules=array(
-                'dni' => 'required|numeric|min:8|unique:personas,dni,'.$r->id,
-          //      'email' => 'required|email|unique:personas,email,'.$r->id,
-           
+            $mensaje= array(
+                'required'    => ':attribute es requerido',
+                'unique'        => ':attribute solo debe ser único',
             );
 
-            $validator=Validator::make($r->all(), $rules);
+            $rules = array(
+                'dni' => 
+                       ['required',
+                        Rule::unique('personas','dni')->ignore($r->id),
+                        ],
+            );
 
-            if ( !$validator->fails() ) {
+            $validator=Validator::make($r->all(), $rules,$mensaje);
+            
+            if (!$validator->fails()) {
                 Persona::runEdit($r);
                 $return['rst'] = 1;
                 $return['msj'] = 'Registro actualizado';
-            }
-            else{
+            }else{
                 $return['rst'] = 2;
-                $return['msj'] = '!Persona existente¡, modifique su persona';
+                $return['msj'] = $validator->errors()->all()[0];
             }
 
             return response()->json($return);

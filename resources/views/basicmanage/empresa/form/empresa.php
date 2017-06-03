@@ -16,7 +16,7 @@
               <input type="text" class="form-control" id="txt_persona" name="txt_persona" readonly="">
               <input type="hidden" class="form-control mant" id="txt_persona_id" name="txt_persona_id" readonly="">
               
-              <a class="btn btn-primary btn-sm" data-toggle="modal" data-target="#ModalListapersona" data-empresaid="ModalEmpresa #txt_empresa_id" data-empresa="ModalEmpresa #txt_empresa" data-personaid="ModalEmpresa #txt_persona_id" data-persona="ModalEmpresa #txt_persona">Persona</a>
+              <a class="btn btn-primary btn-sm" data-toggle="modal" data-target="#ModalListapersona" data-filtros="estado:1" data-empresaid="ModalEmpresa #txt_empresa_id" data-empresa="ModalEmpresa #txt_empresa" data-personaid="ModalEmpresa #txt_persona_id" data-persona="ModalEmpresa #txt_persona">Persona</a>
             </div> <!--FIN DE COL SM 12-->
           
 

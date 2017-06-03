@@ -35,7 +35,11 @@ class Persona extends Model
         $persona->password=$bcryptpassword;
         $persona->telefono = trim( $r->telefono );
         $persona->celular = trim( $r->celular );
-        $persona->fecha_nacimiento = trim( $r->fecha_nacimiento );
+        if(trim( $r->fecha_nacimiento )!=''){
+        $persona->fecha_nacimiento = trim( $r->fecha_nacimiento );}
+        else {
+        $persona->fecha_nacimiento = null;
+        }
         $persona->estado = trim( $r->estado );
         $persona->persona_id_created_at=$persona_id;
         $persona->save();
@@ -51,11 +55,15 @@ class Persona extends Model
         $persona->dni = trim( $r->dni );
         $persona->sexo = trim( $r->sexo );
         $persona->email = trim( $r->email );    
-        $bcryptpassword = bcrypt($r->password);
-        $persona->password=$bcryptpassword;
+        if(trim( $r->password )!=''){
+        $persona->password=bcrypt($r->password);}
         $persona->telefono = trim( $r->telefono );
         $persona->celular = trim( $r->celular );
-        $persona->fecha_nacimiento = trim( $r->fecha_nacimiento );
+        if(trim( $r->fecha_nacimiento )!=''){
+        $persona->fecha_nacimiento = trim( $r->fecha_nacimiento );}
+        else {
+        $persona->fecha_nacimiento = null;
+        }
         $persona->estado = trim( $r->estado );
         $persona->persona_id_updated_at=$persona_id;
         $persona->save();

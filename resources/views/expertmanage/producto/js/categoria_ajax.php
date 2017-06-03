@@ -13,7 +13,7 @@ var AjaxCategoria={
             $("#CategoriaForm").append("<input type='hidden' value='"+pag+"' name='page'>");
         }
         data=$("#CategoriaForm").serialize().split("txt_").join("").split("slct_").join("");
-        $("#CategoriaForm input[type='hidden']").remove();
+        $("#CategoriaForm input[type='hidden']").not('.mant').remove();
         url='AjaxDinamic/ExpertManage.CategoriaEM@Load';
         masterG.postAjax(url,data,evento);
     },
@@ -21,7 +21,7 @@ var AjaxCategoria={
         $("#ModalCategoriaForm").append("<input type='hidden' value='"+AI+"' name='estadof'>");
         $("#ModalCategoriaForm").append("<input type='hidden' value='"+id+"' name='id'>");
         var data=$("#ModalCategoriaForm").serialize().split("txt_").join("").split("slct_").join("");
-        $("#ModalCategoriaForm input[type='hidden']").remove();
+        $("#ModalCategoriaForm input[type='hidden']").not('.mant').remove();
         url='AjaxDinamic/ExpertManage.CategoriaEM@EditStatus';
         masterG.postAjax(url,data,evento);
     }

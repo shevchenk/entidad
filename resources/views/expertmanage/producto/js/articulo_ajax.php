@@ -13,7 +13,7 @@ var AjaxArticulo={
             $("#ArticuloForm").append("<input type='hidden' value='"+pag+"' name='page'>");
         }
         data=$("#ArticuloForm").serialize().split("txt_").join("").split("slct_").join("");
-        $("#ArticuloForm input[type='hidden']").remove();
+        $("#ArticuloForm input[type='hidden']").not('.mant').remove();
         url='AjaxDinamic/ExpertManage.ArticuloEM@Load';
         masterG.postAjax(url,data,evento);
     },
@@ -21,7 +21,7 @@ var AjaxArticulo={
         $("#ModalArticuloForm").append("<input type='hidden' value='"+AI+"' name='estadof'>");
         $("#ModalArticuloForm").append("<input type='hidden' value='"+id+"' name='id'>");
         var data=$("#ModalArticuloForm").serialize().split("txt_").join("").split("slct_").join("");
-        $("#ModalArticuloForm input[type='hidden']").remove();
+        $("#ModalArticuloForm input[type='hidden']").not('.mant').remove();
         url='AjaxDinamic/ExpertManage.ArticuloEM@EditStatus';
         masterG.postAjax(url,data,evento);
     }

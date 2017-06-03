@@ -9,11 +9,8 @@ var AjaxProducto={
         masterG.postAjax(url,data,evento);
     },
     Cargar:function(evento,pag){
-        if( typeof(pag)!='undefined' ){
-            $("#ProductoForm").append("<input type='hidden' value='"+pag+"' name='page'>");
-        }
-        data=$("#ProductoForm").serialize().split("txt_").join("").split("slct_").join("");
-        $("#ProductoForm input[type='hidden']").remove();
+        data={};
+        $("#ProductoForm input[type='hidden']").not('.mant').remove();
         url='AjaxDinamic/BasicManage.ProductoBM@Load';
         masterG.postAjax(url,data,evento);
     },
@@ -21,7 +18,7 @@ var AjaxProducto={
         $("#ModalProductoForm").append("<input type='hidden' value='"+AI+"' name='estadof'>");
         $("#ModalProductoForm").append("<input type='hidden' value='"+id+"' name='id'>");
         var data=$("#ModalProductoForm").serialize().split("txt_").join("").split("slct_").join("");
-        $("#ModalProductoForm input[type='hidden']").remove();
+        $("#ModalProductoForm input[type='hidden']").not('.mant').remove();
         url='AjaxDinamic/BasicManage.ProductoBM@EditStatus';
         masterG.postAjax(url,data,evento);
     },

@@ -13,7 +13,7 @@ var AjaxCliente={
             $("#ClienteForm").append("<input type='hidden' value='"+pag+"' name='page'>");
         }
         data=$("#ClienteForm").serialize().split("txt_").join("").split("slct_").join("");
-        $("#ClienteForm input[type='hidden']").remove();
+        $("#ClienteForm input[type='hidden']").not('.mant').remove();
         url='AjaxDinamic/ExpertManage.ClienteEM@Load';
         masterG.postAjax(url,data,evento);
     },

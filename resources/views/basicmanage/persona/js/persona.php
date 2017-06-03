@@ -48,8 +48,7 @@ $(document).ready(function() {
     });
 
     $('#ModalPersona').on('hide.bs.modal', function (event) {
-        $("ModalPersonaForm input[type='hidden']").remove();
-        $("#ModalPersonaForm input").val('');
+        $("#ModalPersonaForm input[type='hidden']").not('.mant').remove();
     });
 });
 
@@ -67,22 +66,9 @@ ValidaForm=function(){
         r=false;
         msjG.mensaje('warning','Ingrese Apellido Materno',4000);
     }
-    else if( $.trim( $("#ModalPersonaForm #txt_fecha_nacimiento").val() )=='' ){
-        r=false;
-        msjG.mensaje('warning','Ingrese Fecha Nacimiento',4000);
-    }
-    
     else if( $.trim( $("#ModalPersonaForm #txt_dni").val() )=='' ){
         r=false;
         msjG.mensaje('warning','Ingrese DNI',4000);
-    }
-    else if( $.trim( $("#ModalPersonaForm #txt_password").val() )=='' ){
-        r=false;
-        msjG.mensaje('warning','Ingrese Password',4000);
-    }
-    else if( $.trim( $("#ModalPersonaForm #txt_email").val() )=='' ){
-        r=false;
-        msjG.mensaje('warning','Ingrese Email',4000);
     }
     else if( $.trim( $("#ModalPersonaForm #slct_sexo").val() )=='' ){
         r=false;

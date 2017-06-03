@@ -13,7 +13,7 @@ var AjaxProveedor={
             $("#ProveedorForm").append("<input type='hidden' value='"+pag+"' name='page'>");
         }
         data=$("#ProveedorForm").serialize().split("txt_").join("").split("slct_").join("");
-        $("#ProveedorForm input[type='hidden']").remove();
+        $("#ProveedorForm input[type='hidden']").not('.mant').remove();
         url='AjaxDinamic/ExpertManage.ProveedorEM@Load';
         masterG.postAjax(url,data,evento);
     },

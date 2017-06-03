@@ -43,9 +43,8 @@ $(document).ready(function() {
     });
 
     $('#ModalProducto').on('hide.bs.modal', function (event) {
-        $("#ModalProductoForm input[type='hidden']").remove();
-        $("#ModalProductoForm input").val('');
-        $("#ModalProductoForm select").val('0');
+        $("#ModalProductoForm input[type='hidden']").not('.mant').remove();
+
     });
 });
 
@@ -146,6 +145,8 @@ HTMLAgregarEditar=function(result){
         msjG.mensaje('success',result.msj,4000);
         $('#ModalProducto').modal('hide');
         AjaxProducto.Cargar(HTMLCargarProducto);
+    }else{
+        msjG.mensaje('warning',result.msj,3000);
     }
 }
 

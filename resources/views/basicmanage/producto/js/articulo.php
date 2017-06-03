@@ -29,8 +29,7 @@ $(document).ready(function() {
     });
 
     $('#ModalArticulo').on('hide.bs.modal', function (event) {
-        $("ModalArticuloForm input[type='hidden']").remove();
-        $("ModalArticuloForm input").val('');
+        $("#ModalArticuloForm input[type='hidden']").not('.mant').remove();
     });
 });
 
@@ -70,7 +69,7 @@ HTMLCambiarEstado2=function(result){
     if( result.rst==1 ){
         msjG.mensaje('success',result.msj,4000);
         AjaxArticulo.Cargar(HTMLCargarArticulo2);
-    }
+    }        
 }
 
 AgregarEditarAjax2=function(){
@@ -85,8 +84,10 @@ HTMLAgregarEditar2=function(result){
         $('#ModalArticulo').modal('hide');
         AjaxArticulo.Cargar(HTMLCargarArticulo2);
         CargarSlct(3);
+    }else{
+        msjG.mensaje('warning',result.msj,3000);
     }
-}
+    } 
 
 HTMLCargarArticulo2=function(result){
     var html="";

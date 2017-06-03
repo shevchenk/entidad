@@ -10,6 +10,8 @@
     @include( 'basicmanage.empleado.js.empleado' )
     @include( 'basicmanage.empleado.js.listapersona_ajax' )
     @include( 'basicmanage.empleado.js.listapersona' )
+    @include( 'basicmanage.persona.js.agregar_editar_persona_ajax' )
+    @include( 'basicmanage.persona.js.agregar_editar_persona' )
 @stop
 
 @section('content')
@@ -65,4 +67,5 @@
 @section('form')
      @include( 'basicmanage.empleado.form.empleado' )
      @include( 'basicmanage.empleado.form.listapersona' )
+     @include( 'basicmanage.persona.form.persona' )
 @stop

@@ -11,6 +11,7 @@ telefono:"",
 celular:"",
 email:"",
 estado:1}; // Datos Globales
+
 $(document).ready(function() {
     $("#TableEmpresa").DataTable({
         "paging": true,
@@ -20,15 +21,15 @@ $(document).ready(function() {
         "info": true,
         "autoWidth": false
     });
-AjaxEmpresa.Cargar(HTMLCargarEmpresa);
+
 
     $('#ModalEmpresa').on('shown.bs.modal', function (event) {
         if( AddEdit==1 ){
-            $(this).find('.modal-footer .btn-primary').text('Guardar').attr('onClick','AgregarEditarAjax();');
+            $(this).find('.modal-footer .btn-primary').text('Guardar').attr('onClick','AgregarEditarAjax2();');
         }
         else{
             
-            $(this).find('.modal-footer .btn-primary').text('Actualizar').attr('onClick','AgregarEditarAjax();');
+            $(this).find('.modal-footer .btn-primary').text('Actualizar').attr('onClick','AgregarEditarAjax2();');
             $("#ModalEmpresaForm").append("<input type='hidden' value='"+EmpresaG.id+"' name='id'>");
         }
 
@@ -50,8 +51,8 @@ AjaxEmpresa.Cargar(HTMLCargarEmpresa);
     });
 });
 
-ValidaForm=function(){
-    var r=true;
+ValidaForm2=function(){
+        var r=true;
     if( $.trim( $("#ModalEmpresaForm #txt_persona_id").val() )=='0' ){
         r=false;
         msjG.mensaje('warning','Ingrese Persona',4000);
@@ -67,8 +68,8 @@ ValidaForm=function(){
     return r;
 }
 
-AgregarEditar=function(val,id){
-    AddEdit=val;
+AgregarEditar2=function(val,id){
+     AddEdit=val;
     EmpresaG.id='';
     EmpresaG.persona_id='0';
     EmpresaG.persona='';
@@ -97,69 +98,20 @@ AgregarEditar=function(val,id){
     $('#ModalEmpresa').modal('show');
 }
 
-CambiarEstado=function(estado,id){
-    AjaxEmpresa.CambiarEstado(HTMLCambiarEstado,estado,id);
-}
-
-HTMLCambiarEstado=function(result){
-    if( result.rst==1 ){
-        msjG.mensaje('success',result.msj,4000);
-        AjaxEmpresa.Cargar(HTMLCargarEmpresa);
+AgregarEditarAjax2=function(){
+    if( ValidaForm2() ){
+        AjaxAgregar_Editar_Empresa.AgregarEditar2(HTMLAgregarEditar2);
     }
 }
 
-AgregarEditarAjax=function(){
-    if( ValidaForm() ){
-        AjaxEmpresa.AgregarEditar(HTMLAgregarEditar);
-    }
-}
-
-HTMLAgregarEditar=function(result){
+HTMLAgregarEditar2=function(result){
     if( result.rst==1 ){
         msjG.mensaje('success',result.msj,4000);
         $('#ModalEmpresa').modal('hide');
-        AjaxEmpresa.Cargar(HTMLCargarEmpresa);
+        AjaxAgregar_Editar_Empresa.Cargar(HTMLCargarEmpresa);
     }
     else{
         msjG.mensaje('warning',result.msj,3000);
     }
 }
-
-HTMLCargarEmpresa=function(result){
-    var html="";
-    $('#TableEmpresa').DataTable().destroy();
-
-    $.each(result.data,function(index,r){
-        estadohtml='<span id="'+r.id+'" onClick="CambiarEstado(1,'+r.id+')" class="btn btn-danger">Inactivo</span>';
-        if(r.estado==1){
-            estadohtml='<span id="'+r.id+'" onClick="CambiarEstado(0,'+r.id+')" class="btn btn-success">Activo</span>';
-        }
-
-        html+="<tr id='trid_"+r.id+"'>"+
-             "<td class='persona'>"+r.paterno+' '+r.materno+' '+r.nombre+"</td>"+
-            "<td class='razon_social'>"+r.razon_social+"</td>"+
-            "<td class='ruc'>"+r.ruc+"</td>"+
-            "<td class='nombre_comercial'>"+r.nombre_comercial+"</td>"+
-            "<td>"+
-            "<input type='hidden' class='persona_id' value='"+r.persona_id+"'>"+
-            "<input type='hidden' class='direccion_fiscal' value='"+r.direccion_fiscal+"'>"+
-            "<input type='hidden' class='telefono' value='"+r.telefono+"'>"+
-            "<input type='hidden' class='celular' value='"+r.celular+"'>"+
-            "<input type='hidden' class='email' value='"+r.email+"'>"+
-            "<input type='hidden' class='estado' value='"+r.estado+"'>"+estadohtml+
-            "</td>"+
-            '<td><a class="btn btn-primary btn-sm" onClick="AgregarEditar(0,'+r.id+')"><i class="fa fa-edit fa-lg"></i> </a></td>';
-        html+="</tr>";
-    });
-    $("#TableEmpresa tbody").html(html); 
-    $("#TableEmpresa").DataTable({
-        "paging": true,
-        "lengthChange": false,
-        "searching": true,
-        "ordering": true,
-        "info": true,
-        "autoWidth": false
-        
-    });
-};
 </script>

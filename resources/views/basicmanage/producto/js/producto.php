@@ -1,6 +1,6 @@
 <script type="text/javascript">
 var AddEdit=0; //0: Editar | 1: Agregar
-var ProductoG={id:0,articulo_id:0,sucursal_id:0,producto:"",precio_venta:"",precio_compra:"",moneda:"",stock:"",
+var ProductoG={id:0,articulo_id:0,sucursal_id:0,producto:"",precio_venta:"",precio_compra:"",moneda:0,stock:"",
                stock_minimo:"",dias_alerta:"",fecha_vencimiento:"",dias_vencimiento:"",estado:1}; // Datos Globales
 $(document).ready(function() {
     if( /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ) {
@@ -47,9 +47,7 @@ $(document).ready(function() {
     });
 
     $('#ModalProducto').on('hide.bs.modal', function (event) {
-        $("ModalProductoForm input[type='hidden']").remove();
-        $("ModalProductoForm input").val('');
-        $("ModalProductoForm select").val('0');
+        $("#ModalProductoForm input[type='hidden']").not('.mant').remove();
     });
 });
 
@@ -150,6 +148,8 @@ HTMLAgregarEditar=function(result){
         msjG.mensaje('success',result.msj,4000);
         $('#ModalProducto').modal('hide');
         AjaxProducto.Cargar(HTMLCargarProducto);
+    }else{
+        msjG.mensaje('warning',result.msj,3000);
     }
 }
 

@@ -29,8 +29,7 @@ $(document).ready(function() {
     });
 
     $('#ModalCategoria').on('hide.bs.modal', function (event) {
-        $("ModalCategoriaForm input[type='hidden']").remove();
-        $("ModalCategoriaForm input").val('');
+        $("#ModalCategoriaForm input[type='hidden']").not('.mant').remove();
     });
 });
 
@@ -79,6 +78,8 @@ HTMLAgregarEditar1=function(result){
         $('#ModalCategoria').modal('hide');
         AjaxCategoria.Cargar(HTMLCargarCategoria1);
         CargarSlct(2);
+    }else{
+        msjG.mensaje('warning',result.msj,3000);
     }
 }
 

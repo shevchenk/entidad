@@ -9,8 +9,8 @@
         <div class="modal-body">
           <form id="ModalClienteForm">
             <div class="form-group">
-              <a class="btn btn-primary btn-sm" data-toggle="modal" data-target="#ModalListaempresa" data-empresaid="ModalCliente #txt_empresa_id" data-empresa="ModalCliente #txt_empresa" data-personaid="ModalCliente #txt_persona_id" data-persona="ModalCliente #txt_persona">Empresa</a>
-              <a class="btn btn-primary btn-sm" data-toggle="modal" data-target="#ModalListapersona" data-empresaid="ModalCliente #txt_empresa_id" data-empresa="ModalCliente #txt_empresa" data-personaid="ModalCliente #txt_persona_id" data-persona="ModalCliente #txt_persona">Persona</a>
+              <a class="btn btn-primary btn-sm" data-toggle="modal" data-filtros="estado:1" data-target="#ModalListaempresa" data-empresaid="ModalCliente #txt_empresa_id" data-empresa="ModalCliente #txt_empresa" data-personaid="ModalCliente #txt_persona_id" data-persona="ModalCliente #txt_persona">Empresa</a>
+              <a class="btn btn-primary btn-sm" data-toggle="modal" data-filtros="estado:1" data-target="#ModalListapersona" data-empresaid="ModalCliente #txt_empresa_id" data-empresa="ModalCliente #txt_empresa" data-personaid="ModalCliente #txt_persona_id" data-persona="ModalCliente #txt_persona">Persona</a>
             </div>
               <div class="form-group persona"  style="display: none">
               <label>Persona</label>
