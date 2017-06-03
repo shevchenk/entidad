@@ -8,12 +8,8 @@ var AjaxArticulo={
         }
         masterG.postAjax(url,data,evento);
     },
-    Cargar:function(evento,pag){
-        if( typeof(pag)!='undefined' ){
-            $("#ArticuloForm").append("<input type='hidden' value='"+pag+"' name='page'>");
-        }
-        data=$("#ArticuloForm").serialize().split("txt_").join("").split("slct_").join("");
-        $("#ArticuloForm input[type='hidden']").remove();
+    Cargar:function(evento){
+        data={};
         url='AjaxDinamic/BasicManage.ArticuloBM@Load';
         masterG.postAjax(url,data,evento);
     },
@@ -21,7 +17,7 @@ var AjaxArticulo={
         $("#ModalArticuloForm").append("<input type='hidden' value='"+AI+"' name='estadof'>");
         $("#ModalArticuloForm").append("<input type='hidden' value='"+id+"' name='id'>");
         var data=$("#ModalArticuloForm").serialize().split("txt_").join("").split("slct_").join("");
-        $("#ModalArticuloForm input[type='hidden']").remove();
+        $("#ModalArticuloForm input[type='hidden']").not('.mant').remove();
         url='AjaxDinamic/BasicManage.ArticuloBM@EditStatus';
         masterG.postAjax(url,data,evento);
     }

@@ -4,6 +4,8 @@ namespace App\Http\Controllers\ExpertManage;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\ExpertManage\Empleado;
+use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Validator;
 
 class EmpleadoEM extends Controller
 {
@@ -20,9 +22,29 @@ class EmpleadoEM extends Controller
     public function New(Request $r )
     {
         if ( $r->ajax() ) {
-            Empleado::runNew($r);
-            $return['rst'] = 1;
-            $return['msj'] = 'Registro creado';
+            
+            $mensaje= array(
+                'required'    => ':attribute es requerido',
+                'unique'        => 'Persona solo debe ser único',
+            );
+
+            $rules = array(
+                'persona_id' => 
+                       ['required',
+                        Rule::unique('empleados','persona_id'),
+                        ],
+            );
+
+            $validator=Validator::make($r->all(), $rules,$mensaje);
+            
+            if (!$validator->fails()) {
+                Empleado::runNew($r);
+                $return['rst'] = 1;
+                $return['msj'] = 'Registro creado';
+            }else{
+                $return['rst'] = 2;
+                $return['msj'] = $validator->errors()->all()[0];
+            }
             return response()->json($return);
         }
     }
@@ -30,9 +52,29 @@ class EmpleadoEM extends Controller
     public function Edit(Request $r )
     {
         if ( $r->ajax() ) {
-            Empleado::runEdit($r);
-            $return['rst'] = 1;
-            $return['msj'] = 'Registro actualizado';
+            
+            $mensaje= array(
+                'required'    => ':attribute es requerido',
+                'unique'        => 'Persona solo debe ser único',
+            );
+
+            $rules = array(
+                'persona_id' => 
+                       ['required',
+                        Rule::unique('empleados','persona_id')->ignore($r->id),
+                        ],
+            );
+
+            $validator=Validator::make($r->all(), $rules,$mensaje);
+            
+            if (!$validator->fails()) {
+                Empleado::runEdit($r);
+                $return['rst'] = 1;
+                $return['msj'] = 'Registro actualizado';
+            }else{
+                $return['rst'] = 2;
+                $return['msj'] = $validator->errors()->all()[0];
+            }
             return response()->json($return);
         }
     }

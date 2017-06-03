@@ -9,12 +9,8 @@ var AjaxCliente={
         masterG.postAjax(url,data,evento);
     },
     Cargar:function(evento,pag){
-        if( typeof(pag)!='undefined' ){
-            $("#ClienteForm").append("<input type='hidden' value='"+pag+"' name='page'>");
-        }
-        data=$("#ClienteForm").serialize().split("txt_").join("").split("slct_").join("");
-        $("#ClienteForm input[type='hidden']").remove();
         url='AjaxDinamic/BasicManage.ClienteBM@Load';
+        data={};
         masterG.postAjax(url,data,evento);
     },
     CambiarEstado:function(evento,AI,id){

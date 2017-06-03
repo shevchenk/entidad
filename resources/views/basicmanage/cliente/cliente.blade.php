@@ -14,6 +14,8 @@
     @include( 'basicmanage.empleado.js.listaempresa' )
     @include( 'basicmanage.persona.js.agregar_editar_persona_ajax' )
     @include( 'basicmanage.persona.js.agregar_editar_persona' )
+    @include( 'basicmanage.empresa.js.agregar_editar_empresa_ajax' )
+    @include( 'basicmanage.empresa.js.agregar_editar_empresa' )
 @stop
 
 @section('content')
@@ -69,4 +71,5 @@
      @include( 'basicmanage.empleado.form.listapersona' )
      @include( 'basicmanage.empleado.form.listaempresa' )
      @include( 'basicmanage.persona.form.persona' )
+     @include( 'basicmanage.empresa.form.empresa' )
 @stop

@@ -4,6 +4,8 @@ namespace App\Http\Controllers\BasicManage;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\BasicManage\Producto;
+use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Validator;
 
 class ProductoBM extends Controller
 {
@@ -20,9 +22,29 @@ class ProductoBM extends Controller
     public function New(Request $r )
     {
         if ( $r->ajax() ) {
-            Producto::runNew($r);
-            $return['rst'] = 1;
-            $return['msj'] = 'Registro creado';
+            
+            $mensaje= array(
+                'required'    => ':attribute es requerido',
+                'unique'        => ':attribute solo debe ser único',
+            );
+
+            $rules = array(
+                'producto' => 
+                       ['required',
+                        Rule::unique('productos','producto'),
+                        ],
+            );
+
+            $validator=Validator::make($r->all(), $rules,$mensaje);
+            
+            if (!$validator->fails()) {
+                Producto::runNew($r);
+                $return['rst'] = 1;
+                $return['msj'] = 'Registro creado';
+            }else{
+                $return['rst'] = 2;
+                $return['msj'] = $validator->errors()->all()[0];
+            }
             return response()->json($return);
         }
     }
@@ -30,9 +52,29 @@ class ProductoBM extends Controller
     public function Edit(Request $r )
     {
         if ( $r->ajax() ) {
-            Producto::runEdit($r);
-            $return['rst'] = 1;
-            $return['msj'] = 'Registro actualizado';
+            
+            $mensaje= array(
+                'required'    => ':attribute es requerido',
+                'unique'        => ':attribute solo debe ser único',
+            );
+
+            $rules = array(
+                'producto' => 
+                       ['required',
+                        Rule::unique('productos','producto')->ignore($r->id),
+                        ],
+            );
+
+            $validator=Validator::make($r->all(), $rules,$mensaje);
+            
+            if (!$validator->fails()) {
+                Producto::runEdit($r);
+                $return['rst'] = 1;
+                $return['msj'] = 'Registro actualizado';
+            }else{
+                $return['rst'] = 2;
+                $return['msj'] = $validator->errors()->all()[0];
+            }
             return response()->json($return);
         }
     }

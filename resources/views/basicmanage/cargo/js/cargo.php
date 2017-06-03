@@ -27,8 +27,7 @@ $(document).ready(function() {
     });
 
     $('#ModalCargo').on('hide.bs.modal', function (event) {
-        $("ModalCargoForm input[type='hidden']").remove();
-        $("ModalCargoForm input").val('');
+        $("#ModalCargoForm input[type='hidden']").not('.mant').remove();
     });
 });
 
@@ -76,8 +75,7 @@ HTMLAgregarEditar=function(result){
         msjG.mensaje('success',result.msj,4000);
         $('#ModalCargo').modal('hide');
         AjaxCargo.Cargar(HTMLCargarCargo);
-    }
-    else{
+    }else{
         msjG.mensaje('warning',result.msj,3000);
     }
 }

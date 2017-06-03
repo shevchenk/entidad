@@ -13,7 +13,7 @@ var AjaxEmpleado={
             $("#EmpleadoForm").append("<input type='hidden' value='"+pag+"' name='page'>");
         }
         data=$("#EmpleadoForm").serialize().split("txt_").join("").split("slct_").join("");
-        $("#EmpleadoForm input[type='hidden']").remove();
+        $("#EmpleadoForm input[type='hidden']").not('.mant').remove();
         url='AjaxDinamic/ExpertManage.EmpleadoEM@Load';
         masterG.postAjax(url,data,evento);
     },

@@ -3,6 +3,7 @@ var LTtextoIdPersona='';
 var LTtextoPersona='';
 var LTtextoIdEmpresa='';
 var LTtextoEmpresa='';
+var LPfiltrosG='';
 $(document).ready(function() {
     $("#TableListapersona").DataTable({
         "paging": true,
@@ -16,9 +17,14 @@ $(document).ready(function() {
     $("#ListapersonaForm #TableListapersona select").change(function(){ AjaxListapersona.Cargar(HTMLCargarPersona); });
     $("#ListapersonaForm #TableListapersona input").blur(function(){ AjaxListapersona.Cargar(HTMLCargarPersona); });
 
-    $('#ModalListapersona').on('shown.bs.modal', function (event) { 
-      AjaxListapersona.Cargar(HTMLCargarPersona);
+    $('#ModalListapersona').on('shown.bs.modal', function (event) {
       var button = $(event.relatedTarget); // captura al boton
+      bfiltros= button.data('filtros');
+      if( typeof (bfiltros)!='undefined'){
+          LPfiltrosG=bfiltros;
+      }
+      AjaxListapersona.Cargar(HTMLCargarPersona);
+
       LTtextoIdPersona= button.data('personaid');
       LTtextoPersona= button.data('persona');
       LTtextoIdEmpresa= button.data('empresaid');
@@ -27,8 +33,9 @@ $(document).ready(function() {
     });
 
     $('#ModalListapersona').on('hide.bs.modal', function (event) {
+        LPfiltrosG='';
 //        $("ModalPersonaForm input[type='hidden']").remove();
-//        $("ModalPersonaForm input").val('');
+
     });
 });
 

@@ -4,6 +4,8 @@ namespace App\Http\Controllers\ExpertManage;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\ExpertManage\Cliente;
+use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Validator;
 
 class ClienteEM extends Controller
 {
@@ -20,9 +22,40 @@ class ClienteEM extends Controller
     public function New(Request $r )
     {
         if ( $r->ajax() ) {
-            Cliente::runNew($r);
-            $return['rst'] = 1;
-            $return['msj'] = 'Registro creado';
+            
+            $mensaje= array(
+                'required'    => ':attribute es requerido',
+                'unique'        => 'Persona Solo debe ser único',
+            );
+            if( $r->has('empresa_id') ){        
+                $mensaje['unique']=str_replace('Persona','Empresa',$mensaje['unique']);
+            }
+            
+            $rules = array(
+                'persona_id' => 
+                       ['required',
+                        Rule::unique('clientes','persona_id')->where(function ($query) use($r) {
+                            if( $r->has('empresa_id') ){
+                                $query->where('empresa_id', $r->empresa_id);
+                            }
+                            else {
+                               $query->where('empresa_id', null); 
+                            }
+                        }),
+                        ],
+            );
+
+
+            $validator=Validator::make($r->all(), $rules,$mensaje);
+            
+            if (!$validator->fails()) {
+                Cliente::runNew($r);
+                $return['rst'] = 1;
+                $return['msj'] = 'Registro creado';
+            }else{
+                $return['rst'] = 2;
+                $return['msj'] = $validator->errors()->all()[0];
+            }
             return response()->json($return);
         }
     }
@@ -30,9 +63,40 @@ class ClienteEM extends Controller
     public function Edit(Request $r )
     {
         if ( $r->ajax() ) {
-            Cliente::runEdit($r);
-            $return['rst'] = 1;
-            $return['msj'] = 'Registro actualizado';
+            
+            $mensaje= array(
+                'required'    => ':attribute es requerido',
+                'unique'        => 'Persona Solo debe ser único',
+            );
+            if( $r->has('empresa_id') ){        
+                $mensaje['unique']=str_replace('Persona','Empresa',$mensaje['unique']);
+            }
+            
+            $rules = array(
+                'persona_id' => 
+                       ['required',
+                        Rule::unique('clientes','persona_id')->ignore($r->id)->where(function ($query) use($r) {
+                            if( $r->has('empresa_id') ){
+                                $query->where('empresa_id', $r->empresa_id);
+                            }
+                            else {
+                               $query->where('empresa_id', null); 
+                            }
+                        }),
+                        ],
+            );
+
+
+            $validator=Validator::make($r->all(), $rules,$mensaje);
+            
+            if (!$validator->fails()) {
+                Cliente::runEdit($r);
+                $return['rst'] = 1;
+                $return['msj'] = 'Registro actualizado';
+            }else{
+                $return['rst'] = 2;
+                $return['msj'] = $validator->errors()->all()[0];
+            }
             return response()->json($return);
         }
     }

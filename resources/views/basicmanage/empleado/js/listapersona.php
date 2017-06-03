@@ -1,8 +1,9 @@
 <script type="text/javascript">
-var LTtextoIdPersona='';
-var LTtextoPersona='';
-var LTtextoIdEmpresa='';
-var LTtextoEmpresa='';
+var LPtextoIdPersona='';
+var LPtextoPersona='';
+var LPtextoIdEmpresa='';
+var LPtextoEmpresa='';
+var LPfiltrosG='';
 $(document).ready(function() {
     $("#TableListapersona").DataTable({
         "paging": true,
@@ -14,32 +15,37 @@ $(document).ready(function() {
     });
    
     $('#ModalListapersona').on('shown.bs.modal', function (event) { 
-      AjaxListapersona.Cargar(HTMLCargarPersona);
       var button = $(event.relatedTarget); // captura al boton
-      LTtextoIdPersona= button.data('personaid');
-      LTtextoPersona= button.data('persona');
-      LTtextoIdEmpresa= button.data('empresaid');
-      LTtextoEmpresa= button.data('empresa');
-
+      bfiltros= button.data('filtros');
+      if( typeof (bfiltros)!='undefined'){
+          LPfiltrosG=bfiltros;
+      }
+      AjaxListapersona.Cargar(HTMLCargarPersona);
+      
+      LPtextoIdPersona= button.data('personaid');
+      LPtextoPersona= button.data('persona');
+      LPtextoIdEmpresa= button.data('empresaid');
+      LPtextoEmpresa= button.data('empresa');
+      
     });
 
     $('#ModalListapersona').on('hide.bs.modal', function (event) {
+        LPfiltrosG='';
 //        $("ModalPersonaForm input[type='hidden']").remove();
-//        $("ModalPersonaForm input").val('');
     });
 });
 
 SeleccionarPersona = function(val,id){
-    $("#"+LTtextoEmpresa).val('');
-    $("#"+LTtextoIdEmpresa).val('');
-    $("#"+LTtextoPersona).val('');
-    $("#"+LTtextoIdPersona).val('');
+    $("#"+LPtextoEmpresa).val('');
+    $("#"+LPtextoIdEmpresa).val('');
+    $("#"+LPtextoPersona).val('');
+    $("#"+LPtextoIdPersona).val('');
     if( val==0 ){
         var paterno=$("#TableListapersona #trid_"+id+" .paterno").text();
         var materno=$("#TableListapersona #trid_"+id+" .materno").text();
         var nombre=$("#TableListapersona #trid_"+id+" .nombre").text();
-        $("#"+LTtextoPersona).val(paterno+" "+materno+" "+nombre);
-        $("#"+LTtextoIdPersona).val(id);
+        $("#"+LPtextoPersona).val(paterno+" "+materno+" "+nombre);
+        $("#"+LPtextoIdPersona).val(id);
         $('.persona').css("display","");
         $('.empresa').css("display","none");
         $('#ModalListapersona').modal('hide');

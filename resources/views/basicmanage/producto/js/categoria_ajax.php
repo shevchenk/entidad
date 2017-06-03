@@ -8,12 +8,8 @@ var AjaxCategoria={
         }
         masterG.postAjax(url,data,evento);
     },
-    Cargar:function(evento,pag){
-        if( typeof(pag)!='undefined' ){
-            $("#CategoriaForm").append("<input type='hidden' value='"+pag+"' name='page'>");
-        }
-        data=$("#CategoriaForm").serialize().split("txt_").join("").split("slct_").join("");
-        $("#CategoriaForm input[type='hidden']").remove();
+    Cargar:function(evento){
+        data={};
         url='AjaxDinamic/BasicManage.CategoriaBM@Load';
         masterG.postAjax(url,data,evento);
     },
@@ -21,7 +17,7 @@ var AjaxCategoria={
         $("#ModalCategoriaForm").append("<input type='hidden' value='"+AI+"' name='estadof'>");
         $("#ModalCategoriaForm").append("<input type='hidden' value='"+id+"' name='id'>");
         var data=$("#ModalCategoriaForm").serialize().split("txt_").join("").split("slct_").join("");
-        $("#ModalCategoriaForm input[type='hidden']").remove();
+        $("#ModalCategoriaForm input[type='hidden']").not('.mant').remove();
         url='AjaxDinamic/BasicManage.CategoriaBM@EditStatus';
         masterG.postAjax(url,data,evento);
     }

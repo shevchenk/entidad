@@ -22,7 +22,7 @@ class Cliente extends Model
         $proveedor = new Cliente;
         $proveedor->persona_id = trim( $r->persona_id );
         if(trim( $r->empresa_id )!=''){
-        $proveedor->emresa_id = trim( $r->empresa_id );}
+        $proveedor->empresa_id = trim( $r->empresa_id );}
         $proveedor->estado = trim( $r->estado );
         $proveedor->persona_id_created_at=1;
         $proveedor->save();
@@ -33,9 +33,9 @@ class Cliente extends Model
         $proveedor = Cliente::find($r->id);
         $proveedor->persona_id = trim( $r->persona_id );
         if(trim( $r->empresa_id )!=''){
-        $proveedor->emresa_id = trim( $r->empresa_id );}
+        $proveedor->empresa_id = trim( $r->empresa_id );}
         else {
-        $proveedor->emresa_id = null;}    
+        $proveedor->empresa_id = null;}    
         $proveedor->estado = trim( $r->estado );
         $proveedor->persona_id_updated_at=1;
         $proveedor->save();
@@ -44,9 +44,9 @@ class Cliente extends Model
     public static function runLoad($r)
     {
         $sql=Cliente::select(DB::raw('IFNULL(empresas.razon_social,"") as razon_social'),'clientes.id','clientes.persona_id','personas.paterno','personas.materno','personas.nombre',
-                               DB::raw('IFNULL(clientes.emresa_id,"") as emresa_id'),'clientes.estado')
+                               DB::raw('IFNULL(clientes.empresa_id,"") as empresa_id'),'clientes.estado')
             ->join('personas','clientes.persona_id','=','personas.id')
-            ->leftjoin('empresas','clientes.emresa_id','=','empresas.id')
+            ->leftjoin('empresas','clientes.empresa_id','=','empresas.id')
             ->where( 
                 function($query) use ($r){
                     if( $r->has("persona") ){

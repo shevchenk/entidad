@@ -3,6 +3,7 @@ var LEtextoIdEmpresa='';
 var LEtextoEmpresa='';
 var LEtextoIdPersona='';
 var LEtextoPersona='';
+var LEfiltrosG='';
 $(document).ready(function() {
     $("#TableListaempresa").DataTable({
         "paging": true,
@@ -17,8 +18,13 @@ $(document).ready(function() {
     $("#ListaempresaForm #TableListaempresa input").blur(function(){ AjaxListaempresa.Cargar(HTMLCargarEmpresa); });
 
     $('#ModalListaempresa').on('shown.bs.modal', function (event) { 
-      AjaxListaempresa.Cargar(HTMLCargarEmpresa);
       var button = $(event.relatedTarget); // captura al boton
+      bfiltros= button.data('filtros');
+      if( typeof (bfiltros)!='undefined'){
+          LEfiltrosG=bfiltros;
+      }
+      AjaxListaempresa.Cargar(HTMLCargarEmpresa);
+
       LEtextoIdEmpresa= button.data('empresaid');
       LEtextoEmpresa= button.data('empresa');
       LEtextoIdPersona= button.data('personaid');

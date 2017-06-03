@@ -38,7 +38,6 @@ $(document).ready(function() {
 
     $('#ModalEmpleado').on('hide.bs.modal', function (event) {
         $("#ModalEmpleadoForm input[type='hidden']").not('.mant').remove();
-        $("ModalEmpleadoForm input").val('');
     });
 });
 
