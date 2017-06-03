@@ -53,7 +53,7 @@ $(document).ready(function() {
 
 ValidaForm2=function(){
         var r=true;
-    if( $.trim( $("#ModalEmpresaForm #txt_persona_id").val() )=='' ){
+    if( $.trim( $("#ModalEmpresaForm #txt_persona_id").val() )=='0' ){
         r=false;
         msjG.mensaje('warning','Ingrese Persona',4000);
     }

@@ -54,18 +54,13 @@ ValidaForm1=function(){
         r=false;
         msjG.mensaje('warning','Ingrese Apellido Materno',4000);
     }
-    
     else if( $.trim( $("#ModalPersonaForm #txt_dni").val() )=='' ){
         r=false;
         msjG.mensaje('warning','Ingrese DNI',4000);
     }
     else if( $.trim( $("#ModalPersonaForm #slct_sexo").val() )=='' ){
         r=false;
-        msjG.mensaje('warning','Seleccione Sexo',4000);
-    }
-    else if( $.trim( $("#ModalPersonaForm #txt_password").val() )=='' ){
-        r=false;
-        msjG.mensaje('warning','Ingrese Password',4000);
+        msjG.mensaje('warning','Sleccione Sexo',4000);
     }
    
     return r;

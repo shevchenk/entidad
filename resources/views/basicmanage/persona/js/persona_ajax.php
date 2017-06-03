@@ -17,7 +17,7 @@ var AjaxPersona={
         $("#ModalPersonaForm").append("<input type='hidden' value='"+AI+"' name='estadof'>");
         $("#ModalPersonaForm").append("<input type='hidden' value='"+id+"' name='id'>");
         var data=$("#ModalPersonaForm").serialize().split("txt_").join("").split("slct_").join("");
-        $("#ModalPersonaForm input[type='hidden']").remove();
+        $("#ModalPersonaForm input[type='hidden']").not('.mant').remove();
         url='AjaxDinamic/BasicManage.PersonaBM@EditStatus';
         masterG.postAjax(url,data,evento);
     }

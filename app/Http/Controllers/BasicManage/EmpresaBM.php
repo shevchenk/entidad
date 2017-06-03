@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\BasicManage\Empresa;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 class EmpresaBM extends Controller
 {
@@ -26,20 +27,27 @@ class EmpresaBM extends Controller
     public function New(Request $r )
     {
         if ( $r->ajax() ) {
-            $rules=array(
-                'ruc' => 'required|max:11|unique:empresas,ruc,'
+            $mensaje= array(
+                'required'    => ':attribute es requerido',
+                'unique'        => ':attribute solo debe ser único',
             );
 
-            $validator=Validator::make($r->all(), $rules);
+            $rules = array(
+                'ruc' => 
+                       ['required',
+                        Rule::unique('empresas','ruc'),
+                        ],
+            );
 
-            if ( !$validator->fails() ) {
+            $validator=Validator::make($r->all(), $rules,$mensaje);
+            
+            if (!$validator->fails()) {
                 Empresa::runNew($r);
                 $return['rst'] = 1;
                 $return['msj'] = 'Registro creado';
-            }
-            else{
+            }else{
                 $return['rst'] = 2;
-                $return['msj'] = '!Empresa existente¡, modifique su empresa';
+                $return['msj'] = $validator->errors()->all()[0];
             }
             return response()->json($return);
         }
@@ -48,20 +56,28 @@ class EmpresaBM extends Controller
     public function Edit(Request $r )
     {
         if ( $r->ajax() ) {
-            $rules=array(
-                'ruc' => 'required|max:11|unique:empresas,ruc,'.$r->id
+                        $mensaje= array(
+                'required'    => ':attribute es requerido',
+                'unique'        => ':attribute solo debe ser único',
             );
 
-            $validator=Validator::make($r->all(), $rules);
+            $rules = array(
+                'ruc' => 
+                       ['required',
+                        Rule::unique('empresas','ruc')->ignore($r->id),
+                        ],
+            );
 
-            if ( !$validator->fails() ) {
+            $validator=Validator::make($r->all(), $rules,$mensaje);
+            
+            if (!$validator->fails()) {
                 Empresa::runEdit($r);
                 $return['rst'] = 1;
                 $return['msj'] = 'Registro actualizado';
             }
             else{
                 $return['rst'] = 2;
-                $return['msj'] = '!Empresa existente¡, modifique su empresas';
+                $return['msj'] = $validator->errors()->all()[0];
             }
             return response()->json($return);
         }
