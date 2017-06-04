@@ -9,6 +9,7 @@ var AjaxPersona={
         masterG.postAjax(url,data,evento);
     },
     Cargar:function(evento){
+        data={};
         $("#PersonaForm input[type='hidden']").not('.mant').remove();
         url='AjaxDinamic/BasicManage.PersonaBM@Load';
         masterG.postAjax(url,data,evento);
