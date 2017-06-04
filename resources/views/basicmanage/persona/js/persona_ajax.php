@@ -9,9 +9,11 @@ var AjaxPersona={
         masterG.postAjax(url,data,evento);
     },
     Cargar:function(evento){
+        $("#PersonaForm input[type='hidden']").not('.mant').remove();
         url='AjaxDinamic/BasicManage.PersonaBM@Load';
-        data={};
         masterG.postAjax(url,data,evento);
+
+        
     },
     CambiarEstado:function(evento,AI,id){
         $("#ModalPersonaForm").append("<input type='hidden' value='"+AI+"' name='estadof'>");

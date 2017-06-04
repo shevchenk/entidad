@@ -31,6 +31,7 @@ class PersonaBM extends Controller
             $mensaje= array(
                 'required'    => ':attribute es requerido',
                 'unique'        => ':attribute solo debe ser único',
+               // 'email'        => ':attribute verifique el email',
             );
 
             $rules = array(
@@ -38,10 +39,10 @@ class PersonaBM extends Controller
                        ['required',
                         Rule::unique('personas','dni'),
                         ],
-                'email' => 
-                       ['required','email',
+               /* 'email' => 
+                       ['email',
                         Rule::unique('personas','email'),
-                        ],
+                        ],*/
                 'password' => 
                        ['required',
                        ],
@@ -69,6 +70,7 @@ class PersonaBM extends Controller
             $mensaje= array(
                 'required'    => ':attribute es requerido',
                 'unique'        => ':attribute solo debe ser único',
+              
             );
 
             $rules = array(
@@ -76,10 +78,7 @@ class PersonaBM extends Controller
                        ['required',
                         Rule::unique('personas','dni')->ignore($r->id),
                         ],
-                'email' => 
-                       ['email',
-                        Rule::unique('personas','email')->ignore($r->id),
-                        ],
+           
             );
 
             $validator=Validator::make($r->all(), $rules,$mensaje);

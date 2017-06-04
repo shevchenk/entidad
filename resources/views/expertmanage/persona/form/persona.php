@@ -31,7 +31,8 @@
                 
                 <div class="col-sm-4">
                   <label>DNI</label>
-                  <input type="text" class="form-control" id="txt_dni" name="txt_dni" placeholder="DNI" maxlength="8">
+                  <input type="number" onkeypress="return masterG.validaNumerosMax(event,this,8);" class="form-control" id="txt_dni" name="txt_dni" placeholder="DNI" >
+                  
                 </div>
                 <div class="col-sm-4">
                   <label>Sexo</label>
@@ -54,19 +55,19 @@
                 </div> 
                 <div class="col-sm-4">
                     <label>Fecha Nacimiento</label>
-                    <input type="date" class="form-control" id="txt_fecha_nacimiento" name="txt_fecha_nacimiento" placeholder="AAAA-MM-DD" > <!-- onfocus="blur()"/-->
+                    <input type="text" class="form-control fechas" id="txt_fecha_nacimiento" name="txt_fecha_nacimiento" placeholder="0000-00-00" > <!-- onfocus="blur()"/-->
                 </div>           
                   
                 <div class="col-sm-4">
                   <label>Telefono</label>
-                  <input type="text" class="form-control" id="txt_telefono" name="txt_telefono" placeholder="Telefono" maxlength="7">
+                  <input type="number" onkeypress="return masterG.validaNumerosMax(event,this,7);"  class="form-control" id="txt_telefono" name="txt_telefono" placeholder="Telefono" >
                 </div>
               </div><!--FIN DE COL SM 12-->
 
               <div class="col-sm-12"><!--INICIO DE COL SM 12-->
                 <div class="col-sm-4">
                   <label>Celular</label>
-                  <input type="text" class="form-control" id="txt_celular" name="txt_celular" placeholder="Celular" maxlength="9">
+                  <input type="number" onkeypress="return masterG.validaNumerosMax(event,this,9);"  class="form-control" id="txt_celular" name="txt_celular" placeholder="Celular" >
                 </div>            
                 <div class="col-sm-4">
                   <label>Estado</label>

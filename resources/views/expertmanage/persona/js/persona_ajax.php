@@ -13,7 +13,7 @@ var AjaxPersona={
             $("#PersonaForm").append("<input type='hidden' value='"+pag+"' name='page'>");
         }
         data=$("#PersonaForm").serialize().split("txt_").join("").split("slct_").join("");
-        $("#PersonaForm input[type='hidden']").remove();
+        $("#PersonaForm input[type='hidden']").not('.mant').remove();
         url='AjaxDinamic/ExpertManage.PersonaEM@Load';
         masterG.postAjax(url,data,evento);
     },
