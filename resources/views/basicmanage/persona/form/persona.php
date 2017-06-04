@@ -29,13 +29,17 @@
 
               <div class="col-sm-12"><!--INICIO DE COL SM 12-->
                 <div class="col-sm-4">
-                    <label>Fecha Nacimiento</label>
-                    <input type="date" class="form-control" id="txt_fecha_nacimiento" name="txt_fecha_nacimiento" placeholder="AAAA-MM-DD" > <!-- onfocus="blur()"/-->
+                  <label>DNI</label>
+                  <input type="text" class="form-control" id="txt_dni" name="txt_dni" placeholder="DNI" maxlength="8">
                 </div>
                 <div class="col-sm-4">
-                  <label>DNI</label>
-                  <input type="text" class="form-control" id="txt_dni" name="txt_dni" placeholder="DNI">
-                </div>
+                  <label>Sexo</label>
+                  <select class="form-control" id="slct_sexo" name="slct_sexo" placeholder="Sexo">
+                       <option value='' style="display:none">.:Seleccione:.</option>
+                      <option value='F'>Femenino</option>
+                      <option value='M' selected>Masculino</option>
+                  </select>
+                </div>               
                 <div class="col-sm-4">
                   <label>Password</label>
                   <input type="password" class="form-control" id="txt_password" name="txt_password" placeholder="Password">
@@ -46,25 +50,23 @@
                 <div class="col-sm-4">
                   <label>Email</label>
                   <input type="text" class="form-control" id="txt_email" name="txt_email" placeholder="Email">
-                </div>            
+                </div>  
+
                 <div class="col-sm-4">
-                  <label>Sexo</label>
-                  <select class="form-control" id="slct_sexo" name="slct_sexo" placeholder="Sexo">
-                       <option value='' style="display:none">.:Seleccione:.</option>
-                      <option value='F'>Femenino</option>
-                      <option value='M' selected>Masculino</option>
-                  </select>
+                    <label>Fecha Nacimiento</label>
+                    <input type="date" class="form-control" id="txt_fecha_nacimiento" name="txt_fecha_nacimiento" placeholder="AAAA-MM-DD" > <!-- onfocus="blur()"/-->
                 </div>
+
                 <div class="col-sm-4">
                   <label>Telefono</label>
-                  <input type="text" class="form-control" id="txt_telefono" name="txt_telefono" placeholder="Telefono">
+                  <input type="text" class="form-control" id="txt_telefono" name="txt_telefono" placeholder="Telefono" maxlength="7">
                 </div>
               </div><!--FIN DE COL SM 12-->
 
               <div class="col-sm-12"><!--INICIO DE COL SM 12-->
                 <div class="col-sm-4">
                   <label>Celular</label>
-                  <input type="text" class="form-control" id="txt_celular" name="txt_celular" placeholder="Celular">
+                  <input type="text" class="form-control" id="txt_celular" name="txt_celular" placeholder="Celular" maxlength="9">
                 </div>            
                 <div class="col-sm-4">
                   <label>Estado</label>

@@ -38,6 +38,10 @@ class PersonaBM extends Controller
                        ['required',
                         Rule::unique('personas','dni'),
                         ],
+                'email' => 
+                       ['required','email',
+                        Rule::unique('personas','email'),
+                        ],
                 'password' => 
                        ['required',
                        ],
@@ -71,6 +75,10 @@ class PersonaBM extends Controller
                 'dni' => 
                        ['required',
                         Rule::unique('personas','dni')->ignore($r->id),
+                        ],
+                'email' => 
+                       ['email',
+                        Rule::unique('personas','email')->ignore($r->id),
                         ],
             );
 

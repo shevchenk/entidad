@@ -49,6 +49,7 @@ $(document).ready(function() {
 
     $('#ModalPersona').on('hide.bs.modal', function (event) {
         $("#ModalPersonaForm input[type='hidden']").not('.mant').remove();
+        $("#ModalPersonaForm input").val('');
     });
 });
 
@@ -96,7 +97,6 @@ AgregarEditar=function(val,id){
 
         PersonaG.id=id;
         PersonaG.paterno=$("#TablePersona #trid_"+id+" .paterno").text();
-
         PersonaG.materno=$("#TablePersona #trid_"+id+" .materno").text();
         PersonaG.nombre=$("#TablePersona #trid_"+id+" .nombre").text();
         PersonaG.dni=$("#TablePersona #trid_"+id+" .dni").text();
