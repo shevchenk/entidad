@@ -312,17 +312,21 @@ var masterG ={
         te = String.fromCharCode(tecla); // 5
         return patron.test(te); // 6
     },
-    validaDecimal:function(e,thix) { // 1
+    validaDecimal:function(e,t) { // 1
         tecla = (document.all) ? e.keyCode : e.which; // 2
-        pos=$(thix).val().indexOf('.');
-        if ( pos!= -1 && tecla == 46 ) // Valida si se registro nuevament el
-            return false;
-        if ((tecla == 8 || tecla == 0 || tecla == 46))
-            return true;
+        pos=t.value.indexOf('.');
+        if ( pos!= -1 && tecla == 46 ) return false;// Valida si se registro nuevament el
+        if ((tecla == 8 || tecla == 0 || tecla == 46)) return true;
         if (tecla <= 47 || tecla >= 58) return false;
         patron = /\d/; // Solo acepta números
         te = String.fromCharCode(tecla); // 5
         return patron.test(te);
+    },
+    DecimalMax:function(t,n){
+        pos=t.value.indexOf('.');
+        if( pos!= -1 && t.value!='' && t.value.substring(pos+1).length>=2 ){
+          t.value = parseFloat(t.value).toFixed(n);
+        }
     }
 }
 

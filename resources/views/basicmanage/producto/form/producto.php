@@ -26,11 +26,11 @@
             </div>
             <div class="form-group">
               <label>Precio Venta</label>
-              <input type="number" onkeypress="return masterG.validaDecimal(event,this);" class="form-control" id="txt_precio_venta" name="txt_precio_venta" placeholder="Precio Venta">
+              <input type="text" onkeyup="masterG.DecimalMax(this,2);" onkeypress="return masterG.validaDecimal(event,this);" class="form-control" id="txt_precio_venta" name="txt_precio_venta">
             </div>
             <div class="form-group">
               <label>Precio Compra</label>
-              <input type="number" onkeypress="return masterG.validaDecimal(event,this);" class="form-control" id="txt_precio_compra" name="txt_precio_compra" placeholder="Precio Compra">
+              <input type="text" onkeyup="masterG.DecimalMax(this,2);" onkeypress="return masterG.validaDecimal(event,this);" class="form-control" id="txt_precio_compra" name="txt_precio_compra">
             </div>
             <div class="form-group">
               <label>Moneda</label>
