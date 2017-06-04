@@ -77,7 +77,7 @@ class PersonaBM extends Controller
                         Rule::unique('personas','dni')->ignore($r->id),
                         ],
                 'email' => 
-                       ['required','email',
+                       ['email',
                         Rule::unique('personas','email')->ignore($r->id),
                         ],
             );

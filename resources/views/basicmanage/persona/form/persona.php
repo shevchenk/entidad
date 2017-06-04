@@ -59,14 +59,14 @@
 
                 <div class="col-sm-4">
                   <label>Telefono</label>
-                  <input type="text" class="form-control" id="txt_telefono" name="txt_telefono" placeholder="Telefono">
+                  <input type="text" class="form-control" id="txt_telefono" name="txt_telefono" placeholder="Telefono" maxlength="7">
                 </div>
               </div><!--FIN DE COL SM 12-->
 
               <div class="col-sm-12"><!--INICIO DE COL SM 12-->
                 <div class="col-sm-4">
                   <label>Celular</label>
-                  <input type="text" class="form-control" id="txt_celular" name="txt_celular" placeholder="Celular">
+                  <input type="text" class="form-control" id="txt_celular" name="txt_celular" placeholder="Celular" maxlength="9">
                 </div>            
                 <div class="col-sm-4">
                   <label>Estado</label>

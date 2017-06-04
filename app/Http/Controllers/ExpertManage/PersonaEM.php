@@ -69,6 +69,7 @@ class PersonaEM extends Controller
             $mensaje= array(
                 'required'    => ':attribute es requerido',
                 'unique'        => ':attribute solo debe ser único',
+                'email'        => ':attribute verifique el email ',
             );
 
             $rules = array(
@@ -77,7 +78,7 @@ class PersonaEM extends Controller
                         Rule::unique('personas','dni')->ignore($r->id),
                         ],
                 'email' => 
-                       ['required','email',
+                       ['email',
                         Rule::unique('personas','email')->ignore($r->id),
                         ],
                 
