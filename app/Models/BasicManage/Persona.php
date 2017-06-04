@@ -66,7 +66,7 @@ class Persona extends Model
         if(trim( $r->fecha_nacimiento )!=''){
         $persona->fecha_nacimiento = trim( $r->fecha_nacimiento );}
         else {
-        $persona->fecha_nacimiento = null;
+        $persona->fecha_nacimiento = trim( $r->fecha_nacimiento );;
         }
 
         $persona->estado = trim( $r->estado );
