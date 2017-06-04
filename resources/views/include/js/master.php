@@ -286,7 +286,7 @@ var masterG ={
     validaNumerosMax:function(e,t,max){ 
         tecla = (document.all) ? e.keyCode : e.which;//captura evento teclado
         if (tecla==8 || tecla==0) return true;//8 barra, 0 flechas desplaz
-        if(this.value.length>=max)return false;
+        if(t.value.length>=max)return false;
         patron = /\d/; // Solo acepta números
         te = String.fromCharCode(tecla); 
         return patron.test(te);
