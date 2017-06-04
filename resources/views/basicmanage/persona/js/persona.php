@@ -55,14 +55,18 @@ $(document).ready(function() {
         $('#ModalPersonaForm #txt_email').val( PersonaG.email );
         $('#ModalPersonaForm #txt_telefono').val( PersonaG.telefono );
         $('#ModalPersonaForm #txt_celular').val( PersonaG.celular );
+        if('#ModalPersonaForm #fecha_nacimiento' == null)
+        {
+        $("#ModalPersonaForm #txt_fecha_nacimiento").val('');
         $('#ModalPersonaForm #txt_fecha_nacimiento').val( PersonaG.fecha_nacimiento );
+        }
         $('#ModalPersonaForm #slct_estado').val( PersonaG.estado );
         $('#ModalPersonaForm #txt_nombre').focus();
     });
 
     $('#ModalPersona').on('hide.bs.modal', function (event) {
         $("#ModalPersonaForm input[type='hidden']").not('.mant').remove();
-        $("#ModalPersonaForm input").val('');
+      $("#ModalPersonaForm input").val('');
     });
 });
 

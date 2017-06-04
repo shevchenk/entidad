@@ -63,10 +63,15 @@ class Persona extends Model
         $persona->telefono = trim( $r->telefono );
         $persona->celular = trim( $r->celular );
 
-        if(trim( $r->fecha_nacimiento )!=''){
-        $persona->fecha_nacimiento = trim( $r->fecha_nacimiento );}
-        else {
-        $persona->fecha_nacimiento = trim( $r->fecha_nacimiento );;
+        if(trim( $r->fecha_nacimiento )!='') 
+        {
+        $persona->fecha_nacimiento = trim( $r->fecha_nacimiento );
+        }
+        else
+        {
+
+        $persona->fecha_nacimiento = null;
+
         }
 
         $persona->estado = trim( $r->estado );
