@@ -34,10 +34,10 @@
                 </div>
                 <div class="col-sm-4">
                   <label>Sexo</label>
-                  <select class="form-control" id="slct_sexo" name="slct_sexo" placeholder="Sexo">
+                  <select class="form-control selectpicker show-menu-arrow" id="slct_sexo" name="slct_sexo" placeholder="Sexo">
                        <option value='' style="display:none">.:Seleccione:.</option>
-                      <option value='F'>Femenino</option>
-                      <option value='M' selected>Masculino</option>
+                      <option data-icon="fa fa-female" value='F'>Femenino</option>
+                      <option data-icon="fa fa-male" value='M' selected>Masculino</option>
                   </select>
                 </div>               
                 <div class="col-sm-4">
@@ -70,9 +70,9 @@
                 </div>            
                 <div class="col-sm-4">
                   <label>Estado</label>
-                    <select class="form-control" name="slct_estado" id="slct_estado">
-                      <option value='0'>Inactivo</option>
-                      <option value='1' selected>Activo</option>
+                    <select class="form-control selectpicker show-menu-arrow" name="slct_estado" id="slct_estado">
+                      <option data-content="<span class='label label-danger'>Inactivo</span>"  value='0'>Inactivo</option>
+                      <option  data-content="<span class='label label-success'>Activo</span>" value='1' selected>Activo</option>
                     </select>
                 </div>
               </div><!--FIN DE COL SM 12-->

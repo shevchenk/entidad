@@ -36,6 +36,9 @@ $(document).ready(function() {
     });
     AjaxPersona.Cargar(HTMLCargarPersona);
 
+    $("#PersonaForm #TablePersona select").change(function(){ AjaxPersona.Cargar(HTMLCargarPersona); });
+    $("#PersonaForm #TablePersona input").blur(function(){ AjaxPersona.Cargar(HTMLCargarPersona); });
+
     $('#ModalPersona').on('shown.bs.modal', function (event) {
 
 
@@ -60,7 +63,9 @@ $(document).ready(function() {
         $("#ModalPersonaForm #txt_fecha_nacimiento").val('');
         $('#ModalPersonaForm #txt_fecha_nacimiento').val( PersonaG.fecha_nacimiento );
         }
+        //$('#ModalPersonaForm #slct_estado').val( PersonaG.estado );
         $('#ModalPersonaForm #slct_estado').val( PersonaG.estado );
+        $("#ModalPersona select").selectpicker('refresh');
         $('#ModalPersonaForm #txt_nombre').focus();
     });
 
