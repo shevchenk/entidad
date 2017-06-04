@@ -15,9 +15,9 @@
             <div class="form-group">
               <label>Estado</label>
               <select class="form-control selectpicker show-menu-arrow" name="slct_estado" id="slct_estado">
-                <option data-content="<span class='btn btn-block btn-danger'>Inactivo</div>" 
+                <option data-content="<span class='btn btn-block btn-danger'><i class='fa fa-close'></i> Inactivo</div>" 
                         value='0'>Inactivo</option>
-                <option data-content="<span class='btn btn-block btn-success'>Activo</div>" 
+                <option data-content="<span class='btn btn-block btn-success'><i class='fa fa-check'></i> Activo</div>" 
                         value='1'
                         selected>Activo</option>
               </select>
