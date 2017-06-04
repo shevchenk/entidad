@@ -15,9 +15,10 @@ class Persona extends Model
 
     public static function runEditStatus($r)
     {
+        $persona_id = Auth::user()->id;
         $persona = Persona::find($r->id);
         $persona->estado = trim( $r->estadof );
-        $persona->persona_id_updated_at=1;
+        $persona->persona_id_updated_at=$persona_id;
         $persona->save();
     }
 
@@ -37,6 +38,9 @@ class Persona extends Model
         $persona->celular = trim( $r->celular );
         if(trim( $r->fecha_nacimiento )!=''){
         $persona->fecha_nacimiento = trim( $r->fecha_nacimiento );}
+        else {
+        $persona->fecha_nacimiento = null;
+        }
         $persona->estado = trim( $r->estado );
         $persona->persona_id_created_at=$persona_id;
         $persona->save();
@@ -52,13 +56,17 @@ class Persona extends Model
         $persona->dni = trim( $r->dni );
         $persona->sexo = trim( $r->sexo );
         $persona->email = trim( $r->email );
+        /*$persona->password= Hash::make(trim( $r->password ));*/
         if(trim( $r->password )!=''){
-        $bcryptpassword = bcrypt($r->password);}
-        $persona->password=$bcryptpassword;
+        $persona->password=bcrypt($r->password);}
+        
         $persona->telefono = trim( $r->telefono );
         $persona->celular = trim( $r->celular );
         if(trim( $r->fecha_nacimiento )!=''){
         $persona->fecha_nacimiento = trim( $r->fecha_nacimiento );}
+        else {
+        $persona->fecha_nacimiento = null;
+        }
         $persona->estado = trim( $r->estado );
         $persona->persona_id_updated_at=$persona_id;
         $persona->save();

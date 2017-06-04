@@ -31,7 +31,7 @@
                 
                 <div class="col-sm-4">
                   <label>DNI</label>
-                  <input type="text" class="form-control" id="txt_dni" name="txt_dni" placeholder="DNI">
+                  <input type="text" class="form-control" id="txt_dni" name="txt_dni" placeholder="DNI" maxlength="8">
                 </div>
                 <div class="col-sm-4">
                   <label>Sexo</label>

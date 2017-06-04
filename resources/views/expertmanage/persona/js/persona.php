@@ -1,6 +1,17 @@
 <script type="text/javascript">
 var AddEdit=0; //0: Editar | 1: Agregar
-var PersonaG={id:0,paterno:"",materno:"",nombre:"",dni:"",sexo:"",email:"",password:"",telefono:"",celular:"",fecha_nacimiento:"",estado:1}; // Datos Globales
+var PersonaG={id:0,
+paterno:"",
+materno:"",
+nombre:"",
+dni:"",
+sexo:"",
+email:"",
+password:"",
+telefono:"",
+celular:"",
+fecha_nacimiento:"",
+estado:1}; // Datos Globales
 $(document).ready(function() {
     $("#TablePersona").DataTable({
         "paging": true,
@@ -15,12 +26,6 @@ $(document).ready(function() {
     $("#PersonaForm #TablePersona input").blur(function(){ AjaxPersona.Cargar(HTMLCargarPersona); });
 
     $('#ModalPersona').on('shown.bs.modal', function (event) {
-
-        /*$('#txt_fecha_nacimiento').daterangepicker({
-            format: 'YYYY-MM-DD',
-            singleDatePicker: true,
-            showDropdowns: true
-        });*/
 
         if( AddEdit==1 ){
             $(this).find('.modal-footer .btn-primary').text('Guardar').attr('onClick','AgregarEditarAjax();');
@@ -37,15 +42,14 @@ $(document).ready(function() {
         $('#ModalPersonaForm #slct_sexo').val( PersonaG.sexo );
         $('#ModalPersonaForm #txt_email').val( PersonaG.email );
         $('#ModalPersonaForm #txt_telefono').val( PersonaG.telefono );
-        $('#ModalPersonaForm #txt_celular').val( PersonaG.celular );
-        
+        $('#ModalPersonaForm #txt_celular').val( PersonaG.celular );        
         $('#ModalPersonaForm #txt_fecha_nacimiento').val( PersonaG.fecha_nacimiento );
         $('#ModalPersonaForm #slct_estado').val( PersonaG.estado );
         $('#ModalPersonaForm #txt_nombre').focus();
     });
 
     $('#ModalPersona').on('hide.bs.modal', function (event) {
-        $("ModalPersonaForm input[type='hidden']").remove();
+        $("ModalPersonaForm input[type='hidden']").not('.mant').remove();
         $("#ModalPersonaForm input").val('');
     });
 });
@@ -96,7 +100,6 @@ AgregarEditar=function(val,id){
 
         PersonaG.id=id;
         PersonaG.paterno=$("#TablePersona #trid_"+id+" .paterno").text();
-
         PersonaG.materno=$("#TablePersona #trid_"+id+" .materno").text();
         PersonaG.nombre=$("#TablePersona #trid_"+id+" .nombre").text();
         PersonaG.dni=$("#TablePersona #trid_"+id+" .dni").text();
@@ -143,8 +146,7 @@ HTMLCargarPersona=function(result){
     var html="";
     $('#TablePersona').DataTable().destroy();
 
-    $.each(result.data.data,function(index,r){
-        
+    $.each(result.data.data,function(index,r){        
         estadohtml='<span id="'+r.id+'" onClick="CambiarEstado(1,'+r.id+')" class="btn btn-danger">Inactivo</span>';
         if(r.estado==1){
             estadohtml='<span id="'+r.id+'" onClick="CambiarEstado(0,'+r.id+')" class="btn btn-success">Activo</span>';
