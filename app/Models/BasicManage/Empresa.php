@@ -3,6 +3,9 @@
 namespace App\Models\BasicManage;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Input;
 
 class Empresa extends Model
 {
@@ -10,14 +13,16 @@ class Empresa extends Model
 
     public static function runEditStatus($r)
     {
+        $empresas = Auth::user()->id;
         $empresa = Empresa::find($r->id);
         $empresa->estado = trim( $r->estadof );
-        $empresa->persona_id_updated_at=1;
+        $empresa->persona_id_updated_at=$empresas;
         $empresa->save();
     }
 
     public static function runNew($r)
     {
+        $empresas = Auth::user()->id;
         $empresa = new Empresa;
         $empresa->persona_id = trim( $r->persona_id );
         $empresa->razon_social = trim( $r->razon_social );
@@ -28,12 +33,13 @@ class Empresa extends Model
         $empresa->celular = trim( $r->celular );
         $empresa->email = trim( $r->email );
         $empresa->estado = trim( $r->estado );
-        $empresa->persona_id_created_at=1;
+        $empresa->persona_id_created_at=$empresas;
         $empresa->save();
     }
 
     public static function runEdit($r)
     {
+        $empresas = Auth::user()->id;
         $empresa = Empresa::find($r->id);
         $empresa->persona_id = trim( $r->persona_id );
         $empresa->razon_social = trim( $r->razon_social );
@@ -44,7 +50,7 @@ class Empresa extends Model
         $empresa->celular = trim( $r->celular );
         $empresa->email = trim( $r->email );
         $empresa->estado = trim( $r->estado );
-        $empresa->persona_id_updated_at=1;
+        $empresa->persona_id_updated_at=$empresas;
         $empresa->save();
     }
 

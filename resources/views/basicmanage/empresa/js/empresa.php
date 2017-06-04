@@ -12,6 +12,9 @@ celular:"",
 email:"",
 estado:1}; // Datos Globales
 $(document).ready(function() {
+    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ) {
+      $('.selectpicker').selectpicker('mobile');
+    }
     $("#TableEmpresa").DataTable({
         "paging": true,
         "lengthChange": false,

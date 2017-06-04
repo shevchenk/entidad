@@ -23,7 +23,7 @@
               <div class="col-sm-12"> <!--INICIO DE COL SM 12-->
               <div class="col-sm-4">
               <label>Razon Social</label>
-              <input type="text" class="form-control" id="txt_razon_social" name="txt_razon_social" placeholder="Razon Social">
+              <input type="text"  class="form-control" id="txt_razon_social" name="txt_razon_social" placeholder="Razon Social">
               </div>
            
               <div class="col-sm-4">
@@ -33,7 +33,7 @@
          
               <div class="col-sm-4">
               <label>Ruc</label>
-              <input type="text" class="form-control" id="txt_ruc" name="txt_ruc" placeholder="Ruc">
+              <input type="number" onkeypress="return masterG.validaNumerosMax(event,this,11);" class="form-control" id="txt_ruc" name="txt_ruc" placeholder="Ruc">
               </div>
               </div>
 
@@ -45,12 +45,12 @@
 
               <div class="col-sm-4">
               <label>Telefono</label>
-              <input type="text" class="form-control" id="txt_telefono" name="txt_telefono" placeholder="Telefono">
+              <input type="number" onkeypress="return masterG.validaNumerosMax(event,this,7);" class="form-control" id="txt_telefono" name="txt_telefono" placeholder="Telefono">
               </div>
 
               <div class="col-sm-4">
               <label>Celular</label>
-              <input type="text" class="form-control" id="txt_celular" name="txt_celular" placeholder="Celular">
+              <input type="number" onkeypress="return masterG.validaNumerosMax(event,this,9);" class="form-control" id="txt_celular" name="txt_celular" placeholder="Celular">
               </div>
             </div>
 

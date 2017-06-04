@@ -9,9 +9,11 @@ var AjaxEmpresa={
         masterG.postAjax(url,data,evento);
     },
     Cargar:function(evento){
-        url='AjaxDinamic/BasicManage.EmpresaBM@Load';
         data={};
+        $("#EmpresaForm input[type='hidden']").not('.mant').remove();
+        url='AjaxDinamic/BasicManage.EmpresaBM@Load';
         masterG.postAjax(url,data,evento);
+
     },
     CambiarEstado:function(evento,AI,id){
         $("#ModalEmpresaForm").append("<input type='hidden' value='"+AI+"' name='estadof'>");
