@@ -13,6 +13,10 @@ $(document).ready(function() {
     AjaxSucursal.Cargar(HTMLCargarSucursal);
 
     $('#ModalSucursal').on('shown.bs.modal', function (event) { 
+        if( /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ) {
+         $('.selectpicker').selectpicker('mobile');
+         }
+
         if( AddEdit==1 ){
             $(this).find('.modal-footer .btn-primary').text('Guardar').attr('onClick','AgregarEditarAjax();');
         }
@@ -32,8 +36,8 @@ $(document).ready(function() {
     });
 
     $('#ModalSucursal').on('hide.bs.modal', function (event) {
-        $("ModalSucursalForm input[type='hidden']").remove();
-        $("ModalSucursalForm input").val('');
+        $("ModalSucursalForm input[type='hidden']").not('.mant').remove();
+      //  $("ModalSucursalForm input").val('');
     });
 });
 

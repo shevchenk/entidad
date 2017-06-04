@@ -18,11 +18,11 @@
             </div>
             <div class="form-group">
               <label>Telefono</label>
-              <input type="text" class="form-control" id="txt_telefono" name="txt_telefono" placeholder="Telefono">
+              <input type="text" onkeypress="return masterG.validaNumerosMax(event,this,7);" class="form-control" id="txt_telefono" name="txt_telefono" placeholder="Telefono">
             </div>
             <div class="form-group">
               <label>Celular</label>
-              <input type="text" class="form-control" id="txt_celular" name="txt_celular" placeholder="Celular">
+              <input type="text" onkeypress="return masterG.validaNumerosMax(event,this,9);" class="form-control" id="txt_celular" name="txt_celular" placeholder="Celular">
             </div>
             <div class="form-group">
               <label>Email</label>

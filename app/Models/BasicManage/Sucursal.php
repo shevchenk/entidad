@@ -3,6 +3,9 @@
 namespace App\Models\BasicManage;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Input;
 
 class Sucursal extends Model
 {
@@ -10,14 +13,16 @@ class Sucursal extends Model
 
     public static function runEditStatus($r)
     {
+        $sucursale = Auth::user()->id;
         $sucursal = Sucursal::find($r->id);
         $sucursal->estado = trim( $r->estadof );
-        $sucursal->persona_id_updated_at=1;
+        $sucursal->persona_id_updated_at=$sucursale;
         $sucursal->save();
     }
 
     public static function runNew($r)
     {
+        $sucursale = Auth::user()->id;
         $sucursal = new Sucursal;
         $sucursal->sucursal = trim( $r->sucursal );
         $sucursal->direccion = trim( $r->direccion );
@@ -25,12 +30,13 @@ class Sucursal extends Model
         $sucursal->celular = trim( $r->celular );
         $sucursal->email = trim( $r->email );
         $sucursal->estado = trim( $r->estado );
-        $sucursal->persona_id_created_at=1;
+        $sucursal->persona_id_created_at=$sucursale;
         $sucursal->save();
     }
 
     public static function runEdit($r)
     {
+        $sucursale = Auth::user()->id;
         $sucursal = Sucursal::find($r->id);
         $sucursal->sucursal = trim( $r->sucursal );
         $sucursal->direccion = trim( $r->direccion );
@@ -38,7 +44,7 @@ class Sucursal extends Model
         $sucursal->celular = trim( $r->celular );
         $sucursal->email = trim( $r->email );
         $sucursal->estado = trim( $r->estado );
-        $sucursal->persona_id_updated_at=1;
+        $sucursal->persona_id_updated_at=$sucursale;
         $sucursal->save();
     }
 

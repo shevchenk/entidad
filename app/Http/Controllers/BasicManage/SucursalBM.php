@@ -5,6 +5,9 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\BasicManage\Sucursal;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
+
+
 
 class SucursalBM extends Controller
 {
@@ -26,11 +29,21 @@ class SucursalBM extends Controller
     public function New(Request $r )
     {
         if ( $r->ajax() ) {
-            $rules=array(
-                'sucursal' => 'required|max:100|unique:sucursales'
+
+            $mensaje= array(
+                'required'    => ':attribute es requerido',
+                'unique'        => ':attribute solo debe ser único',
             );
 
-            $validator=Validator::make($r->all(), $rules);
+            $rules = array(
+                'sucursal' => 
+                       ['required',
+                        Rule::unique('sucursales','sucursal'),
+                        ],
+            );
+
+            
+            $validator=Validator::make($r->all(), $rules,$mensaje);
 
             if ( !$validator->fails() ) {
                 Sucursal::runNew($r);
@@ -39,7 +52,7 @@ class SucursalBM extends Controller
             }
             else{
                 $return['rst'] = 2;
-                $return['msj'] = '!Sucursal existente¡, modifique su sucursal';
+                $return['msj'] = $validator->errors()->all()[0];
             }
             return response()->json($return);
         }
@@ -48,11 +61,19 @@ class SucursalBM extends Controller
     public function Edit(Request $r )
     {
         if ( $r->ajax() ) {
-            $rules=array(
-                'sucursal' => 'required|max:100|unique:sucursales,sucursal,'.$r->id
+            $mensaje= array(
+                'required'    => ':attribute es requerido',
+                'unique'        => ':attribute solo debe ser único',
             );
 
-            $validator=Validator::make($r->all(), $rules);
+            $rules = array(
+                'sucursal' => 
+                       ['required',
+                        Rule::unique('sucursales','sucursal')->ignore($r->id),
+                        ],
+            );
+
+            $validator=Validator::make($r->all(), $rules,$mensaje);
 
             if ( !$validator->fails() ) {
                 Sucursal::runEdit($r);
@@ -61,7 +82,7 @@ class SucursalBM extends Controller
             }
             else{
                 $return['rst'] = 2;
-                $return['msj'] = '!Sucursal existente¡, modifique su sucursal';
+                $return['msj'] = $validator->errors()->all()[0];
             }
             return response()->json($return);
         }
