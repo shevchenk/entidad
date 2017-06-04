@@ -62,7 +62,7 @@ $(document).ready(function() {
 
     $('#ModalPersona').on('hide.bs.modal', function (event) {
         $("#ModalPersonaForm input[type='hidden']").not('.mant').remove();
-     //   $("#ModalPersonaForm input").val('');
+        $("#ModalPersonaForm input").val('');
     });
 });
 

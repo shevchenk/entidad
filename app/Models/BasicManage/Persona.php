@@ -37,9 +37,8 @@ class Persona extends Model
         $persona->telefono = trim( $r->telefono );
         $persona->celular = trim( $r->celular );
         if(trim( $r->fecha_nacimiento )!=''){
-        $persona->fecha_nacimiento  = date('Y-m-d', strtotime('+'.$r->fecha_nacimiento.' day', strtotime(date('Y-m-d')))); 
-        //$persona->fecha_nacimiento = trim( $r->fecha_nacimiento );}
-        }else {
+        $persona->fecha_nacimiento = trim( $r->fecha_nacimiento );}
+        else {
         $persona->fecha_nacimiento = null;
         }
         $persona->estado = trim( $r->estado );
@@ -63,12 +62,13 @@ class Persona extends Model
         
         $persona->telefono = trim( $r->telefono );
         $persona->celular = trim( $r->celular );
+
         if(trim( $r->fecha_nacimiento )!=''){
-        $persona->fecha_nacimiento  = date('Y-m-d', strtotime('+'.$r->fecha_nacimiento.' day', strtotime(date('Y-m-d')))); 
-        //$persona->fecha_nacimiento = trim( $r->fecha_nacimiento );}
-        }else {
+        $persona->fecha_nacimiento = trim( $r->fecha_nacimiento );}
+        else {
         $persona->fecha_nacimiento = null;
         }
+
         $persona->estado = trim( $r->estado );
         $persona->persona_id_updated_at=$persona_id;
         $persona->save();
