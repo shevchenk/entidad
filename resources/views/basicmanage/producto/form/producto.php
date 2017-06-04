@@ -56,7 +56,7 @@
             </div>
             <div class="form-group">
               <label>Fecha Vencimiento</label>
-              <input type="date" class="form-control" id="txt_fecha_vencimiento" name="txt_fecha_vencimiento" >
+              <input type="text" class="form-control fechas" id="txt_fecha_vencimiento" name="txt_fecha_vencimiento" placeholder="0000-00-00" >
             </div>
             <div class="form-group">
               <label>Días Vencimiento</label>

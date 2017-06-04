@@ -6,6 +6,15 @@ $(document).ready(function() {
     if( /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ) {
       $('.selectpicker').selectpicker('mobile');
     }
+    $(".fechas").datetimepicker({
+        format: "yyyy-mm-dd",
+        language: 'es',
+        showMeridian: false,
+        time:false,
+        minView:2,
+        autoclose: true,
+        todayBtn: false
+    });
 
     $("#TableProducto").DataTable({
         "paging": true,
