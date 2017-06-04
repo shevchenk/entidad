@@ -54,7 +54,7 @@
 
                 <div class="col-sm-4">
                     <label>Fecha Nacimiento</label>
-                    <input type="text" class="form-control" id="txt_fecha_nacimiento" name="txt_fecha_nacimiento" placeholder="0000-00-00" > <!-- onfocus="blur()"/-->
+                    <input type="text" class="form-control fechas" id="txt_fecha_nacimiento" name="txt_fecha_nacimiento" placeholder="0000-00-00" > <!-- onfocus="blur()"/-->
                 </div>
 
                 <div class="col-sm-4">
