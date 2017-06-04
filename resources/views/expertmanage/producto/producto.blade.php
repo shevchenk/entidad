@@ -5,6 +5,14 @@
     {{ Html::style('lib/datatables/dataTables.bootstrap.css') }}
     {{ Html::script('lib/datatables/jquery.dataTables.min.js') }}
     {{ Html::script('lib/datatables/dataTables.bootstrap.min.js') }}
+    
+    {{ Html::style('lib/bootstrap-select/dist/css/bootstrap-select.min.css') }}
+    {{ Html::script('lib/bootstrap-select/dist/js/bootstrap-select.min.js') }}
+    {{ Html::script('lib/bootstrap-select/dist/js/i18n/defaults-es_ES.min.js') }}
+
+    {{ Html::style('lib/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css') }}
+    {{ Html::script('lib/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js') }}
+    {{ Html::script('lib/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.es.js') }}
 
     @include( 'expertmanage.producto.js.producto_ajax' )
     @include( 'expertmanage.producto.js.producto' )

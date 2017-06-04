@@ -28,11 +28,11 @@
             </div>
             <div class="form-group">
               <label>Fecha Inicio</label>
-              <input type="date" class="form-control" id="txt_fecha_inicio" name="txt_fecha_inicio" >
+              <input type="text" class="form-control fechas" id="txt_fecha_inicio" name="txt_fecha_inicio" >
             </div>
             <div class="form-group">
               <label>Fecha Fin</label>
-              <input type="date" class="form-control" id="txt_fecha_final" name="txt_fecha_final" >
+              <input type="text" class="form-control fechas" id="txt_fecha_final" name="txt_fecha_final" >
             </div>
             <div class="form-group">
               <label>Estado</label>

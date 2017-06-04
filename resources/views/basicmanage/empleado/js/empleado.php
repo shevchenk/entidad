@@ -2,6 +2,19 @@
 var AddEdit=0; //0: Editar | 1: Agregar
 var EmpleadoG={id:0,persona_id:0,persona:"",cargo_id:0,sucursal_id:0,fecha_inicio:"",fecha_final:"",estado:1}; // Datos Globales
 $(document).ready(function() {
+    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ) {
+      $('.selectpicker').selectpicker('mobile');
+    }
+    $(".fechas").datetimepicker({
+        format: "yyyy-mm-dd",
+        language: 'es',
+        showMeridian: false,
+        time:false,
+        minView:2,
+        autoclose: true,
+        todayBtn: false
+    });
+    
     $("#TableEmpleado").DataTable({
         "paging": true,
         "lengthChange": false,
