@@ -20,7 +20,7 @@
             </div>
             <div class="form-group">
               <label>Artículo</label>
-              <select  class="form-control" id="slct_articulo" name="slct_articulo">
+              <select  class="form-control selectpicker show-menu-arrow" data-live-search="true" id="slct_articulo" name="slct_articulo">
                   <option value="0">.::Seleccione::.</option>
               </select>
             </div>

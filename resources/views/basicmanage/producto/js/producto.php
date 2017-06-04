@@ -51,7 +51,7 @@ $(document).ready(function() {
         $('#ModalProductoForm #txt_fecha_vencimiento').val( ProductoG.fecha_vencimiento );
         $('#ModalProductoForm #txt_dias_vencimiento').val( ProductoG.dias_vencimiento );
         $('#ModalProductoForm #slct_estado').val( ProductoG.estado );
-        
+        $("#ModalProducto select").selectpicker('refresh')
         $('#ModalProductoForm #txt_producto').focus();
     });
 
@@ -219,6 +219,7 @@ SlctCargarSucursal=function(result){
         html+="<option value="+r.id+">"+r.sucursal+"</option>";
     });
     $("#ModalProducto #slct_sucursal").html(html); 
+    $("#ModalProducto #slct_sucursal").selectpicker('refresh');
 
 };
 
@@ -228,6 +229,7 @@ SlctCargarArticulo=function(result){
         html+="<option value="+r.id+">"+r.articulo+"</option>";
     });
     $("#ModalProducto #slct_articulo").html(html); 
+    $("#ModalProducto #slct_articulo").selectpicker('refresh');
 
 };
 
