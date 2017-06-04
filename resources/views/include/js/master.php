@@ -116,6 +116,10 @@ skins_listG.append(skin_yellow_lightG);
 
 $(document).ready(function() {
     var tmp = masterG.get('skin');
+    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ) {
+      $('.selectpicker').selectpicker('mobile');
+    }
+    
     if (tmp && $.inArray(tmp, my_skinsG))
         masterG.change_skin(tmp);
 

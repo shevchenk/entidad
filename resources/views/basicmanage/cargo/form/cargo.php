@@ -14,9 +14,12 @@
             </div>
             <div class="form-group">
               <label>Estado</label>
-              <select class="form-control" name="slct_estado" id="slct_estado">
-                <option value='0'>Inactivo</option>
-                <option value='1' selected>Activo</option>
+              <select class="form-control selectpicker show-menu-arrow" name="slct_estado" id="slct_estado">
+                <option data-content="<span class='btn btn-block btn-danger'>Inactivo</div>" 
+                        value='0'>Inactivo</option>
+                <option data-content="<span class='btn btn-block btn-success'>Activo</div>" 
+                        value='1'
+                        selected>Activo</option>
               </select>
             </div>
           </form>

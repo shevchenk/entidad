@@ -23,6 +23,7 @@ $(document).ready(function() {
 
         $('#ModalCargoForm #txt_cargo').val( CargoG.cargo );
         $('#ModalCargoForm #slct_estado').val( CargoG.estado );
+        $("#ModalCargoForm .selectpicker").selectpicker('refresh');
         $('#ModalCargoForm #txt_cargo').focus();
     });
 
