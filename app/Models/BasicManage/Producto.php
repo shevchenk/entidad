@@ -17,7 +17,7 @@ class Producto extends Model
     }
 
     public static function runNew($r)
-    {        
+    {            
         $producto = new Producto;
         $producto->producto = trim( $r->producto );
         $producto->sucursal_id = trim( $r->sucursal );
@@ -37,12 +37,16 @@ class Producto extends Model
         }
         $producto->estado = trim( $r->estado );
         $producto->persona_id_created_at=1;
+        if(trim($r->imagen_nombre)!=''){
+        $producto->foto=$r->imagen_nombre;
+        $este = new Producto;
+        $url = "img/product/".$r->imagen_nombre; 
+        $este->fileToFile($r->imagen_archivo, $url);}
+        else {
+        $producto->foto=null;    
+        }
         $producto->save();
-        
-//        $file = $r->pago_archivo;
-//        $nombre=$r->pago_nombre;
-//        $url = "img/product/".$nombre;
-//        $this->fileToFile($file, $url);
+       
                 
     }
 
@@ -59,21 +63,31 @@ class Producto extends Model
         $producto->stock_minimo = trim( $r->stock_minimo );
         $producto->dias_alerta = trim( $r->dias_alerta );
         if(trim($r->dias_vencimiento)!=''){
-        $producto->dias_vencimiento = trim( $r->dias_vencimiento );
-        $producto->fecha_vencimiento  = date('Y-m-d', strtotime('+'.$r->dias_vencimiento.' day', strtotime(date('Y-m-d'))));     
+            $producto->dias_vencimiento = trim( $r->dias_vencimiento );
+            $producto->fecha_vencimiento  = date('Y-m-d', strtotime('+'.$r->dias_vencimiento.' day', strtotime(date('Y-m-d'))));     
         }else {
-        $producto->dias_vencimiento = 0; 
-        $producto->fecha_vencimiento = trim( $r->fecha_vencimiento );
+            $producto->dias_vencimiento = 0; 
+            $producto->fecha_vencimiento = trim( $r->fecha_vencimiento );
         }
         $producto->estado = trim( $r->estado );
         $producto->persona_id_updated_at=1;
+        if(trim($r->imagen_nombre)!=''){
+            $producto->foto=$r->imagen_nombre;
+        }else {
+            $producto->foto=null;    
+        }
+        if(trim($r->imagen_archivo)!=''){
+            $este = new Producto;
+            $url = "img/product/".$r->imagen_nombre; 
+            $este->fileToFile($r->imagen_archivo, $url);
+        }
         $producto->save();
     }
 
     public static function runLoad($r)
     {
         $sql=Producto::select('id','articulo_id','sucursal_id','producto','precio_venta','precio_compra',
-                'moneda','stock','stock_minimo','dias_alerta','fecha_vencimiento','dias_vencimiento','estado')
+                'moneda','stock','stock_minimo','dias_alerta','fecha_vencimiento','dias_vencimiento','foto','estado')
             ->where( 
                 function($query) use ($r){
                     if( $r->has("producto") ){
@@ -115,7 +129,6 @@ class Producto extends Model
         if ( !is_dir('img/product') ) {
             mkdir('img/product',0777);
         }
-
         list($type, $file) = explode(';', $file);
         list(, $type) = explode('/', $type);
         if ($type=='jpeg') $type='jpg';
