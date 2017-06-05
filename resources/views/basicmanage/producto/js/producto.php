@@ -259,6 +259,7 @@ Cargar=function(tipo){
     }
     if(tipo==1){
     AjaxArticulo.Cargar(HTMLCargarArticulo2);
+    CargarSlct(2);
     $("#ArticuloForm").css("display","");
     $("#CategoriaForm").css("display","none");
     }
