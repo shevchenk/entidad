@@ -28,7 +28,7 @@ $(document).ready(function() {
         $('#ModalCategoriaForm #txt_categoria').focus();
     });
 
-    $('#ModalCategoria').on('hide.bs.modal', function (event) {
+    $('#ModalCategoria').on('hidden.bs.modal', function (event) {
         $("#ModalCategoriaForm input[type='hidden']").not('.mant').remove();
     });
 });

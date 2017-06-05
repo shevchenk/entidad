@@ -49,7 +49,7 @@ $(document).ready(function() {
         $('#ModalEmpleadoForm #txt_persona').focus();
     });
 
-    $('#ModalEmpleado').on('hide.bs.modal', function (event) {
+    $('#ModalEmpleado').on('hidden.bs.modal', function (event) {
         $("#ModalEmpleadoForm input[type='hidden']").not('.mant').remove();
     });
 });

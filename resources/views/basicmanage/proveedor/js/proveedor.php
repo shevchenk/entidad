@@ -2,6 +2,16 @@
 var AddEdit=0; //0: Editar | 1: Agregar
 var ProveedorG={id:0,persona_id:0,persona:"",empresa:"",empresa_id:0,estado:1}; // Datos Globales
 $(document).ready(function() {
+    $(".fechas").datetimepicker({
+        format: "yyyy-mm-dd",
+        language: 'es',
+        showMeridian: false,
+        time:false,
+        minView:2,
+        autoclose: true,
+        todayBtn: false
+    });
+    
     $("#TableProveedor").DataTable({
         "paging": true,
         "lengthChange": false,
@@ -36,7 +46,7 @@ $(document).ready(function() {
         $('#ModalProveedorForm #txt_persona').focus();
     });
 
-    $('#ModalProveedor').on('hide.bs.modal', function (event) {
+    $('#ModalProveedor').on('hidden.bs.modal', function (event) {
         $("#ModalProveedorForm input[type='hidden']").not('.mant').remove();
     });
 });

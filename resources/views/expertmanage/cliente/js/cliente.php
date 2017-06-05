@@ -2,6 +2,16 @@
 var AddEdit=0; //0: Editar | 1: Agregar
 var ClienteG={id:0,persona_id:0,persona:"",empresa:"",empresa_id:0,estado:1}; // Datos Globales
 $(document).ready(function() {
+    $(".fechas").datetimepicker({
+        format: "yyyy-mm-dd",
+        language: 'es',
+        showMeridian: false,
+        time:false,
+        minView:2,
+        autoclose: true,
+        todayBtn: false
+    });
+    
     $("#TableCliente").DataTable({
         "paging": true,
         "lengthChange": false,
@@ -39,7 +49,7 @@ $(document).ready(function() {
         $('#ModalClienteForm #txt_persona').focus();
     });
 
-    $('#ModalCliente').on('hide.bs.modal', function (event) {
+    $('#ModalCliente').on('hidden.bs.modal', function (event) {
         $("#ModalClienteForm input[type='hidden']").not('.mant').remove();
     });
 });

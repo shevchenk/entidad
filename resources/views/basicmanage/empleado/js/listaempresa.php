@@ -29,7 +29,7 @@ $(document).ready(function() {
 
     });
 
-    $('#ModalListaempresa').on('hide.bs.modal', function (event) {
+    $('#ModalListaempresa').on('hidden.bs.modal', function (event) {
           LEfiltrosG='';
 //        $("ModalEmpresaForm input[type='hidden']").remove();
     });

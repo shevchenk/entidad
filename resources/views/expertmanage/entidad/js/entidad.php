@@ -47,7 +47,7 @@ $(document).ready(function() {
         $('#ModalEntidadForm #txt_persona_id').focus();
     });
 
-    $('#ModalEntidad').on('hide.bs.modal', function (event) {
+    $('#ModalEntidad').on('hidden.bs.modal', function (event) {
         $("ModalEntidadForm input[type='hidden']").not('.mant').remove();
         $("ModalEntidadForm input").val('');
     });

@@ -28,7 +28,7 @@ $(document).ready(function() {
         $('#ModalCargoForm #txt_cargo').focus();
     });
 
-    $('#ModalCargo').on('hide.bs.modal', function (event) {
+    $('#ModalCargo').on('hidden.bs.modal', function (event) {
         $("ModalCargoForm input[type='hidden']").remove();
         $("ModalCargoForm input").val('');
     });

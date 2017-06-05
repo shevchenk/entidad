@@ -35,7 +35,7 @@ $(document).ready(function() {
         $('#ModalSucursalForm #txt_sucursal').focus();
     });
 
-    $('#ModalSucursal').on('hide.bs.modal', function (event) {
+    $('#ModalSucursal').on('hidden.bs.modal', function (event) {
         $("ModalSucursalForm input[type='hidden']").not('.mant').remove();
       //  $("ModalSucursalForm input").val('');
     });
