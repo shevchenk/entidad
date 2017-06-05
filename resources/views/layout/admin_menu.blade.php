@@ -21,13 +21,13 @@
         @endif
     <li class="treeview">
         <a href="#">
-            <i class="fa fa-table"></i> <span>Mis datos</span>
+            <i class="fa fa-user-secret"></i> <span>Mis datos</span>
                 <span class="pull-right-container">
                     <i class="fa fa-angle-left pull-right"></i>
                 </span>
         </a>
         <ul class="treeview-menu">
-            <li><a href="secureaccess.myself"><i class="fa fa-circle-o"></i> Datos Personales </a></li>
+            <li><a href="secureaccess.myself"><i class="fa fa-lock"></i> Datos Personales </a></li>
         </ul>
     </li>
 </ul>
