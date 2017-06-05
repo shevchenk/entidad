@@ -49,6 +49,7 @@ $(document).ready(function() {
         $('#ModalProductoForm #txt_dias_vencimiento').val( ProductoG.dias_vencimiento );
         $('#ModalProductoForm #slct_estado').val( ProductoG.estado );
         $('#ModalProductoForm #txt_imagen_nombre').val(ProductoG.imagen_nombre);
+        $('#ModalProductoForm #txt_imagen_archivo').val('');
         $('#ModalProductoForm .img-circle').attr('src',ProductoG.imagen_archivo);
         $("#ModalProducto select").selectpicker('refresh');
         $('#ModalProductoForm #txt_producto').focus();

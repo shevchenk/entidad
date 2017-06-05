@@ -108,7 +108,7 @@ HTMLAgregarEditar2=function(result){
     if( result.rst==1 ){
         msjG.mensaje('success',result.msj,4000);
         $('#ModalEmpresa').modal('hide');
-        AjaxAgregar_Editar_Empresa.Cargar(HTMLCargarEmpresa);
+        AjaxListaempresa.Cargar(HTMLCargarEmpresa);
     }
     else{
         msjG.mensaje('warning',result.msj,3000);
