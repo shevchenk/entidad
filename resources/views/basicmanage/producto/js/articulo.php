@@ -23,8 +23,9 @@ $(document).ready(function() {
         }
 
         $('#ModalArticuloForm #txt_articulo').val( ArticuloG.articulo );
-         $('#ModalArticuloForm #slct_categoria').val( ArticuloG.categoria_id );
+        $('#ModalArticuloForm #slct_categoria').val( ArticuloG.categoria_id );
         $('#ModalArticuloForm #slct_estado').val( ArticuloG.estado );
+        $("#ModalArticuloForm select").selectpicker('refresh');
         $('#ModalArticuloForm #txt_articulo').focus();
     });
 
@@ -122,7 +123,8 @@ SlctCargarCategoria=function(result){
     $.each(result.data,function(index,r){
         html+="<option value="+r.id+">"+r.categoria+"</option>";
     });
-    $("#ModalArticulo #slct_categoria").html(html); 
+    $("#ModalArticuloForm #slct_categoria").html(html); 
+    $("#ModalProductoForm #slct_categoria").selectpicker('refresh');
 
 };
 </script>

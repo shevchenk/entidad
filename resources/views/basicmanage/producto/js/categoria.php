@@ -25,6 +25,7 @@ $(document).ready(function() {
 
         $('#ModalCategoriaForm #txt_categoria').val( CategoriaG.categoria );
         $('#ModalCategoriaForm #slct_estado').val( CategoriaG.estado );
+        $("#ModalCategoriaForm select").selectpicker('refresh');
         $('#ModalCategoriaForm #txt_categoria').focus();
     });
 

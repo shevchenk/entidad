@@ -14,7 +14,7 @@
             </div>
             <div class="form-group">
               <label>Categoria</label>
-              <select  class="form-control" id="slct_categoria" name="slct_categoria">
+              <select  class="form-controlselectpicker show-menu-arrow" data-live-search="true" id="slct_categoria" name="slct_categoria">
                   <option value="0">.::Seleccione::.</option>
               </select>
             </div>

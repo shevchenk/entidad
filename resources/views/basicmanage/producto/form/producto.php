@@ -1,5 +1,5 @@
 <div class="modal" id="ModalProducto" tabindex="-1" role="dialog">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header btn-info">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -65,21 +65,19 @@
             <div class="form-group">
               <label>Estado</label>
               <select class="form-control selectpicker show-menu-arrow" name="slct_estado" id="slct_estado">
-                <option data-content="<span class='label label-danger'>Inactivo</span>" 
-                        value='0'>Inactivo</option>
-                <option data-content="<span class='label label-success'>Activo</span>" 
-                        value='1'
-                        selected>Activo</option>
+                <option  value='0'>Inactivo</option>
+                <option  value='1'>Activo</option>
               </select>
             </div>
             <div class="form-group">
               <label>Imagen</label>
-                <input type="text"  readOnly class="form-control input-sm" id="pago_nombre"  name="pago_nombre" value="">
-                <input type="text" style="display: none;" id="pago_archivo" name="pago_archivo">
+                <input type="text"  readOnly class="form-control input-sm" id="txt_imagen_nombre"  name="txt_imagen_nombre" value="">
+                <input type="text" style="display: none;" id="txt_imagen_archivo" name="txt_imagen_archivo">
                 <label class="btn btn-default btn-flat margin btn-xs">
                 <i class="fa fa-file-image-o fa-lg"></i>
-                <input type="file" style="display: none;" onchange="onPagos(event);" >
+                <input type="file" style="display: none;" onchange="onImagen(event);" >
                 </label>
+                <img class="img-circle" style="height: 142px;width: 100%;border-radius: 8px;border: 1px solid grey;margin-top: 5px;padding: 8px"> 
             </div>  
 
           </form>
