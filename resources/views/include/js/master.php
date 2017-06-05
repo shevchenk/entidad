@@ -117,8 +117,15 @@ skins_listG.append(skin_yellow_lightG);
 $(document).ready(function() {
     var opcionesm="<?php echo session('opciones'); ?>";
     var validarutaurlm="<?php echo $valida_ruta_url; ?>";
-    var iconom=opcionesm.split(validarutaurlm)[1].split("|")[1];
+    var iconom='fa fa-dashboard';
+    if( opcionesm.split(validarutaurlm).length>1 ){
+      iconom=opcionesm.split(validarutaurlm)[1].split("|")[1];
+    }
+    else if( validarutaurlm=='secureaccess.myself' ){
+      iconom="fa fa-lock";
+    }
     $("ol.breadcrumb>li>i").removeClass().addClass("fa "+iconom);
+
     var tmp = masterG.get('skin');
     if( /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ) {
       $('.selectpicker').selectpicker('mobile');
