@@ -109,7 +109,10 @@
                         <div class="form-group">
                             <img class="img-circle" style="height: 142px;width: 100%;border-radius: 8px;border: 1px solid grey;margin-top: 5px;padding: 8px"> 
                         </div>  
-                    </div> 
+                    </div>
+                     <div class="form-group"> 
+                         <label></label>
+                     </div>
                 </form>
             </div>
             <div class="modal-footer">
