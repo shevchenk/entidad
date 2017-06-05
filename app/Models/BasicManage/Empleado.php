@@ -3,7 +3,7 @@
 namespace App\Models\BasicManage;
 
 use Illuminate\Database\Eloquent\Model;
-
+use DB;
 class Empleado extends Model
 {
     protected   $table = 'empleados';
@@ -57,7 +57,7 @@ class Empleado extends Model
     public static function runLoad($r)
     {
         $sql=Empleado::select('empleados.id','persona_id','personas.paterno','personas.materno','personas.nombre','cargo_id','sucursal_id',
-                             'cargos.cargo','sucursales.sucursal','empleados.estado','fecha_inicio','fecha_final')
+                             'cargos.cargo','sucursales.sucursal','empleados.estado',DB::raw('IFNULL(fecha_inicio,"") as fecha_inicio'),DB::raw('IFNULL(fecha_final,"") as fecha_final'))
             ->join('personas','empleados.persona_id','=','personas.id')
             ->join('cargos','empleados.cargo_id','=','cargos.id')
             ->join('sucursales','empleados.sucursal_id','=','sucursales.id')

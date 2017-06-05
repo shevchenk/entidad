@@ -28,12 +28,12 @@ class Producto extends Model
         $producto->stock = trim( $r->stock );
         $producto->stock_minimo = trim( $r->stock_minimo );
         $producto->dias_alerta = trim( $r->dias_alerta );
-        if(trim($r->dias_vencimiento)!=''){
-        $producto->dias_vencimiento = trim( $r->dias_vencimiento );
-        $producto->fecha_vencimiento  = date('Y-m-d', strtotime('+'.$r->dias_vencimiento.' day', strtotime(date('Y-m-d'))));     
+        if(trim($r->fecha_vencimiento)!=''){
+            $producto->dias_vencimiento = 0; 
+            $producto->fecha_vencimiento = trim( $r->fecha_vencimiento );
         }else {
-        $producto->dias_vencimiento = 0; 
-        $producto->fecha_vencimiento = trim( $r->fecha_vencimiento );
+            $producto->dias_vencimiento = trim( $r->dias_vencimiento );
+            $producto->fecha_vencimiento  = date('Y-m-d', strtotime('+'.$r->dias_vencimiento.' day', strtotime(date('Y-m-d'))));     
         }
         $producto->estado = trim( $r->estado );
         $producto->persona_id_created_at=1;
@@ -62,12 +62,12 @@ class Producto extends Model
         $producto->stock = trim( $r->stock );
         $producto->stock_minimo = trim( $r->stock_minimo );
         $producto->dias_alerta = trim( $r->dias_alerta );
-        if(trim($r->dias_vencimiento)!=''){
-            $producto->dias_vencimiento = trim( $r->dias_vencimiento );
-            $producto->fecha_vencimiento  = date('Y-m-d', strtotime('+'.$r->dias_vencimiento.' day', strtotime(date('Y-m-d'))));     
-        }else {
+        if(trim($r->fecha_vencimiento)!=''){
             $producto->dias_vencimiento = 0; 
             $producto->fecha_vencimiento = trim( $r->fecha_vencimiento );
+        }else {
+            $producto->dias_vencimiento = trim( $r->dias_vencimiento );
+            $producto->fecha_vencimiento  = date('Y-m-d', strtotime('+'.$r->dias_vencimiento.' day', strtotime(date('Y-m-d'))));     
         }
         $producto->estado = trim( $r->estado );
         $producto->persona_id_updated_at=1;

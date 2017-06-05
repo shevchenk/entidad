@@ -44,6 +44,7 @@ $(document).ready(function() {
         $('#ModalEmpleadoForm #txt_fecha_inicio').val( EmpleadoG.fecha_inicio );
         $('#ModalEmpleadoForm #txt_fecha_final').val( EmpleadoG.fecha_final );
         $('#ModalEmpleadoForm #slct_estado').val( EmpleadoG.estado );
+        $("#ModalEmpleadoForm select").selectpicker('refresh');
         $('#ModalEmpleadoForm #txt_persona').focus();
     });
 
@@ -136,6 +137,7 @@ SlctCargarSucursal=function(result){
         html+="<option value="+r.id+">"+r.sucursal+"</option>";
     });
     $("#ModalEmpleado #slct_sucursal").html(html); 
+    $("#ModalEmpleado #slct_sucursal").selectpicker('refresh'); 
 
 }
 
@@ -145,6 +147,7 @@ SlctCargarCargo=function(result){
         html+="<option value="+r.id+">"+r.cargo+"</option>";
     });
     $("#ModalEmpleado #slct_cargo").html(html); 
+    $("#ModalEmpleado #slct_sucursal").selectpicker('refresh'); 
 
 }
 

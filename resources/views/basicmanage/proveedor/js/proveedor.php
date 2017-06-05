@@ -43,6 +43,7 @@ $(document).ready(function() {
         $('#ModalProveedorForm #txt_empresa_id').val( ProveedorG.empresa_id );
         $('#ModalProveedorForm #txt_empresa').val( ProveedorG.empresa );
         $('#ModalProveedorForm #slct_estado').val( ProveedorG.estado );
+        $("#ModalProveedorForm select").selectpicker('refresh');
         $('#ModalProveedorForm #txt_persona').focus();
     });
 
@@ -64,10 +65,10 @@ AgregarEditar=function(val,id){
 
     AddEdit=val;
     ProveedorG.id='';
-    ProveedorG.persona_id='0';
+    ProveedorG.persona_id='';
     ProveedorG.persona='';
     ProveedorG.empresa='';
-    ProveedorG.empresa_id='0';
+    ProveedorG.empresa_id='';
     ProveedorG.estado='1';
     $('.persona').css("display","none");
     $('.empresa').css("display","none");

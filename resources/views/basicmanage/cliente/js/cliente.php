@@ -44,6 +44,7 @@ $(document).ready(function() {
         $('#ModalClienteForm #txt_empresa_id').val( ClienteG.empresa_id );
         $('#ModalClienteForm #txt_empresa').val( ClienteG.empresa );
         $('#ModalClienteForm #slct_estado').val( ClienteG.estado );
+        $("#ModalClienteForm select").selectpicker('refresh');
         $('#ModalClienteForm #txt_persona').focus();
     });
 

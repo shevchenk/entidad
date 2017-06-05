@@ -16,13 +16,13 @@
             </div>
             <div class="form-group">
               <label>Cargo</label>
-              <select class="form-control" name="slct_cargo" id="slct_cargo">
+              <select class="form-control selectpicker show-menu-arrow" data-live-search="true" name="slct_cargo" id="slct_cargo">
                 <option value='0'>.::Seleccione::.</option>
               </select>
             </div>
             <div class="form-group">
               <label>Sucursal</label>
-              <select class="form-control" name="slct_sucursal" id="slct_sucursal">
+              <select class="form-control selectpicker show-menu-arrow" data-live-search="true" name="slct_sucursal" id="slct_sucursal">
                 <option value='0'>.::Seleccione::.</option>
               </select>
             </div>
@@ -36,7 +36,7 @@
             </div>
             <div class="form-group">
               <label>Estado</label>
-              <select class="form-control" name="slct_estado" id="slct_estado">
+              <select class="form-control selectpicker show-menu-arrow" data-live-search="true" name="slct_estado" id="slct_estado">
                 <option value='0'>Inactivo</option>
                 <option value='1' selected>Activo</option>
               </select>
