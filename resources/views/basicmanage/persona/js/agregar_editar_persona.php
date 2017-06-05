@@ -35,7 +35,7 @@ $(document).ready(function() {
         $('#ModalPersonaForm #txt_nombre').focus();
     });
 
-    $('#ModalPersona').on('hide.bs.modal', function (event) {
+    $('#ModalPersona').on('hidden.bs.modal', function (event) {
         $("#ModalPersonaForm input[type='hidden']").not('.mant').remove();
     });
 });

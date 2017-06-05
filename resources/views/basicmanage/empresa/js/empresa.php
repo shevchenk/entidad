@@ -48,7 +48,7 @@ AjaxEmpresa.Cargar(HTMLCargarEmpresa);
         $('#ModalEmpresaForm #txt_persona_id').focus();
     });
 
-    $('#ModalEmpresa').on('hide.bs.modal', function (event) {
+    $('#ModalEmpresa').on('hidden.bs.modal', function (event) {
         $("#ModalEmpresaForm input[type='hidden']").not('.mant').remove();
     });
 });

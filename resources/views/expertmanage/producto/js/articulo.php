@@ -31,7 +31,7 @@ $(document).ready(function() {
         $('#ModalArticuloForm #txt_articulo').focus();
     });
 
-    $('#ModalArticulo').on('hide.bs.modal', function (event) {
+    $('#ModalArticulo').on('hidden.bs.modal', function (event) {
         $("#ModalArticuloForm input[type='hidden']").not('.mant').remove();
     });
 });

@@ -32,7 +32,7 @@ $(document).ready(function() {
 
     });
 
-    $('#ModalListapersona').on('hide.bs.modal', function (event) {
+    $('#ModalListapersona').on('hidden.bs.modal', function (event) {
         LPfiltrosG='';
 //        $("ModalPersonaForm input[type='hidden']").remove();
 

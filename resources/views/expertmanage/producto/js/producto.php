@@ -54,7 +54,7 @@ $(document).ready(function() {
         $('#ModalProductoForm #txt_producto').focus();
     });
 
-    $('#ModalProducto').on('hide.bs.modal', function (event) {
+    $('#ModalProducto').on('hidden.bs.modal', function (event) {
         $("#ModalProductoForm input[type='hidden']").not('.mant').remove();
 
     });
