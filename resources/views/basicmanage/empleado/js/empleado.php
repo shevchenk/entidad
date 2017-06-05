@@ -147,7 +147,7 @@ SlctCargarCargo=function(result){
         html+="<option value="+r.id+">"+r.cargo+"</option>";
     });
     $("#ModalEmpleado #slct_cargo").html(html); 
-    $("#ModalEmpleado #slct_sucursal").selectpicker('refresh'); 
+    $("#ModalEmpleado #slct_cargo").selectpicker('refresh'); 
 
 }
 
