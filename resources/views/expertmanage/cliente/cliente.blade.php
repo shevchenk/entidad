@@ -22,6 +22,8 @@
     @include( 'expertmanage.empleado.js.listaempresa' )
     @include( 'expertmanage.persona.js.agregar_editar_persona_ajax' )
     @include( 'expertmanage.persona.js.agregar_editar_persona' )
+    @include( 'expertmanage.empresa.js.agregar_editar_empresa_ajax' )
+    @include( 'expertmanage.empresa.js.agregar_editar_empresa' )
 @stop
 
 @section('content')
@@ -104,4 +106,5 @@
      @include( 'expertmanage.empleado.form.listapersona' )
      @include( 'expertmanage.empleado.form.listaempresa' )
      @include( 'expertmanage.persona.form.persona' )
+     @include( 'expertmanage.empresa.form.empresa' )
 @stop
