@@ -10,7 +10,7 @@ $(document).ready(function() {
         "info": true,
         "autoWidth": false
     });
-//    AjaxCategoria.Cargar(HTMLCargarCategoria1);
+
     $("#CategoriaForm #TableCategoria select").change(function(){ AjaxCategoria.Cargar(HTMLCargarCategoria1); });
     $("#CategoriaForm #TableCategoria input").blur(function(){ AjaxCategoria.Cargar(HTMLCargarCategoria1); });
 
@@ -64,6 +64,7 @@ HTMLCambiarEstado1=function(result){
     if( result.rst==1 ){
         msjG.mensaje('success',result.msj,4000);
         AjaxCategoria.Cargar(HTMLCargarCategoria1);
+        CargarSlct(2);
     }
 }
 

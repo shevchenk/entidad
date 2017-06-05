@@ -10,8 +10,7 @@ $(document).ready(function() {
         "info": true,
         "autoWidth": false
     });
-    CargarSlct(2);
-    AjaxArticulo.Cargar(HTMLCargarArticulo2);
+
     $('#ModalArticulo').on('shown.bs.modal', function (event) {
         
         if( AddEdit==1 ){
@@ -70,6 +69,7 @@ HTMLCambiarEstado2=function(result){
     if( result.rst==1 ){
         msjG.mensaje('success',result.msj,4000);
         AjaxArticulo.Cargar(HTMLCargarArticulo2);
+        CargarSlct(3);
     }        
 }
 
