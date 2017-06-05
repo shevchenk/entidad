@@ -115,6 +115,10 @@ var skin_yellow_lightG =
 skins_listG.append(skin_yellow_lightG);
 
 $(document).ready(function() {
+    var opcionesm="<?php echo session('opciones'); ?>";
+    var validarutaurlm="<?php echo $valida_ruta_url; ?>";
+    var iconom=opcionesm.split(validarutaurlm)[1].split("|")[1];
+    $("ol.breadcrumb>li>i").removeClass().addClass("fa "+iconom);
     var tmp = masterG.get('skin');
     if( /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ) {
       $('.selectpicker').selectpicker('mobile');
@@ -135,11 +139,11 @@ $(document).ready(function() {
 
     $('ul.sidebar-menu>li').each(function(indice, elemento) {
         htm=$(elemento).html();
-        if(htm.split('<a href="<?php echo $valida_ruta_url; ?>"').length>1){
+        if(htm.split('<a href="'+validarutaurlm+'"').length>1){
             $(elemento).addClass('active').addClass('menu-open');
             $(elemento).find('li').each(function(ind,ele) {
               htm=$(ele).html();
-              if(htm.split('<a href="<?php echo $valida_ruta_url; ?>"').length>1){
+              if(htm.split('<a href="'+validarutaurlm+'"').length>1){
                 $(ele).addClass('active');
               }
             });
