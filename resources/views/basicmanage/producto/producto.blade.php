@@ -46,6 +46,7 @@
                                   <th>Producto</th>
                                   <th>Precio Venta</th>
                                   <th>Precio Compra</th>
+                                  <th>Imagen</th>
                                   <th>Estado</th>
                                   <th>[-]</th>
                             </tr>
@@ -57,6 +58,7 @@
                                   <th>Producto</th>
                                   <th>Precio Venta</th>
                                   <th>Precio Compra</th>
+                                  <th>Imagen</th>
                                   <th>Estado</th>
                                   <th>[-]</th>
                             </tr>

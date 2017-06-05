@@ -186,6 +186,10 @@ HTMLCargarProducto=function(result){
             "<td class='producto'>"+r.producto+"</td>"+
             "<td class='precio_venta'>"+r.precio_venta+"</td>"+
             "<td class='precio_compra'>"+r.precio_compra+"</td>"+
+            "<td>";
+        if(r.foto!=null){    
+        html+="<a  target='_blank' href='img/product/"+r.foto+"'><img src='img/product/"+r.foto+"' style='height: 40px;width: 40px;'></a>";}
+        html+="</td>"+
             "<td>"+
             "<input type='hidden' class='articulo_id' value='"+r.articulo_id+"'>"+
             "<input type='hidden' class='sucursal_id' value='"+r.sucursal_id+"'>"+
