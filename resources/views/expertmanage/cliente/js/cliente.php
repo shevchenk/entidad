@@ -10,6 +10,11 @@ $(document).ready(function() {
         "info": true,
         "autoWidth": false
     });
+    $('#ModalCliente').css('z-index', 1050);
+    $('#ModalListaempresa').css('z-index', 1050);
+    $('#ModalEmpresa').css('z-index', 1060);
+    $('#ModalListapersona').css('z-index', 1070);
+    $('#ModalPersona').css('z-index', 1080);
 
 
     AjaxCliente.Cargar(HTMLCargarCliente);
