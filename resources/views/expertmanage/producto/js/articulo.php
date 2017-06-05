@@ -26,8 +26,9 @@ $(document).ready(function() {
         }
 
         $('#ModalArticuloForm #txt_articulo').val( ArticuloG.articulo );
-         $('#ModalArticuloForm #slct_categoria').val( ArticuloG.categoria_id );
+        $('#ModalArticuloForm #slct_categoria').val( ArticuloG.categoria_id );
         $('#ModalArticuloForm #slct_estado').val( ArticuloG.estado );
+        $("#ModalArticuloForm select").selectpicker('refresh');
         $('#ModalArticuloForm #txt_articulo').focus();
     });
 
@@ -72,6 +73,7 @@ HTMLCambiarEstado2=function(result){
     if( result.rst==1 ){
         msjG.mensaje('success',result.msj,4000);
         AjaxArticulo.Cargar(HTMLCargarArticulo2);
+        CargarSlct(3);
     }
 }
 

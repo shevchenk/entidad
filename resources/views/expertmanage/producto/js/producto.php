@@ -3,9 +3,6 @@ var AddEdit=0; //0: Editar | 1: Agregar
 var ProductoG={id:0,articulo_id:0,sucursal_id:0,producto:"",precio_venta:"",precio_compra:"",moneda:"",stock:"",
                stock_minimo:"",dias_alerta:"",fecha_vencimiento:"",dias_vencimiento:"",estado:1}; // Datos Globales
 $(document).ready(function() {
-    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ) {
-      $('.selectpicker').selectpicker('mobile');
-    }
     $(".fechas").datetimepicker({
         format: "yyyy-mm-dd",
         language: 'es',
@@ -50,8 +47,12 @@ $(document).ready(function() {
         $('#ModalProductoForm #txt_fecha_vencimiento').val( ProductoG.fecha_vencimiento );
         $('#ModalProductoForm #txt_dias_vencimiento').val( ProductoG.dias_vencimiento );
         $('#ModalProductoForm #slct_estado').val( ProductoG.estado );
-        
+        $('#ModalProductoForm #txt_imagen_nombre').val(ProductoG.imagen_nombre);
+        $('#ModalProductoForm #txt_imagen_archivo').val('');
+        $('#ModalProductoForm .img-circle').attr('src',ProductoG.imagen_archivo);
+        $("#ModalProducto select").selectpicker('refresh');
         $('#ModalProductoForm #txt_producto').focus();
+        
     });
 
     $('#ModalProducto').on('hidden.bs.modal', function (event) {
@@ -116,6 +117,8 @@ AgregarEditar=function(val,id){
     ProductoG.producto='';
     ProductoG.precio_venta='';
     ProductoG.precio_compra='';
+    ProductoG.imagen_nombre='';
+    ProductoG.imagen_archivo='';
     ProductoG.estado='1';
     if( val==0 ){
         ProductoG.id=id;
@@ -130,6 +133,14 @@ AgregarEditar=function(val,id){
         ProductoG.producto=$("#TableProducto #trid_"+id+" .producto").text();
         ProductoG.precio_venta=$("#TableProducto #trid_"+id+" .precio_venta").text();
         ProductoG.precio_compra=$("#TableProducto #trid_"+id+" .precio_compra").text();
+        ProductoG.foto=$("#TableProducto #trid_"+id+" .foto").val();
+        if(ProductoG.foto!='undefined'){
+            ProductoG.imagen_archivo='img/product/'+ProductoG.foto;
+            ProductoG.imagen_nombre=ProductoG.foto;
+        }else {
+            ProductoG.imagen_archivo='';
+            ProductoG.imagen_nombre='';
+        }      
         ProductoG.estado=$("#TableProducto #trid_"+id+" .estado").val();
     }
     $('#ModalProducto').modal('show');
@@ -184,8 +195,11 @@ HTMLCargarProducto=function(result){
             "<input type='hidden' class='stock_minimo' value='"+r.stock_minimo+"'>"+
             "<input type='hidden' class='dias_alerta' value='"+r.dias_alerta+"'>"+
             "<input type='hidden' class='fecha_vencimiento' value='"+r.fecha_vencimiento+"'>"+
-            "<input type='hidden' class='dias_vencimiento' value='"+r.dias_vencimiento+"'>"+
-            "<input type='hidden' class='estado' value='"+r.estado+"'>"+estadohtml+"</td>"+
+            "<input type='hidden' class='dias_vencimiento' value='"+r.dias_vencimiento+"'>";
+        if(r.foto!=null){
+        html+="<input type='hidden' class='foto' value='"+r.foto+"'>";}
+
+        html+="<input type='hidden' class='estado' value='"+r.estado+"'>"+estadohtml+"</td>"+
             '<td><a class="btn btn-primary btn-sm" onClick="AgregarEditar(0,'+r.id+')"><i class="fa fa-edit fa-lg"></i> </a></td>';
         html+="</tr>";
     });
@@ -227,6 +241,7 @@ SlctCargarSucursal=function(result){
         html+="<option value="+r.id+">"+r.sucursal+"</option>";
     });
     $("#ModalProducto #slct_sucursal").html(html); 
+    $("#ModalProducto #slct_sucursal").selectpicker('refresh');
 
 };
 
@@ -236,6 +251,7 @@ SlctCargarArticulo=function(result){
         html+="<option value="+r.id+">"+r.articulo+"</option>";
     });
     $("#ModalProducto #slct_articulo").html(html); 
+    $("#ModalProducto #slct_articulo").selectpicker('refresh');
 
 };
 
@@ -254,17 +270,18 @@ Cargar=function(tipo){
  
 };
 
-onPagos = function (event) {
+onImagen = function (event) {
         var files = event.target.files || event.dataTransfer.files;
         if (!files.length)
             return;
         var image = new Image();
         var reader = new FileReader();
         reader.onload = (e) => {
-            $('#ModalProductoForm #pago_archivo').val(e.target.result);
+            $('#ModalProductoForm #txt_imagen_archivo').val(e.target.result);
+            $('#ModalProductoForm .img-circle').attr('src',e.target.result);
         };
         reader.readAsDataURL(files[0]);
-        $('#ModalProductoForm #pago_nombre').val(files[0].name);
+        $('#ModalProductoForm #txt_imagen_nombre').val(files[0].name);
         console.log(files[0].name);
     };
 

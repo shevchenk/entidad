@@ -10,7 +10,7 @@ $(document).ready(function() {
         "info": true,
         "autoWidth": false
     });
-//    AjaxCategoria.Cargar(HTMLCargarCategoria1);
+
     $("#CategoriaForm #TableCategoria select").change(function(){ AjaxCategoria.Cargar(HTMLCargarCategoria1); });
     $("#CategoriaForm #TableCategoria input").blur(function(){ AjaxCategoria.Cargar(HTMLCargarCategoria1); });
 
@@ -25,6 +25,7 @@ $(document).ready(function() {
 
         $('#ModalCategoriaForm #txt_categoria').val( CategoriaG.categoria );
         $('#ModalCategoriaForm #slct_estado').val( CategoriaG.estado );
+        $("#ModalCategoriaForm select").selectpicker('refresh');
         $('#ModalCategoriaForm #txt_categoria').focus();
     });
 
@@ -63,6 +64,7 @@ HTMLCambiarEstado1=function(result){
     if( result.rst==1 ){
         msjG.mensaje('success',result.msj,4000);
         AjaxCategoria.Cargar(HTMLCargarCategoria1);
+        CargarSlct(2);
     }
 }
 
