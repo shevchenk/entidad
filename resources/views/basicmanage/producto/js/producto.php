@@ -1,7 +1,6 @@
 <script type="text/javascript">
 var AddEdit=0; //0: Editar | 1: Agregar
-var ProductoG={id:0,articulo_id:0,sucursal_id:0,producto:"",precio_venta:"",precio_compra:"",moneda:0,stock:"",
-               stock_minimo:"",dias_alerta:"",fecha_vencimiento:"",dias_vencimiento:"",imagen_nombre:"",foto:"",imagen_archivo:"",estado:1}; // Datos Globales
+var ProductoG={id:0,articulo_id:0,unidad_medida:0,producto:"",imagen_nombre:"",foto:"",imagen_archivo:"",estado:1}; // Datos Globales
 $(document).ready(function() {
     $(".fechas").datetimepicker({
         format: "yyyy-mm-dd",
@@ -21,32 +20,19 @@ $(document).ready(function() {
         "info": true,
         "autoWidth": false
     });
-    CargarSlct(1);
-    CargarSlct(3);
-    AjaxProducto.Cargar(HTMLCargarProducto);
-    $("#ProductoForm #TableProducto select").change(function(){ AjaxProducto.Cargar(HTMLCargarProducto); });
-    $("#ProductoForm #TableProducto input").blur(function(){ AjaxProducto.Cargar(HTMLCargarProducto); });
-    
+
     $('#ModalProducto').on('shown.bs.modal', function (event) {
         if( AddEdit==1 ){
-            $(this).find('.modal-footer .btn-primary').text('Guardar').attr('onClick','AgregarEditarAjax();');
+            $(this).find('.modal-footer .btn-primary').text('Guardar').attr('onClick','AgregarEditarAjax3();');
         }
         else{
-            $(this).find('.modal-footer .btn-primary').text('Actualizar').attr('onClick','AgregarEditarAjax();');
+            $(this).find('.modal-footer .btn-primary').text('Actualizar').attr('onClick','AgregarEditarAjax3();');
             $("#ModalProductoForm").append("<input type='hidden' value='"+ProductoG.id+"' name='id'>");
         }
 
         $('#ModalProductoForm #txt_producto').val( ProductoG.producto );
         $('#ModalProductoForm #slct_articulo').val( ProductoG.articulo_id );
-        $('#ModalProductoForm #slct_sucursal').val( ProductoG.sucursal_id );
-        $('#ModalProductoForm #txt_precio_venta').val( ProductoG.precio_venta );
-        $('#ModalProductoForm #txt_precio_compra').val( ProductoG.precio_compra );
-        $('#ModalProductoForm #slct_moneda').val( ProductoG.moneda );
-        $('#ModalProductoForm #txt_stock').val( ProductoG.stock );
-        $('#ModalProductoForm #txt_stock_minimo').val( ProductoG.stock_minimo );
-        $('#ModalProductoForm #txt_dias_alerta').val( ProductoG.dias_alerta );
-        $('#ModalProductoForm #txt_fecha_vencimiento').val( ProductoG.fecha_vencimiento );
-        $('#ModalProductoForm #txt_dias_vencimiento').val( ProductoG.dias_vencimiento );
+        $('#ModalProductoForm #slct_unidad_medida').val( ProductoG.unidad_medida );
         $('#ModalProductoForm #slct_estado').val( ProductoG.estado );
         $('#ModalProductoForm #txt_imagen_nombre').val(ProductoG.imagen_nombre);
         $('#ModalProductoForm #txt_imagen_archivo').val('');
@@ -60,78 +46,37 @@ $(document).ready(function() {
     });
 });
 
-ValidaForm=function(){
+ValidaForm3=function(){
     var r=true;
     if( $.trim( $("#ModalProductoForm #txt_producto").val() )=='' ){
         r=false;
         msjG.mensaje('warning','Ingrese Producto',4000);
     }
-    else if( $.trim( $("#ModalProductoForm #slct_sucursal").val() )=='0' ){
-        r=false;
-        msjG.mensaje('warning','Seleccione Sucursal',4000);
-    }
     else if( $.trim( $("#ModalProductoForm #slct_articulo").val() )=='0' ){
         r=false;
         msjG.mensaje('warning','Seleccione Artículo',4000);
     }
-    else if( $.trim( $("#ModalProductoForm #txt_precio_venta").val() )=='' ){
+    else if( $.trim( $("#ModalProductoForm #slct_unidad_medida").val() )=='0' ){
         r=false;
-        msjG.mensaje('warning','Ingrese Precio de Venta',4000);
-    }
-    else if( $.trim( $("#ModalProductoForm #slct_moneda").val() )=='0' ){
-        r=false;
-        msjG.mensaje('warning','Seleccione Moneda',4000);
-    }
-    else if( $.trim( $("#ModalProductoForm #txt_stock").val() )=='' ){
-        r=false;
-        msjG.mensaje('warning','Ingrese Stock',4000);
-    }
-    else if( $.trim( $("#ModalProductoForm #txt_stock_minimo").val() )=='' ){
-        r=false;
-        msjG.mensaje('warning','Ingrese Stock Mínimo',4000);
-    }
-    else if( $.trim( $("#ModalProductoForm #txt_dias_alerta").val() )=='' ){
-        r=false;
-        msjG.mensaje('warning','Ingrese días de alerta',4000);
-    }
-    else if( $.trim( $("#ModalProductoForm #txt_fecha_vencimiento").val() )=='' && 
-            $.trim( $("#ModalProductoForm #txt_dias_vencimiento").val() )==''){
-        r=false;
-        msjG.mensaje('warning','Ingrese Fecha o días de vencimiento',4000);
+        msjG.mensaje('warning','Seleccione Unidad de Medida',4000);
     }
     return r;
 }
 
-AgregarEditar=function(val,id){
+AgregarEditar3=function(val,id){
     AddEdit=val;
     ProductoG.id='';
     ProductoG.articulo_id='0';
-    ProductoG.sucursal_id='0';
-    ProductoG.moneda='0';
-    ProductoG.stock='';
-    ProductoG.stock_minimo='';
-    ProductoG.dias_alerta='';
-    ProductoG.fecha_vencimiento='';
-    ProductoG.dias_vencimiento='';
     ProductoG.producto='';
-    ProductoG.precio_venta='';
-    ProductoG.precio_compra='';
+    ProductoG.unidad_medida='0';
     ProductoG.imagen_nombre='';
     ProductoG.imagen_archivo='';
     ProductoG.estado='1';
     if( val==0 ){
         ProductoG.id=id;
         ProductoG.articulo_id=$("#TableProducto #trid_"+id+" .articulo_id").val();
-        ProductoG.sucursal_id=$("#TableProducto #trid_"+id+" .sucursal_id").val();
-        ProductoG.moneda=$("#TableProducto #trid_"+id+" .moneda").val();
-        ProductoG.stock=$("#TableProducto #trid_"+id+" .stock").val();
-        ProductoG.stock_minimo=$("#TableProducto #trid_"+id+" .stock_minimo").val();
-        ProductoG.dias_alerta=$("#TableProducto #trid_"+id+" .dias_alerta").val();
-        ProductoG.fecha_vencimiento=$("#TableProducto #trid_"+id+" .fecha_vencimiento").val();
-        ProductoG.dias_vencimiento=$("#TableProducto #trid_"+id+" .dias_vencimiento").val();
         ProductoG.producto=$("#TableProducto #trid_"+id+" .producto").text();
-        ProductoG.precio_venta=$("#TableProducto #trid_"+id+" .precio_venta").text();
-        ProductoG.precio_compra=$("#TableProducto #trid_"+id+" .precio_compra").text();
+        ProductoG.unidad_medida=$("#TableProducto #trid_"+id+" .unidad_medida").val();
         ProductoG.foto=$("#TableProducto #trid_"+id+" .foto").val();
         if(ProductoG.foto!='undefined'){
             ProductoG.imagen_archivo='img/product/'+ProductoG.foto;
@@ -145,65 +90,58 @@ AgregarEditar=function(val,id){
     $('#ModalProducto').modal('show');
 }
 
-CambiarEstado=function(estado,id){
-    AjaxProducto.CambiarEstado(HTMLCambiarEstado,estado,id);
+CambiarEstado3=function(estado,id){
+    AjaxProducto.CambiarEstado(HTMLCambiarEstado3,estado,id);
 }
 
-HTMLCambiarEstado=function(result){
+HTMLCambiarEstado3=function(result){
     if( result.rst==1 ){
         msjG.mensaje('success',result.msj,4000);
-        AjaxProducto.Cargar(HTMLCargarProducto);
+        AjaxProducto.Cargar(HTMLCargarProducto3);
     }
 }
 
-AgregarEditarAjax=function(){
-    if( ValidaForm() ){
-        AjaxProducto.AgregarEditar(HTMLAgregarEditar);
+AgregarEditarAjax3=function(){
+    if( ValidaForm3() ){
+        AjaxProducto.AgregarEditar(HTMLAgregarEditar3);
     }
 }
 
-HTMLAgregarEditar=function(result){
+HTMLAgregarEditar3=function(result){
     if( result.rst==1 ){
         msjG.mensaje('success',result.msj,4000);
         $('#ModalProducto').modal('hide');
-        AjaxProducto.Cargar(HTMLCargarProducto);
+        AjaxProducto.Cargar(HTMLCargarProducto3);
     }else{
         msjG.mensaje('warning',result.msj,3000);
     }
 }
 
-HTMLCargarProducto=function(result){
+HTMLCargarProducto3=function(result){
     var html="";
     $('#TableProducto').DataTable().destroy();
     
     $.each(result.data,function(index,r){
-        estadohtml='<span id="'+r.id+'" onClick="CambiarEstado(1,'+r.id+')" class="btn btn-danger">Inactivo</span>';
+        estadohtml='<span id="'+r.id+'" onClick="CambiarEstado3(1,'+r.id+')" class="btn btn-danger">Inactivo</span>';
         if(r.estado==1){
-            estadohtml='<span id="'+r.id+'" onClick="CambiarEstado(0,'+r.id+')" class="btn btn-success">Activo</span>';
+            estadohtml='<span id="'+r.id+'" onClick="CambiarEstado3(0,'+r.id+')" class="btn btn-success">Activo</span>';
         }
 
         html+="<tr id='trid_"+r.id+"'>"+
-            "<td class='producto'>"+r.producto+"</td>"+
-            "<td class='precio_venta'>"+r.precio_venta+"</td>"+
-            "<td class='precio_compra'>"+r.precio_compra+"</td>"+
             "<td>";
-        if(r.foto!=null){    
-        html+="<a  target='_blank' href='img/product/"+r.foto+"'><img src='img/product/"+r.foto+"' style='height: 40px;width: 40px;'></a>";}
-        html+="</td>"+
+            if(r.foto!=null){    
+            html+="<a  target='_blank' href='img/product/"+r.foto+"'><img src='img/product/"+r.foto+"' style='height: 40px;width: 40px;'></a>";}
+            html+="</td>"+
+            "<td class='producto'>"+r.producto+"</td>"+
+            "<td class='articulo'>"+r.articulo+"</td>"+
             "<td>"+
             "<input type='hidden' class='articulo_id' value='"+r.articulo_id+"'>"+
-            "<input type='hidden' class='sucursal_id' value='"+r.sucursal_id+"'>"+
-            "<input type='hidden' class='moneda' value='"+r.moneda+"'>"+
-            "<input type='hidden' class='stock' value='"+r.stock+"'>"+
-            "<input type='hidden' class='stock_minimo' value='"+r.stock_minimo+"'>"+
-            "<input type='hidden' class='dias_alerta' value='"+r.dias_alerta+"'>"+
-            "<input type='hidden' class='fecha_vencimiento' value='"+r.fecha_vencimiento+"'>"+
-            "<input type='hidden' class='dias_vencimiento' value='"+r.dias_vencimiento+"'>";
+            "<input type='hidden' class='unidad_medida' value='"+r.unidad_medida+"'>";
         if(r.foto!=null){
         html+="<input type='hidden' class='foto' value='"+r.foto+"'>";}
 
         html+="<input type='hidden' class='estado' value='"+r.estado+"'>"+estadohtml+"</td>"+
-            '<td><a class="btn btn-primary btn-sm" onClick="AgregarEditar(0,'+r.id+')"><i class="fa fa-edit fa-lg"></i> </a></td>';
+            '<td><a class="btn btn-primary btn-sm" onClick="AgregarEditar3(0,'+r.id+')"><i class="fa fa-edit fa-lg"></i> </a></td>';
         html+="</tr>";
     });
     $("#TableProducto tbody").html(html); 
@@ -216,54 +154,6 @@ HTMLCargarProducto=function(result){
         "autoWidth": false
     });
 
-};
-
-CargarSlct=function(slct){
-    if(slct==1){
-    AjaxProducto.CargarSucursal(SlctCargarSucursal);
-    }
-    if(slct==2){
-    AjaxProducto.CargarCategoria(SlctCargarCategoria);
-    }
-    if(slct==3){
-    AjaxProducto.CargarArticulo(SlctCargarArticulo);
-    }
-}
-
-SlctCargarSucursal=function(result){
-    var html="<option value='0'>.::Seleccione::.</option>";
-    $.each(result.data,function(index,r){
-        html+="<option value="+r.id+">"+r.sucursal+"</option>";
-    });
-    $("#ModalProducto #slct_sucursal").html(html); 
-    $("#ModalProducto #slct_sucursal").selectpicker('refresh');
-
-};
-
-SlctCargarArticulo=function(result){
-    var html="<option value='0'>.::Seleccione::.</option>";
-    $.each(result.data,function(index,r){
-        html+="<option value="+r.id+">"+r.articulo+"</option>";
-    });
-    $("#ModalProducto #slct_articulo").html(html); 
-    $("#ModalProducto #slct_articulo").selectpicker('refresh');
-
-};
-
-Cargar=function(tipo){
-    
-    if(tipo==2){
-    AjaxCategoria.Cargar(HTMLCargarCategoria1);
-    $("#CategoriaForm").css("display","");
-    $("#ArticuloForm").css("display","none");
-    }
-    if(tipo==1){
-    AjaxArticulo.Cargar(HTMLCargarArticulo2);
-    CargarSlct(2);
-    $("#ArticuloForm").css("display","");
-    $("#CategoriaForm").css("display","none");
-    }
- 
 };
 
 onImagen = function (event) {

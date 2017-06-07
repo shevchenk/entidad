@@ -14,15 +14,7 @@
                             <input type="text" class="form-control" id="txt_producto" name="txt_producto" placeholder="Producto">
                         </div>
                     </div>
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <label>Sucursal</label>
-                            <select  class="form-control selectpicker show-menu-arrow" data-live-search="true" id="slct_sucursal" name="slct_sucursal">
-                                <option value="0">.::Seleccione::.</option>
-                            </select>
-                        </div> 
-                    </div>
-                    <div class="col-md-12">
+                    <div class="col-md-8">
                         <div class="form-group">
                             <label>Artículo</label>
                             <select  class="form-control selectpicker show-menu-arrow" data-live-search="true" id="slct_articulo" name="slct_articulo">
@@ -32,56 +24,14 @@
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label>Precio Venta</label>
-                            <input type="text" onkeyup="masterG.DecimalMax(this, 2);" onkeypress="return masterG.validaDecimal(event, this);" class="form-control" id="txt_precio_venta" name="txt_precio_venta">
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label>Precio Compra</label>
-                            <input type="text" onkeyup="masterG.DecimalMax(this, 2);" onkeypress="return masterG.validaDecimal(event, this);" class="form-control" id="txt_precio_compra" name="txt_precio_compra">
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label>Moneda</label>
-                            <select  class="form-control selectpicker show-menu-arrow" id="slct_moneda" name="slct_moneda">
+                            <label>Unidad de Medida</label>
+                            <select  class="form-control selectpicker show-menu-arrow" id="slct_unidad_medida" name="slct_unidad_medida">
                                 <option value="0">.::Seleccione::.</option>
-                                <option data-icon="fa fa-strikethrough" 
-                                        value="1">Soles</option>
-                                <option data-icon="fa fa-dollar" 
-                                        value="2">Dolares</option>
+                                <option data-icon="" 
+                                        value="1">Unidad</option>
+                                <option data-icon="" 
+                                        value="2">etc</option>
                             </select>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label>Stock</label>
-                            <input type="number" onkeypress="return masterG.validaNumeros(event);" class="form-control" id="txt_stock" name="txt_stock" placeholder="Stock">
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label>Stock Minimo</label>
-                            <input type="number" onkeypress="return masterG.validaNumeros(event);" class="form-control" id="txt_stock_minimo" name="txt_stock_minimo" placeholder="Stock Minimo">
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label>Días Alerta</label>
-                            <input type="number" onkeypress="return masterG.validaNumeros(event);" class="form-control" id="txt_dias_alerta" name="txt_dias_alerta" placeholder="Días Alerta">
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label>Fecha Vencimiento</label>
-                            <input type="text" class="form-control fechas" id="txt_fecha_vencimiento" name="txt_fecha_vencimiento" placeholder="0000-00-00" >
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label>Días Vencimiento</label>
-                            <input type="number" onkeypress="return masterG.validaNumeros(event);" class="form-control" id="txt_dias_vencimiento" name="txt_dias_vencimiento" placeholder="Dias Vencimiento">
                         </div>
                     </div>
                     <div class="col-md-12">
