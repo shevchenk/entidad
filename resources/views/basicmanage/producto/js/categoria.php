@@ -11,9 +11,6 @@ $(document).ready(function() {
         "autoWidth": false
     });
 
-    $("#CategoriaForm #TableCategoria select").change(function(){ AjaxCategoria.Cargar(HTMLCargarCategoria1); });
-    $("#CategoriaForm #TableCategoria input").blur(function(){ AjaxCategoria.Cargar(HTMLCargarCategoria1); });
-
     $('#ModalCategoria').on('shown.bs.modal', function (event) {
         if( AddEdit==1 ){
             $(this).find('.modal-footer .btn-primary').text('Guardar').attr('onClick','AgregarEditarAjax1();');
