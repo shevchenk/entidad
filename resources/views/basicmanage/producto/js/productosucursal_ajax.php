@@ -2,16 +2,16 @@
 var AjaxProductosucursal={
     AgregarEditar:function(evento){
         var data=$("#ModalProductosucursalForm").serialize().split("txt_").join("").split("slct_").join("");
-        url='AjaxDinamic/BasicManage.ProductosucursalBM@New';
+        url='AjaxDinamic/BasicManage.ProductoSucursalBM@New';
         if(AddEdit==0){
-            url='AjaxDinamic/BasicManage.ProductosucursalBM@Edit';
+            url='AjaxDinamic/BasicManage.ProductoSucursalBM@Edit';
         }
         masterG.postAjax(url,data,evento);
     },
     Cargar:function(evento,pag){
         data={};
         $("#ProductosucursalForm input[type='hidden']").not('.mant').remove();
-        url='AjaxDinamic/BasicManage.ProductosucursalBM@Load';
+        url='AjaxDinamic/BasicManage.ProductoSucursalBM@Load';
         masterG.postAjax(url,data,evento);
     },
     CambiarEstado:function(evento,AI,id){
@@ -19,7 +19,7 @@ var AjaxProductosucursal={
         $("#ModalProductosucursalForm").append("<input type='hidden' value='"+id+"' name='id'>");
         var data=$("#ModalProductosucursalForm").serialize().split("txt_").join("").split("slct_").join("");
         $("#ModalProductosucursalForm input[type='hidden']").not('.mant').remove();
-        url='AjaxDinamic/BasicManage.ProductosucursalBM@EditStatus';
+        url='AjaxDinamic/BasicManage.ProductoSucursalBM@EditStatus';
         masterG.postAjax(url,data,evento);
     },
     CargarSucursal:function(evento){
