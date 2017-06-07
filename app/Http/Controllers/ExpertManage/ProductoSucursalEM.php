@@ -3,16 +3,16 @@ namespace App\Http\Controllers\BasicManage;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\BasicManage\Producto;
+use App\Models\BasicManage\ProductoSucursal;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Validator;
 
-class ProductoBM extends Controller
+class ProductoSucursalBM extends Controller
 {
     public function EditStatus(Request $r )
     {
         if ( $r->ajax() ) {
-            Producto::runEditStatus($r);
+            ProductoSucursal::runEditStatus($r);
             $return['rst'] = 1;
             $return['msj'] = 'Registro actualizado';
             return response()->json($return);
@@ -25,20 +25,22 @@ class ProductoBM extends Controller
             
             $mensaje= array(
                 'required'    => ':attribute es requerido',
-                'unique'        => ':attribute solo debe ser único',
+                'unique'        => 'Producto debe ser único',
             );
 
             $rules = array(
-                'producto' => 
+                'producto_id' => 
                        ['required',
-                        Rule::unique('productos','producto'),
+                        Rule::unique('productos_sucursales','producto_id')->where(function ($query) use($r) {
+                                $query->where('sucursal_id',$r->sucursal );
+                        }),
                         ],
             );
 
             $validator=Validator::make($r->all(), $rules,$mensaje);
             
             if (!$validator->fails()) {
-                Producto::runNew($r);
+                ProductoSucursal::runNew($r);
                 $return['rst'] = 1;
                 $return['msj'] = 'Registro creado';
             }else{
@@ -55,20 +57,22 @@ class ProductoBM extends Controller
             
             $mensaje= array(
                 'required'    => ':attribute es requerido',
-                'unique'        => ':attribute solo debe ser único',
+                'unique'        => 'Producto solo debe ser único',
             );
 
             $rules = array(
-                'producto' => 
+                'producto_id' => 
                        ['required',
-                        Rule::unique('productos','producto')->ignore($r->id),
+                        Rule::unique('productos_sucursales','producto_id')->ignore($r->id)->where(function ($query) use($r) {
+                                $query->where('sucursal_id',$r->sucursal );
+                        }),
                         ],
             );
 
             $validator=Validator::make($r->all(), $rules,$mensaje);
             
             if (!$validator->fails()) {
-                Producto::runEdit($r);
+                ProductoSucursal::runEdit($r);
                 $return['rst'] = 1;
                 $return['msj'] = 'Registro actualizado';
             }else{
@@ -82,7 +86,7 @@ class ProductoBM extends Controller
     public function Load(Request $r )
     {
         if ( $r->ajax() ) {
-            $renturnModel = Producto::runLoad($r);
+            $renturnModel = ProductoSucursal::runLoad($r);
             $return['rst'] = 1;
             $return['data'] = $renturnModel;
             $return['msj'] = "No hay registros aún";

@@ -11,10 +11,7 @@ $(document).ready(function() {
         "info": true,
         "autoWidth": false
     });
-    
-    $("#ListaproductoForm #TableListaproducto select").change(function(){ AjaxListaproducto.Cargar(HTMLCargarListaProducto); });
-    $("#ListaproductoForm #TableListaproducto input").blur(function(){ AjaxListapersona.Cargar(HTMLCargarListaProducto); });
-
+   
     $('#ModalListaproducto').on('shown.bs.modal', function (event) { 
       var button = $(event.relatedTarget); // captura al boton
       bfiltros= button.data('filtros');
@@ -61,14 +58,16 @@ HTMLCargarListaProducto=function(result){
             html+="</td>"+
             "<td class='producto'>"+r.producto+"</td>"+
             "<td class='articulo'>"+r.articulo+"</td>"+
-            '<td>'+
+            '<td><span class="btn btn-primary btn-sm" onClick="SeleccionarPersona(0,'+r.id+')"+><i class="glyphicon glyphicon-ok"></i></span>'+
+            "</td>"+
             "<input type='hidden' class='articulo_id' value='"+r.articulo_id+"'>"+
             "<input type='hidden' class='unidad_medida' value='"+r.unidad_medida+"'>";
-            if(r.foto!=null){
-            html+="<input type='hidden' class='foto' value='"+r.foto+"'>";}
-         html+='<span class="btn btn-primary btn-sm" onClick="SeleccionarPersona(0,'+r.id+')"+><i class="glyphicon glyphicon-ok"></i></span>'+
-            "</td>"+
-            "</tr>";
+        if(r.foto!=null){
+        html+="<input type='hidden' class='foto' value='"+r.foto+"'>";}
+
+        html+="<input type='hidden' class='estado' value='"+r.estado+"'>"+estadohtml+"</td>";
+//            '<td><a class="btn btn-primary btn-sm" onClick="AgregarEditar(0,'+r.id+')"><i class="fa fa-edit fa-lg"></i> </a></td>';
+        html+="</tr>";
     });
     $("#TableListaproducto tbody").html(html); 
     $("#TableListaproducto").DataTable({

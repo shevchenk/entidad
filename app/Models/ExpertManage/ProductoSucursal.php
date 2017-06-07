@@ -78,10 +78,10 @@ class ProductoSucursal extends Model
                             $query->where('producto','like','%'.$producto.'%');
                         }
                     }
-                    if( $r->has("sucursal") ){
-                        $sucursal=trim($r->sucursal);
-                        if( $sucursal !='' ){
-                            $query->where('s.sucursal','like','%'.$sucursal.'%');
+                    if( $r->has("estado") ){
+                        $estado=trim($r->estado);
+                        if( $estado !='' ){
+                            $query->where('estado','like','%'.$estado.'%');
                         }
                     }
                     if( $r->has("precio_venta") ){
@@ -96,25 +96,6 @@ class ProductoSucursal extends Model
                             $query->where('precio_compra','like','%'.$precio_compra.'%');
                         }
                     }
-                    if( $r->has("stock") ){
-                        $stock=trim($r->stock);
-                        if( $precio_venta !='' ){
-                            $query->where('stock','like','%'.$stock.'%');
-                        }
-                    }
-                    if( $r->has("stock_minimo") ){
-                        $stock_minimo=trim($r->stock_minimo);
-                        if( $stock_minimo !='' ){
-                            $query->where('stock_minimo','like','%'.$stock_minimo.'%');
-                        }
-                    }
-                    if( $r->has("estado") ){
-                        $estado=trim($r->estado);
-                        if( $estado !='' ){
-                            $query->where('productos_sucursales.estado','like','%'.$estado.'%');
-                        }
-                    }
-
                 }
             );
         $result = $sql->orderBy('producto_id','asc')->get();

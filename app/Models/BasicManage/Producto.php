@@ -76,16 +76,10 @@ class Producto extends Model
                             $query->where('productos.estado','like','%'.$estado.'%');
                         }
                     }
-                    if( $r->has("precio_venta") ){
-                        $precio_venta=trim($r->precio_venta);
-                        if( $precio_venta !='' ){
-                            $query->where('precio_venta','like','%'.$precio_venta.'%');
-                        }
-                    }
-                    if( $r->has("precio_compra") ){
-                        $precio_compra=trim($r->precio_compra);
-                        if( $precio_compra !='' ){
-                            $query->where('precio_compra','like','%'.$precio_compra.'%');
+                    if( $r->has("articulo") ){
+                        $articulo=trim($r->articulo);
+                        if( $articulo !='' ){
+                            $query->where('a.articulo','like','%'.$articulo.'%');
                         }
                     }
                 }

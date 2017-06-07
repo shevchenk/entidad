@@ -2,19 +2,16 @@
 var AjaxProducto={
     AgregarEditar:function(evento){
         var data=$("#ModalProductoForm").serialize().split("txt_").join("").split("slct_").join("");
-        url='AjaxDinamic/ExpertManage.ProductoEM@New';
+        url='AjaxDinamic/BasicManage.ProductoBM@New';
         if(AddEdit==0){
-            url='AjaxDinamic/ExpertManage.ProductoEM@Edit';
+            url='AjaxDinamic/BasicManage.ProductoBM@Edit';
         }
         masterG.postAjax(url,data,evento);
     },
     Cargar:function(evento,pag){
-        if( typeof(pag)!='undefined' ){
-            $("#ProductoForm").append("<input type='hidden' value='"+pag+"' name='page'>");
-        }
-        data=$("#ProductoForm").serialize().split("txt_").join("").split("slct_").join("");
+        data={};
         $("#ProductoForm input[type='hidden']").not('.mant').remove();
-        url='AjaxDinamic/ExpertManage.ProductoEM@Load';
+        url='AjaxDinamic/BasicManage.ProductoBM@Load';
         masterG.postAjax(url,data,evento);
     },
     CambiarEstado:function(evento,AI,id){
@@ -22,23 +19,8 @@ var AjaxProducto={
         $("#ModalProductoForm").append("<input type='hidden' value='"+id+"' name='id'>");
         var data=$("#ModalProductoForm").serialize().split("txt_").join("").split("slct_").join("");
         $("#ModalProductoForm input[type='hidden']").not('.mant').remove();
-        url='AjaxDinamic/ExpertManage.ProductoEM@EditStatus';
+        url='AjaxDinamic/BasicManage.ProductoBM@EditStatus';
         masterG.postAjax(url,data,evento);
     },
-    CargarSucursal:function(evento){
-        url='AjaxDinamic/ExpertManage.SucursalEM@ListSucursal';
-        data={};
-        masterG.postAjax(url,data,evento);
-    },
-    CargarCategoria:function(evento){
-        url='AjaxDinamic/ExpertManage.CategoriaEM@ListCategoria';
-        data={};
-        masterG.postAjax(url,data,evento);
-    },
-    CargarArticulo:function(evento){
-        url='AjaxDinamic/ExpertManage.ArticuloEM@ListArticulo';
-        data={};
-        masterG.postAjax(url,data,evento);
-    }
 };
 </script>
