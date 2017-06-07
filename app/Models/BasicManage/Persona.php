@@ -56,7 +56,6 @@ class Persona extends Model
         $persona->dni = trim( $r->dni );
         $persona->sexo = trim( $r->sexo );
         $persona->email = trim( $r->email );
-
         if(trim( $r->password )!=''){
         $persona->password=bcrypt($r->password);}
         

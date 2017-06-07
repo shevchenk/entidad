@@ -5,7 +5,7 @@ paterno:"",
 materno:"",
 nombre:"",
 dni:"",
-sexo:"",
+sexo:0,
 email:"",
 password:"",
 telefono:"",
@@ -13,9 +13,6 @@ celular:"",
 fecha_nacimiento:"",
 estado:1}; // Datos Globales
 $(document).ready(function() {
-    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ) {
-      $('.selectpicker').selectpicker('mobile');
-    }
     $(".fechas").datetimepicker({
         format: "yyyy-mm-dd",
         language: 'es',
@@ -36,8 +33,8 @@ $(document).ready(function() {
     });
     AjaxPersona.Cargar(HTMLCargarPersona);
 
-    $("#PersonaForm #TablePersona select").change(function(){ AjaxPersona.Cargar(HTMLCargarPersona); });
-    $("#PersonaForm #TablePersona input").blur(function(){ AjaxPersona.Cargar(HTMLCargarPersona); });
+   /* $("#PersonaForm #TablePersona select").change(function(){ AjaxPersona.Cargar(HTMLCargarPersona); });
+    $("#PersonaForm #TablePersona input").blur(function(){ AjaxPersona.Cargar(HTMLCargarPersona); });*/
 
     $('#ModalPersona').on('shown.bs.modal', function (event) {
 
@@ -71,7 +68,7 @@ $(document).ready(function() {
 
     $('#ModalPersona').on('hidden.bs.modal', function (event) {
         $("#ModalPersonaForm input[type='hidden']").not('.mant').remove();
-      $("#ModalPersonaForm input").val('');
+     $("#ModalPersonaForm input").val('');
     });
 });
 
@@ -93,7 +90,7 @@ ValidaForm=function(){
         r=false;
         msjG.mensaje('warning','Ingrese DNI',4000);
     }
-    else if( $.trim( $("#ModalPersonaForm #slct_sexo").val() )=='' ){
+    else if( $.trim( $("#ModalPersonaForm #slct_sexo").val() )=='0' ){
         r=false;
         msjG.mensaje('warning','Sleccione Sexo',4000);
     }
@@ -108,7 +105,7 @@ AgregarEditar=function(val,id){
     PersonaG.materno='';
     PersonaG.nombre='';
     PersonaG.dni='';
-    PersonaG.sexo='';
+    PersonaG.sexo='0';
     PersonaG.email='';
     PersonaG.password='';
     PersonaG.telefono='';
