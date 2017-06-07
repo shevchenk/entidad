@@ -20,7 +20,7 @@
                                             <th>Img</th>
                                             <th>Producto</th>
                                             <th>Articulo</th>
-                                            <th>[-]</th>
+<!--                                            <th>[-]</th>-->
                                             <th>[-]</th>
                                         </tr>
                                     </thead>
@@ -31,7 +31,7 @@
                                             <th>Img</th>
                                             <th>Producto</th>
                                             <th>Articulo</th>
-                                            <th>[-]</th>
+<!--                                            <th>[-]</th>-->
                                             <th>[-]</th>
                                         </tr>
                                     </tfoot>
