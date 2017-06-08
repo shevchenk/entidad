@@ -33,11 +33,12 @@
                     <table id="TableSucursal" class="table table-bordered table-hover">
                         <thead>
                             <tr class="cabecera">
+                              <th>Img</th>
                               <th>Sucursal</th>
                               <th>Direccion</th>
                               <th>Telefono</th>
                               <th>Celular</th>
-                              <th>Email</th>
+                              <th>Email</th>         
                               <th>Estado</th>
                               <th>[-]</th>
                             </tr>
@@ -46,11 +47,12 @@
                         </tbody>
                         <tfoot>
                             <tr class="cabecera">
+                              <th>Img</th>
                               <th>Sucursal</th>
                               <th>Direccion</th>
                               <th>Telefono</th>
                               <th>Celular</th>
-                              <th>Email</th>                       
+                              <th>Email</th>          
                               <th>Estado</th>
                               <th>[-]</th>
                             </tr>
