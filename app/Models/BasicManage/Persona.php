@@ -4,8 +4,7 @@ namespace App\Models\BasicManage;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Input;
+use DB;
 
 class Persona extends Model
 {
@@ -81,7 +80,7 @@ class Persona extends Model
     public static function runLoad($r)
     {
         $sql=Persona::select('id','paterno','materno','nombre','dni',
-            'email','fecha_nacimiento','sexo','telefono',
+            'email',DB::raw('IFNULL(fecha_nacimiento,"") as fecha_nacimiento'),'sexo','telefono',
             'celular','password','estado')
             ->where( 
                 function($query) use ($r){
