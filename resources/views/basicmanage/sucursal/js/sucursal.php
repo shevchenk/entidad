@@ -77,8 +77,8 @@ AgregarEditar=function(val,id){
         SucursalG.id=id;
         SucursalG.sucursal=$("#TableSucursal #trid_"+id+" .sucursal").text();
         SucursalG.direccion=$("#TableSucursal #trid_"+id+" .direccion").text();
-        SucursalG.telefono=$("#TableSucursal #trid_"+id+" .telefono").text();
-        SucursalG.celular=$("#TableSucursal #trid_"+id+" .celular").text();
+        SucursalG.telefono=$("#TableSucursal #trid_"+id+" .telefono").val();
+        SucursalG.celular=$("#TableSucursal #trid_"+id+" .celular").val();
         SucursalG.email=$("#TableSucursal #trid_"+id+" .email").text();
         SucursalG.foto=$("#TableSucursal #trid_"+id+" .foto").val();
         

@@ -39,10 +39,12 @@
                         <table id="TableEmpresa" class="table table-bordered table-hover">
                             <thead>
                                 <tr class="cabecera">
+                                  <th>Img</th>
                                   <th>Persona</th>
                                   <th>Razon Social</th>
                                   <th>RUC</th>
                                   <th>Nombre Comercial</th>
+                                  <th>Email</th>
                                   <th>Estado</th>
                                   <th>[-]</th>
                                 </tr>
@@ -51,11 +53,13 @@
                             </tbody>
                             <tfoot>
                                 <tr class="cabecera">
+                                  <th>Img</th>
                                   <th>Persona</th>
                                   <th>Razon Social</th>
                                   <th>RUC</th>
                                   <th>Nombre Comercial</th>
                                   <th>Estado</th>
+                                  <th>Email</th>
                                   <th>[-]</th>
                                 </tr>
                             </tfoot>

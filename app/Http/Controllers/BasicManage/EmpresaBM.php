@@ -33,9 +33,10 @@ class EmpresaBM extends Controller
             );
 
             $rules = array(
-                'persona_id' => 
+
+                'razon_social' => 
                        ['required',
-                        Rule::unique('empresas','persona_id'),
+                        Rule::unique('empresas','razon_social'),
                         ],
                 'ruc' => 
                        ['required',
@@ -66,10 +67,12 @@ class EmpresaBM extends Controller
             );
 
             $rules = array(
-                'persona_id' => 
+              
+                'razon_social' => 
                        ['required',
-                        Rule::unique('empresas','persona_id'),
+                        Rule::unique('empresas','razon_social')->ignore($r->id),
                         ],
+                   
                 'ruc' => 
                        ['required',
                         Rule::unique('empresas','ruc')->ignore($r->id),

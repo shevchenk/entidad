@@ -19,7 +19,7 @@ var AjaxSucursal={
         $("#ModalSucursalForm").append("<input type='hidden' value='"+AI+"' name='estadof'>");
         $("#ModalSucursalForm").append("<input type='hidden' value='"+id+"' name='id'>");
         var data=$("#ModalSucursalForm").serialize().split("txt_").join("").split("slct_").join("");
-        $("#ModalSucursalForm input[type='hidden']").remove();
+        $("#ModalSucursalForm input[type='hidden']").not('.mant').remove();
         url='AjaxDinamic/BasicManage.SucursalBM@EditStatus';
         masterG.postAjax(url,data,evento);
     }
