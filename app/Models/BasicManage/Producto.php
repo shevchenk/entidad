@@ -3,6 +3,7 @@
 namespace App\Models\BasicManage;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Producto extends Model
 {
@@ -12,7 +13,7 @@ class Producto extends Model
     {
         $producto = Producto::find($r->id);
         $producto->estado = trim( $r->estadof );
-        $producto->persona_id_updated_at=1;
+        $producto->persona_id_updated_at=Auth::user()->id;
         $producto->save();
     }
 
@@ -23,7 +24,7 @@ class Producto extends Model
         $producto->articulo_id = trim( $r->articulo );
         $producto->unidad_medida = trim( $r->unidad_medida );
         $producto->estado = trim( $r->estado );
-        $producto->persona_id_created_at=1;
+        $producto->persona_id_created_at=Auth::user()->id;
         if(trim($r->imagen_nombre)!=''){
         $producto->foto=$r->imagen_nombre;
         $este = new Producto;
@@ -44,7 +45,7 @@ class Producto extends Model
         $producto->articulo_id = trim( $r->articulo );
         $producto->unidad_medida = trim( $r->unidad_medida );
         $producto->estado = trim( $r->estado );
-        $producto->persona_id_created_at=1;
+        $producto->persona_id_created_at=Auth::user()->id;
         if(trim($r->imagen_nombre)!=''){
             $producto->foto=$r->imagen_nombre;
         }else {

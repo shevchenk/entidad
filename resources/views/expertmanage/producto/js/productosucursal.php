@@ -24,6 +24,9 @@ $(document).ready(function() {
     CargarSlct(1);
     AjaxProductosucursal.Cargar(HTMLCargarProductosucursal);
     
+    $("#ProductosucursalForm #TableProductosucursal select").change(function(){ AjaxProductosucursal.Cargar(HTMLCargarProductosucursal); });
+    $("#ProductosucursalForm #TableProductosucursal input").blur(function(){ AjaxProductosucursal.Cargar(HTMLCargarProductosucursal); });
+    
     $('#ModalProductosucursal').on('shown.bs.modal', function (event) {
         if( AddEdit==1 ){
             $(this).find('.modal-footer .btn-primary').text('Guardar').attr('onClick','AgregarEditarAjax();');
@@ -159,7 +162,7 @@ HTMLCargarProductosucursal=function(result){
     var html="";
     $('#TableProductosucursal').DataTable().destroy();
     
-    $.each(result.data,function(index,r){
+    $.each(result.data.data,function(index,r){
         estadohtml='<span id="'+r.id+'" onClick="CambiarEstado(1,'+r.id+')" class="btn btn-danger">Inactivo</span>';
         if(r.estado==1){
             estadohtml='<span id="'+r.id+'" onClick="CambiarEstado(0,'+r.id+')" class="btn btn-success">Activo</span>';
@@ -194,10 +197,19 @@ HTMLCargarProductosucursal=function(result){
     $("#TableProductosucursal").DataTable({
         "paging": true,
         "lengthChange": false,
-        "searching": true,
-        "ordering": true,
+        "searching": false,
+        "ordering": false,
         "info": true,
-        "autoWidth": false
+        "autoWidth": false,
+        "lengthMenu": [10],
+        "language": {
+            "info": "Mostrando página "+result.data.current_page+" / "+result.data.last_page+" de "+result.data.total,
+            "infoEmpty": "No éxite registro(s) aún",
+        },
+        "initComplete": function () {
+            $('#TableProductosucursal_paginate ul').remove();
+            masterG.CargarPaginacion('HTMLCargarProductosucursal','AjaxProductosucursal',result.data,'#TableProductosucursal_paginate');
+        }
     });
 
 };

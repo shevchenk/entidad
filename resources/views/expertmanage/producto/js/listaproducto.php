@@ -11,7 +11,9 @@ $(document).ready(function() {
         "info": true,
         "autoWidth": false
     });
-   
+    $("#ListaproductoForm #TableListaproducto select").change(function(){ AjaxListaproducto.Cargar(HTMLCargarListaProducto); });
+    $("#ListaproductoForm #TableListaproducto input").blur(function(){ AjaxListaproducto.Cargar(HTMLCargarListaProducto); });
+    
     $('#ModalListaproducto').on('shown.bs.modal', function (event) { 
       var button = $(event.relatedTarget); // captura al boton
       bfiltros= button.data('filtros');
@@ -66,7 +68,6 @@ HTMLCargarListaProducto=function(result){
         html+="<input type='hidden' class='foto' value='"+r.foto+"'>";}
 
         html+="<input type='hidden' class='estado' value='"+r.estado+"'>"+estadohtml+"</td>";
-//            '<td><a class="btn btn-primary btn-sm" onClick="AgregarEditar(0,'+r.id+')"><i class="fa fa-edit fa-lg"></i> </a></td>';
         html+="</tr>";
     });
     $("#TableListaproducto tbody").html(html); 

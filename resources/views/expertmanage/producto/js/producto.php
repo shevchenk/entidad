@@ -20,7 +20,10 @@ $(document).ready(function() {
         "info": true,
         "autoWidth": false
     });
-
+    
+    $("#ProductoForm #TableProducto select").change(function(){ AjaxProducto.Cargar(HTMLCargarProducto3); });
+    $("#ProductoForm #TableProducto input").blur(function(){ AjaxProducto.Cargar(HTMLCargarProducto3); });
+    
     $('#ModalProducto').on('shown.bs.modal', function (event) {
         if( AddEdit==1 ){
             $(this).find('.modal-footer .btn-primary').text('Guardar').attr('onClick','AgregarEditarAjax3();');
@@ -121,7 +124,7 @@ HTMLCargarProducto3=function(result){
     var html="";
     $('#TableProducto').DataTable().destroy();
     
-    $.each(result.data,function(index,r){
+    $.each(result.data.data,function(index,r){
         estadohtml='<span id="'+r.id+'" onClick="CambiarEstado3(1,'+r.id+')" class="btn btn-danger">Inactivo</span>';
         if(r.estado==1){
             estadohtml='<span id="'+r.id+'" onClick="CambiarEstado3(0,'+r.id+')" class="btn btn-success">Activo</span>';
@@ -148,10 +151,19 @@ HTMLCargarProducto3=function(result){
     $("#TableProducto").DataTable({
         "paging": true,
         "lengthChange": false,
-        "searching": true,
-        "ordering": true,
+        "searching": false,
+        "ordering": false,
         "info": true,
-        "autoWidth": false
+        "autoWidth": false,
+        "lengthMenu": [10],
+        "language": {
+            "info": "Mostrando página "+result.data.current_page+" / "+result.data.last_page+" de "+result.data.total,
+            "infoEmpty": "No éxite registro(s) aún",
+        },
+        "initComplete": function () {
+            $('#TableProducto_paginate ul').remove();
+            masterG.CargarPaginacion('HTMLCargarProducto3','AjaxProducto',result.data,'#TableProducto_paginate');
+        }
     });
 
 };

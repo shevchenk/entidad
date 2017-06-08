@@ -3,6 +3,7 @@
 namespace App\Models\BasicManage;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Articulo extends Model
 {
@@ -12,7 +13,7 @@ class Articulo extends Model
     {
         $articulo = Articulo::find($r->id);
         $articulo->estado = trim( $r->estadof );
-        $articulo->persona_id_updated_at=1;
+        $articulo->persona_id_updated_at=Auth::user()->id;
         $articulo->save();
     }
 
@@ -22,7 +23,7 @@ class Articulo extends Model
         $articulo->articulo = trim( $r->articulo );
         $articulo->categoria_id = trim( $r->categoria);
         $articulo->estado = trim( $r->estado );
-        $articulo->persona_id_created_at=1;
+        $articulo->persona_id_created_at=Auth::user()->id;
         $articulo->save();
     }
 
@@ -32,7 +33,7 @@ class Articulo extends Model
         $articulo->articulo = trim( $r->articulo );
         $articulo->categoria_id = trim( $r->categoria);
         $articulo->estado = trim( $r->estado );
-        $articulo->persona_id_updated_at=1;
+        $articulo->persona_id_updated_at=Auth::user()->id;
         $articulo->save();
     }
 

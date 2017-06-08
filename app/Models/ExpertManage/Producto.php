@@ -17,24 +17,11 @@ class Producto extends Model
     }
 
     public static function runNew($r)
-    {       
+    {            
         $producto = new Producto;
         $producto->producto = trim( $r->producto );
-        $producto->sucursal_id = trim( $r->sucursal );
         $producto->articulo_id = trim( $r->articulo );
-        $producto->precio_venta = trim( $r->precio_venta );
-        $producto->precio_compra = trim( $r->precio_compra );
-        $producto->moneda = trim( $r->moneda );
-        $producto->stock = trim( $r->stock );
-        $producto->stock_minimo = trim( $r->stock_minimo );
-        $producto->dias_alerta = trim( $r->dias_alerta );
-        if(trim($r->fecha_vencimiento)!=''){
-            $producto->dias_vencimiento = 0; 
-            $producto->fecha_vencimiento = trim( $r->fecha_vencimiento );
-        }else {
-            $producto->dias_vencimiento = trim( $r->dias_vencimiento );
-            $producto->fecha_vencimiento  = date('Y-m-d', strtotime('+'.$r->dias_vencimiento.' day', strtotime(date('Y-m-d'))));     
-        }
+        $producto->unidad_medida = trim( $r->unidad_medida );
         $producto->estado = trim( $r->estado );
         $producto->persona_id_created_at=1;
         if(trim($r->imagen_nombre)!=''){
@@ -46,6 +33,7 @@ class Producto extends Model
         $producto->foto=null;    
         }
         $producto->save();
+       
                 
     }
 
@@ -53,23 +41,10 @@ class Producto extends Model
     {
         $producto = Producto::find($r->id);
         $producto->producto = trim( $r->producto );
-        $producto->sucursal_id = trim( $r->sucursal );
         $producto->articulo_id = trim( $r->articulo );
-        $producto->precio_venta = trim( $r->precio_venta );
-        $producto->precio_compra = trim( $r->precio_compra );
-        $producto->moneda = trim( $r->moneda );
-        $producto->stock = trim( $r->stock );
-        $producto->stock_minimo = trim( $r->stock_minimo );
-        $producto->dias_alerta = trim( $r->dias_alerta );
-        if(trim($r->fecha_vencimiento)!=''){
-            $producto->dias_vencimiento = 0; 
-            $producto->fecha_vencimiento = trim( $r->fecha_vencimiento );
-        }else {
-            $producto->dias_vencimiento = trim( $r->dias_vencimiento );
-            $producto->fecha_vencimiento  = date('Y-m-d', strtotime('+'.$r->dias_vencimiento.' day', strtotime(date('Y-m-d'))));     
-        }
+        $producto->unidad_medida = trim( $r->unidad_medida );
         $producto->estado = trim( $r->estado );
-        $producto->persona_id_updated_at=1;
+        $producto->persona_id_created_at=1;
         if(trim($r->imagen_nombre)!=''){
             $producto->foto=$r->imagen_nombre;
         }else {
@@ -85,8 +60,8 @@ class Producto extends Model
 
     public static function runLoad($r)
     {
-        $sql=Producto::select('id','articulo_id','sucursal_id','producto','precio_venta','precio_compra',
-                'moneda','stock','stock_minimo','dias_alerta','fecha_vencimiento','dias_vencimiento','foto','estado')
+        $sql=Producto::select('productos.id','a.articulo','articulo_id','producto','unidad_medida','foto','productos.estado')
+            ->join('articulos as a','a.id','=','productos.articulo_id')
             ->where( 
                 function($query) use ($r){
                     if( $r->has("producto") ){
@@ -98,19 +73,13 @@ class Producto extends Model
                     if( $r->has("estado") ){
                         $estado=trim($r->estado);
                         if( $estado !='' ){
-                            $query->where('estado','like','%'.$estado.'%');
+                            $query->where('productos.estado','like','%'.$estado.'%');
                         }
                     }
-                    if( $r->has("precio_venta") ){
-                        $precio_venta=trim($r->precio_venta);
-                        if( $precio_venta !='' ){
-                            $query->where('precio_venta','like','%'.$precio_venta.'%');
-                        }
-                    }
-                    if( $r->has("precio_compra") ){
-                        $precio_compra=trim($r->precio_compra);
-                        if( $precio_compra !='' ){
-                            $query->where('precio_compra','like','%'.$precio_compra.'%');
+                    if( $r->has("articulo") ){
+                        $articulo=trim($r->articulo);
+                        if( $articulo !='' ){
+                            $query->where('a.articulo','like','%'.$articulo.'%');
                         }
                     }
                 }

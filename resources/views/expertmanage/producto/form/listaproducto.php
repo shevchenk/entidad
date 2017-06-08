@@ -17,11 +17,34 @@
                                 <table id="TableListaproducto" class="table table-bordered table-hover">
                                     <thead>
                                         <tr class="cabecera">
-                                            <th>Img</th>
-                                            <th>Producto</th>
-                                            <th>Articulo</th>
-<!--                                            <th>[-]</th>-->
-                                            <th>[-]</th>
+                                            <th class="col-xs-2">
+                                                <div class="form-group">
+                                                    <label><h4>Imagen:</h4></label>
+<!--                                                    <div class="input-group">
+                                                        <div class="input-group-addon"><i class="fa fa-search"></i></div>
+                                                        <input type="text" class="form-control" name="txt_nombre" id="txt_nombre" placeholder="Buscar Nombre" onkeypress="return masterG.enterGlobal(event, '.input-group', 1);">
+                                                    </div>-->
+                                                </div>
+                                            </th>
+                                            <th class="col-xs-5">
+                                                <div class="form-group">
+                                                    <label><h4>Producto:</h4></label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-addon"><i class="fa fa-search"></i></div>
+                                                        <input type="text" class="form-control" name="txt_producto" id="txt_producto" placeholder="Buscar Producto" onkeypress="return masterG.enterGlobal(event, '.input-group', 1);">
+                                                    </div>
+                                                </div>
+                                            </th>
+                                            <th class="col-xs-4">
+                                                <div class="form-group">
+                                                    <label><h4>Artículo:</h4></label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-addon"><i class="fa fa-search"></i></div>
+                                                        <input type="text" class="form-control" name="txt_articulo" id="txt_articulo" placeholder="Buscar Artículo" onkeypress="return masterG.enterGlobal(event, '.input-group', 1);">
+                                                    </div>
+                                                </div>
+                                            </th>                                    
+                                            <th class="col-xs-1">[-]</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -31,7 +54,6 @@
                                             <th>Img</th>
                                             <th>Producto</th>
                                             <th>Articulo</th>
-<!--                                            <th>[-]</th>-->
                                             <th>[-]</th>
                                         </tr>
                                     </tfoot>
@@ -43,7 +65,6 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default active pull-left" data-dismiss="modal">Close</button>
-<!--                <button type="button" class="btn btn-primary active pull-right" onclick="AgregarEditar3(1)">Nuevo</button>-->
             </div>
         </div>
     </div>

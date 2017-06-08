@@ -2,16 +2,19 @@
 var AjaxProductosucursal={
     AgregarEditar:function(evento){
         var data=$("#ModalProductosucursalForm").serialize().split("txt_").join("").split("slct_").join("");
-        url='AjaxDinamic/BasicManage.ProductosucursalBM@New';
+        url='AjaxDinamic/ExpertManage.ProductosucursalEM@New';
         if(AddEdit==0){
-            url='AjaxDinamic/BasicManage.ProductosucursalBM@Edit';
+            url='AjaxDinamic/ExpertManage.ProductoSucursalEM@Edit';
         }
         masterG.postAjax(url,data,evento);
     },
     Cargar:function(evento,pag){
-        data={};
+        if( typeof(pag)!='undefined' ){
+            $("#ProductosucursalForm").append("<input type='hidden' value='"+pag+"' name='page'>");
+        }
+        data=$("#ProductosucursalForm").serialize().split("txt_").join("").split("slct_").join("");
         $("#ProductosucursalForm input[type='hidden']").not('.mant').remove();
-        url='AjaxDinamic/BasicManage.ProductosucursalBM@Load';
+        url='AjaxDinamic/ExpertManage.ProductoSucursalEM@Load';
         masterG.postAjax(url,data,evento);
     },
     CambiarEstado:function(evento,AI,id){
@@ -19,21 +22,21 @@ var AjaxProductosucursal={
         $("#ModalProductosucursalForm").append("<input type='hidden' value='"+id+"' name='id'>");
         var data=$("#ModalProductosucursalForm").serialize().split("txt_").join("").split("slct_").join("");
         $("#ModalProductosucursalForm input[type='hidden']").not('.mant').remove();
-        url='AjaxDinamic/BasicManage.ProductosucursalBM@EditStatus';
+        url='AjaxDinamic/ExpertManage.ProductoSucursalEM@EditStatus';
         masterG.postAjax(url,data,evento);
     },
     CargarSucursal:function(evento){
-        url='AjaxDinamic/BasicManage.SucursalBM@ListSucursal';
+        url='AjaxDinamic/ExpertManage.SucursalEM@ListSucursal';
         data={};
         masterG.postAjax(url,data,evento);
     },
     CargarCategoria:function(evento){
-        url='AjaxDinamic/BasicManage.CategoriaBM@ListCategoria';
+        url='AjaxDinamic/ExpertManage.CategoriaEM@ListCategoria';
         data={};
         masterG.postAjax(url,data,evento);
     },
     CargarArticulo:function(evento){
-        url='AjaxDinamic/BasicManage.ArticuloBM@ListArticulo';
+        url='AjaxDinamic/ExpertManage.ArticuloEM@ListArticulo';
         data={};
         masterG.postAjax(url,data,evento);
     }

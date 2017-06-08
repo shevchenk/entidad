@@ -1,13 +1,13 @@
 <?php
-namespace App\Http\Controllers\BasicManage;
+namespace App\Http\Controllers\ExpertManage;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\BasicManage\Producto;
+use App\Models\ExpertManage\Producto;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Validator;
 
-class ProductoBM extends Controller
+class ProductoEM extends Controller
 {
     public function EditStatus(Request $r )
     {

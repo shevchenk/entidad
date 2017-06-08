@@ -3,6 +3,7 @@
 namespace App\Models\BasicManage;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Categoria extends Model
 {
@@ -12,7 +13,7 @@ class Categoria extends Model
     {
         $categoria = Categoria::find($r->id);
         $categoria->estado = trim( $r->estadof );
-        $categoria->persona_id_updated_at=1;
+        $categoria->persona_id_updated_at=Auth::user()->id;
         $categoria->save();
     }
 
@@ -21,7 +22,7 @@ class Categoria extends Model
         $categoria = new Categoria;
         $categoria->categoria = trim( $r->categoria );
         $categoria->estado = trim( $r->estado );
-        $categoria->persona_id_created_at=1;
+        $categoria->persona_id_created_at=Auth::user()->id;
         $categoria->save();
     }
 
@@ -30,7 +31,7 @@ class Categoria extends Model
         $categoria = Categoria::find($r->id);
         $categoria->categoria = trim( $r->categoria );
         $categoria->estado = trim( $r->estado );
-        $categoria->persona_id_updated_at=1;
+        $categoria->persona_id_updated_at=Auth::user()->id;
         $categoria->save();
     }
 

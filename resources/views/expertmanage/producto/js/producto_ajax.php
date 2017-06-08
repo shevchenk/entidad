@@ -2,16 +2,19 @@
 var AjaxProducto={
     AgregarEditar:function(evento){
         var data=$("#ModalProductoForm").serialize().split("txt_").join("").split("slct_").join("");
-        url='AjaxDinamic/BasicManage.ProductoBM@New';
+        url='AjaxDinamic/ExpertManage.ProductoEM@New';
         if(AddEdit==0){
-            url='AjaxDinamic/BasicManage.ProductoBM@Edit';
+            url='AjaxDinamic/ExpertManage.ProductoEM@Edit';
         }
         masterG.postAjax(url,data,evento);
     },
     Cargar:function(evento,pag){
-        data={};
+        if( typeof(pag)!='undefined' ){
+            $("#ProductoForm").append("<input type='hidden' value='"+pag+"' name='page'>");
+        }
+        data=$("#ProductoForm").serialize().split("txt_").join("").split("slct_").join("");
         $("#ProductoForm input[type='hidden']").not('.mant').remove();
-        url='AjaxDinamic/BasicManage.ProductoBM@Load';
+        url='AjaxDinamic/ExpertManage.ProductoEM@Load';
         masterG.postAjax(url,data,evento);
     },
     CambiarEstado:function(evento,AI,id){
@@ -19,7 +22,7 @@ var AjaxProducto={
         $("#ModalProductoForm").append("<input type='hidden' value='"+id+"' name='id'>");
         var data=$("#ModalProductoForm").serialize().split("txt_").join("").split("slct_").join("");
         $("#ModalProductoForm input[type='hidden']").not('.mant').remove();
-        url='AjaxDinamic/BasicManage.ProductoBM@EditStatus';
+        url='AjaxDinamic/ExpertManage.ProductoEM@EditStatus';
         masterG.postAjax(url,data,evento);
     },
 };

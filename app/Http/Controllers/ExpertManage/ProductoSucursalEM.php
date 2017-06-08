@@ -1,13 +1,13 @@
 <?php
-namespace App\Http\Controllers\BasicManage;
+namespace App\Http\Controllers\ExpertManage;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\BasicManage\ProductoSucursal;
+use App\Models\ExpertManage\ProductoSucursal;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Validator;
 
-class ProductoSucursalBM extends Controller
+class ProductoSucursalEM extends Controller
 {
     public function EditStatus(Request $r )
     {

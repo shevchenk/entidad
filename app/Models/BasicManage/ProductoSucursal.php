@@ -3,6 +3,7 @@
 namespace App\Models\BasicManage;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class ProductoSucursal extends Model
 {
@@ -12,7 +13,7 @@ class ProductoSucursal extends Model
     {
         $producto = ProductoSucursal::find($r->id);
         $producto->estado = trim( $r->estadof );
-        $producto->persona_id_updated_at=1;
+        $producto->persona_id_updated_at=Auth::user()->id;
         $producto->save();
     }
 
@@ -35,7 +36,7 @@ class ProductoSucursal extends Model
             $producto->fecha_vencimiento  = date('Y-m-d', strtotime('+'.$r->dias_vencimiento.' day', strtotime(date('Y-m-d'))));     
         }
         $producto->estado = trim( $r->estado );
-        $producto->persona_id_created_at=1;
+        $producto->persona_id_created_at=Auth::user()->id;
         $producto->save();
        
                 
@@ -60,7 +61,7 @@ class ProductoSucursal extends Model
             $producto->fecha_vencimiento  = date('Y-m-d', strtotime('+'.$r->dias_vencimiento.' day', strtotime(date('Y-m-d'))));     
         }
         $producto->estado = trim( $r->estado );
-        $producto->persona_id_updated_at=1;
+        $producto->persona_id_updated_at=Auth::user()->id;
         $producto->save();
     }
 
@@ -98,7 +99,7 @@ class ProductoSucursal extends Model
                     }
                     if( $r->has("stock") ){
                         $stock=trim($r->stock);
-                        if( $precio_venta !='' ){
+                        if( $stock !='' ){
                             $query->where('stock','like','%'.$stock.'%');
                         }
                     }

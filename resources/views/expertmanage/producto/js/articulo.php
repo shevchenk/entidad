@@ -10,8 +10,7 @@ $(document).ready(function() {
         "info": true,
         "autoWidth": false
     });
-    CargarSlct(2);
-    AjaxArticulo.Cargar(HTMLCargarArticulo2);
+    
     $("#ArticuloForm #TableArticulo select").change(function(){ AjaxArticulo.Cargar(HTMLCargarArticulo2); });
     $("#ArticuloForm #TableArticulo input").blur(function(){ AjaxArticulo.Cargar(HTMLCargarArticulo2); });
     
