@@ -58,8 +58,8 @@
                                   <th>Razon Social</th>
                                   <th>RUC</th>
                                   <th>Nombre Comercial</th>
-                                  <th>Estado</th>
                                   <th>Email</th>
+                                  <th>Estado</th>                  
                                   <th>[-]</th>
                                 </tr>
                             </tfoot>
