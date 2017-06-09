@@ -8,8 +8,9 @@ var AjaxProveedor={
         }
         masterG.postAjax(url,data,evento);
     },
-    Cargar:function(evento,pag){
+    Cargar:function(evento){
         data={};
+        $("#ProveedorForm input[type='hidden']").not('.mant').remove();
         url='AjaxDinamic/BasicManage.ProveedorBM@Load';
         masterG.postAjax(url,data,evento);
     },

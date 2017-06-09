@@ -1,17 +1,14 @@
 <script type="text/javascript">
 var AddEdit=0; //0: Editar | 1: Agregar
-var ProveedorG={id:0,persona_id:0,persona:"",empresa:"",empresa_id:0,estado:1}; // Datos Globales
+var ProveedorG={id:0,
+persona_id:0,
+persona:"",
+empresa:"",
+empresa_id:0,
+estado:1}; // Datos Globales
 $(document).ready(function() {
-    $(".fechas").datetimepicker({
-        format: "yyyy-mm-dd",
-        language: 'es',
-        showMeridian: false,
-        time:false,
-        minView:2,
-        autoclose: true,
-        todayBtn: false
-    });
-    
+
+      
     $("#TableProveedor").DataTable({
         "paging": true,
         "lengthChange": false,
@@ -44,7 +41,7 @@ $(document).ready(function() {
         $('#ModalProveedorForm #txt_empresa').val( ProveedorG.empresa );
         $('#ModalProveedorForm #slct_estado').val( ProveedorG.estado );
         $("#ModalProveedorForm select").selectpicker('refresh');
-        $('#ModalProveedorForm #txt_persona').focus();
+       // $('#ModalProveedorForm #txt_persona').focus();
     });
 
     $('#ModalProveedor').on('hidden.bs.modal', function (event) {
@@ -135,7 +132,12 @@ HTMLCargarProveedor=function(result){
             "<input type='hidden' class='persona_id' value='"+r.persona_id+"'>"+
             "<input type='hidden' class='empresa_id' value='"+r.empresa_id+"'>"+
             "<input type='hidden' class='estado' value='"+r.estado+"'>"+estadohtml+"</td>"+
-            '<td><a class="btn btn-primary btn-sm" onClick="AgregarEditar(0,'+r.id+')"><i class="fa fa-edit fa-lg"></i> </a></td>';
+            '<td><a class="btn btn-primary btn-sm" onClick="AgregarEditar(0,'+r.id+')"><i class="fa fa-edit fa-lg"></i> </a></td>'+
+
+            '<td><a class="btn btn-primary btn-sm" onClick="Cargar('+r.id+')"><i class="fa fa-plus fa-lg"></i> </a></td>';
+
+
+
         html+="</tr>";
     });
     $("#TableProveedor tbody").html(html); 
@@ -148,4 +150,14 @@ HTMLCargarProveedor=function(result){
         "autoWidth": false
     });
 };
+
+
+Cargar=function(id){
+    
+    AjaxProveedorDetalle.Cargar(HTMLCargarProveedorDetalle,id);
+    $("#ProveedorDetalleForm").css("display","");
+    
+ 
+};
+
 </script>

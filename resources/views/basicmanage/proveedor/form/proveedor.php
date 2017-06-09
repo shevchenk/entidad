@@ -10,6 +10,7 @@
           <form id="ModalProveedorForm">
             <div class="form-group">
               <a class="btn btn-primary btn-sm" data-toggle="modal" data-target="#ModalListaempresa" data-filtros="estado:1" data-empresaid="ModalProveedor #txt_empresa_id" data-empresa="ModalProveedor #txt_empresa" data-personaid="ModalProveedor #txt_persona_id" data-persona="ModalProveedor #txt_persona">Empresa</a>
+
               <a class="btn btn-primary btn-sm" data-toggle="modal" data-target="#ModalListapersona" data-filtros="estado:1" data-empresaid="ModalProveedor #txt_empresa_id" data-empresa="ModalProveedor #txt_empresa" data-personaid="ModalProveedor #txt_persona_id" data-persona="ModalProveedor #txt_persona">Persona</a>
             </div>
               <div class="form-group persona"  style="display: none">
@@ -35,6 +36,10 @@
           <button type="button" class="btn btn-default active pull-left" data-dismiss="modal">Close</button>
           <button type="button" class="btn btn-primary">Save</button>
         </div>
+
+    
+
+
       </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div>
