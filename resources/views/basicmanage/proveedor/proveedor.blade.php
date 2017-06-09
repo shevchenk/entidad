@@ -44,6 +44,7 @@
     <div class="row">
         <div class="col-xs-12">
             <div class="box">
+                <div class="box-body  no-padding"> <!-- table-responsive-->
                 <form id="ProveedorForm">
                     <div class="box-body table-responsive no-padding">
                         <table id="TableProveedor" class="table table-bordered table-hover">
@@ -103,7 +104,7 @@
                         </div>
                     </div><!-- .box-body -->
                 </form><!-- .form --> 
-
+                 </div><!-- .box-body -->
 
             </div><!-- .box -->
         </div><!-- .col -->

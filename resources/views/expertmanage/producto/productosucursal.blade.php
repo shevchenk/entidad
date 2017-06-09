@@ -43,7 +43,7 @@
             <div class="box"> 
                <div class="box-body  no-padding"> <!-- table-responsive-->
                 <form id="ProductosucursalForm">
-                   
+                   <div class="box-body table-responsive no-padding">
                         <table id="TableProductosucursal" class="table table-bordered table-hover">
                             <thead>
                                 <tr class="cabecera">
@@ -153,7 +153,7 @@
                         <div class='btn btn-primary btn-sm' class="btn btn-primary" onClick="Cargar(3)" >
                             <i class="fa fa-plus fa-lg"></i>&nbsp;Mostrar Productos</a>
                         </div>
-                   
+                        </div>
                 </form><!-- .form -->
                 <hr>
                 <form id="CategoriaForm" style="display: none">
