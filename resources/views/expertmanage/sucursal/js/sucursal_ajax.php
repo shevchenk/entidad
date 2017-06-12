@@ -13,7 +13,7 @@ var AjaxSucursal={
             $("#SucursalForm").append("<input type='hidden' value='"+pag+"' name='page'>");
         }
         data=$("#SucursalForm").serialize().split("txt_").join("").split("slct_").join("");
-        $("#SucursalForm input[type='hidden']").remove();
+        $("#SucursalForm input[type='hidden']").not('.mant').remove();
         url='AjaxDinamic/ExpertManage.SucursalEM@Load';
         masterG.postAjax(url,data,evento);
     },
@@ -21,7 +21,7 @@ var AjaxSucursal={
         $("#ModalSucursalForm").append("<input type='hidden' value='"+AI+"' name='estadof'>");
         $("#ModalSucursalForm").append("<input type='hidden' value='"+id+"' name='id'>");
         var data=$("#ModalSucursalForm").serialize().split("txt_").join("").split("slct_").join("");
-        $("#ModalSucursalForm input[type='hidden']").remove();
+        $("#ModalSucursalForm input[type='hidden']").not('.mant').remove();
         url='AjaxDinamic/ExpertManage.SucursalEM@EditStatus';
         masterG.postAjax(url,data,evento);
     }

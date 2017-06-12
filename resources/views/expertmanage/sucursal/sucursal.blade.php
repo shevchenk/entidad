@@ -30,6 +30,7 @@
                         <table id="TableSucursal" class="table table-bordered table-hover">
                             <thead>
                                 <tr class="cabecera">
+                                    <th class="col-xs-1">IMG</th>
                                     <th class="col-xs-2">
                                         <div class="form-group">
                                             <label><h4>Sucursal:</h4></label>
@@ -75,15 +76,6 @@
                                             </div>                                          
                                         </div>
                                     </th>
-                                   <!-- <th class="col-xs-6">
-                                        <div class="form-group">
-                                            <label><h4>Foto:</h4></label>
-                                            <div class="input-group">
-                                                <div class="input-group-addon"><i class="fa fa-search"></i></div>
-                                                <input type="text" class="form-control" name="txt_foto" id="txt_foto" placeholder="Buscar Foto" onkeypress="return masterG.enterGlobal(event,'.input-group',1);">
-                                            </div>                                          
-                                        </div>
-                                    </th>-->
 
                                     <th class="col-xs-2">
                                         <div class="form-group">
@@ -104,12 +96,12 @@
                             </tbody>
                             <tfoot>
                                 <tr class="cabecera">
+                                  <th>Img</th>
                                   <th>Sucursal</th>
                                   <th>Direccion</th>
                                   <th>Telefono</th>
                                   <th>Celular</th>
                                   <th>Email</th>
-                                  <!--<th>Foto</th>-->
                                   <th>Estado</th>
                                   <th>[-]</th>
                                 </tr>
