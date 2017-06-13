@@ -10,10 +10,16 @@
     {{ Html::script('lib/bootstrap-select/dist/js/bootstrap-select.min.js') }}
     {{ Html::script('lib/bootstrap-select/dist/js/i18n/defaults-es_ES.min.js') }}
 
+    {{ Html::style('lib/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css') }}
+    {{ Html::script('lib/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js') }}
+    {{ Html::script('lib/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.es.js') }}
+
     @include( 'expertmanage.empresa.js.empresa_ajax' )
     @include( 'expertmanage.empresa.js.empresa' )
     @include( 'expertmanage.empleado.js.listapersona_ajax' )
     @include( 'expertmanage.empleado.js.listapersona' )
+    @include( 'expertmanage.persona.js.agregar_editar_persona' )
+    @include( 'expertmanage.persona.js.agregar_editar_persona_ajax' )
 @stop
 
 
@@ -120,4 +126,5 @@
 @section('form')
      @include( 'expertmanage.empresa.form.empresa' )
      @include( 'expertmanage.empleado.form.listapersona' )
+     @include( 'expertmanage.persona.form.persona' )
 @stop
