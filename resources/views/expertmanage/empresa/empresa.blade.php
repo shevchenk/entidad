@@ -6,6 +6,10 @@
     {{ Html::script('lib/datatables/jquery.dataTables.min.js') }}
     {{ Html::script('lib/datatables/dataTables.bootstrap.min.js') }}
 
+    {{ Html::style('lib/bootstrap-select/dist/css/bootstrap-select.min.css') }}
+    {{ Html::script('lib/bootstrap-select/dist/js/bootstrap-select.min.js') }}
+    {{ Html::script('lib/bootstrap-select/dist/js/i18n/defaults-es_ES.min.js') }}
+
     @include( 'expertmanage.empresa.js.empresa_ajax' )
     @include( 'expertmanage.empresa.js.empresa' )
     @include( 'expertmanage.empleado.js.listapersona_ajax' )
@@ -33,6 +37,7 @@
                         <table id="TableEmpresa" class="table table-bordered table-hover">
                             <thead>
                                 <tr class="cabecera">
+                                <th class="col-xs-1">IMG</th>
                                     <th class="col-xs-2">
                                         <div class="form-group">
                                             <label><h4>Persona:</h4></label>
@@ -91,6 +96,7 @@
                             </tbody>
                             <tfoot>
                                 <tr class="cabecera">
+                                  <th>Img</th>
                                   <th>Persona</th>
                                   <th>Razon Social</th>
                                   <th>RUC</th>

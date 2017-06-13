@@ -13,7 +13,7 @@ var AjaxEmpresa={
             $("#EmpresaForm").append("<input type='hidden' value='"+pag+"' name='page'>");
         }
         data=$("#EmpresaForm").serialize().split("txt_").join("").split("slct_").join("");
-        $("#EmpresaForm input[type='hidden']").remove();
+        $("#EmpresaForm input[type='hidden']").not('.mant').remove();
         url='AjaxDinamic/ExpertManage.EmpresaEM@Load';
         masterG.postAjax(url,data,evento);
     },
