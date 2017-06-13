@@ -5,7 +5,7 @@ paterno:"",
 materno:"",
 nombre:"",
 dni:"",
-sexo:"",
+sexo:0,
 email:"",
 password:"",
 telefono:"",
@@ -13,9 +13,7 @@ celular:"",
 fecha_nacimiento:"",
 estado:1}; // Datos Globales
 $(document).ready(function() {
-    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ) {
-      $('.selectpicker').selectpicker('mobile');
-    }
+
     $(".fechas").datetimepicker({
         format: "yyyy-mm-dd",
         language: 'es',
@@ -57,6 +55,7 @@ $(document).ready(function() {
         $('#ModalPersonaForm #txt_celular').val( PersonaG.celular );        
         $('#ModalPersonaForm #txt_fecha_nacimiento').val( PersonaG.fecha_nacimiento );
         $('#ModalPersonaForm #slct_estado').val( PersonaG.estado );
+        $("#ModalPersona select").selectpicker('refresh');
         $('#ModalPersonaForm #txt_nombre').focus();
     });
 
@@ -101,7 +100,7 @@ AgregarEditar=function(val,id){
     PersonaG.materno='';
     PersonaG.nombre='';
     PersonaG.dni='';
-    PersonaG.sexo='';
+    PersonaG.sexo='0';
     PersonaG.email='';
     PersonaG.password='';
     PersonaG.telefono='';

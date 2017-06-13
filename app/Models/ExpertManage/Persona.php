@@ -4,8 +4,7 @@ namespace App\Models\ExpertManage;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
-use Symfony\Component\Console\Input;
+use DB;
 
 class Persona extends Model
 {
@@ -31,20 +30,16 @@ class Persona extends Model
         $persona->nombre = trim( $r->nombre );
         $persona->dni = trim( $r->dni );
         $persona->sexo = trim( $r->sexo );
-       
         $persona->email = trim( $r->email );
-       
         $bcryptpassword = bcrypt($r->password);
         $persona->password=$bcryptpassword;
         $persona->telefono = trim( $r->telefono );
         $persona->celular = trim( $r->celular );
-
         if(trim( $r->fecha_nacimiento )!=''){
         $persona->fecha_nacimiento = trim( $r->fecha_nacimiento );}
         else {
         $persona->fecha_nacimiento = null;
         }
-        
         $persona->estado = trim( $r->estado );
         $persona->persona_id_created_at=$persona_id;
         $persona->save();
@@ -60,17 +55,21 @@ class Persona extends Model
         $persona->dni = trim( $r->dni );
         $persona->sexo = trim( $r->sexo );
         $persona->email = trim( $r->email );
-        /*$persona->password= Hash::make(trim( $r->password ));*/
         if(trim( $r->password )!=''){
         $persona->password=bcrypt($r->password);}
-
+        
         $persona->telefono = trim( $r->telefono );
         $persona->celular = trim( $r->celular );
 
-        if(trim( $r->fecha_nacimiento )!=''){
-        $persona->fecha_nacimiento = trim( $r->fecha_nacimiento );}
-        else {
+        if(trim( $r->fecha_nacimiento )!='') 
+        {
         $persona->fecha_nacimiento = trim( $r->fecha_nacimiento );
+        }
+        else
+        {
+
+        $persona->fecha_nacimiento = null;
+
         }
 
         $persona->estado = trim( $r->estado );
@@ -78,10 +77,11 @@ class Persona extends Model
         $persona->save();
     }
 
+
     public static function runLoad($r)
     {
         $sql=Persona::select('id','paterno','materno','nombre','dni',
-            'email','fecha_nacimiento','sexo','telefono',
+            'email',DB::raw('IFNULL(fecha_nacimiento,"") as fecha_nacimiento'),'sexo','telefono',
             'celular','password','estado')
             ->where( 
                 function($query) use ($r){

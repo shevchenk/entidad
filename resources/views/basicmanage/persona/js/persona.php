@@ -33,9 +33,6 @@ $(document).ready(function() {
     });
     AjaxPersona.Cargar(HTMLCargarPersona);
 
-   /* $("#PersonaForm #TablePersona select").change(function(){ AjaxPersona.Cargar(HTMLCargarPersona); });
-    $("#PersonaForm #TablePersona input").blur(function(){ AjaxPersona.Cargar(HTMLCargarPersona); });*/
-
     $('#ModalPersona').on('shown.bs.modal', function (event) {
 
 
@@ -115,7 +112,7 @@ AgregarEditar=function(val,id){
         PersonaG.nombre=$("#TablePersona #trid_"+id+" .nombre").text();
         PersonaG.dni=$("#TablePersona #trid_"+id+" .dni").text();
         PersonaG.sexo=$("#TablePersona #trid_"+id+" .sexo").val();
-        PersonaG.email=$("#TablePersona #trid_"+id+" .email").val();
+        PersonaG.email=$("#TablePersona #trid_"+id+" .email").text();
         PersonaG.telefono=$("#TablePersona #trid_"+id+" .telefono").val();
         PersonaG.celular=$("#TablePersona #trid_"+id+" .celular").val();
         PersonaG.fecha_nacimiento=$("#TablePersona #trid_"+id+" .fecha_nacimiento").val();
