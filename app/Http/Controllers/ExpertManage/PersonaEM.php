@@ -31,19 +31,20 @@ class PersonaEM extends Controller
             $mensaje= array(
                 'required'    => ':attribute es requerido',
                 'unique'        => ':attribute solo debe ser único',
-            //    'email'        => ':attribute verifique el email',
             );
 
             $rules = array(
                 'dni' => 
                        ['required',
-                        Rule::unique('personas','dni'),
+                        Rule::unique('personas','dni')->where(function ($query) use($r) {
+                            if( $r->dni!='99999999' ){
+                                $query->where('dni', $r->dni);
+                            }
+                            else {
+                               $query->where('dni','!=' ,$r->dni); 
+                            }
+                        }),
                         ],
-                
-         /*       'email' => 
-                       ['email',
-                        Rule::unique('personas','email'),
-                        ],*/
                 'password' => 
                        ['required',
                        ],
@@ -77,10 +78,13 @@ class PersonaEM extends Controller
             $rules = array(
                 'dni' => 
                        ['required',
-                        Rule::unique('personas','dni')->ignore($r->id),
+                        Rule::unique('personas','dni')->ignore($r->id)->where(function ($query) use($r) {
+                            if( $r->dni=='99999999' ){
+                                $query->where('dni','!=' ,$r->dni);
+                            }
+                        }),
                         ],
-
-                
+           
             );
 
             $validator=Validator::make($r->all(), $rules,$mensaje);
