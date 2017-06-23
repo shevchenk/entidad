@@ -20,7 +20,7 @@
                             <input type="hidden" class="form-control mant" id="txt_categoria_id" name="txt_categoria_id" readonly="">
                             <input type="text" class="form-control" id="txt_categoria" name="txt_categoria" disabled="" ="">                  
                             <span class="input-group-btn">
-                                <button type="button" class="btn btn-info btn-flat" data-toggle="modal" data-target="#ModalListacategoria" data-filtros="estado:1" data-categoriaid="ModalProveedorDetalleForm #txt_categoria_id" data-categoria="ModalProveedorDetalleForm #txt_categoria">Categoria</button>
+                                <button type="button" class="btn btn-info btn-flat" data-toggle="modal" data-target="#ModalListacategoria"  data-categoriaid="ModalProveedorDetalleForm #txt_categoria_id" data-categoria="ModalProveedorDetalleForm #txt_categoria">Categoria</button>
                             </span>                         
                         </div>
 

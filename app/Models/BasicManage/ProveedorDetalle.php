@@ -63,6 +63,7 @@ class ProveedorDetalle extends Model
                             $query->where('proveedores_detalles.estado','like','%'.$estado.'%');
                         }
                     }
+
                 }
             );
         $result = $sql->orderBy('id','asc')->get();

@@ -41,8 +41,10 @@ SeleccionarCategoria = function(val,id){
         var categoria=$("#TableListacategoria #trid_"+id+" .categoria").text();
         $("#"+LPtextoCategoria).val(categoria);
         $("#"+LPtextoIdCategoria).val(id);
-        $("#ModalProveedorDetalleForm #btn_listararticulo").val("data-filter",id);
+
         $('#ModalListacategoria').modal('hide');
+        $( '#ModalProveedorDetalle #btn_listararticulo' ).data( 'filtros', 'estado:1|categoria_id:'+id );
+        console.log( $( '#ModalProveedorDetalle #btn_listararticulo' ).data( 'filtros' ) );
     }
     }
     

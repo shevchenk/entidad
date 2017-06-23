@@ -55,6 +55,12 @@ class Articulo extends Model
                             $query->where('categorias.categoria','like','%'.$categoria.'%');
                         }
                     }
+                    if( $r->has("categoria_id") ){
+                        $categoria_id=trim($r->categoria_id);
+                        if( $categoria_id !='' ){
+                            $query->where('articulos.categoria_id','like','%'.$categoria_id.'%');
+                        }
+                    }
                     if( $r->has("estado") ){
                         $estado=trim($r->estado);
                         if( $estado !='' ){

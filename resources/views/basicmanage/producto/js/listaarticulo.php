@@ -61,6 +61,7 @@ HTMLCargarListaArticulo=function(result){
         
         html+="<tr id='trid_"+r.id+"'>"+
             "<td class='articulo'>"+r.articulo+"</td>";
+            //"<input type='hidden' class='categoria_id' value='"+r.categoria_id+"'>";
          
          html+='<td><span class="btn btn-primary btn-sm" onClick="SeleccionarArticulo(0,'+r.id+')"+><i class="glyphicon glyphicon-ok"></i></span></td>';
     });
