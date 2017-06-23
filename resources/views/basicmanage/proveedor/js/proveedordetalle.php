@@ -64,8 +64,7 @@ AgregarEditar3=function(val,id){
     ProveedorDetalleG.estado='1';
 
     if( val==0 ){
-        alert(ProveedorDetalleG.categoria_id);
-        alert(ProveedorDetalleG.articulo_id);
+
         ProveedorDetalleG.id=id;
         ProveedorDetalleG.proveedor_id=$("#TableProveedorDetalle #trid_"+id+" .proveedor_id").val();
         ProveedorDetalleG.categoria_id=$("#TableProveedorDetalle #trid_"+id+" .categoria_id").val();
