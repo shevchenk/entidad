@@ -8,12 +8,14 @@ var AjaxProveedorDetalle={
         }
         masterG.postAjax(url,data,evento);
     },
+
     Cargar:function(evento){  
+        url='AjaxDinamic/BasicManage.ProveedorDetalleBM@Load';
        var id=$("#ProveedorDetalleForm #txt_proveedor_id").val();
         var data={'id':id};
 
         $("#ProveedorDetalleForm input[type='hidden']").not('.mant').remove();
-        url='AjaxDinamic/BasicManage.ProveedorDetalleBM@Load';
+        
         masterG.postAjax(url,data,evento);
     },
     CambiarEstado:function(evento,AI,id){

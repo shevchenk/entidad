@@ -65,8 +65,6 @@ class ProveedorDetalleBM extends Controller
             );
 
             $rules = array(
-
-
                 'categoria_id' => 
                        ['required',
                         Rule::unique('proveedores_detalles','categoria_id')->ignore($r->id)->where(function ($query) use($r) {
