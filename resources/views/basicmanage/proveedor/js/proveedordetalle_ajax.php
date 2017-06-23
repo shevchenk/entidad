@@ -12,6 +12,9 @@ var AjaxProveedorDetalle={
     Cargar:function(evento){  
         url='AjaxDinamic/BasicManage.ProveedorDetalleBM@Load';
        var id=$("#ProveedorDetalleForm #txt_proveedor_id").val();
+     
+
+
         var data={'id':id};
 
         $("#ProveedorDetalleForm input[type='hidden']").not('.mant').remove();
@@ -21,6 +24,7 @@ var AjaxProveedorDetalle={
     CambiarEstado:function(evento,AI,id){
         $("#ModalProveedorDetalleForm").append("<input type='hidden' value='"+AI+"' name='estadof'>");
         $("#ModalProveedorDetalleForm").append("<input type='hidden' value='"+id+"' name='id'>");
+  
         var data=$("#ModalProveedorDetalleForm").serialize().split("txt_").join("").split("slct_").join("");
         $("#ModalProveedorDetalleForm input[type='hidden']").not('.mant').remove();
         url='AjaxDinamic/BasicManage.ProveedorDetalleBM@EditStatus';

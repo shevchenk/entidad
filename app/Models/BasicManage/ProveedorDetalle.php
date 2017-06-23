@@ -47,7 +47,7 @@ class ProveedorDetalle extends Model
 
     public static function runLoad($r)
     {
-        $sql=ProveedorDetalle::select('proveedores_detalles.id','proveedores_detalles.proveedor_id',
+        $sql=ProveedorDetalle::select('proveedores_detalles.id','proveedores_detalles.proveedor_id','proveedores_detalles.categoria_id','proveedores_detalles.articulo_id',
                 'categorias.categoria', 'proveedores_detalles.estado',
                 'articulos.articulo')
              ->join('proveedores','proveedores.id','=','proveedores_detalles.proveedor_id')
