@@ -8,6 +8,7 @@
         </div>
         <div class="modal-body">
           <form id="ModalCategoriaForm">
+          
             <div class="form-group">
               <label>Categoria</label>
               <input type="text" class="form-control" id="txt_categoria" name="txt_categoria" placeholder="Categoria">

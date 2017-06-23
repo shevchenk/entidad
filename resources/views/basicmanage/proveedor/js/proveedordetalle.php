@@ -2,7 +2,6 @@
 var AddEdit=0; //0: Editar | 1: Agregar
 var ProveedorDetalleG={id:0,
 proveedor_id:0,
-proveedor:'',
 categoria_id:0,
 categoria:'',
 articulo_id:0,
@@ -29,15 +28,12 @@ $(document).ready(function() {
             $("#ModalProveedorDetalleForm").append("<input type='hidden' value='"+ProveedorDetalleG.id+"' name='id'>");
         }
 
-        $('#ModalProveedorDetalleForm #txt_proveedor').val( ProveedorDetalleG.proveedor );
-        $('#ModalProveedorDetalleForm #txt_proveedor_id').val( ProveedorDetalleG.proveedor_id );
         $('#ModalProveedorDetalleForm #txt_categoria').val( ProveedorDetalleG.categoria );
         $('#ModalProveedorDetalleForm #txt_categoria_id').val( ProveedorDetalleG.categoria_id );
         $('#ModalProveedorDetalleForm #txt_articulo').val( ProveedorDetalleG.articulo );
         $('#ModalProveedorDetalleForm #txt_articulo_id').val( ProveedorDetalleG.articulo_id );
-        
-        
         $('#ModalProveedorDetalleForm #slct_estado').val( ProveedorDetalleG.estado );
+        $("#ModalProveedorDetalleForm select").selectpicker('refresh');
         //$('#ModalProveedorDetalleForm #txt_razon_social').focus();
     });
 
@@ -48,11 +44,8 @@ $(document).ready(function() {
 
 ValidaForm3=function(){
     var r=true;
-    if( $.trim( $("#ModalProveedorDetalleForm #txt_proveedor_id").val() )=='0' ){
-        r=false;
-        msjG.mensaje('warning','Seleccione Proveedor',4000);
-    }
-    else if( $.trim( $("#ModalProveedorDetalleForm #txt_categoria_id").val() )=='0' ){
+
+    if( $.trim( $("#ModalProveedorDetalleForm #txt_categoria_id").val() )=='0' ){
         r=false;
         msjG.mensaje('warning','Seleccione Categoria',4000);
     }
@@ -64,18 +57,15 @@ ValidaForm3=function(){
 AgregarEditar3=function(val,id){
     AddEdit=val;
     ProveedorDetalleG.id='';
-    ProveedorDetalleG.proveedor_id='0';
-    ProveedorDetalleG.proveedor='';
-    ProveedorDetalleG.categoria_id='0';
+    ProveedorDetalleG.categoria_id='';
     ProveedorDetalleG.categoria='';
-    ProveedorDetalleG.articulo_id='0';
+    ProveedorDetalleG.articulo_id='';
     ProveedorDetalleG.articulo='';
-    
     ProveedorDetalleG.estado='1';
+
     if( val==0 ){
         ProveedorDetalleG.id=id;
         ProveedorDetalleG.proveedor_id=$("#TableProveedorDetalle #trid_"+id+" .proveedor_id").val();
-        ProveedorDetalleG.proveedor=$("#TableProveedorDetalle #trid_"+id+" .proveedor").text();
         ProveedorDetalleG.categoria_id=$("#TableProveedorDetalle #trid_"+id+" .categoria_id").val();
         ProveedorDetalleG.categoria=$("#TableProveedorDetalle #trid_"+id+" .categoria").text();
         ProveedorDetalleG.articulo_id=$("#TableProveedorDetalle #trid_"+id+" .articulo_id").val();
@@ -125,7 +115,6 @@ HTMLCargarProveedorDetalle=function(result){
         }
 
         html+="<tr id='trid_"+r.id+"'>"+
-            "<td class='proveedor'>"+r.paterno+' '+r.materno+' '+r.nombre+"</td>"+
             "<td class='categoria'>"+r.categoria+"</td>"+
             "<td class='articulo'>"+r.articulo+"</td>"+
                    

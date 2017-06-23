@@ -33,12 +33,6 @@ class ProveedorDetalleBM extends Controller
             );
 
             $rules = array(
-                'proveedor_id' => 
-                       ['required',
-                        Rule::unique('proveedores_detalles','proveedor_id')->where(function ($query) use($r) {
-                                $query->where('proveedor_id',$r->proveedor );
-                        }),
-                        ],
 
                 'categoria_id' => 
                        ['required',
@@ -71,12 +65,7 @@ class ProveedorDetalleBM extends Controller
             );
 
             $rules = array(
-                'proveedor_id' => 
-                       ['required',
-                        Rule::unique('proveedores_detalles','proveedor_id')->ignore($r->id)->where(function ($query) use($r) {
-                                $query->where('proveedor_id',$r->proveedor );
-                        }),
-                        ],
+
 
                 'categoria_id' => 
                        ['required',

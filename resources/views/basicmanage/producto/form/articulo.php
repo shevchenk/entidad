@@ -8,6 +8,8 @@
         </div>
         <div class="modal-body">
           <form id="ModalArticuloForm">
+          
+          
             <div class="form-group">
               <label>Articulo</label>
               <input type="text" class="form-control" id="txt_articulo" name="txt_articulo" placeholder="Articulo">

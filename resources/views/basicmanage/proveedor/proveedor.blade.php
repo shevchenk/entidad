@@ -27,6 +27,14 @@
     @include( 'basicmanage.persona.js.agregar_editar_persona' )
     @include( 'basicmanage.empresa.js.agregar_editar_empresa_ajax' )
     @include( 'basicmanage.empresa.js.agregar_editar_empresa' )
+
+    @include( 'basicmanage.producto.js.listacategoria_ajax' )
+    @include( 'basicmanage.producto.js.listacategoria' )
+    @include( 'basicmanage.producto.js.listaarticulo_ajax' )
+    @include( 'basicmanage.producto.js.listaarticulo' )
+<!--   @include( 'basicmanage.producto.js.agregar_editar_categoria' )
+    @include( 'basicmanage.producto.js.agregar_editar_categoria_ajax' )-->
+
 @stop
 
 @section('content')
@@ -75,12 +83,11 @@
 
                     </div><!-- .box-body -->
                 </form><!-- .form -->
-                <form id="ProveedorDetalleForm" style="display: none">
+                <form id="ProveedorDetalleForm" style="display: none"><input type= "hidden" name="txt_proveedor_id" id="txt_proveedor_id" class="form-control mant" > 
                     <div class="box-body table-responsive no-padding">
                         <table id="TableProveedorDetalle" class="table table-bordered table-hover">
                             <thead>
-                                <tr class="cabecera">
-                                  <th>Proveedor</th>
+                                <tr class="cabecera">                                 
                                   <th>Categoria</th>
                                   <th>Articulo</th>
                                   <th>Estado</th>
@@ -91,7 +98,7 @@
                             </tbody>
                             <tfoot>
                                 <tr class="cabecera">
-                                  <th>Proveedor</th>
+                                  
                                   <th>Categoria</th>
                                   <th>Articulo</th>
                                   <th>Estado</th>
@@ -119,4 +126,8 @@
      @include( 'basicmanage.empleado.form.listaempresa' )
      @include( 'basicmanage.persona.form.persona' )
      @include( 'basicmanage.empresa.form.empresa' )
+
+     @include( 'basicmanage.producto.form.listacategoria' )
+     @include( 'basicmanage.producto.form.listaarticulo' )
+
 @stop

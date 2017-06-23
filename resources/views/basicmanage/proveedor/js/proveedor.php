@@ -22,6 +22,8 @@ $(document).ready(function() {
     $('#ModalEmpresa').css('z-index', 1060);
     $('#ModalListapersona').css('z-index', 1070);
     $('#ModalPersona').css('z-index', 1080);
+    $('#ModalCategoria').css('z-index', 1090);
+   // $('#ModalCategoria').css('z-index', 1090);
 
     AjaxProveedor.Cargar(HTMLCargarProveedor);
     
@@ -153,11 +155,11 @@ HTMLCargarProveedor=function(result){
 
 
 Cargar=function(id){
-    
-    AjaxProveedorDetalle.Cargar(HTMLCargarProveedorDetalle,id);
+     $("#ModalProveedorDetalleForm #txt_proveedor_id").val(id);
+     $("#ProveedorDetalleForm #txt_proveedor_id").val(id);
+    AjaxProveedorDetalle.Cargar(HTMLCargarProveedorDetalle);
     $("#ProveedorDetalleForm").css("display","");
-    
- 
+     
 };
 
 </script>
