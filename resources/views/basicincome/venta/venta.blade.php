@@ -10,6 +10,7 @@
     {{ Html::script('lib/bootstrap-select/dist/js/bootstrap-select.min.js') }}
     {{ Html::script('lib/bootstrap-select/dist/js/i18n/defaults-es_ES.min.js') }}
 
+  
     @include( 'basicincome.venta.js.venta_ajax' )
 
 @stop
@@ -39,10 +40,37 @@
                     <form id="ModalMatriculaForm">
                         <div class="col-md-12"> <!-- INICIO COLD MD 12-->
                             <div class="panel panel-primary"> <!-- INICIO PANEL PRIMARY-->
-                                <div class="panel-heading"><center>Registrar Venta</center></div>
+                                <div class="panel-heading"><center>Registrar Venta</center></div>  <!-- SOLO ES EL NOMBRE CON LA SOMBRA-->
 
                                 <div class="panel-body"> <!-- INICIO PANEL BODY-->
+
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label>Categoria</label>
+                                            <select  class="form-control selectpicker show-menu-arrow" data-live-search="true" id="slct_categoria_id" name="slct_categoria_id">
+                                                <option value="0">.::Seleccione::.</option>
+                                            </select>
+                                        </div> 
+                                    </div>
+
                                     
+
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label>Articulo</label>
+                                            <select  class="form-control selectpicker show-menu-arrow" data-live-search="true" id="slct_articulo_id" name="slct_articulo_id">
+                                                <option value="0">.::Seleccione::.</option>
+                                            </select>
+                                        </div> 
+                                    </div>                                  
+                                    
+                                    
+                                                                  
+                                    
+                                
+                        <div class="col-md-12">
+                            <div class="panel panel-primary"> <!-- INICIO PANEL PRIMARY-->    
+                                <div class="panel-body"> <!-- INICIO PANEL BODY-->    
                                     <div class="col-md-5">
                                         <div class="form-group">
                                             <label>Resp. de la Venta</label>
@@ -50,6 +78,7 @@
                                             <input type="text" class="form-control mant" id="txt_responsable" name="txt_responsable" disabled="">
                                         </div> 
                                     </div>
+
                                     <div class="col-md-2">
                                         <div class="form-group">
                                             <label>Fecha</label>
@@ -57,8 +86,6 @@
                                             <input type="text" class="form-control mant" id="txt_fecha" name="txt_fecha" readOnly="">
                                         </div> 
                                     </div>
-                                
-                                  
                                     <div class="col-md-5">
                                         <div class="form-group">
                                             <label>Cliente</label>
@@ -74,29 +101,43 @@
                                             </span>
                                         </div> 
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-8">
                                         <div class="form-group">
-                                            <label>Categoria</label>
-                                            <select  class="form-control selectpicker show-menu-arrow" data-live-search="true" id="slct_categoria_id" name="slct_categoria_id">
-                                                <option value="0">.::Seleccione::.</option>
-                                            </select>
-                                        </div> 
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label>Articulo</label>
-                                            <select  class="form-control selectpicker show-menu-arrow" data-live-search="true" id="slct_articulo_id" name="slct_articulo_id">
-                                                <option value="0">.::Seleccione::.</option>
-                                            </select>
-                                        </div> 
-                                    </div>
-                                
-                                    
-                                   
-                                </div><!-- FIN PANEL BODY-->
+                                                
+                                            <div class="col-sm-2">
+                                                 <label>SubTotal:</label>
+                                                <input type="text" class="form-control" id="txt_nro_promocion" name="txt_nro_promocion" placeholder="Nro" disabled>
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <label>IGV:</label>
+                                                <input type="text" class="form-control" id="txt_nro_promocion" name="txt_nro_promocion" placeholder="Nro" disabled>
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <label>Promocion:</label>
+                                                <input type="text" class="form-control" id="txt_nro_promocion" name="txt_nro_promocion" placeholder="Nro" disabled>
+                                            </div>
 
-                            </div> <!-- FIN PANEL PRIMARY-->
+                                            <div class="col-sm-2">
+                                                <label>Total:</label>
+                                                <input type="text" class="form-control" id="txt_monto_promocion" name="txt_monto_promocion" placeholder="Monto" disabled>
+                                            </div>
+                                        </div>
+                                    </div>     
+                                </div><!-- FIN PANEL BODY-->    
+                            </div> <!-- FIN PANEL PRIMARY-->  
+                        </div>
+                                
+                        </div> <!-- FIN PANEL BODY--> 
+         
+
+
+                                   
+                            </div> <!-- FIN PANEL PRIMARY--> 
+
+
+
                         </div> <!-- FIN COLD MD 12-->
+
 
                         <div class="form-group"> 
                             <label></label>
