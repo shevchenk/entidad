@@ -56,6 +56,7 @@
                                                 </select>
                                             </div> 
                                         </div>
+
                                         
 
                                         <div class="col-md-8">
@@ -69,13 +70,9 @@
                                     </div> <!-- FIN PANEL BODY-->    
                                 </div> <!-- FIN PANEL PRIMARY-->           
                             </div> <!-- FIN COLD MD 12-->        
-                                                                      
-                                        
-                                    
-                            <div class="col-md-9">
-                                <div class="panel panel-primary"> <!-- INICIO PANEL PRIMARY-->    
-                                    <div class="panel-body"> <!-- INICIO PANEL BODY-->    
-                                        <div class="col-md-4">
+                             
+
+                            <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>Resp. de la Venta</label>
                                                 <input type="hidden" name="txt_responsable_id" id="txt_responsable_id" class="form-control mant" readonly="">
@@ -90,7 +87,7 @@
                                                 <input type="text" class="form-control mant" id="txt_fecha" name="txt_fecha" readOnly="">
                                             </div> 
                                         </div>
-                                        <div class="col-md-4">
+                                        <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>Cliente</label>
                                                 <input type="hidden" name="txt_persona_id" id="txt_persona_id" class="form-control" readonly="">
@@ -104,32 +101,75 @@
                                                     <button type="button" class="btn btn-info btn-flat" data-toggle="modal" data-target="#ModalListapersona" data-filtros="estado:1" data-personaid="ModalMatriculaForm #txt_persona_id"  data-persona="ModalMatriculaForm #txt_persona"   data-buscaralumno="1">Buscar Persona</button> <!-- data-dni="ModalMatriculaForm #txt_dni" -->
                                                 </span>
                                             </div> 
-                                        </div>
-                                        <div class="col-md-8">
-                                            <div class="form-group">
+                                        </div>            
+                                    
+                            <div class="col-md-9">
+                                <div class="panel panel-primary"> <!-- INICIO PANEL PRIMARY-->    
+                                    <div class="panel-body"> <!-- INICIO PANEL BODY-->   
+                                        <div class="col-md-12">
+                                            <table class="table" id="t_pago_matricula">
+                                                <thead> 
                                                     
-                                                <div class="col-sm-2">
-                                                     <label>SubTotal:</label>
-                                                    <input type="text" class="form-control" id="txt_nro_promocion" name="txt_nro_promocion" placeholder="Nro" disabled>
+                                                    <tr>
+                                                        <th>Cantidad</th>
+                                                        <th>Precio</th>
+                                                        <th>Producto</th>
+                                                        <th>Imagen</th>
+                                                        <th>Eliminar</th>
+                                                    </tr>
+                                                </thead>
+                                                
+                                            </table>
+                                        </div>
+
+                                        
+                                        <div class="col-md-12, rigth">                                            
+                                                    
+                                                <div class="col-md-1">
+                                                     <label>SubTotal:</label>                                                   
                                                 </div>
-                                                <div class="col-sm-2">
-                                                    <label>IGV:</label>
-                                                    <input type="text" class="form-control" id="txt_nro_promocion" name="txt_nro_promocion" placeholder="Nro" disabled>
-                                                </div>
-                                                <div class="col-sm-2">
-                                                    <label>Promocion:</label>
+                                                <div class="col-md-2">                                                   
                                                     <input type="text" class="form-control" id="txt_nro_promocion" name="txt_nro_promocion" placeholder="Nro" disabled>
                                                 </div>
 
-                                                <div class="col-sm-2">
-                                                    <label>Total:</label>
+                                                    <div class="form-group"> 
+                                                        <label></label>
+                                                    </div><br>
+
+                                                <div class="col-md-1">
+                                                    <label>IGV:</label>                                                   
+                                                </div>
+                                                <div class="col-md-2">                                               
+                                                    <input type="text" class="form-control" id="txt_nro_promocion" name="txt_nro_promocion" placeholder="Nro" disabled>
+                                                </div>
+
+                                                    <div class="form-group"> 
+                                                        <label></label>
+                                                    </div><br>
+
+                                                <div class="col-md-1">
+                                                    <label>Promocion:</label>                                                   
+                                                </div>
+                                                <div class="col-md-2">                                                    
+                                                    <input type="text" class="form-control" id="txt_nro_promocion" name="txt_nro_promocion" placeholder="Nro" disabled>
+                                                </div>
+
+                                                    <div class="form-group"> 
+                                                        <label></label>
+                                                    </div><br>
+
+                                                <div class="col-md-1">
+                                                    <label>Total:</label>                                                    
+                                                </div>
+                                                <div class="col-md-2">                                                    
                                                     <input type="text" class="form-control" id="txt_monto_promocion" name="txt_monto_promocion" placeholder="Monto" disabled>
                                                 </div>
-                                            </div>
+                                            
                                         </div>     
                                     </div><!-- FIN PANEL BODY-->    
                                 </div> <!-- FIN PANEL PRIMARY-->  
-                            </div><!-- FIN COLD MD 12-->
+                            </div><!-- FIN COLD MD 9-->
+
                         </div> <!-- FIN PANEL BODY-->    
                         </div> <!-- FIN PANEL PRIMARY-->                
                     </div><!-- FIN COLD MD 12-->    
