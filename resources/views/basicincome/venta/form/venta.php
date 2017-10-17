@@ -18,6 +18,7 @@
                 </div> 
             </div>
 
+
             <!-- INICIO DE CLIENTE -->
             <div style="text-align:right" class="col-md-6">
               <label>Cliente</label>

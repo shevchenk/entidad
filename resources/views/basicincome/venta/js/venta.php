@@ -52,6 +52,7 @@ $(document).ready(function() {
     });
 });
 
+
 ValidaForm=function(){
     var r=true;
     if( $.trim( $("#ModalVentaForm #txt_cliente").val() )=='' ){

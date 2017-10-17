@@ -21,5 +21,6 @@ var AjaxVenta={
         url='AjaxDinamic/BasicIncome.VentaBM@EditStatus';
         masterG.postAjax(url,data,evento);
     }
+    
 };
 </script>
