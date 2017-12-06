@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\BasicManage\Venta;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 class VentaBM extends Controller
 {
@@ -38,6 +39,18 @@ class VentaBM extends Controller
             $return['msj'] = "No hay registros aún";
             return response()->json($return);
         }
+    }
+
+    public function postFechaactual(){
+        $f=date("Y-m-d");
+        $h=date("H:i:s",strtotime("-1 minute"));
+        return response()->json(
+                array(
+                    'rst'   => 1,
+                    'fecha'   => $f,
+                    'hora'    => $h
+                )
+            );
     }
 
 

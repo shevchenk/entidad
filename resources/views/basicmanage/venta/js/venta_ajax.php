@@ -20,6 +20,34 @@ var AjaxVenta={
         $("#ModalVentaForm input[type='hidden']").not('.mant').remove();
         url='AjaxDinamic/BasicManage.VentaBM@EditStatus';
         masterG.postAjax(url,data,evento);
+    },
+
+    FechaActual:function(evento){
+       /* url='AjaxDinamic/BasicManage.VentaBM@postFechaactual';
+        var data=$("#ModalVentaForm").serialize().split("txt_").join("").split("slct_").join("");
+        masterG.postAjax(url,data,evento);*/
+
+
+        $.ajax({
+            url         : 'AjaxDinamic/BasicManage.VentaBM@postFechaactual',       
+            type        : 'POST',
+            cache       : false,
+            async       : false,
+            dataType    : 'json',
+            data        : {estado:1},
+            beforeSend : function() {
+            },
+            success : function(obj) {
+                $("#txt_fecha_inicio").val(obj.fecha+' '+obj.hora);
+                fechaTG=obj.fecha;
+                horaTG=obj.hora;
+                clearInterval(TiempoFinalTG);
+                TiempoFinalTG='';
+                evento();
+            },
+            error: function(){
+            }
+        });
     }
     
 };

@@ -43,12 +43,13 @@ class Cliente extends Model
 
     public static function runLoad($r)
     {
-        $sql=Cliente::select(DB::raw('IFNULL(empresas.razon_social,"") as razon_social'),'clientes.id','clientes.persona_id','personas.paterno','personas.materno','personas.nombre',
+        $sql=Cliente::select(DB::raw('IFNULL(empresas.razon_social,"") as razon_social'),'clientes.id','clientes.persona_id','personas.paterno','personas.materno','personas.nombre', 'personas.dni',
                                DB::raw('IFNULL(clientes.empresa_id,"") as empresa_id'),'clientes.estado')
             ->join('personas','clientes.persona_id','=','personas.id')
             ->leftjoin('empresas','clientes.empresa_id','=','empresas.id')
             ->where( 
                 function($query) use ($r){
+                    
                 
                     if( $r->has("estado") ){
                         $estado=trim($r->estado);

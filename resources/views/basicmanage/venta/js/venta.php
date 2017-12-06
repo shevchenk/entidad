@@ -1,5 +1,8 @@
 <script type="text/javascript">
 var AddEdit=0; //0: Editar | 1: Agregar
+var fechaTG='';
+var horaTG='';
+var TiempoFinalTG='';
 var VentaG={
         id:0,
         cliente_id:0,
@@ -17,7 +20,13 @@ var VentaG={
         }; // Datos Globales
         
 $(document).ready(function() {
-    
+    AjaxVenta.FechaActual(hora);
+    /*var responsable='<?php echo Auth::user()->paterno .' '. Auth::user()->materno .' '. Auth::user()->nombre ?>';
+    var responsable_id='<?php echo Auth::user()->id ?>';
+    var hoy='<?php echo date('Y-m-d H:i:s') ?>';
+    $("#ModalVentaForm #txt_responsable").val(responsable);
+    $("#ModalVentaForm #txt_responsable_id").val(responsable_id);
+    $("#ModalVentaForm #txt_fecha").val(hoy);*/
 
     $("#TableVenta").DataTable({
         "paging": true,
@@ -81,6 +90,7 @@ ValidaForm=function(){
     return r;
 }
 
+
 AgregarEditar=function(val,id){
     AddEdit=val;
     VentaG.id='';
@@ -130,6 +140,31 @@ AgregarEditarAjax=function(){
         AjaxVenta.AgregarEditar(HTMLAgregarEditar);
     }
 }
+
+hora=function(){
+
+    tiempo=horaTG.split(":");
+    tiempo[1]=tiempo[1]*1+1;
+    if(tiempo[1]*1==60){
+        tiempo[0]=tiempo[0]*1+1;
+        tiempo[1]='0';
+    }
+
+    if(tiempo[0]*1<10){
+    tiempo[0] = "0" + tiempo[0]*1;
+    }
+
+    if(tiempo[1]*1<10){
+    tiempo[1] = "0" + tiempo[1]*1;
+    }
+    
+    
+
+    horaTG=tiempo.join(":");
+    $("#txt_fecha_inicio").val(fechaTG+" "+horaTG);
+    TiempoFinalTG = setTimeout('hora()',9000);
+}
+
 
 HTMLAgregarEditar=function(result){
     if( result.rst==1 ){

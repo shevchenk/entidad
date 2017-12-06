@@ -12,8 +12,8 @@
  
     @include( 'basicmanage.venta.js.venta_ajax' )
     @include( 'basicmanage.venta.js.venta' )
-    @include( 'basicmanage.empleado.js.listapersona_ajax' )
-    @include( 'basicmanage.empleado.js.listapersona' )
+    @include( 'basicmanage.empleado.js.listacliente_ajax' )
+    @include( 'basicmanage.empleado.js.listacliente' )
 
 @stop
 
@@ -39,7 +39,7 @@
                     <h3 class="box-title">Ventas</h3>
                 </div>
                 <div class="box-body with-border">
-                    <form id="ModalMatriculaForm">
+                    <form id="ModalVentaForm">
 
                     <div class="col-md-12"> <!-- INICIO COLD MD 12-->
                             <div class="panel panel-primary"> <!-- INICIO PANEL PRIMARY-->
@@ -85,22 +85,22 @@
                                         <div class="col-md-2">
                                             <div class="form-group">
                                                 <label>Fecha</label>
-                                                <input type="hidden" class="form-control mant" id="txt_tipo_matricula" name="txt_tipo_matricula" readOnly="" value="1">
-                                                <input type="text" class="form-control mant" id="txt_fecha" name="txt_fecha" readOnly="">
+                                                <input type="hidden" class="form-control mant" id="txt_venta" name="txt_venta" readOnly="">
+                                                <input type="text" class="form-control mant" id="txt_fecha_inicio" name="txt_fecha_inicio" readOnly>
                                             </div> 
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>Cliente</label>
-                                                <input type="hidden" name="txt_persona_id" id="txt_persona_id" class="form-control" readonly="">
-                                                <input type="text" class="form-control" id="txt_persona" name="txt_persona" disabled="">
+                                                <input type="hidden" name="txt_cliente_id" id="txt_cliente_id" class="form-control" readonly="">
+                                                <input type="text" class="form-control" id="txt_cliente" name="txt_cliente" disabled="">
                                             </div> 
                                         </div>
                                         <div class="col-md-1">
                                             <div class="form-group">
                                                 <label>&nbsp;&nbsp;&nbsp;</label>
                                                 <span class="input-group-btn">
-                                                    <button type="button" class="btn btn-info btn-flat" data-toggle="modal" data-target="#ModalListapersona" data-filtros="estado:1" data-personaid="ModalMatriculaForm #txt_persona_id"  data-persona="ModalMatriculaForm #txt_persona"   data-buscaralumno="1">Buscar Persona</button> <!-- data-dni="ModalMatriculaForm #txt_dni" -->
+                                                    <button type="button" class="btn btn-info btn-flat" data-toggle="modal" data-target="#ModalListacliente" data-filtros="estado:1" data-personaid="ModalVentaForm #txt_cliente_id"  data-persona="ModalVentaForm #txt_cliente">Buscar Cliente</button> <!-- data-dni="ModalVentaForm #txt_dni" -->
                                                 </span>
                                             </div> 
                                         </div>            
@@ -198,6 +198,6 @@
 
 @section('form')
      @include( 'basicmanage.venta.form.venta' )
-     @include( 'basicmanage.empleado.form.listapersona' )
+     @include( 'basicmanage.empleado.form.listacliente' )
      @include( 'basicmanage.persona.form.persona' )
 @stop
