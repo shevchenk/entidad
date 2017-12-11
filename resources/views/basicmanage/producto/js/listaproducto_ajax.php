@@ -12,6 +12,13 @@ var AjaxListaproducto={
         $("#ListaproductoForm input[type='hidden']").not('.mant').remove();
         url='AjaxDinamic/BasicManage.ProductoBM@Load';
         masterG.postAjax(url,data,evento);
+    },
+
+    CargarProducto:function(evento,articulo_id){
+        url='AjaxDinamic/BasicManage.ProductoBM@ListProducto';
+        data={articulo_id:articulo_id};
+        masterG.postAjax(url,data,evento);
     }
+  
 };
 </script>

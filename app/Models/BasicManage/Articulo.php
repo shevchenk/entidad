@@ -76,7 +76,17 @@ class Articulo extends Model
         public static function ListArticulo($r)
     {
         $sql=Articulo::select('id','articulo','estado')
-            ->where('estado','=','1');
+            ->where('estado','=','1')
+            ->where( 
+                function($query) use ($r){
+                    if( $r->has("categoria_id") ){
+                        $categoria_id=trim($r->categoria_id);
+                        if( $categoria_id !='' ){
+                            $query->where('categoria_id','like','%'.$categoria_id.'%');
+                        }
+                    }
+                }
+            );
         $result = $sql->orderBy('articulo','asc')->get();
         return $result;
     }

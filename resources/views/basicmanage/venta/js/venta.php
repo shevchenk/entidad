@@ -73,6 +73,11 @@ $(document).ready(function() {
             var categoria_id= $('#ModalVentaForm #slct_categoria_id').val();
             AjaxVenta.CargarArticulo(SlctCargarArticulo,categoria_id);
     });
+
+    $( "#ModalVentaForm #slct_articulo_id" ).change(function() {
+            var articulo_id= $('#ModalVentaForm #slct_articulo_id').val();
+            AjaxListaproducto.CargarProducto(HtmlCargarProducto,articulo_id);
+    });
 });
 
 
@@ -230,6 +235,7 @@ CargarSlct=function(slct){
     if(slct==1){
         
         AjaxVenta.CargarCategoria(SlctCargarCategoria);
+
     }
 };
 
@@ -252,6 +258,25 @@ SlctCargarArticulo=function(result){
     $("#ModalVentaForm #slct_articulo_id").selectpicker('refresh');
 
 };
+
+HtmlCargarProducto=function(result){
+    var html="";
+    $('#TableProducto').DataTable().destroy();
+
+    $.each(result.data,function(index,r){
+        html+="<tr id='trid_"+r.id+"'>"+
+            "<td class='foto'>"+r.foto+"</td>"+
+            "<td class='producto'>"+r.producto+"</td>"+
+            '<td><a class="btn btn-primary btn-sm" onClick="AgregarEditar2(0,'+r.id+')"><i class="fa fa-edit fa-lg"></i> </a></td>';
+
+        html+="</tr>";
+     
+    });
+    $("#ModalVentaForm #lisproducto").html(html); 
+
+
+};
+
 
 
 

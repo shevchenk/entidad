@@ -111,4 +111,24 @@ class Producto extends Model
         return $url. $type;
     }
 
+    public static function ListProducto($r)
+    {
+        $sql=Producto::select('id','foto','producto','estado')
+            ->where('estado','=','1')
+            ->where( 
+                function($query) use ($r){
+                    if( $r->has("articulo_id") ){
+                        $articulo_id=trim($r->articulo_id);
+                        if( $articulo_id !='' ){
+                            $query->where('articulo_id','like','%'.$articulo_id.'%');
+                        }
+                    }
+                }
+            );
+        $result = $sql->orderBy('producto','asc')->get();
+        return $result;
+    }
+
+
+
 }
