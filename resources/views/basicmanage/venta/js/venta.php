@@ -8,6 +8,7 @@ var VentaG={
         cliente_id:0,
         cliente:"",
         categoria_id:"",
+        articulo_id:"",
         proforma_id:0,
         fecha_venta:"",
         dscto_monto:"",
@@ -66,6 +67,11 @@ $(document).ready(function() {
 
     $('#ModalVenta').on('hidden.bs.modal', function (event) {
         $("#ModalVentaForm input[type='hidden']").not('.mant').remove();
+    });
+
+    $( "#ModalVentaForm #slct_categoria_id" ).change(function() {
+            var categoria_id= $('#ModalVentaForm #slct_categoria_id').val();
+            AjaxVenta.CargarArticulo(SlctCargarArticulo,categoria_id);
     });
 });
 
@@ -222,13 +228,9 @@ hora=function(){
 
 CargarSlct=function(slct){
     if(slct==1){
-        alert("asd");
+        
         AjaxVenta.CargarCategoria(SlctCargarCategoria);
     }
-    if(slct==2){
-     AjaxVenta.CargarRegion(SlctCargarRegion);
-   }
-
 };
 
 SlctCargarCategoria=function(result){
@@ -240,6 +242,17 @@ SlctCargarCategoria=function(result){
     $("#ModalVentaForm #slct_categoria_id").selectpicker('refresh');
 
 };
+
+SlctCargarArticulo=function(result){
+    var html="<option value='0'>.::Seleccione::.</option>";
+    $.each(result.data,function(index,r){
+        html+="<option value="+r.id+">"+r.articulo+"</option>";
+    });
+    $("#ModalVentaForm #slct_articulo_id").html(html); 
+    $("#ModalVentaForm #slct_articulo_id").selectpicker('refresh');
+
+};
+
 
 
 
