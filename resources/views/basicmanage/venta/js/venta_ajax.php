@@ -48,7 +48,13 @@ var AjaxVenta={
             error: function(){
             }
         });
+    },
+
+    CargarCategoria:function(evento){
+        url='AjaxDinamic/BasicManage.CategoriaBM@ListCategoria';
+        data={};
+        masterG.postAjax(url,data,evento);
     }
-    
+
 };
 </script>

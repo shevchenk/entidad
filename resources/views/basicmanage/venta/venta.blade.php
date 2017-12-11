@@ -57,7 +57,7 @@
                                                     <option value="0">.::Seleccione::.</option>
                                                 </select>
                                             </div> 
-                                        </div>
+                                        </div>                            
 
                                         
 
@@ -77,10 +77,13 @@
                             <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>Resp. de la Venta</label>
-                                                <input type="hidden" name="txt_responsable_id" id="txt_responsable_id" class="form-control mant" readonly="">
-                                                <input type="text" class="form-control mant" id="txt_responsable" name="txt_responsable" disabled="">
+                                                <input class='form-control mant' type='hidden' id="txt_responsable_id" name="txt_responsable_id" value='<?php echo Auth::user()->id;  ?>'>
+                                          
+                                                <input class='form-control text-center' id='responsable' name='responsable' value='<?php echo Auth::user()->paterno.' '.Auth::user()->materno.' '.Auth::user()->nombre; ?>' readOnly=''>
                                             </div> 
                                         </div>
+
+    
 
                                         <div class="col-md-2">
                                             <div class="form-group">
