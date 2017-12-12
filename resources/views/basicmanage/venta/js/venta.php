@@ -298,8 +298,7 @@ SeleccionarProducto = function(val,id){
           html+="</tr>";
         
         $("#t_lista_venta").append(html);
-
-        
+       
         $('#ModalVenta').modal('hide');
     }else {
         msjG.mensaje('warning',"Ya se agregó el  Producto",3000);
