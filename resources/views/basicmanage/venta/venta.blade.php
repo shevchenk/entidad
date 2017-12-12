@@ -139,7 +139,7 @@
                                 <div class="panel panel-primary"> <!-- INICIO PANEL PRIMARY-->    
                                     <div class="panel-body"> <!-- INICIO PANEL BODY-->   
                                         <div class="col-md-12">
-                                            <table class="table" id="t_pago_matricula">
+                                            <table class="table" id="t_lista_venta">
                                                 <thead> 
                                                     
                                                     <tr>
@@ -147,10 +147,11 @@
                                                         <th>Precio</th>
                                                         <th>Producto</th>
                                                         <th>Imagen</th>
+                                                        <th>Precio Total</th>
                                                         <th>Eliminar</th>
                                                     </tr>
                                                 </thead>
-                                                
+                                                <tbody id="tb_lista_venta">
                                             </table>
                                         </div>
 

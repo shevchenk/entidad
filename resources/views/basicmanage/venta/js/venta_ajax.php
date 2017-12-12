@@ -3,11 +3,9 @@ var AjaxVenta={
     AgregarEditar:function(evento){
         var data=$("#ModalVentaForm").serialize().split("txt_").join("").split("slct_").join("");
         url='AjaxDinamic/BasicManage.VentaBM@New';
-        if(AddEdit==0){
-            url='AjaxDinamic/BasicManage.VentaBM@Edit';
-        }
         masterG.postAjax(url,data,evento);
     },
+
     Cargar:function(evento){
         url='AjaxDinamic/BasicManage.VentaBM@Load';
         data={};

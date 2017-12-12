@@ -267,7 +267,7 @@ HtmlCargarProducto=function(result){
         html+="<tr id='trid_"+r.id+"'>"+
             "<td class='foto'>"+r.foto+"</td>"+
             "<td class='producto'>"+r.producto+"</td>"+
-            '<td><a class="btn btn-primary btn-sm" onClick="AgregarEditar2(0,'+r.id+')"><i class="fa fa-edit fa-lg"></i> </a></td>';
+            '<td><a class="btn btn-primary btn-sm" onClick="SeleccionarProducto(0,'+r.id+')"><i class="fa fa-edit fa-lg"></i> </a></td>';
 
         html+="</tr>";
      
@@ -275,6 +275,35 @@ HtmlCargarProducto=function(result){
     $("#ModalVentaForm #lisproducto").html(html); 
 
 
+};
+
+
+SeleccionarProducto = function(val,id){
+    var existe=$("#t_lista_venta #trid_"+id+"").val();
+    if( val==0 && typeof(existe)=='undefined'){
+        
+
+      //  var producto=$("#t_lista_venta #trid_"+id+" .producto").text();
+        //var precio_venta=$("#t_lista_venta #trid_"+id+" .precio_venta").text();
+        var producto=$("#t_lista_venta #trid_"+id+" .producto").text();
+        var foto=$("#t_lista_venta #trid_"+id+" .foto").val();
+        var html="";
+        html+="<tr id='trid_"+id+"'>"+
+//            "<input type='text' class='form-control' value='"+Cantidad+"'></td>"+
+            //"<td><input type='text' class='form-control' value='"+precio+"' disabled></td>"+
+            "<td><input type='text' class='form-control' value='"+producto+"' disabled></td>";
+            //"<td><input type='text' class='form-control' value='"+precio total+"' disabled></td>"+
+            
+            '<td><a onClick="Eliminar('+id+')" class="btn btn-danger" ><i class="fa fa-trash fa-lg"></i></a></td>';
+          html+="</tr>";
+        
+        $("#t_lista_venta").append(html);
+
+        
+        $('#ModalVenta').modal('hide');
+    }else {
+        msjG.mensaje('warning',"Ya se agregó el  Producto",3000);
+    }
 };
 
 
