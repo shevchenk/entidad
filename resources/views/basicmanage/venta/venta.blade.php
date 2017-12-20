@@ -9,13 +9,31 @@
     {{ Html::style('lib/bootstrap-select/dist/css/bootstrap-select.min.css') }}
     {{ Html::script('lib/bootstrap-select/dist/js/bootstrap-select.min.js') }}
     {{ Html::script('lib/bootstrap-select/dist/js/i18n/defaults-es_ES.min.js') }}
+
+    {{ Html::style('lib/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css') }}
+    {{ Html::script('lib/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js') }}
+    {{ Html::script('lib/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.es.js') }}
  
+    <!--ESTA DECLARACION SIRVE PARA QUE RECONOSCA LAS FUNCIONES Q TIENE LA VENTA-->
     @include( 'basicmanage.venta.js.venta_ajax' )
     @include( 'basicmanage.venta.js.venta' )
+    <!--***********************************************-->
+
+    <!--ESTA DECLARACION SIRVE PARA QUE RECONOSCA LAS FUNCIONES Q TIENE LA LISTA CLIENTE-->
     @include( 'basicmanage.empleado.js.listacliente_ajax' )
     @include( 'basicmanage.empleado.js.listacliente' )
+    <!--***********************************************-->
+
+    <!--ESTA DECLARACION SIRVE PARA QUE RECONOSCA LAS FUNCIONES Q TIENE LA LSITA PRODUCTO-->
     @include( 'basicmanage.producto.js.listaproducto_ajax' )
     @include( 'basicmanage.producto.js.listaproducto' )
+    <!--***********************************************-->
+
+    <!--ESTA DECLARACION SIRVE PARA QUE RECONOSCA LAS FUNCIONES Q TIENE CLIENTE-->
+    @include( 'basicmanage.cliente.js.cliente_ajax' )
+    @include( 'basicmanage.cliente.js.cliente' )
+    <!--***********************************************-->
+
 
 @stop
 
@@ -230,7 +248,20 @@
 @stop
 
 @section('form')
+
+     <!--ESTA DECLARACION SIRVE PARA QUE SE ABRA EL FORM DE VENTA-->
      @include( 'basicmanage.venta.form.venta' )
+     <!--**********************************************************-->
+
+     <!--ESTA DECLARACION SIRVE PARA QUE SE ABRA EL FORM DE LISTA CLIENTE-->
      @include( 'basicmanage.empleado.form.listacliente' )
+     <!--**********************************************************-->
+
+     <!--ESTA DECLARACION SIRVE PARA QUE SE ABRA EL FORM DE CLIENTE-->
+     @include( 'basicmanage.cliente.form.cliente' )
+     <!--**********************************************************-->
+
+     <!--ESTA DECLARACION SIRVE PARA QUE SE ABRA EL FORM DE PERSONA-->
      @include( 'basicmanage.persona.form.persona' )
+     <!--**********************************************************-->
 @stop

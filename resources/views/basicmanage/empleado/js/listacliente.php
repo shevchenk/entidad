@@ -18,7 +18,7 @@ $(document).ready(function() {
       if( typeof (bfiltros)!='undefined'){
           LPfiltrosG=bfiltros;
       }
-      AjaxListacliente.Cargar(HTMLCargarCliente);
+      AjaxListacliente.Cargar(HTMLCargarClienteListaCliente);
       
       LPtextoIdCliente= button.data('personaid');
       LPtextoCliente= button.data('persona');
@@ -31,6 +31,7 @@ $(document).ready(function() {
     });
 });
 
+//SELECCIONA EL CLIENTE QUE APARECE EN LA LISTA DE LISTA CLIENTE
 SeleccionarCliente = function(val,id){
     $("#"+LPtextoCliente).val('');
     $("#"+LPtextoIdCliente).val('');
@@ -44,9 +45,10 @@ SeleccionarCliente = function(val,id){
         $('#ModalListacliente').modal('hide');
     }
     }
+//*****************************************************************
     
-    
-HTMLCargarCliente=function(result){
+//CARGA LOS DATOS PARA LA LISTA DE LISTA CLIENTE
+HTMLCargarClienteListaCliente=function(result){
     var html="";
     $('#TableListacliente').DataTable().destroy();
 
@@ -64,7 +66,7 @@ HTMLCargarCliente=function(result){
             "<input type='hidden' class='celular' value='"+r.celular+"'>"+
              "<input type='hidden' class='estado' value='"+r.estado+"'>"+
             "</td>"+
-            '<td><a class="btn btn-primary btn-sm" onClick="AgregarEditar1(0,'+r.id+')"><i class="fa fa-edit fa-lg"></i> </a></td>';
+            '<td><a class="btn btn-primary btn-sm" onClick="AgregarEditarNuevoListaCliente(0,'+r.id+')"><i class="fa fa-edit fa-lg"></i> </a></td>';
 
         html+="</tr>";
     });
@@ -78,4 +80,5 @@ HTMLCargarCliente=function(result){
         "autoWidth": false
     });
 };
+//***********************************************************************
 </script>

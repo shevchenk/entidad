@@ -29,6 +29,8 @@ $(document).ready(function() {
 
     AjaxCliente.Cargar(HTMLCargarCliente);
 
+    /*BOTON AGREGAR Y EDITAR*/
+
     $('#ModalCliente').on('shown.bs.modal', function (event) {
         
         if( AddEdit==1 ){
@@ -47,12 +49,14 @@ $(document).ready(function() {
         $("#ModalClienteForm select").selectpicker('refresh');
         $('#ModalClienteForm #txt_persona').focus();
     });
+    /****************************************************************+*/
 
     $('#ModalCliente').on('hidden.bs.modal', function (event) {
         $("#ModalClienteForm input[type='hidden']").not('.mant').remove();
     });
 });
 
+/*SIRVE PARA VALIDAR LOS DATOS ANTES DE GUARDAR*/
 ValidaForm=function(){
     var r=true;
     if( $.trim( $("#ModalClienteForm #txt_persona_id").val() )=='0' ){
@@ -61,6 +65,7 @@ ValidaForm=function(){
     }
     return r;
 }
+/********************************************/
 
 AgregarEditar=function(val,id){
 
@@ -91,6 +96,8 @@ AgregarEditar=function(val,id){
     $('#ModalCliente').modal('show');
 }
 
+
+/*ACA SE REALIZA LA CARGA EN EL BOTON CAMBIAR ESTADO*/
 CambiarEstado=function(estado,id){
     AjaxCliente.CambiarEstado(HTMLCambiarEstado,estado,id);
 }
@@ -101,12 +108,15 @@ HTMLCambiarEstado=function(result){
         AjaxCliente.Cargar(HTMLCargarCliente);
     }
 }
+/*********************************************/
 
+/*ACA SE REALIZA LA CARGA EN EL BOTON ACTUALIZAR*/
 AgregarEditarAjax=function(){
     if( ValidaForm() ){
         AjaxCliente.AgregarEditar(HTMLAgregarEditar);
     }
 }
+
 
 HTMLAgregarEditar=function(result){
     if( result.rst==1 ){
@@ -117,8 +127,9 @@ HTMLAgregarEditar=function(result){
         msjG.mensaje('warning',result.msj,3000);
     }
 }
+/*********************************************/
 
-
+/*ACA SE CARGAN LOS DATOS DEL CLIENTE DEL MANTENIMIENTO CLIENTE*/
 HTMLCargarCliente=function(result){
     var html="";
     $('#TableCliente').DataTable().destroy();
@@ -149,4 +160,45 @@ HTMLCargarCliente=function(result){
         "autoWidth": false
     });
 };
+/*******************************************************/
+
+/*AGREGAR EDITAR DEL BOTON NUEVO EN LISTA CLIENTE*/
+AgregarEditarNuevoListaCliente=function(val,id){
+
+    AddEdit=val;
+    ClienteG.id='';
+    ClienteG.persona_id='0';
+    ClienteG.persona='';
+    ClienteG.empresa='';
+    ClienteG.empresa_id='0';
+    ClienteG.estado='1';
+    $('.persona').css("display","none");
+    $('.empresa').css("display","none");
+    
+    if( val==0 ){
+        ClienteG.id=id;
+        ClienteG.persona_id=$("#TableCliente #trid_"+id+" .persona_id").val();
+        ClienteG.persona=$("#TableCliente #trid_"+id+" .nombrecompleto").text();
+        ClienteG.empresa=$("#TableCliente #trid_"+id+" .razon_social").text();
+        ClienteG.empresa_id=$("#TableCliente #trid_"+id+" .empresa_id").val();
+        ClienteG.estado=$("#TableCliente #trid_"+id+" .estado").val();
+        if(ClienteG.empresa_id!==''){
+                $('.empresa').css("display","");
+        }
+        if(ClienteG.persona_id!==''){
+                $('.persona').css("display","");
+        }
+    }
+    $('#ModalCliente').modal('show');
+}
+/******************************************************************************/
+
+/*AGREGAR EDITAR AJAX DEL BOTON NUEVO EN LISTA CLIENTE*/
+AgregarEditarAjax1=function(){
+    if( ValidaForm() ){
+        AjaxCliente.AgregarEditarNuevoListaCliente(HTMLAgregarEditar);
+    }
+}
+/*************************************************/
+
 </script>

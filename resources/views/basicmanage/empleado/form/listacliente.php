@@ -45,7 +45,9 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default active pull-left" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary active pull-right" onclick="AgregarEditar1(1)">Nuevo</button>
+                <!--AGREGAR EDITAR DEL BOTON NUEVO EN LISTA CLIENTE-->
+                <button type="button" class="btn btn-primary active pull-right" onclick="AgregarEditarNuevoListaCliente(1)">Nuevo</button>
+                <!--***********************************************-->
             </div>
         </div>
     </div>
