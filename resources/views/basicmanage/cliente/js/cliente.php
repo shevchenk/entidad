@@ -20,8 +20,9 @@ $(document).ready(function() {
         "info": true,
         "autoWidth": false
     });
+   // $('#ModalListacliente').css('z-index', 1050);
     $('#ModalCliente').css('z-index', 1050);
-    $('#ModalListaempresa').css('z-index', 1050);
+    $('#ModalListaempresa').css('z-index', 1070);
     $('#ModalEmpresa').css('z-index', 1060);
     $('#ModalListapersona').css('z-index', 1070);
     $('#ModalPersona').css('z-index', 1080);
@@ -194,11 +195,13 @@ AgregarEditarNuevoListaCliente=function(val,id){
 /******************************************************************************/
 
 /*AGREGAR EDITAR AJAX DEL BOTON NUEVO EN LISTA CLIENTE*/
-AgregarEditarAjax1=function(){
+AgregarEditarAjaxNuevoListaCliente=function(){
     if( ValidaForm() ){
         AjaxCliente.AgregarEditarNuevoListaCliente(HTMLAgregarEditar);
     }
 }
 /*************************************************/
+
+
 
 </script>

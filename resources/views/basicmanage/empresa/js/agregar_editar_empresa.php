@@ -79,7 +79,7 @@ AgregarEditar2=function(val,id){
     EmpresaG.direccion_fiscal='';
     EmpresaG.telefono='';
     EmpresaG.celular='';
-    EmpresaG.email='';
+    EmpresaG.email='';6
     EmpresaG.estado='1';
     if( val==0 ){
         EmpresaG.id=id;
@@ -112,6 +112,42 @@ HTMLAgregarEditar2=function(result){
     }
     else{
         msjG.mensaje('warning',result.msj,3000);
+    }
+}
+
+AgregarEditarListaEmpresaCliente=function(val,id){
+     AddEdit=val;
+    EmpresaG.id='';
+    EmpresaG.persona_id='0';
+    EmpresaG.persona='';
+    EmpresaG.razon_social='';
+    EmpresaG.ruc='';
+    EmpresaG.nombre_comercial='';
+    EmpresaG.direccion_fiscal='';
+    EmpresaG.telefono='';
+    EmpresaG.celular='';
+    EmpresaG.email='';
+    EmpresaG.estado='1';
+    if( val==0 ){
+        EmpresaG.id=id;
+        EmpresaG.persona_id=$("#TableEmpresa #trid_"+id+" .persona_id").val();
+        EmpresaG.persona=$("#TableEmpresa #trid_"+id+" .persona").text();
+        EmpresaG.razon_social=$("#TableEmpresa #trid_"+id+" .razon_social").text();
+        EmpresaG.ruc=$("#TableEmpresa #trid_"+id+" .ruc").text();
+        EmpresaG.nombre_comercial=$("#TableEmpresa #trid_"+id+" .nombre_comercial").text();
+        EmpresaG.direccion_fiscal=$("#TableEmpresa #trid_"+id+" .direccion_fiscal").val();
+        EmpresaG.telefono=$("#TableEmpresa #trid_"+id+" .telefono").val();
+        EmpresaG.celular=$("#TableEmpresa #trid_"+id+" .celular").val();
+        EmpresaG.email=$("#TableEmpresa #trid_"+id+" .email").val();
+        EmpresaG.estado=$("#TableEmpresa #trid_"+id+" .estado").val();
+
+    }
+    $('#ModalEmpresa').modal('show');
+}
+
+AgregarEditarAjaxListaEmpresaCliente=function(){
+    if( ValidaForm2() ){
+        AjaxAgregar_Editar_Empresa.AgregarEditarListaEmpresaCliente(HTMLAgregarEditar2);
     }
 }
 </script>

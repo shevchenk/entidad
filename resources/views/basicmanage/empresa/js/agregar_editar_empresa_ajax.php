@@ -8,6 +8,7 @@ var AjaxAgregar_Editar_Empresa={
         }
         masterG.postAjax(url,data,evento);
     },
+    
 
 
 };

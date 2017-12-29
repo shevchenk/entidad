@@ -52,7 +52,9 @@ SeleccionarEmpresa = function(val,id){
         $('.empresa').css("display","");
         $('#ModalListaempresa').modal('hide');
     } 
-    }
+}
+
+
     
     
 HTMLCargarEmpresa=function(result){
