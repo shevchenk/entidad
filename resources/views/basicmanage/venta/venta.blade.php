@@ -24,6 +24,18 @@
     @include( 'basicmanage.empleado.js.listacliente' )
     <!--***********************************************-->
 
+    @include( 'basicmanage.empleado.js.listaempresa_ajax' )
+    @include( 'basicmanage.empleado.js.listaempresa' )
+    @include( 'basicmanage.empresa.js.agregar_editar_empresa_ajax' )
+    @include( 'basicmanage.empresa.js.agregar_editar_empresa' )
+    <!--***********************************************-->
+
+    @include( 'basicmanage.empleado.js.listapersona_ajax' )
+    @include( 'basicmanage.empleado.js.listapersona' )
+    @include( 'basicmanage.persona.js.agregar_editar_persona_ajax' )
+    @include( 'basicmanage.persona.js.agregar_editar_persona' )
+    <!--***********************************************-->
+
     <!--ESTA DECLARACION SIRVE PARA QUE RECONOSCA LAS FUNCIONES Q TIENE LA LSITA PRODUCTO-->
     @include( 'basicmanage.producto.js.listaproducto_ajax' )
     @include( 'basicmanage.producto.js.listaproducto' )
@@ -257,6 +269,14 @@
      @include( 'basicmanage.empleado.form.listacliente' )
      <!--**********************************************************-->
 
+     <!--ESTA DECLARACION SIRVE PARA QUE SE ABRA EL FORM DE LISTA EMPRESA-->
+     @include( 'basicmanage.empleado.form.listaempresa' )
+     <!--**********************************************************-->
+
+     <!--ESTA DECLARACION SIRVE PARA QUE SE ABRA EL FORM DE LISTA PERSONA-->
+     @include( 'basicmanage.empleado.form.listapersona' )
+     <!--**********************************************************-->
+
      <!--ESTA DECLARACION SIRVE PARA QUE SE ABRA EL FORM DE CLIENTE-->
      @include( 'basicmanage.cliente.form.cliente' )
      <!--**********************************************************-->
@@ -264,4 +284,10 @@
      <!--ESTA DECLARACION SIRVE PARA QUE SE ABRA EL FORM DE PERSONA-->
      @include( 'basicmanage.persona.form.persona' )
      <!--**********************************************************-->
+
+     <!--ESTA DECLARACION SIRVE PARA QUE SE ABRA EL FORM DE PERSONA-->
+     @include( 'basicmanage.empresa.form.empresa' )
+     <!--**********************************************************-->
+
 @stop
+

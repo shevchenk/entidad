@@ -22,10 +22,11 @@
                                             <th>Nombre</th>
                                             <th>DNI</th>
                                             <th>[-]</th>
-                                             <th>[-]</th>
+                                       <!-- ESTE BOTON ES PARA EL EDITAR   
+                                            <th>[-]</th> -->
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody>s
                                     </tbody>
                                     <tfoot>
                                         <tr class="cabecera">
@@ -34,7 +35,8 @@
                                             <th>Nombre</th>
                                             <th>DNI</th>
                                             <th>[-]</th>
-                                             <th>[-]</th>
+                                    <!-- ESTE BOTON ES PARA EL EDITAR   
+                                            <th>[-]</th> -->
                                         </tr>
                                     </tfoot>
                                 </table>

@@ -25,11 +25,11 @@ $(document).ready(function() {
 
     $('#ModalEmpresa').on('shown.bs.modal', function (event) {
         if( AddEdit==1 ){
-            $(this).find('.modal-footer .btn-primary').text('Guardar').attr('onClick','AgregarEditarAjax2();');
+            $(this).find('.modal-footer .btn-primary').text('Guardar').attr('onClick','AgregarEditarAjaxAgregarEditarListaEmpresaCliente();');
         }
         else{
             
-            $(this).find('.modal-footer .btn-primary').text('Actualizar').attr('onClick','AgregarEditarAjax2();');
+            $(this).find('.modal-footer .btn-primary').text('Actualizar').attr('onClick','AgregarEditarAjaxAgregarEditarListaEmpresaCliente();');
             $("#ModalEmpresaForm").append("<input type='hidden' value='"+EmpresaG.id+"' name='id'>");
         }
 
@@ -48,6 +48,7 @@ $(document).ready(function() {
 
     $('#ModalEmpresa').on('hidden.bs.modal', function (event) {
         $("#ModalEmpresaForm input[type='hidden']").not('.mant').remove();
+        $("#ModalEmpresaForm input").val('');
     });
 });
 
@@ -68,7 +69,20 @@ ValidaForm2=function(){
     return r;
 }
 
-AgregarEditar2=function(val,id){
+
+
+HTMLAgregarEditar2=function(result){
+    if( result.rst==1 ){
+        msjG.mensaje('success',result.msj,4000);
+        $('#ModalEmpresa').modal('hide');
+        AjaxListaempresa.Cargar(HTMLCargarEmpresa);
+    }
+    else{
+        msjG.mensaje('warning',result.msj,3000);
+    }
+}
+
+AgregarEditarListaEmpresaCliente=function(val,id){
      AddEdit=val;
     EmpresaG.id='';
     EmpresaG.persona_id='0';
@@ -95,27 +109,17 @@ AgregarEditar2=function(val,id){
         EmpresaG.estado=$("#TableEmpresa #trid_"+id+" .estado").val();
 
     }
+    
     $('#ModalEmpresa').modal('show');
 }
 
-AgregarEditarAjax2=function(){
+AgregarEditarAjaxAgregarEditarListaEmpresaCliente=function(){
     if( ValidaForm2() ){
-        AjaxAgregar_Editar_Empresa.AgregarEditar2(HTMLAgregarEditar2);
+        AjaxAgregar_Editar_Empresa.AgregarEditarListaEmpresaCliente(HTMLAgregarEditar2);
     }
 }
 
-HTMLAgregarEditar2=function(result){
-    if( result.rst==1 ){
-        msjG.mensaje('success',result.msj,4000);
-        $('#ModalEmpresa').modal('hide');
-        AjaxListaempresa.Cargar(HTMLCargarEmpresa);
-    }
-    else{
-        msjG.mensaje('warning',result.msj,3000);
-    }
-}
-
-AgregarEditarListaEmpresaCliente=function(val,id){
+AgregarEditarListaEmpresaClienteAM=function(val,id){
      AddEdit=val;
     EmpresaG.id='';
     EmpresaG.persona_id='0';
@@ -145,9 +149,9 @@ AgregarEditarListaEmpresaCliente=function(val,id){
     $('#ModalEmpresa').modal('show');
 }
 
-AgregarEditarAjaxListaEmpresaCliente=function(){
+AgregarEditarAjaxAgregarEditarListaEmpresaClienteAM=function(){
     if( ValidaForm2() ){
-        AjaxAgregar_Editar_Empresa.AgregarEditarListaEmpresaCliente(HTMLAgregarEditar2);
+        AjaxAgregar_Editar_Empresa.AgregarEditarListaEmpresaClienteAM(HTMLAgregarEditar2);
     }
 }
 </script>

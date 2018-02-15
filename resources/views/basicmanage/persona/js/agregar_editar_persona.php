@@ -1,6 +1,18 @@
 <script type="text/javascript">
 var AddEdit=0; //0: Editar | 1: Agregar
-var PersonaG={id:0,paterno:"",materno:"",nombre:"",dni:"",sexo:"",email:"",password:"",telefono:"",celular:"",fecha_nacimiento:"",estado:1}; // 
+var PersonaG={
+    id:0,
+    paterno:"",
+    materno:"",
+    nombre:"",
+    dni:"",
+    sexo:"",
+    email:"",
+    password:"",
+    telefono:"",
+    celular:"",
+    fecha_nacimiento:"",
+    estado:1}; // 
 
 $(document).ready(function() {
     
@@ -26,10 +38,10 @@ $(document).ready(function() {
     $('#ModalPersona').on('shown.bs.modal', function (event) {
 
         if( AddEdit==1 ){
-            $(this).find('.modal-footer .btn-primary').text('Guardar').attr('onClick','AgregarEditarAjax1();');
+            $(this).find('.modal-footer .btn-primary').text('Guardar').attr('onClick','AgregarEditarAjaxAgregarEditarListaPersonaCliente();');
         }
         else{
-            $(this).find('.modal-footer .btn-primary').text('Actualizar').attr('onClick','AgregarEditarAjax1();');
+            $(this).find('.modal-footer .btn-primary').text('Actualizar').attr('onClick','AgregarEditarAjaxAgregarEditarListaPersonaCliente();');
             $("#ModalPersonaForm").append("<input type='hidden' value='"+PersonaG.id+"' name='id'>");
         }
 
@@ -78,8 +90,18 @@ ValidaForm1=function(){
    
     return r;
 }
+HTMLAgregarEditar1=function(result){
+    if( result.rst==1 ){
+        msjG.mensaje('success',result.msj,4000);
+        $('#ModalPersona').modal('hide');
+        AjaxListapersona.Cargar(HTMLCargarPersona);
+    }
+    else{
+        msjG.mensaje('warning',result.msj,3000);
+    }
+}
 
-AgregarEditar1=function(val,id){
+AgregarEditarListaPersonaCliente=function(val,id){
     AddEdit=val;
     PersonaG.id='';
     PersonaG.paterno='';
@@ -111,20 +133,50 @@ AgregarEditar1=function(val,id){
     $('#ModalPersona').modal('show');
 }
 
-AgregarEditarAjax1=function(){
+AgregarEditarAjaxAgregarEditarListaPersonaCliente=function(){
     if( ValidaForm1() ){
-        AjaxAgregar_Editar_Persona.AgregarEditar1(HTMLAgregarEditar1);
+        AjaxAgregar_Editar_Persona.AgregarEditarListaPersonaCliente(HTMLAgregarEditar1);
     }
 }
 
-HTMLAgregarEditar1=function(result){
-    if( result.rst==1 ){
-        msjG.mensaje('success',result.msj,4000);
-        $('#ModalPersona').modal('hide');
-        AjaxListapersona.Cargar(HTMLCargarPersona);
+AgregarEditarListaPersonaClienteAM=function(val,id){
+    AddEdit=val;
+    PersonaG.id='';
+    PersonaG.paterno='';
+    PersonaG.materno='';
+    PersonaG.nombre='';
+    PersonaG.dni='';
+    PersonaG.sexo='0';
+    PersonaG.email='';
+    PersonaG.password='';
+    PersonaG.telefono='';
+    PersonaG.celular='';
+    PersonaG.fecha_nacimiento='';
+    PersonaG.estado='1';
+    if( val==0 ){
+
+        PersonaG.id=id;
+        PersonaG.paterno=$("#TableListapersona #trid_"+id+" .paterno").text();
+        PersonaG.materno=$("#TableListapersona #trid_"+id+" .materno").text();
+        PersonaG.nombre=$("#TableListapersona #trid_"+id+" .nombre").text();
+        PersonaG.dni=$("#TableListapersona #trid_"+id+" .dni").text();
+        PersonaG.sexo=$("#TableListapersona #trid_"+id+" .sexo").val();
+        PersonaG.email=$("#TableListapersona #trid_"+id+" .email").val();
+        PersonaG.telefono=$("#TableListapersona #trid_"+id+" .telefono").val();
+        PersonaG.celular=$("#TableListapersona #trid_"+id+" .celular").val();
+        PersonaG.fecha_nacimiento=$("#TableListapersona #trid_"+id+" .fecha_nacimiento").val();
+        PersonaG.estado=$("#TableListapersona #trid_"+id+" .estado").val();
+      
     }
-    else{
-        msjG.mensaje('warning',result.msj,3000);
+    $('#ModalPersona').modal('show');
+}
+
+AgregarEditarAjaxAgregarEditarListaPersonaClienteAM=function(){
+    if( ValidaForm1() ){
+        AjaxAgregar_Editar_Persona.AgregarEditarListaPersonaClienteAM(HTMLAgregarEditar1);
     }
 }
+
+
+
 </script>

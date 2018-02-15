@@ -62,11 +62,6 @@ HTMLCargarEmpresa=function(result){
     $('#TableListaempresa').DataTable().destroy();
 
     $.each(result.data,function(index,r){
-        estadohtml='<span id="'+r.id+'" onClick="CambiarEstado(1,'+r.id+')" class="btn btn-danger">Inactivo</span>';
-        if(r.estado==1){
-            estadohtml='<span id="'+r.id+'" onClick="CambiarEstado(0,'+r.id+')" class="btn btn-success">Activo</span>';
-        }
-
         html+="<tr id='trid_"+r.id+"'>"+
             "<td class='nombrecompleto'>"+r.paterno+" "+r.materno+" "+r.nombre+"</td>"+
             "<td class='razon_social'>"+r.razon_social+"</td>"+

@@ -64,9 +64,11 @@ HTMLCargarClienteListaCliente=function(result){
             "<input type='hidden' class='sexo' value='"+r.sexo+"'>"+
             "<input type='hidden' class='telefono' value='"+r.telefono+"'>"+
             "<input type='hidden' class='celular' value='"+r.celular+"'>"+
-             "<input type='hidden' class='estado' value='"+r.estado+"'>"+
+             "<input type='hidden' class='estado' value='"+r.estado+"'>";
+            /* ESTO HACE QUE SE MUESTRE EL BOTON EDITAR EN LA LSITA
             "</td>"+
             '<td><a class="btn btn-primary btn-sm" onClick="AgregarEditarNuevoListaCliente(0,'+r.id+')"><i class="fa fa-edit fa-lg"></i> </a></td>';
+            */
 
         html+="</tr>";
     });
