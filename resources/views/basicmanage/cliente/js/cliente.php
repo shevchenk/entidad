@@ -1,6 +1,11 @@
 <script type="text/javascript">
 var AddEdit=0; //0: Editar | 1: Agregar
-var ClienteG={id:0,persona_id:0,persona:"",empresa:"",empresa_id:0,estado:1}; // Datos Globales
+var ClienteG={
+    id:0,
+    persona_id:0,
+    persona:"",
+    empresa:"",
+empresa_id:0,estado:1}; // Datos Globales
 $(document).ready(function() {
     $(".fechas").datetimepicker({
         format: "yyyy-mm-dd",
