@@ -21,8 +21,8 @@ class Cliente extends Model
     {
         $proveedor = new Cliente;
         $proveedor->persona_id = trim( $r->persona_id );
-        if(trim( $r->empresa_id )!=''){
-        $proveedor->empresa_id = trim( $r->empresa_id );}
+        if($r->empresa_id <>0){
+            $proveedor->empresa_id = trim( $r->empresa_id );}
         $proveedor->estado = trim( $r->estado );
         $proveedor->persona_id_created_at=1;
         $proveedor->save();
@@ -32,10 +32,10 @@ class Cliente extends Model
     {
         $proveedor = Cliente::find($r->id);
         $proveedor->persona_id = trim( $r->persona_id );
-        if(trim( $r->empresa_id )!=''){
-        $proveedor->empresa_id = trim( $r->empresa_id );}
+        if($r->empresa_id <> 0){
+            $proveedor->empresa_id = trim( $r->empresa_id );}
         else {
-        $proveedor->empresa_id = null;}    
+            $proveedor->empresa_id = null;}    
         $proveedor->estado = trim( $r->estado );
         $proveedor->persona_id_updated_at=1;
         $proveedor->save();

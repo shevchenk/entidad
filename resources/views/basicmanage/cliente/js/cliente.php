@@ -28,8 +28,7 @@ $(document).ready(function() {
    // $('#ModalListacliente').css('z-index', 1050);
     $('#ModalCliente').css('z-index', 1050);
     $('#ModalListaempresa').css('z-index', 1070);
-    $('#ModalEmpresa').css('z-index', 1080);
-    $('#ModalListapersona').css('z-index', 1070);    
+    $('#ModalEmpresa').css('z-index', 1080);  
     $('#ModalListapersona').css('z-index', 1090);
     $('#ModalPersona').css('z-index', 1110);
 
@@ -125,12 +124,12 @@ AgregarEditarAjax=function(){
     }
 }
 
-
 HTMLAgregarEditar=function(result){
     if( result.rst==1 ){
         msjG.mensaje('success',result.msj,4000);
         $('#ModalCliente').modal('hide');
-        AjaxCliente.Cargar(HTMLCargarCliente);
+        //AjaxCliente.Cargar(HTMLCargarCliente);
+        AjaxListacliente.Cargar(HTMLCargarClienteListaCliente);
     }else{
         msjG.mensaje('warning',result.msj,3000);
     }

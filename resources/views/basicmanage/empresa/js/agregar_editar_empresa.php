@@ -10,6 +10,9 @@ direccion_fiscal:"",
 telefono:"",
 celular:"",
 email:"",
+imagen_nombre:"",
+foto:"",
+imagen_archivo:"",
 estado:1}; // Datos Globales
 
 $(document).ready(function() {
@@ -21,6 +24,7 @@ $(document).ready(function() {
         "info": true,
         "autoWidth": false
     });
+   // AjaxEmpresa.Cargar(HTMLCargarEmpresa);
 
 
     $('#ModalEmpresa').on('shown.bs.modal', function (event) {
@@ -43,12 +47,15 @@ $(document).ready(function() {
         $('#ModalEmpresaForm #txt_celular').val( EmpresaG.celular );
         $('#ModalEmpresaForm #txt_email').val( EmpresaG.email );
         $('#ModalEmpresaForm #slct_estado').val( EmpresaG.estado );
-        $('#ModalEmpresaForm #txt_persona_id').focus();
+        $('#ModalEmpresaForm #txt_imagen_nombre').val(EmpresaG.imagen_nombre);
+        $('#ModalEmpresaForm #txt_imagen_archivo').val('');
+        $('#ModalEmpresaForm .img-circle').attr('src',EmpresaG.imagen_archivo);
+        $('#ModalEmpresaForm #txt_razon_social').focus();
     });
 
     $('#ModalEmpresa').on('hidden.bs.modal', function (event) {
         $("#ModalEmpresaForm input[type='hidden']").not('.mant').remove();
-        $("#ModalEmpresaForm input").val('');
+        //$("#ModalEmpresaForm input").val('');
     });
 });
 
@@ -71,18 +78,7 @@ ValidaForm2=function(){
 
 
 
-HTMLAgregarEditar2=function(result){
-    if( result.rst==1 ){
-        msjG.mensaje('success',result.msj,4000);
-        $('#ModalEmpresa').modal('hide');
-        AjaxListaempresa.Cargar(HTMLCargarEmpresa);
-    }
-    else{
-        msjG.mensaje('warning',result.msj,3000);
-    }
-}
-
-AgregarEditarListaEmpresaCliente=function(val,id){
+AgregarEditarListaEmpresaCliente=function(val,id){ //MODAL EMPRESA DE VENTA
      AddEdit=val;
     EmpresaG.id='';
     EmpresaG.persona_id='0';
@@ -93,7 +89,9 @@ AgregarEditarListaEmpresaCliente=function(val,id){
     EmpresaG.direccion_fiscal='';
     EmpresaG.telefono='';
     EmpresaG.celular='';
-    EmpresaG.email='';6
+    EmpresaG.email='';
+    EmpresaG.imagen_nombre='';
+    EmpresaG.imagen_archivo='';
     EmpresaG.estado='1';
     if( val==0 ){
         EmpresaG.id=id;
@@ -106,11 +104,32 @@ AgregarEditarListaEmpresaCliente=function(val,id){
         EmpresaG.telefono=$("#TableEmpresa #trid_"+id+" .telefono").val();
         EmpresaG.celular=$("#TableEmpresa #trid_"+id+" .celular").val();
         EmpresaG.email=$("#TableEmpresa #trid_"+id+" .email").val();
+        EmpresaG.foto=$("#TableEmpresa #trid_"+id+" .foto").val();
+
+        if(EmpresaG.foto!='undefined'){
+            EmpresaG.imagen_archivo='img/empres/'+EmpresaG.foto;
+            EmpresaG.imagen_nombre=EmpresaG.foto;
+        }else {
+            EmpresaG.imagen_archivo='';
+            EmpresaG.imagen_nombre='';
+        } 
+
         EmpresaG.estado=$("#TableEmpresa #trid_"+id+" .estado").val();
 
     }
     
     $('#ModalEmpresa').modal('show');
+}
+
+HTMLAgregarEditar2=function(result){
+    if( result.rst==1 ){
+        msjG.mensaje('success',result.msj,4000);
+        $('#ModalEmpresa').modal('hide');
+        AjaxListaempresa.Cargar(HTMLCargarEmpresa);
+    }
+    else{
+        msjG.mensaje('warning',result.msj,3000);
+    }
 }
 
 AgregarEditarAjaxAgregarEditarListaEmpresaCliente=function(){
@@ -153,5 +172,20 @@ AgregarEditarAjaxAgregarEditarListaEmpresaClienteAM=function(){
     if( ValidaForm2() ){
         AjaxAgregar_Editar_Empresa.AgregarEditarListaEmpresaClienteAM(HTMLAgregarEditar2);
     }
-}
+};
+
+onImagen = function (event) {
+        var files = event.target.files || event.dataTransfer.files;
+        if (!files.length)
+            return;
+        var image = new Image();
+        var reader = new FileReader();
+        reader.onload = (e) => {
+            $('#ModalEmpresaForm #txt_imagen_archivo').val(e.target.result);
+            $('#ModalEmpresaForm .img-circle').attr('src',e.target.result);
+        };
+        reader.readAsDataURL(files[0]);
+        $('#ModalEmpresaForm #txt_imagen_nombre').val(files[0].name);
+        console.log(files[0].name);
+    };
 </script>

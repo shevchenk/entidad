@@ -74,7 +74,7 @@ ValidaForm=function(){
     return r;
 }
 
-AgregarEditar=function(val,id){
+AgregarEditar=function(val,id){ // MANTENIMIENTO EMPRESA
     AddEdit=val;
     EmpresaG.id='';
     EmpresaG.persona_id='0';
@@ -163,9 +163,7 @@ HTMLCargarEmpresa=function(result){
             "<td class='ruc'>"+r.ruc+"</td>"+
             "<td class='nombre_comercial'>"+r.nombre_comercial+"</td>"+
             "<td class='email'>"+r.email+"</td>"+
-            "<td>"+
-            
-
+            "<td>"+         
             "<input type='hidden' class='persona_id' value='"+r.persona_id+"'>"+
             "<input type='hidden' class='direccion_fiscal' value='"+r.direccion_fiscal+"'>"+
             "<input type='hidden' class='telefono' value='"+r.telefono+"'>"+

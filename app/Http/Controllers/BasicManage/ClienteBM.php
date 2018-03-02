@@ -31,7 +31,7 @@ class ClienteBM extends Controller
                 $mensaje['unique']=str_replace('Persona','Empresa',$mensaje['unique']);
             }
             
-            $rules = array(
+            $rules = array(      
                 'persona_id' => 
                        ['required',
                         Rule::unique('clientes','persona_id')->where(function ($query) use($r) {
@@ -43,6 +43,7 @@ class ClienteBM extends Controller
                             }
                         }),
                         ],
+
             );
 
 

@@ -18,8 +18,11 @@
     @include( 'basicmanage.empresa.js.empresa' )
     @include( 'basicmanage.empleado.js.listapersona_ajax' )
     @include( 'basicmanage.empleado.js.listapersona' )
+
     @include( 'basicmanage.persona.js.agregar_editar_persona' )
     @include( 'basicmanage.persona.js.agregar_editar_persona_ajax' )
+    @include( 'basicmanage.empresa.js.agregar_editar_empresa' )
+    @include( 'basicmanage.empresa.js.agregar_editar_empresa_ajax' )
 @stop
 
 
