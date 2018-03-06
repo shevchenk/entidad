@@ -52,4 +52,6 @@ class Venta extends Model
         return $result;
     }
 
+
+
 }

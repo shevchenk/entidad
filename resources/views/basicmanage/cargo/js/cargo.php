@@ -81,6 +81,8 @@ HTMLAgregarEditar=function(result){
     }
 }
 
+
+
 HTMLCargarCargo=function(result){
     var html="";
     $('#TableCargo').DataTable().destroy();

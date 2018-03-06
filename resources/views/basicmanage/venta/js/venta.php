@@ -3,6 +3,9 @@ var AddEdit=0; //0: Editar | 1: Agregar
 var fechaTG='';
 var horaTG='';
 var TiempoFinalTG='';
+var PrecioTotalG=0;
+var TotalG=0;
+var SubTotalG=0;
 var VentaG={
         id:0,
         cliente_id:0,
@@ -292,17 +295,20 @@ SeleccionarProducto = function(val,id,precio_venta){
         html+="<tr id='trid_"+id+"'>"+
         /*
             ACA ESTAN LOS CAMPOS QUE SE AGREGAN CADA VEZ QUE SE DA SELECCIONAR PRODUCTO
+  
         */
 
-              "<td><input type='text' class='form-control' enable></td>"+ //CANTIDAD
+              "<td><input type='number' onBlur='precioTotal("+id+", this.value, "+precio_venta+")' class='form-control' id='cantidad-"+id+"' enable></td>"+ //CANTIDAD
              
              // $('#ModalVentaForm #txt_total').val( ProductoG.precio_venta );
               "<td><input type='text' class='form-control' id='precio-"+id+"' value='"+precio_venta+"' disabled></td>"+ // PRECIO
               "<td><input type='text' class='form-control' id='producto-"+id+"' value='"+producto+"' disabled></td>"+ // PRODUCTO
               "<td><input type='text' class='form-control' disabled></td>"+ //IMAGEN
-              "<td><input type='text' class='form-control' disabled></td>"+ //PRECIO TOTAL
+
+              "<td><input type='text' class='form-control' id='preciototal-"+id+"' disabled></td>"+ //PRECIO TOTAL
             
             '<td><a onClick="Eliminar('+id+')" class="btn btn-danger" ><i class="fa fa-trash fa-lg"></i></a></td>'; //ELIMINAR
+
           html+="</tr>";
         
         $("#t_lista_venta").append(html);
@@ -313,7 +319,38 @@ SeleccionarProducto = function(val,id,precio_venta){
     }
 };
 
+Eliminar = function (tr) {
+        var c = confirm("¿Está seguro de Eliminar el Producto?");
+        if (c) {
+            $("#t_lista_venta #trid_"+tr+"").remove();        
+        }
+};
 
+//CALCULA EL PRECIO TOTAL DEL PRODUCTO  = CANTIDAD * PRECIO_VENTA
+precioTotal = function (id, value, precio_venta) {
+
+    $('#preciototal-'+id).val('');
+    $('#preciototal-'+id).val(value*precio_venta);
+
+    PrecioTotalG=(value*precio_venta);
+
+    $('#detallePrecioVenta #txt_subtotal').val('');
+    SubTotalG = SubTotalG + PrecioTotalG;
+    $('#detallePrecioVenta #txt_subtotal').val(SubTotalG);
+    SubTotalG = 0;
+};
+
+/*
+IGV = function (id, value, precio_venta) {
+    $('#preciototal-'+id).val('');
+        $('#preciototal-'+id).val(value*precio_venta);
+};
+montoTotal = function (id, value, precio_venta) {
+    $('#preciototal-'+id).val('');
+        $('#preciototal-'+id).val(value*precio_venta);
+};
+
+*/
 
 
 

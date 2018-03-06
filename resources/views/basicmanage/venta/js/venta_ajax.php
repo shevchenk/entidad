@@ -58,7 +58,8 @@ var AjaxVenta={
         url='AjaxDinamic/BasicManage.ArticuloBM@ListArticulo';
         data={categoria_id:categoria_id};
         masterG.postAjax(url,data,evento);
-    }
+    },
+
 
   
 };

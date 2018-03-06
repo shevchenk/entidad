@@ -186,7 +186,7 @@
                                         </div>
 
                                         
-                                <div class="col-md-12">                                            
+                                <div class="col-md-12" id="detallePrecioVenta">                                            
                                                  
                                     <div class="col-md-10 text-right">
                                         <label>SubTotal:</label>                                          
@@ -194,7 +194,7 @@
                                     </div>
 
                                     <div class="col-md-2 text-right">                                                   
-                                        <input type="text" class="form-control" id="txt_nro_promocion" name="txt_nro_promocion" placeholder="Nro" disabled>
+                                        <input type="text" class="form-control text-center" id="txt_subtotal" name="txt_subtotal"  disabled>
                                     </div>
 
                                     <div class="col-md-12"> 
@@ -206,7 +206,7 @@
                                     </div>
                                                 
                                     <div class="col-md-2 text-right">                                              
-                                        <input type="text" class="form-control" id="txt_nro_promocion" name="txt_nro_promocion" placeholder="Nro" disabled>
+                                        <input type="text" class="form-control text-center" id="txt_IGV" name="txt_IGV"  disabled>
                                     </div>
 
                                     <div class="col-md-12"> 
@@ -218,7 +218,7 @@
                                     </div>
                                     
                                     <div class="col-md-2 text-right">                                                    
-                                        <input type="text" class="form-control" id="txt_nro_promocion" name="txt_nro_promocion" placeholder="Nro" disabled>
+                                        <input type="text" class="form-control text-center" id="txt_nro_promocion" name="txt_nro_promocion" disabled>
                                     </div>
 
                                     <div class="col-md-12"> 
@@ -230,7 +230,7 @@
                                     </div>
                                     
                                     <div class="col-md-2 text-right">                                                    
-                                        <input type="text" class="form-control" id="txt_monto_promocion" name="txt_monto_promocion" placeholder="Monto" disabled>
+                                        <input type="text" class="form-control text-center" id="txt_monto_total" name="txt_monto_total" disabled>
                                     </div>
                                             
                                 </div>     
