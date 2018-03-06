@@ -113,8 +113,11 @@ class Producto extends Model
 
     public static function ListProducto($r)
     {
-        $sql=Producto::select('id','foto','producto','estado')
-            ->where('estado','=','1')
+
+
+        $sql=Producto::select('productos.id', 'productos.foto', 'productos.producto', 'ps.id', 'ps.precio_venta', 'productos.estado')
+            ->join('productos_sucursales as ps', 'productos.id','=','ps.producto_id')              
+            ->where('productos.estado','=','1')
             ->where( 
                 function($query) use ($r){
                     if( $r->has("articulo_id") ){
@@ -125,7 +128,7 @@ class Producto extends Model
                     }
                 }
             );
-        $result = $sql->orderBy('producto','asc')->get();
+        $result = $sql->orderBy('productos.producto','asc')->get();
         return $result;
     }
 
