@@ -6,6 +6,7 @@ var TiempoFinalTG='';
 var PrecioTotalG=0;
 var TotalG=0;
 var SubTotalG=0;
+var IGVG = 1.18; // LOS PRODUCTOS YA INCLUYEN CON EL IGV
 var VentaG={
         id:0,
         cliente_id:0,
@@ -298,14 +299,14 @@ SeleccionarProducto = function(val,id,precio_venta){
   
         */
 
-              "<td><input type='number' onBlur='precioTotal("+id+", this.value, "+precio_venta+")' class='form-control' id='cantidad-"+id+"' enable></td>"+ //CANTIDAD
+              "<td><input type='number' onBlur='calcularMontos("+id+", this.value, "+precio_venta+")' class='form-control' id='cantidad-"+id+"' enable></td>"+ //CANTIDAD
              
              // $('#ModalVentaForm #txt_total').val( ProductoG.precio_venta );
               "<td><input type='text' class='form-control' id='precio-"+id+"' value='"+precio_venta+"' disabled></td>"+ // PRECIO
               "<td><input type='text' class='form-control' id='producto-"+id+"' value='"+producto+"' disabled></td>"+ // PRODUCTO
               "<td><input type='text' class='form-control' disabled></td>"+ //IMAGEN
 
-              "<td><input type='text' class='form-control' id='preciototal-"+id+"' disabled></td>"+ //PRECIO TOTAL
+              "<td><input type='text' class='form-control preciototal' id='preciototal-"+id+"' name='preciototal[]' disabled></td>"+ //PRECIO TOTAL
             
             '<td><a onClick="Eliminar('+id+')" class="btn btn-danger" ><i class="fa fa-trash fa-lg"></i></a></td>'; //ELIMINAR
 
@@ -322,38 +323,44 @@ SeleccionarProducto = function(val,id,precio_venta){
 Eliminar = function (tr) {
         var c = confirm("¿Está seguro de Eliminar el Producto?");
         if (c) {
-            $("#t_lista_venta #trid_"+tr+"").remove();        
+            $("#t_lista_venta #trid_"+tr+"").remove();     
+
         }
 };
 
 //CALCULA EL PRECIO TOTAL DEL PRODUCTO  = CANTIDAD * PRECIO_VENTA
-precioTotal = function (id, value, precio_venta) {
+calcularMontos = function (id, cantidad, precio_venta) {
 
+    $('#detallePrecioVenta #txt_IGV').val('0.00');
+    $('#detallePrecioVenta #txt_subtotal').val('0.00');
+    $('#detallePrecioVenta #txt_monto_total').val('0.00');  
     $('#preciototal-'+id).val('');
-    $('#preciototal-'+id).val(value*precio_venta);
+    
+    //PRECIO TOTAL DE UN PRODUCTO
+    PrecioTotalG=(cantidad*precio_venta);
+    $('#preciototal-'+id).val(PrecioTotalG);
 
-    PrecioTotalG=(value*precio_venta);
+    //SE CREA UNA VARIABLE TEMPORAL igv PARA REALIZAR LOS CALCULOS
+    var igv = 0.00;
 
-    $('#detallePrecioVenta #txt_subtotal').val('');
-    SubTotalG = SubTotalG + PrecioTotalG;
-    $('#detallePrecioVenta #txt_subtotal').val(SubTotalG);
-    SubTotalG = 0;
+    //SE RECORRE TODOS LOS PRECIOS TOTALES DE LOS PRODUCTOS AÑADIDOS Y SE CALCULA EL IGV, SUBTOTAL Y TOTAL
+    $('.preciototal').each(function(){       
+    TotalG = TotalG + parseFloat($(this).val());
+    SubTotalG = (TotalG/IGVG);
+    igv = (TotalG-SubTotalG);
+    });    
+    
+    //SE MUESTRA EN LAS CAJAS DE TEXTO LOS RESULTADOS
+    $('#detallePrecioVenta #txt_IGV').val(igv.toFixed(2));
+    $('#detallePrecioVenta #txt_subtotal').val(SubTotalG.toFixed(2)); 
+    $('#detallePrecioVenta #txt_monto_total').val(TotalG.toFixed(2));  
+    igv = 0.00; 
+    SubTotalG = 0.00; 
+    TotalG = 0.00; 
+        
+       
+      
 };
-
-/*
-IGV = function (id, value, precio_venta) {
-    $('#preciototal-'+id).val('');
-        $('#preciototal-'+id).val(value*precio_venta);
-};
-montoTotal = function (id, value, precio_venta) {
-    $('#preciototal-'+id).val('');
-        $('#preciototal-'+id).val(value*precio_venta);
-};
-
-*/
-
-
-
 
 </script>
 

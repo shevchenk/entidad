@@ -188,49 +188,51 @@
                                         
                                 <div class="col-md-12" id="detallePrecioVenta">                                            
                                                  
+                                    
+                                    <div class="col-md-10 text-right">
+                                        <label>IGV:</label>                                                  
+                                    </div>
+                                                
+                                    <div class="col-md-2 text-right">                                              
+                                        <input type="text" class="form-control text-center" id="txt_IGV" name="txt_IGV" value="0.00" disabled>
+                                    </div>
+
+                                    <div class="col-md-12"> 
+                                        &nbsp;
+                                    </div>
+                                    
+
                                     <div class="col-md-10 text-right">
                                         <label>SubTotal:</label>                                          
 
                                     </div>
 
                                     <div class="col-md-2 text-right">                                                   
-                                        <input type="text" class="form-control text-center" id="txt_subtotal" name="txt_subtotal"  disabled>
+                                        <input type="text" class="form-control text-center" id="txt_subtotal" name="txt_subtotal" value="0.00" disabled>
                                     </div>
 
                                     <div class="col-md-12"> 
                                         &nbsp;
                                     </div>
 
-                                    <div class="col-md-10 text-right">
-                                        <label>IGV:</label>                                                  
-                                    </div>
-                                                
-                                    <div class="col-md-2 text-right">                                              
-                                        <input type="text" class="form-control text-center" id="txt_IGV" name="txt_IGV"  disabled>
-                                    </div>
-
-                                    <div class="col-md-12"> 
-                                        &nbsp;
-                                    </div>
-
-                                    <div class="col-md-10 text-right">
+                                  <!--  <div class="col-md-10 text-right">
                                         <label>Promocion:</label>                                                  
                                     </div>
                                     
                                     <div class="col-md-2 text-right">                                                    
-                                        <input type="text" class="form-control text-center" id="txt_nro_promocion" name="txt_nro_promocion" disabled>
+                                        <input type="text" class="form-control text-center" id="txt_nro_promocion" name="txt_nro_promocion" value="0.00" disabled>
                                     </div>
 
                                     <div class="col-md-12"> 
                                         &nbsp;
-                                    </div>
+                                    </div> -->
 
                                     <div class="col-md-10 text-right">
                                         <label>Total:</label>                                                   
                                     </div>
                                     
                                     <div class="col-md-2 text-right">                                                    
-                                        <input type="text" class="form-control text-center" id="txt_monto_total" name="txt_monto_total" disabled>
+                                        <input type="text" class="form-control text-center" id="txt_monto_total" name="txt_monto_total" value="0.00" disabled>
                                     </div>
                                             
                                 </div>     
