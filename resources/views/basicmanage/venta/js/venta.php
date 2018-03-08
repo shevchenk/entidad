@@ -87,21 +87,21 @@ $(document).ready(function() {
 
 ValidaForm=function(){
     var r=true;
-    if( $.trim( $("#ModalVentaForm #txt_cliente").val() )=='' ){
+    if( $.trim( $("#ModalVentaForm #txt_cliente_id").val() )=='' ){
         r=false;
         msjG.mensaje('warning','Seleccione Cliente',4000);
     }
-    else if( $.trim( $("#ModalVentaForm #slct_categoria").val() )=='0' ){
+    else if( $.trim( $("#ModalVentaForm #cantidad-").val() )=='0' ){
         r=false;
-        msjG.mensaje('warning','Seleccione Sucursal',4000);
+        msjG.mensaje('warning','Ingrese Cantidad',4000);
     }
     // else if( $.trim( $("#ModalVentaForm #slct_proforma").val() )=='0' ){
     //     r=false;
     //     msjG.mensaje('warning','Seleccione Proforma',4000);
     // }
-    else if( $.trim( $("#ModalVentaForm #txt_fecha_vencimiento").val() )==''){
+    else if( $.trim( $("#ModalVentaForm #txt_monto_total").val() )==''){
         r=false;
-        msjG.mensaje('warning','Ingrese Fecha',4000);
+        msjG.mensaje('warning','Ingrese producto',4000);
     }
     return r;
 }
@@ -269,9 +269,17 @@ HtmlCargarProducto=function(result){
 
     $.each(result.data,function(index,r){
         html+="<tr id='trid_"+r.id+"'>"+
-            "<td class='foto'>"+r.foto+"</td>"+
+        "<td>";
+        //MUESTRA LA IMAGEN JUNTO AL LISTADO DE PRODUCTO
+           if(r.foto!=null){    
+            html+="<a  target='_blank' href='img/product/"+r.foto+"'><img src='img/product/"+r.foto+"' style='height: 40px;width: 40px;'></a>";}
+            html+="</td>"+
+        //MUESTRA EL NOMBRE DEL PRODUCTO
             "<td class='producto'>"+r.producto+"</td>"+
+
+        //MUESTRA EL BOTON PARA SELECCIONAR
             '<td><span class="btn btn-primary btn-sm" onClick="SeleccionarProducto(0,'+r.id+','+r.precio_venta+')"><i class="glyphicon glyphicon-ok"></i> </span></td>';
+
         html+="</tr>";
      
     });
