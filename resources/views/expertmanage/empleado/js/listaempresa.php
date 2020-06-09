@@ -92,7 +92,7 @@ HTMLCargarEmpresa=function(result){
         },
         "initComplete": function () {
             $('#TableListaempresa_paginate ul').remove();
-            masterG.CargarPaginacion('HTMLCargarEmpresa','AjaxEmpresa',result.data,'#TableListaempresa_paginate');
+            masterG.CargarPaginacion('HTMLCargarEmpresa','AjaxListaempresa',result.data,'#TableListaempresa_paginate');
         } 
     });
 };

@@ -95,7 +95,7 @@ HTMLCargarPersona=function(result){
         },
         "initComplete": function () {
             $('#TableListapersona_paginate ul').remove();
-            masterG.CargarPaginacion('HTMLCargarPersona','AjaxPersona',result.data,'#TableListapersona_paginate');
+            masterG.CargarPaginacion('HTMLCargarPersona','AjaxListapersona',result.data,'#TableListapersona_paginate');
         } 
     });
 };

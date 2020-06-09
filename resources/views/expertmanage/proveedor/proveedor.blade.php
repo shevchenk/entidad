@@ -103,4 +103,5 @@
      @include( 'expertmanage.proveedor.form.proveedor' )
      @include( 'expertmanage.empleado.form.listapersona' )
      @include( 'expertmanage.empleado.form.listaempresa' )
+     @include( 'expertmanage.persona.form.persona' )
 @stop

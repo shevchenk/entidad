@@ -37,7 +37,7 @@
                     <div class="col-md-4">
                         <div class="form-group">
                             <label>Precio Compra</label>
-                            <input type="text" onkeyup="masterG.DecimalMax(this, 2);" onkeypress="return masterG.validaDecimal(event, this);" class="form-control" id="txt_precio_compra" name="txt_precio_compra">
+                            <input type="text" onkeyup="masterG.DecimalMax(this, 3);" onkeypress="return masterG.validaDecimal(event, this);" class="form-control" id="txt_precio_compra" name="txt_precio_compra">
                         </div>
                     </div>
                     <div class="col-md-4">
