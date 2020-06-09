@@ -74,7 +74,7 @@ class ProductoSucursal extends Model
                     FROM productos p2
                     INNER JOIN productos_sucursales ps2 ON ps2.producto_id=p2.id
                     WHERE ps2.sucursal_id=s.id
-                    AND FIND_IN_SET(ps2.id, productos_sucursales.pack_producto_id) > 0;
+                    AND FIND_IN_SET(ps2.id, productos_sucursales.pack_producto_id) > 0
                     ) AS pack_productos')
             )
             ->join('productos as p','p.id','=','productos_sucursales.producto_id')
