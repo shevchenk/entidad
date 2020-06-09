@@ -3,6 +3,7 @@
 namespace App\Models\ExpertManage;
 
 use Illuminate\Database\Eloquent\Model;
+use BD;
 
 class ProductoSucursal extends Model
 {
