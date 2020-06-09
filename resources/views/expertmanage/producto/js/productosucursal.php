@@ -174,6 +174,7 @@ HTMLCargarProductosucursal=function(result){
             html+="<a  target='_blank' href='img/product/"+r.foto+"'><img src='img/product/"+r.foto+"' style='height: 40px;width: 40px;'></a>";}
             html+="</td>"+
             "<td class='producto'>"+r.producto+"</td>"+
+            "<td class='pack_productos'>"+r.pack_productos+"</td>"+
             "<td class='sucursal'>"+r.sucursal+"</td>"+
             "<td class='precio_venta'>"+r.precio_venta+"</td>"+
             "<td class='precio_compra'>"+r.precio_compra+"</td>"+

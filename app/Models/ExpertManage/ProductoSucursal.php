@@ -66,8 +66,16 @@ class ProductoSucursal extends Model
 
     public static function runLoad($r)
     {
+        DB::statement(DB::raw('SET @@group_concat_max_len = 4294967295'));
         $sql=ProductoSucursal::select('productos_sucursales.id','s.sucursal','p.producto','p.foto','sucursal_id','producto_id','precio_venta','precio_compra',
-                'moneda','stock','stock_minimo','dias_alerta','fecha_vencimiento','dias_vencimiento','productos_sucursales.estado')
+                'moneda','stock','stock_minimo','dias_alerta','fecha_vencimiento','dias_vencimiento','productos_sucursales.estado',
+            DB::raw('(SELECT GROUP_CONCAT(p2.producto)
+                    FROM productos p2
+                    INNER JOIN productos_sucursales ps2 ON ps2.producto_id=p2.id
+                    WHERE ps2.sucursal_id=s.id
+                    AND FIND_IN_SET(ps2.id, productos_sucursales.pack_producto_id) > 0;
+                    ) AS pack_productos')
+            )
             ->join('productos as p','p.id','=','productos_sucursales.producto_id')
             ->join('sucursales as s','s.id','=','productos_sucursales.sucursal_id')
             ->where( 

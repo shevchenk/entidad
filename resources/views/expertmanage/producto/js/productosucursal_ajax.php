@@ -2,7 +2,7 @@
 var AjaxProductosucursal={
     AgregarEditar:function(evento){
         var data=$("#ModalProductosucursalForm").serialize().split("txt_").join("").split("slct_").join("");
-        url='AjaxDinamic/ExpertManage.ProductosucursalEM@New';
+        url='AjaxDinamic/ExpertManage.ProductoSucursalEM@New';
         if(AddEdit==0){
             url='AjaxDinamic/ExpertManage.ProductoSucursalEM@Edit';
         }

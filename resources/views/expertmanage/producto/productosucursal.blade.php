@@ -67,6 +67,11 @@
                                     </th>
                                     <th class="col-xs-2">
                                         <div class="form-group">
+                                            <label><h4>Pack:</h4></label>                                            
+                                        </div>
+                                    </th>
+                                    <th class="col-xs-2">
+                                        <div class="form-group">
                                             <label><h4>Sucursal:</h4></label>
                                             <div class="input-group">
                                                 <div class="input-group-addon"><i class="fa fa-search"></i></div>
@@ -131,6 +136,7 @@
                                 <tr class="cabecera">
                                   <th>Img</th>
                                   <th>Producto</th>
+                                  <th>Pack</th>
                                   <th>Sucursal</th>
                                   <th>Precio Venta</th>
                                   <th>Precio Compra</th>
